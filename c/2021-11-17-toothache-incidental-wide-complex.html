@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>17/11/2021 — Đau răng, tình cờ phát hiện nhịp nhanh QRS rộng</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #1348 · DR. SMITH’S ECG BLOG</div>
+   <h1>17/11/2021 — Đau răng, tình cờ phát hiện nhịp nhanh QRS rộng</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/toothache-incidental-wide-complex/" target="_blank" rel="noopener">"Toothache, incidental Wide Complex Tachycardia"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 5 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p>Gần đây tôi đang xem qua danh sách các điện tâm đồ và bắt gặp bản ghi này:</p>
+<figure><a class="o-anh" href="2021-11-17-toothache-incidental-wide-complex_anh/2021_11_WidecomplextachyAVRTorRVOT.jpg"><img src="2021-11-17-toothache-incidental-wide-complex_anh/2021_11_WidecomplextachyAVRTorRVOT.jpg" alt="" width="1600" height="805" loading="lazy" decoding="async"></a></figure>
+<p>Bạn nghĩ gì?</p>
+<h3 id="day-la-ket-qua-doc-toi-da-nhap-vao-he-thong">Đây là kết quả đọc tôi đã nhập vào hệ thống:</h3>
+<p>“Nhịp nhanh QRS rộng vào lại kèm <strong>sóng P ngược dòng</strong>, khởi đầu QRS chậm phù hợp với hoặc WPW ngược chiều (AVRT [người dịch: nguyên văn ghi “ARVT”, nhiều khả năng là lỗi đánh máy]) với đầu cắm của đường phụ ở phần trên thất phải, hoặc VT xuất phát từ phần trên thất phải, nhiều khả năng nhất là RVOT” (VT đường ra thất phải (Right Ventricular Outflow Tract VT), một trong các VT vô căn.</p>
+<h3 id="giai-thich">Giải thích:</h3>
+<p>Có nhịp nhanh QRS rộng đều với tần số 138.  Sau đây là các đặc điểm quan trọng:</p>
+<p>1. V1 và V2 có hình dạng LBBB (sóng R rất nhỏ hoặc không có, sóng S sâu)</p>
+<p>2. V5 và V6 có hình dạng LBBB (sóng R một pha)</p>
+<p>3. Trục hướng xuống dưới (dương hoàn toàn ở II, III, aVF)</p>
+<p>4. Phần khởi đầu của QRS RẤT chậm (xem nhánh xuống chậm ở V1, V2, nhánh lên chậm ở các chuyển đạo khác).</p>
+<p><strong>Khởi đầu chậm này </strong><strong>có nghĩa là</strong> nhịp này hoặc là VT hoặc là AVRT (nhịp nhanh vào lại nhĩ thất – Atrioventricular reciprocating tachycardia).  AVRT là do một đường phụ (tương tự WPW, nhưng về mặt kỹ thuật chỉ những đường phụ có sóng delta trên điện tâm đồ nền mới được gọi là WPW), và khi QRS rộng thì là do dẫn truyền ngược chiều (đi xuống qua đường phụ gây tiền kích thích thất — sóng delta với QRS rộng).  Chính phần <u>khởi đầu</u> của QRS là chậm — <u>KHÔNG PHẢI</u> phần sau.</p>
+<p><strong>Nếu đây là VT, thì nó xuất phát từ thất phải (vì có hình ảnh LBBB).  VÀ nó xuất phát từ phần trên của thất phải nên xung động hướng xuống dưới (trục hướng xuống dưới). </strong> Đây là đặc điểm điển hình của <strong>VT đường ra thất phải</strong>.   Một VT khác xuất phát từ thất phải và có hình ảnh LBBB là ARVD (loạn sản thất phải gây loạn nhịp – Arrhythmogenic Right Ventricular Dysplasia, hay bệnh cơ tim thất phải).   Loại sau không nhất thiết có trục hướng xuống dưới.</p>
+<p>Hình như RVOT còn được gọi là <strong>“VT đơn dạng lặp lại (Repetitive Monomorphic VT)”</strong> vì nó xuất hiện thành từng đợt hay từng loạt (salvo).  Ở cuối cùng của bài, tôi đã dán một phần bài viết về chủ đề này từ <a href="https://www.uptodate.com/contents/search" rel="noopener" target="_blank">UpToDate</a>, nguồn tài liệu trực tuyến tôi yêu thích nhất.</p>
+<h3 id="o-day-toi-chu-thich-tren-dien-tam-do-de-chi-ra-cac-song-p-nguoc-dong">Ở đây tôi chú thích trên điện tâm đồ để chỉ ra các sóng P ngược dòng</h3>
+<figure><a class="o-anh" href="2021-11-17-toothache-incidental-wide-complex_anh/2021_11_ScreenShot2021-11-11at10.48.12AM.jpg"><img src="2021-11-17-toothache-incidental-wide-complex_anh/2021_11_ScreenShot2021-11-11at10.48.12AM.jpg" alt="" width="1600" height="826" loading="lazy" decoding="async"></a></figure>
+<p><strong>Các mũi tên</strong> chỉ vào <strong>điểm giữa, hay điểm đáy,</strong> của sóng P đảo ngược.</p>
+<p>Sóng P đảo ngược không phải là thành phần dương của sóng, mà là chỗ lõm xuống.</p>
+<p><span class="c-xanh">Đường màu xanh </span>được vẽ tại điểm <strong>khởi đầu</strong> của các sóng P đảo ngược</p>
+<h2 id="ca-benh-tiep-dien">Ca bệnh tiếp diễn</h2>
+<p><strong>Tôi đi tìm bệnh nhân; bà vẫn còn ở khoa và đây là câu chuyện:</strong></p>
+<p>Một phụ nữ 60 mấy tuổi, không có tiền sử bệnh tim, đến khám vì áp xe răng.  Mạch lúc phân loại (triage) là 76.  Bác sĩ nội trú năm nhất (intern) khai thác được tiền sử đau ngực 3 ngày trước nên đã chỉ định ghi điện tâm đồ.  Bác sĩ nội trú không biết tần số tim lúc ghi điện tâm đồ cho tới khi bản ghi được ghi xong:</p>
+<p>Các chất điện giải, bao gồm K và Mg, đều bình thường.</p>
+<p>Bệnh nhân tự chuyển về nhịp xoang:</p>
+<figure><a class="o-anh" href="2021-11-17-toothache-incidental-wide-complex_anh/2021_11_WidecomplextachyAVRTorRVOT-spontanconversionwithPVCs.jpg"><img src="2021-11-17-toothache-incidental-wide-complex_anh/2021_11_WidecomplextachyAVRTorRVOT-spontanconversionwithPVCs.jpg" alt="" width="1600" height="766" loading="lazy" decoding="async"></a></figure>
+<p>Giờ chúng ta thấy nhịp nhanh xoang kèm PVC, ngoài ra không có gì quá đáng chú ý.</p>
+<p>Bạn nghĩ gì?</p>
+<p>Suy nghĩ của tôi về điều này là <strong>các PVC có hình dạng GIỐNG HỆT nhịp nhanh QRS rộng</strong>.  Điều này cho thấy ổ kích thích của cơn nhịp nhanh nằm trong thất, đúng tại vị trí của nhịp vào lại, và <strong>do đó</strong> điện tâm đồ đầu tiên là VT chứ <strong><u>không phải</u></strong> AVRT.  Việc không có sóng delta tự nó chỉ ủng hộ chứ hoàn toàn không mang tính chẩn đoán, vì đường phụ thường không biểu hiện sóng delta trên điện tâm đồ nền.  Hiện tượng này được gọi là “<a href="https://drsmithsecgblog.com/search/label/Concealed%20conduction%20in%20WPW%20and%20accessory%20pathways" rel="noopener" target="_blank">dẫn truyền ẩn</a>.”</p>
+<p><strong>Xem bình luận bên dưới của bác sĩ điện sinh lý của chúng tôi về ý nghĩa của các PVC</strong></p>
+<p>Xin nhắc lại, không gọi là WPW khi có dẫn truyền ẩn; “WPW” chỉ dành cho những trường hợp có sóng delta.  Tuy nhiên, dù là WPW hay không, đường phụ vẫn tạo ra một con đường khác cho dẫn truyền AV hoặc VA.</p>
+<p>Ngay sau đó, bà lại vào cơn nhịp nhanh.  Bà không có triệu chứng nhưng bị hạ huyết áp, 80/50.</p>
+<figure><a class="o-anh" href="2021-11-17-toothache-incidental-wide-complex_anh/2021_11_WidecomplextachyAVRTorRVOT-recurrent.jpg"><img src="2021-11-17-toothache-incidental-wide-complex_anh/2021_11_WidecomplextachyAVRTorRVOT-recurrent.jpg" alt="" width="1600" height="834" loading="lazy" decoding="async"></a></figure>
+<p>Giống như trước.  Và lần này nó không tự chuyển nhịp</p>
+<p>Bạn muốn làm gì?</p>
+<p>Đây gần như chắc chắn là RVOT, VT đường ra thất phải, <strong>và loại VT này đáp ứng với adenosine!!  </strong>Vì vậy, nếu chúng ta có thể tin rằng bà sẽ không quay lại VT, adenosine có thể có hiệu quả.  Tiếc thay, không có biện pháp điều trị tác dụng ngắn nào như adenosine hay sốc điện đạt được mục tiêu giữ bệnh nhân ở nhịp xoang.</p>
+<p>Nhắc lại: cả sốc điện lẫn adenosine đều sẽ không có tác dụng chuyển nhịp.  Không biện pháp nào giải quyết được vấn đề vì <strong>chúng ta biết rằng bà có thể chuyển từ nhịp xoang quay lại VT, vì bà đã làm vậy một lần rồi. </strong></p>
+<p>Do đó, cần một thuốc tác dụng kéo dài hoặc truyền tĩnh mạch liên tục (hoặc cả hai).  Dựa trên kết quả <a href="https://pubmed.ncbi.nlm.nih.gov/27354046/" rel="noopener" target="_blank">nghiên cứu Procamio</a> so sánh procainamide với amiodarone cho VT đơn dạng ổn định (với procainamide, hiệu quả gấp đôi và tác dụng bất lợi chỉ bằng một nửa), chúng tôi quyết định tiêm bolus procainamide (10 mg/kg trong 20 phút, có thể cho thêm một liều tới 7 mg/kg nếu cần) và truyền duy trì.</p>
+<p>Cũng đã cho 2 g Mg.</p>
+<p>Sau khi truyền chỉ mới 100 mg, bà lại chuyển nhịp. Bà duy trì nhịp xoang trong khi truyền thuốc.</p>
+<figure><a class="o-anh" href="2021-11-17-toothache-incidental-wide-complex_anh/2021_11_WidecomplextachyAVRTorRVOT-resolvedafterProcainamide.jpg"><img src="2021-11-17-toothache-incidental-wide-complex_anh/2021_11_WidecomplextachyAVRTorRVOT-resolvedafterProcainamide.jpg" alt="" width="1600" height="818" loading="lazy" decoding="async"></a></figure>
+<h3 id="sieu-am-tim">Siêu âm tim:</h3>
+<p>–Ngoại tâm thu (ectopy) thường xuyên trong suốt lúc khám.</p>
+<p>–Kích thước và bề dày thành thất trái bình thường.</p>
+<p>–Chức năng tâm thu thất trái ở giới hạn dưới của bình thường với EF 52%.</p>
+<p>–Không ghi nhận rối loạn vận động thành thất trái.</p>
+<p>—Kích thước và chức năng thất phải bình thường.</p>
+<p>—Áp lực tâm thu động mạch phổi ước tính là 34 mmHg + áp lực nhĩ phải.</p>
+<p>–Dựa trên hình ảnh tĩnh mạch chủ dưới (IVC), áp lực nhĩ phải ước tính bình thường.</p>
+<h3 id="ket-cuc">Kết cục:</h3>
+<p><strong>Bệnh nhân từ chối thăm dò điện sinh lý (EP), nhưng bác sĩ điện sinh lý chắc chắn rằng đây là VT đường ra thất phải (RVOT VT).  </strong>Họ cho bà xuất viện với <strong>diltiazem</strong>, thuốc hình như có hiệu quả rất tốt trong phòng ngừa các cơn RVOT VT tái phát (tôi không biết điều này và không thể tìm thấy tài liệu nào ở bất cứ nơi nào tôi đã tìm).</p>
+<p><strong>Đọc thêm tại đây:  <a href="https://drsmithsecgblog.com/2018/09/idiopathic-ventricular-tachycardias-for.html" rel="noopener" target="_blank">Idiopathic Ventricular Tachycardias for the EM Physician</a> (Nhịp nhanh thất vô căn dành cho bác sĩ cấp cứu)</strong><span class="c-xanh"> </span></p>
+<h2 id="ban-luan-cua-bac-si-dien-sinh-ly-cua-chung-toi">Bàn luận của bác sĩ điện sinh lý của chúng tôi</h2>
+<p>Smith: “Tôi đã nghĩ rằng nhịp nhanh QRS rộng (WCT) có thể là AVRT hoặc VT”</p>
+<p><span class="c-xanh">EP: “Hình dạng của AVRT ngược chiều về cơ bản sẽ giống như “VT” xuất phát từ vị trí đầu cắm vào thất của đường phụ. Do đó, các tiêu chuẩn truyền thống cho SVT kèm dẫn truyền lệch hướng không áp dụng được cho AVRT ngược chiều (ngoại trừ một điều: QRS đồng hướng âm thì <em>không bao giờ</em> có thể là AVRT!)”</span><u></u><u></u></p>
+<p><span class="c-xanh">Smith: “</span>Nhưng rồi khi bệnh nhân chuyển nhịp và có các PVC với hình dạng giống hệt WCT, thì đó hẳn phải là VT chứ không phải AVRT”<u></u><u></u></p>
+<p><span class="c-xanh">EP: “Trong trường hợp tiền kích thích từng lúc, bạn có thể thấy cả phức bộ QRS rộng và hẹp trên cùng một điện tâm đồ – nhưng dĩ nhiên những phức bộ đó sẽ có sóng P đi trước (dù với khoảng PR ngắn)”</span><u></u><u></u></p>
+<p>Smith: “Lập luận này có được bằng chứng ủng hộ không? Hay vẫn có khả năng là AVRT [người dịch: nguyên văn ghi “ARVT”, nhiều khả năng là lỗi đánh máy]?”</p>
+<p><span class="c-xanh">EP: “Không chắc, nhưng PVC từ RVOT và nhịp nhanh QRS rộng có cùng hình dạng gợi ý rất nhiều rằng đó là VT.<u></u><u></u></span></p>
+<p><span class="c-xanh">Một nhận xét khác trên điện tâm đồ là hoạt động nhĩ (được cho là) ngược dòng nằm khá xa so với nhát QRS rộng kế tiếp. Nói cách khác, nếu đây là AVRT, thì bạn đang giả định rằng khoảng “PR” rất dài và xung động dẫn truyền xuống qua đường phụ. Mặc dù có những đường phụ dẫn truyền chậm, tôi tin rằng chúng có xu hướng gây AVRT xuôi chiều nhiều hơn. Một ví dụ là “PJRT” mà có thể bạn đã gặp.<u></u><u></u></span></p>
+<p><span class="c-xanh">Đôi khi, nếu một người có nhát “tiền kích thích hoàn toàn” (tức là không có hỗn hợp với dẫn truyền qua nút AV), thì có thể khó phân biệt với một PVC vì sóng “P” có thể quá gần điểm khởi đầu QRS – nhưng tôi không nhớ đã gặp tình huống như vậy.”</span><u></u><u></u></p>
+<p>Cuối cùng:</p>
+<p><span class="c-xanh">Nói chung, nếu bạn nghĩ một nhịp nhanh QRS rộng là AVRT ngược chiều, thì việc cho thuốc tác dụng lên nút AV là “chấp nhận được” vì nút AV vẫn tham gia vào vòng vào lại. Đó là lý do bạn có thể đã nghe một số người nhắc đến việc dùng adenosine như một nghiệm pháp chẩn đoán ngay cả trong nhịp nhanh QRS rộng nếu bệnh nhân ổn định huyết động (nếu nó không cắt được cơn nhịp nhanh, thì có thể làm lộ ra phân ly nhĩ thất nếu đó là VT!). Adenosine có gây giãn mạch phần nào, nên tôi sẽ không dùng nếu bệnh nhân đã bị hạ huyết áp.</span></p>
+<p>VT ĐƠN DẠNG LẶP LẠI (REPETITIVE MONOMORPHIC VT), trích từ <a href="https://www.uptodate.com/contents/search" rel="noopener" target="_blank">UpToDate</a>VT đơn dạng lặp lại (RMVT) có đặc điểm là những “loạt” (salvo) ngắn, thường xuyên của VT đơn dạng không bền bỉ (<a href="https://www.uptodate.com/contents/image?imageKey=CARD%2F66679&amp;topicKey=CARD%2F965&amp;search=right+ventricular+outflow+tract+vt&amp;rank=1%7E19&amp;source=see_link" rel="noopener" target="_blank">dạng sóng 1</a>). Nó được Gallavardin mô tả lần đầu vào năm 1922 và được y văn gọi bằng nhiều tên khác nhau như RMVT, nhịp nhanh thất phải, nhịp nhanh RVOT, VT nhạy cảm với catecholamine, VT nhạy cảm với adenosine và VT do gắng sức. Khoảng 10 đến 15 phần trăm số ca xuất phát từ đường ra thất trái [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/26-28" rel="noopener" target="_blank">26-28</a>].</p>
+<p>Mặc dù RMVT được xem là xảy ra ở những trái tim “bình thường”, cộng hưởng từ tĩnh và cine thường phát hiện những bất thường cấu trúc nhẹ của thất phải, chủ yếu liên quan đến thành tự do (mỏng khu trú, thâm nhiễm mỡ và rối loạn vận động thành) [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/13-15" rel="noopener" target="_blank">13-15</a>]. Ý nghĩa chức năng của những thay đổi này chưa chắc chắn. Trong số ít ca được nghiên cứu, DNA từ sinh thiết cơ thất đều bình thường [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/29" rel="noopener" target="_blank">29</a>].</p>
+<p>Dịch tễ học và đặc điểm lâm sàng — RMVT gần như chỉ xảy ra ở bệnh nhân trẻ đến trung niên không có bệnh tim cấu trúc [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/1,2,4-9" rel="noopener" target="_blank">1,2,4-9</a>]. Nhìn chung không có ưu thế theo giới tính, mặc dù một báo cáo ghi nhận nữ chiếm ưu thế với tỷ lệ 2:1 [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/26" rel="noopener" target="_blank">26</a>]. Một số lượng đáng ngạc nhiên vận động viên thi đấu (đặc biệt là người đua xe đạp) được ghi nhận trong nhiều loạt ca RMVT.</p>
+<p>Các triệu chứng kèm theo thường gặp nhất là hồi hộp đánh trống ngực và choáng váng trong các cơn [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/5,6" rel="noopener" target="_blank">5,6</a>]. Trong một báo cáo minh họa gồm 18 bệnh nhân, mười hai người có rối loạn nhịp có triệu chứng, trong đó hai người bị ngất, và sáu người hoàn toàn không có triệu chứng.</p>
+<p>Phần lớn các rối loạn nhịp là không bền bỉ (thường từ 3 đến 15 nhát), nhưng có tới một nửa số bệnh nhân có một số cơn bền bỉ, và một số bệnh nhân chỉ có VT bền bỉ [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/6,9,13,30" rel="noopener" target="_blank">6,9,13,30</a>]. (Xem <a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease?search=right%20ventricular%20outflow%20tract%20vt&amp;source=search_result&amp;selectedTitle=1~19&amp;usage_type=default&amp;display_rank=1#H21" rel="noopener" target="_blank">‘VT bền bỉ kịch phát’</a> bên dưới.)</p>
+<p>Các đợt VT không bền bỉ thường bị khởi phát bởi stress cảm xúc hoặc gắng sức, thường xảy ra trong giai đoạn “hạ nhiệt” (warm-down) sau gắng sức, thời điểm catecholamine tuần hoàn ở mức đỉnh [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/5,6,8" rel="noopener" target="_blank">5,6,8</a>]. Cũng có thể có tính chất theo nhịp ngày đêm, với các đỉnh nổi bật từ 7 đến 11 giờ sáng và từ 4 đến 8 giờ chiều, tương ứng với các giai đoạn tăng hoạt động giao cảm [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/31" rel="noopener" target="_blank">31</a>]. Ở một số bệnh nhân, có thể xác định được một “cửa sổ” tần số tim then chốt (ngưỡng trên và ngưỡng dưới) dẫn đến sự xuất hiện của rối loạn nhịp [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/27" rel="noopener" target="_blank">27</a>].</p>
+<p>Việc RMVT có thể bị gây ra bởi stress hoặc truyền catecholamine gợi ý một bất thường trong chức năng giao cảm của tim. Phù hợp với giả thuyết này là bằng chứng về sự mất phân bố thần kinh giao cảm khu trú ở tim ở một số bệnh nhân RMVT có tim bình thường về cấu trúc (năm trên chín người, so với không trên chín người ở nhóm chứng trong một báo cáo) [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/32" rel="noopener" target="_blank">32</a>]. Bệnh nhân RMVT cũng có thể có những vùng suy giảm tái hấp thu norepinephrine của tế bào thần kinh, dẫn đến tăng nồng độ catecholamine tại khe synap khu trú và giảm điều hòa thụ thể beta adrenergic của cơ tim [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/33" rel="noopener" target="_blank">33</a>].</p>
+<p>Cũng có thể có các yếu tố khởi phát đặc thù theo giới. Trong một báo cáo gồm 47 nam và nữ bị RMVT, các trạng thái biến động nội tiết (tiền kinh nguyệt, thai kỳ, quanh mãn kinh, dùng thuốc tránh thai) là yếu tố khởi phát RMVT thường gặp nhất ở 59 phần trăm phụ nữ và là yếu tố khởi phát duy nhất nhận biết được ở 41 phần trăm [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/34" rel="noopener" target="_blank">34</a>]. Nam giới có nhiều khả năng hơn nữ giới trong việc xác định gắng sức, stress hoặc caffeine là yếu tố khởi phát (92 so với 41 phần trăm).</p>
+<p>Vị trí khởi phát — Nhịp nhanh thất phải thường khởi phát từ phía vách của RVOT [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/6,26,28,35-38" rel="noopener" target="_blank">6,26,28,35-38</a>]. Một sơ đồ lập bản đồ chín vị trí của phần vách RVOT đã chứng tỏ hữu ích trong việc định vị nhịp nhanh RVOT dựa trên hình dạng trên điện tâm đồ 12 chuyển đạo (<a href="https://www.uptodate.com/contents/image?imageKey=CARD%2F72301&amp;topicKey=CARD%2F965&amp;search=right+ventricular+outflow+tract+vt&amp;rank=1%7E19&amp;source=see_link" rel="noopener" target="_blank">hình 1</a>) [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/39" rel="noopener" target="_blank">39</a>].</p>
+<p>Nhịp nhanh thất phải thường khởi phát từ một vùng rất hẹp ngay bên dưới van động mạch phổi ở phía trước của RVOT [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/37" rel="noopener" target="_blank">37</a>]. Lập bản đồ nội mạc ở những bệnh nhân này cho thấy vị trí hoạt hóa nội mạc sớm nhất nằm ở vùng này [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/6,9" rel="noopener" target="_blank">6,9</a>].</p>
+<p>Ít gặp hơn, các vị trí khởi phát đã được lập bản đồ ở đường vào thất phải, thành tự do của RVOT, gốc động mạch phổi, xoang Valsalva trái và phải của động mạch chủ, thất trái, vòng van hai lá và các cơ nhú [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/26,36,38,40-49" rel="noopener" target="_blank">26,36,38,40-49</a>].</p>
+<p>Đặc điểm điện tâm đồ — Tần số điển hình của RMVT dao động từ 140 đến 180 nhát/phút, và có thể thay đổi tùy theo nồng độ catecholamine. Độ dài chu kỳ VT thường kéo dài ra trước khi cơn kết thúc.</p>
+<p>Đường ra thất phải — Phần lớn các cơn RMVT có hình ảnh điện tâm đồ đặc trưng với hai đặc điểm chính [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/1,2,4-9,39" rel="noopener" target="_blank">1,2,4-9,39</a>]:</p>
+<p>●Blốc nhánh trái</p>
+<p>●Trục hướng xuống dưới</p>
+<p>Hình dạng này phù hợp với nguồn gốc RVOT được thấy qua triệt đốt qua ống thông và lập bản đồ nội mạc [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/6,37" rel="noopener" target="_blank">6,37</a>]. “Dấu ấn” điện tâm đồ này chiếm ít nhất 70 phần trăm tổng số VT vô căn [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/1" rel="noopener" target="_blank">1</a>].</p>
+<p>Hình ảnh điện tâm đồ lúc khởi phát nhịp nhanh thất phải có thể cung cấp thông tin về vị trí khởi phát và cơ chế gây loạn nhịp, như được minh họa qua các nhận xét sau:</p>
+<p>●Trong một loạt ca gồm 32 bệnh nhân bị RMVT do gắng sức, VT thường bắt đầu mà không có thay đổi độ dài chu kỳ. Các rối loạn nhịp khởi phát theo cách này có trục hướng xuống dưới, và dường như liên quan đến hoạt động khởi kích do hậu điện thế muộn [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/50" rel="noopener" target="_blank">50</a>]. So sánh, VT khởi phát bằng một chuỗi dài-ngắn thường không bền bỉ hơn và thường có trục hướng lên trên, gợi ý nguồn gốc ở thân hoặc vùng vách của thất; cơ chế của VT này có lẽ là hậu điện thế sớm.</p>
+<p>●Trong một báo cáo gồm 14 bệnh nhân, những người có vị trí ở vách so với ở thành tự do ít có khả năng có khía ở phức bộ QRS hơn một cách có ý nghĩa (29 so với 95 phần trăm) và nhiều khả năng có vùng chuyển tiếp trước tim sớm, tại chuyển đạo V4 hoặc trước đó (79 so với 5 phần trăm) [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/51" rel="noopener" target="_blank">51</a>]. Ngoài ra, sóng R dương ở chuyển đạo I giúp phân biệt vị trí vách sau với vị trí vách trước và thành tự do.</p>
+<p>●Mức độ tương đồng của dạng sóng điện tâm đồ 12 chuyển đạo giữa VT và bản đồ tạo nhịp (pace map) có thể được dùng để ước tính khả năng triệt đốt thành công tại vị trí đó. (Xem <a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease?search=right%20ventricular%20outflow%20tract%20vt&amp;source=search_result&amp;selectedTitle=1~19&amp;usage_type=default&amp;display_rank=1#H20" rel="noopener" target="_blank">‘Triệt đốt bằng sóng có tần số radio’</a> bên dưới.)</p>
+<p>Phần lớn bệnh nhân nhịp nhanh thất phải có một hình dạng điện tâm đồ duy nhất [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/23" rel="noopener" target="_blank">23</a>]. Tuy nhiên, đôi khi có bệnh nhân biểu hiện nhiều hình dạng nhịp nhanh khởi phát từ các vị trí riêng biệt trong RVOT [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/52" rel="noopener" target="_blank">52</a>]. Sự hiện diện của nhiều hình dạng VT kiểu blốc nhánh trái, đặc biệt trong thăm dò điện sinh lý, nên gợi ý khả năng ARVC [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/23,53,54" rel="noopener" target="_blank">23,53,54</a>]. (Xem <a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease?search=right%20ventricular%20outflow%20tract%20vt&amp;source=search_result&amp;selectedTitle=1~19&amp;usage_type=default&amp;display_rank=1#H7" rel="noopener" target="_blank">‘Phân biệt với ARVC’</a> ở trên.)</p>
+<p>Đường ra thất trái — Các tiêu chuẩn điện tâm đồ cũng đã được mô tả cho RMVT khởi phát từ LVOT [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/26,27" rel="noopener" target="_blank">26,27</a>]. Trong một loạt ca gồm 33 bệnh nhân RMVT, bốn người (12 phần trăm) có vị trí khởi phát ở thất trái, có thể dự đoán được bằng hai hình ảnh [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/26" rel="noopener" target="_blank">26</a>]:</p>
+<p>●Hình dạng blốc nhánh phải, trục hướng xuống dưới, với sóng R một pha ở V1, khởi phát từ tam giác xơ trái (<a href="https://www.uptodate.com/contents/image?imageKey=CARD%2F81690&amp;topicKey=CARD%2F965&amp;search=right+ventricular+outflow+tract+vt&amp;rank=1%7E19&amp;source=see_link" rel="noopener" target="_blank">dạng sóng 2</a>).</p>
+<p>●Hình ảnh tương tự RMVT điển hình từ RVOT (blốc nhánh trái, trục hướng xuống dưới), ngoại trừ vùng chuyển tiếp trước tim sớm hơn (tại V2 đối với LVOT so với V3 hoặc muộn hơn đối với RVOT).</p>
+<p>Các báo cáo khác đã mô tả những hình dạng QRS riêng biệt của VT vô căn khởi phát từ các xoang Valsalva [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/9,43,44" rel="noopener" target="_blank">9,43,44</a>]. Mặc dù có một số khác biệt giữa các cá thể, ngoại tâm thu thất (PVC; còn được gọi là nhát thất sớm hoặc khử cực thất sớm) khởi phát từ xoang vành trái của động mạch chủ có xu hướng âm ở chuyển đạo I và có hình ảnh chữ “w” ở V1, trong khi PVC có sóng R rộng ở V1 là đặc trưng của nguồn gốc từ lá vành phải của van động mạch chủ. Vùng chuyển tiếp sóng R trước tim sớm hơn nhiều khi VT khởi phát từ một trong hai xoang Valsalva của động mạch chủ so với từ RVOT, vì LVOT nằm phía sau RVOT [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/44" rel="noopener" target="_blank">44</a>].</p>
+<p>Đặc điểm điện sinh lý — RMVT có thể được gây ra trong phòng thăm dò điện sinh lý, mặc dù thường không phải bằng kích thích theo chương trình [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/5,6,23,27,55" rel="noopener" target="_blank">5,6,23,27,55</a>]. Ở phần lớn bệnh nhân, các cơn bền bỉ hoặc không bền bỉ xảy ra khi đáp ứng với tạo nhịp nhĩ hoặc thất từng loạt (burst), và được tạo thuận lợi rất nhiều bởi truyền <a href="https://www.uptodate.com/contents/isoproterenol-drug-information?search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;source=see_link" rel="noopener" target="_blank">isoproterenol</a> hoặc <a href="https://www.uptodate.com/contents/epinephrine-adrenaline-drug-information?search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;source=see_link" rel="noopener" target="_blank">epinephrine</a> [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/5,6,27,30,55" rel="noopener" target="_blank">5,6,27,30,55</a>].</p>
+<p>Những nhận xét điện sinh lý này gợi ý rằng hoạt động khởi kích do hậu điện thế muộn, chứ không phải vào lại, là cơ chế của RMVT. Đáp ứng với các “nghiệm pháp dược lý” (pharmacologic probes) càng củng cố thêm giả thuyết này. RMVT đã được cắt cơn bằng <a href="https://www.uptodate.com/contents/adenosine-drug-information?search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;source=see_link" rel="noopener" target="_blank">adenosine</a>, <a href="https://www.uptodate.com/contents/verapamil-drug-information?search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;source=see_link" rel="noopener" target="_blank">verapamil</a> và thuốc chẹn beta, tất cả đều can thiệp vào dòng calci chậm đi vào qua trung gian cAMP [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/29,40,56-58" rel="noopener" target="_blank">29,40,56-58</a>].</p>
+<p>Những nhận xét này phù hợp với giả thuyết cho rằng RMVT là hậu quả của hoạt động khởi kích gây ra bởi các hậu khử cực muộn (delayed after depolarizations, DADs) qua trung gian cAMP [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/30,59" rel="noopener" target="_blank">30,59</a>]. Sự gia tăng hoạt tính cAMP, ít nhất ở một số bệnh nhân, có thể là hậu quả của một đột biến tế bào sinh dưỡng mắc phải trên protein G ức chế G-alpha-i2 tại vị trí ổ gây loạn nhịp [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/59,60" rel="noopener" target="_blank">59,60</a>].</p>
+<p>Tuy nhiên, việc các phép thăm dò này thiếu tính đặc hiệu và không có một đáp ứng đồng nhất ủng hộ đồng thuận chung rằng cơ chế của RMVT chưa được mô tả đầy đủ và có thể khác nhau giữa các cá thể. Bằng chứng bổ sung ủng hộ các cơ chế khác dựa trên nhận xét rằng ở một số bệnh nhân, cơn nhịp nhanh có thể kết thúc bằng tạo nhịp vượt tần số (overdrive pacing), kích thích sớm thất, hoặc điều biến thần kinh tự chủ bằng nghiệm pháp Valsalva hay xoa xoang cảnh [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/9" rel="noopener" target="_blank">9</a>].</p>
+<p>Thăm dò điện sinh lý (EP) cũng có thể giúp phân biệt RMVT xảy ra khi không có bệnh tim cấu trúc với RMVT trong ARVC [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/23,24" rel="noopener" target="_blank">23,24</a>]. (Xem <a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease?search=right%20ventricular%20outflow%20tract%20vt&amp;source=search_result&amp;selectedTitle=1~19&amp;usage_type=default&amp;display_rank=1#H7" rel="noopener" target="_blank">‘Distinction from ARVC’</a> ở trên.)</p>
+<p>Tiên lượng — Tiên lượng của RMVT gần như luôn tốt [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/4-9,55" rel="noopener" target="_blank">4-9,55</a>]. Những nhận xét sau đây từ các nghiên cứu ban đầu minh họa phạm vi các kết quả:</p>
+<p>●Hai loạt ca ban đầu đánh giá 30 và 18 bệnh nhân [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/5,6" rel="noopener" target="_blank">5,6</a>]. Rối loạn nhịp đáp ứng với nhiều loại thuốc chống loạn nhịp, bao gồm các thuốc nhóm I và <a href="https://www.uptodate.com/contents/propranolol-drug-information?search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;source=see_link" rel="noopener" target="_blank">propranolol</a>. Sau thời gian trung bình 30 tháng ở một nghiên cứu và trong khoảng 0.5 đến 8 năm ở nghiên cứu còn lại, không có trường hợp tử vong hay cơn ngừng tim nào [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/5,6" rel="noopener" target="_blank">5,6</a>].</p>
+<p>●Báo cáo thứ ba gồm 24 bệnh nhân trẻ tuổi, phần lớn có nhịp nhanh thất phải và hai phần ba có triệu chứng [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/7" rel="noopener" target="_blank">7</a>]. Sau thời gian theo dõi trung bình 7.5 năm, ba bệnh nhân đột tử; không ai đang dùng thuốc chống loạn nhịp vào thời điểm đó. Các biến cố đột tử do tim (SCD) có thể là do chính RMVT, dù có thể nghiên cứu đã đưa vào cả những bệnh nhân mắc các hội chứng khác mà nay đã được biết là ác tính (ví dụ hội chứng Brugada, bệnh cơ tim thất phải gây loạn nhịp). Một khả năng khác là bệnh cơ tim do nhịp nhanh đã khiến bệnh nhân dễ bị thêm các rối loạn nhịp khác. (Xem <a href="https://www.uptodate.com/contents/arrhythmia-induced-cardiomyopathy?search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;source=see_link" rel="noopener" target="_blank">“Arrhythmia-induced cardiomyopathy”</a>.)</p>
+<p>Biến thể ác tính — Các nghiên cứu gần đây hơn, trong đó ít khả năng có các hội chứng khác nói trên, đã xác định một biến thể ác tính của RMVT. VT đa dạng và VF, vốn là các rối loạn nhịp ác tính, đã được ghi nhận ở bệnh nhân RMVT [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/61,62" rel="noopener" target="_blank">61,62</a>]. Trong một loạt ca, ba bệnh nhân RMVT sau đó xuất hiện VF. Ở những bệnh nhân này, các PVC có khoảng ghép với nhát bóp trước đó ngắn hơn so với thường gặp trong RMVT [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/61" rel="noopener" target="_blank">61</a>]. Người ta cho rằng các nhát khởi kích tương đối sớm đã xảy ra trong thời kỳ dễ tổn thương của quá trình tái cực, dẫn đến VF.</p>
+<p>Trong một báo cáo sau đó, 16 bệnh nhân có PVC thường xuyên xuất phát từ RVOT được ghi nhận có VT đa dạng hoặc VF khởi phát bởi một trong các PVC đó [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/62" rel="noopener" target="_blank">62</a>]. Khác với nghiên cứu thứ nhất, khoảng ghép của các PVC ở những bệnh nhân xuất hiện rối loạn nhịp ác tính không khác so với 85 bệnh nhân RMVT khác không có rối loạn nhịp ác tính. Triệt đốt bằng sóng có tần số radio (RF) đã loại bỏ thành công các PVC từ RVOT ở 13 bệnh nhân và làm thay đổi các PVC ở ba bệnh nhân còn lại. Trong thời gian theo dõi trung bình 54 tháng, không ai bị VF hay ngất tái phát. (Xem <a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease?search=right%20ventricular%20outflow%20tract%20vt&amp;source=search_result&amp;selectedTitle=1~19&amp;usage_type=default&amp;display_rank=1#H20" rel="noopener" target="_blank">‘Radiofrequency ablation’</a> ở dưới.)</p>
+<p>Tỷ lệ hiện mắc của biến thể ác tính này, và việc nó có phải là một rối loạn riêng biệt với RMVT hay không, vẫn chưa rõ. Tần suất cao trong nghiên cứu trên (16 trên 101 bệnh nhân) có lẽ bị ước tính quá cao đáng kể do sai lệch chuyển tuyến. Ngoài ra, có thể một số ca được xếp vào VT đa dạng thực ra chỉ là dạng VT đường ra thất phải (RVOT VT) thường gặp, trong đó hình dạng QRS thay đổi trong cơn nhịp nhanh do dao động của điều kiện tải. Một bài xã luận đi kèm báo cáo này đã đề cập vấn đề liệu nay có nên cân nhắc triệt đốt RF cho mọi bệnh nhân RMVT hay không [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/63" rel="noopener" target="_blank">63</a>]. Do PVC từ RVOT có tỷ lệ hiện mắc tương đối cao, còn VT/VF ác tính từ RVOT thì hiếm, nên hợp lý khi tập trung quan tâm vào những bệnh nhân có các đặc điểm nguy cơ cao hơn sau đây:</p>
+<p>●Tiền sử ngất</p>
+<p>●VT rất nhanh (&gt;230 nhịp/phút)</p>
+<p>●Ngoại tâm thu (ectopy) rất thường xuyên (&gt;20,000 PVC/ngày)</p>
+<p>●PVC có khoảng ghép ngắn</p>
+<p>Điều trị RMVT — Các quyết định điều trị RMVT cần cân nhắc rằng nhiều bệnh nhân còn trẻ và ngoài ra vẫn khỏe mạnh. Vì vậy, điều trị triệt đốt có thể được ưu tiên hơn so với dùng thuốc chống loạn nhịp kéo dài.</p>
+<p>Điều trị nội khoa — Điều trị nội khoa có hai vai trò trong RMVT: cắt cơn rối loạn nhịp; và phòng ngừa tái phát. RMVT có thể được cắt cơn bằng <a href="https://www.uptodate.com/contents/adenosine-drug-information?search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;source=see_link" rel="noopener" target="_blank">adenosine</a> và thuốc chẹn beta, tất cả đều can thiệp vào dòng calci chậm đi vào qua trung gian cAMP [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/29,40,56-58" rel="noopener" target="_blank">29,40,56-58</a>].</p>
+<p>Để phòng ngừa tái phát, thuốc chẹn beta thường được dùng làm thuốc đầu tay. Các thuốc này hấp dẫn vì có hồ sơ tác dụng phụ nhẹ so với các thuốc chống loạn nhịp [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/64" rel="noopener" target="_blank">64</a>].</p>
+<p><a href="https://www.uptodate.com/contents/propranolol-drug-information?search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;source=see_link" rel="noopener" target="_blank">Propranolol</a> đã phòng ngừa được tái phát ở tới 14 trên 22 bệnh nhân có RMVT xuất phát điển hình từ RVOT [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/6,65" rel="noopener" target="_blank">6,65</a>]. Tuy nhiên, các nghiên cứu khác lại thấy các thuốc này ít có khả năng phòng ngừa RMVT tái phát hơn nhiều, dù phối hợp thuốc chẹn beta với một thuốc nhóm I có thể hữu ích [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/9,55" rel="noopener" target="_blank">9,55</a>].</p>
+<p>Thuốc chống loạn nhịp nhóm I (<a href="https://www.uptodate.com/contents/image?imageKey=CARD%2F120433&amp;topicKey=CARD%2F965&amp;search=right+ventricular+outflow+tract+vt&amp;rank=1%7E19&amp;source=see_link" rel="noopener" target="_blank">bảng 2</a>) dùng đơn độc có ích ở một số bệnh nhân. Tuy nhiên, các thuốc nhóm III (<a href="https://www.uptodate.com/contents/sotalol-drug-information?search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;source=see_link" rel="noopener" target="_blank">sotalol</a> và <a href="https://www.uptodate.com/contents/amiodarone-drug-information?search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;source=see_link" rel="noopener" target="_blank">amiodarone</a>) có thể được ưu tiên hơn, nhất là ở bệnh nhân có rối loạn nhịp kháng trị với các thuốc khác [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/9" rel="noopener" target="_blank">9</a>].</p>
+<p>Triệt đốt bằng sóng có tần số radio — Do thuốc chống loạn nhịp có hiệu quả hạn chế và có thể gây tác dụng phụ, triệt đốt bằng sóng có tần số radio (RF) ngày càng được dùng nhiều ở bệnh nhân RMVT có triệu chứng. Các hướng dẫn của hội chuyên ngành về xử trí rối loạn nhịp thất và phòng ngừa đột tử do tim (SCD) chỉ ra rằng có bằng chứng và/hoặc đồng thuận chung ủng hộ triệt đốt RF ở bệnh nhân VT vô căn có triệu chứng và kháng thuốc, hoặc ở những bệnh nhân như vậy mà không dung nạp thuốc hay không muốn điều trị thuốc lâu dài [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/64" rel="noopener" target="_blank">64</a>].</p>
+<p>Tuyên bố Đồng thuận Chuyên gia HRS/EHRA/APHRS/LAHRS năm 2019 về Triệt đốt qua ống thông các Rối loạn nhịp thất khuyến cáo triệt đốt qua ống thông ở những bệnh nhân VT vô căn và không có bệnh tim cấu trúc sau đây [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/66,67" rel="noopener" target="_blank">66,67</a>]:</p>
+<p>●Bệnh nhân có triệu chứng nặng với VT đơn dạng.</p>
+<p>●VT đơn dạng ở bệnh nhân mà thuốc chống loạn nhịp không hiệu quả, không dung nạp được, hoặc bệnh nhân không muốn dùng.</p>
+<p>●Bệnh nhân có VT đa dạng bền bỉ và VF tái phát (bão điện) kháng trị với điều trị chống loạn nhịp khi nghi ngờ có một yếu tố khởi kích có thể nhắm tới để triệt đốt.</p>
+<p>Tỷ lệ thành công của triệt đốt qua ống thông bằng RF dao động từ 80 đến 100 phần trăm [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/28,35,36,40,41,68" rel="noopener" target="_blank">28,35,36,40,41,68</a>]. Tỷ lệ thành công phụ thuộc một phần vào vị trí của ổ; triệt đốt qua ống thông các VT vô căn ở vị trí không điển hình nhìn chung không thành công bằng ở các vị trí thuộc RVOT [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/36" rel="noopener" target="_blank">36</a>]. Mức độ tương đồng của dạng sóng điện tâm đồ 12 chuyển đạo giữa VT và bản đồ tạo nhịp (pace map) có thể được dùng để ước tính khả năng triệt đốt thành công tại vị trí đó [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/69" rel="noopener" target="_blank">69</a>]. Độ lệch tuyệt đối trung bình &gt;12 phần trăm gợi ý mức khác biệt đủ lớn để không nên triệt đốt tại vị trí đó.</p>
+<p>Mặc dù đã triệt đốt thành công nhịp nhanh đường ra thất trái (LVOT) bằng đường tiếp cận nội tâm mạc, việc lập bản đồ qua tĩnh mạch vành và các đường tiếp cận qua da vào khoang màng ngoài tim đã cho thấy một số VT này xuất phát từ thượng tâm mạc thất trái [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/28,45,46,68,70" rel="noopener" target="_blank">28,45,46,68,70</a>]. Cũng đã có một số báo cáo về triệt đốt thành công RMVT từ xoang Valsalva trái và phải [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/43" rel="noopener" target="_blank">43</a>].</p>
+<p>Triệt đốt bằng sóng có tần số radio nhìn chung có tỷ lệ biến chứng thủ thuật thấp [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/28,35-38,40" rel="noopener" target="_blank">28,35-38,40</a>]. (Xem <a href="https://www.uptodate.com/contents/overview-of-catheter-ablation-of-cardiac-arrhythmias?sectionName=COMPLICATIONS&amp;search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;anchor=H22&amp;source=see_link#H22" rel="noopener" target="_blank">“Overview of catheter ablation of cardiac arrhythmias”, section on ‘Complications’</a>.)</p>
+<p>Dữ liệu theo dõi lâu dài ở bệnh nhân được điều trị thành công bằng triệt đốt qua ống thông bằng sóng có tần số radio còn hạn chế. Trong hai báo cáo gồm 42 bệnh nhân được triệt đốt thành công mọi cơn nhịp nhanh, chỉ năm người (12 phần trăm) được phát hiện tái phát trong thời gian theo dõi từ 2 đến 50 tháng [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/68,71" rel="noopener" target="_blank">68,71</a>].</p>
+<p>Khả năng triệt đốt thành công có thể thấp hơn khi vị trí khởi phát không nằm ở nội tâm mạc hoặc không được xác định chắc chắn trong quá trình lập bản đồ [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/68" rel="noopener" target="_blank">68</a>]. Trong một tổng quan 75 bệnh nhân được cho là có RVOT VT, việc không xác định được ổ, và do đó tỷ lệ thành công, có tương quan với thời gian QRS ở chuyển đạo V2 [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/72" rel="noopener" target="_blank">72</a>]. Tỷ lệ thành công là 95 phần trăm khi thời gian QRS ở V2 trong lúc lập bản đồ tạo nhịp ≥160 ms, so với chỉ 54 phần trăm khi thời gian QRS &lt;160 ms. Trong kinh nghiệm này, các chiến lược triệt đốt bên trái và thượng tâm mạc không được tiến hành.</p>
+<p>Triệt đốt thượng tâm mạc — Một cách giải thích khả dĩ cho triệt đốt bằng sóng có tần số radio thất bại là rối loạn nhịp xuất phát từ một ổ ở thượng tâm mạc chứ không phải ở nội tâm mạc. Trong một báo cáo về triệt đốt thất bại (thủ thuật thất bại cấp hoặc rối loạn nhịp tái phát muộn) ở 30 bệnh nhân VT (15 người có tim có vẻ bình thường), việc đưa dụng cụ vào khoang màng ngoài tim qua đường dưới mũi ức đã được dùng cho cả lập bản đồ lẫn triệt đốt thượng tâm mạc [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/70" rel="noopener" target="_blank">70</a>]. Hai mươi bốn VT có vẻ xuất phát từ thượng tâm mạc; 17 VT được triệt đốt thành công, còn bảy VT còn lại có vị trí không tiếp cận được, chủ yếu do bị tiểu nhĩ trái cản trở. Sáu trong bảy bệnh nhân này có thể được triệt đốt từ lá vành trái (left coronary cusp).</p>
+<p>VT BỀN BỈ KỊCH PHÁTVT bền bỉ kịch phát là một hội chứng lâm sàng khác của nhịp nhanh thất phải vô căn, giống RMVT ở nhiều mặt [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/6,9,13,73" rel="noopener" target="_blank">6,9,13,73</a>]. Hình dạng QRS hay gặp nhất là blốc nhánh trái với trục hướng xuống dưới, và vị trí khởi phát điển hình là phần trên của mặt vách RVOT. Hơn nữa, bệnh nhân VT bền bỉ kịch phát dường như đáp ứng với thuốc chống loạn nhịp, đặc biệt là <a href="https://www.uptodate.com/contents/adenosine-drug-information?search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;source=see_link" rel="noopener" target="_blank">adenosine</a>, theo cách tương tự bệnh nhân RMVT, dù dữ liệu còn hạn chế [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/73" rel="noopener" target="_blank">73</a>].</p>
+<p>Do những điểm tương đồng này, chưa rõ VT bền bỉ kịch phát có phải là một hội chứng lâm sàng riêng biệt hay không. So với RMVT không bền bỉ, rối loạn này thường có triệu chứng hơn và ít khi bị gắng sức khởi phát hơn. Nó cũng thường được gây ra bằng kích thích theo chương trình hơn, dù <a href="https://www.uptodate.com/contents/isoproterenol-drug-information?search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;source=see_link" rel="noopener" target="_blank">isoproterenol</a> có thể tạo thuận lợi cho việc gây cơn ở một số trường hợp.</p>
+<p>Mặt khác, một số nhà nghiên cứu bác bỏ sự tồn tại của VT bền bỉ kịch phát như một hội chứng riêng biệt với RMVT. Chẳng hạn, một nghiên cứu thấy 58 phần trăm bệnh nhân RMVT có ít nhất một cơn VT bền bỉ [<a href="https://www.uptodate.com/contents/ventricular-tachycardia-in-the-absence-of-apparent-structural-heart-disease/abstract/9" rel="noopener" target="_blank">9</a>]. Ngoài ra, thăm dò điện sinh lý có thể tái tạo VT bền bỉ ở bệnh nhân chỉ biểu hiện VT không bền bỉ (đặc biệt khi truyền <a href="https://www.uptodate.com/contents/isoproterenol-drug-information?search=right+ventricular+outflow+tract+vt&amp;topicRef=965&amp;source=see_link" rel="noopener" target="_blank">isoproterenol</a>) hoặc ngược lại. Cũng có ý kiến cho rằng tỷ lệ đột tử do tim trong RMVT thực ra là do chồng lấp với VT bền bỉ kịch phát. Vì những lý do này, hai hội chứng đôi khi được xem chung là nhịp nhanh thất phải vô căn, hoặc đơn giản là RMVT.</p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
