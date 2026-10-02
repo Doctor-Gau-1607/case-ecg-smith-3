@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>12/11/2020 — Sốc cực nặng và ngừng tim ở bệnh nhân COVID</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #1227 · DR. SMITH’S ECG BLOG</div>
+   <h1>12/11/2020 — Sốc cực nặng và ngừng tim ở bệnh nhân COVID</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/extreme-shock-and-cardiac-arrest-in/" target="_blank" rel="noopener">"Extreme shock and cardiac arrest in COVID patient"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 9 hình ảnh và 1 video của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p>Đây là một bệnh nhân 30 mấy tuổi, khỏe mạnh, bị viêm phổi do COVID, đến khoa cấp cứu (ED).  Bệnh nhân giảm oxy máu mức độ vừa.  Điện tâm đồ ghi được như sau:</p>
+<figure><a class="o-anh" href="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_Day-1-covid.jpg"><img src="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_Day-1-covid.jpg" alt="" width="1382" height="469" loading="lazy" decoding="async"></a></figure>
+<p>Điện thế thấp, gợi ý tràn dịch.</p>
+<p>(xem phần bàn luận của Ken về điện thế thấp ở bên dưới)</p>
+<p>Có sóng QS ở V2.</p>
+<p>Có ST chênh lên (STE) rất nhẹ, có lẽ bình thường, ở V2-V6.</p>
+<p>Siêu âm tim tại giường bình thường, không có tràn dịch.</p>
+<p>Bệnh nhân được chỉ định xét nghiệm troponin, và kết quả đầu tiên là 72 ng/L (Abbott Architect hs cTnI; giới hạn trên tham chiếu (URL) ở nam = 34 ng/L).  Troponin tăng ở bệnh nhân COVID làm nguy cơ tử vong cao gấp khoảng 4 lần so với troponin bình thường.</p>
+<p>Bệnh nhân được nhập viện, thở oxy và diễn tiến khá tốt, độ bão hòa oxy đạt 100% khi thở 2 L qua ống thông mũi.</p>
+<p><strong>Đến ngày hôm sau, hs-cTnI đã tăng lên 1827 ng/L.  Troponin đang tăng</strong></p>
+<p>Chiều hôm đó, bệnh nhân than khó thở tăng lên và được ghi nhận độ bão hòa oxy chỉ còn 70 mấy phần trăm, khiến một báo động cấp cứu nhỏ (mini code) được kích hoạt.</p>
+<p>Các bác sĩ thấy bệnh nhân đang trong tình trạng sốc, độ bão hòa O2 rất kém.  Bệnh nhân được đặt nội khí quản rồi sau đó mất mạch.  Bệnh nhân được hồi sinh tim phổi (CPR) và có mạch trở lại sau khi dùng epinephrine, với nhịp QRS hẹp có tổ chức tần số 140, nhưng vẫn còn sốc nặng.</p>
+<p>Siêu âm tim tại giường lúc này cho thấy tĩnh mạch chủ dưới (IVC) dẹt và dễ xẹp, nên bệnh nhân được truyền dịch, kèm thuốc vận mạch.  Bệnh nhân lại mất mạch, và sau ép tim lại đạt tái lập tuần hoàn tự nhiên (ROSC) và được tăng thêm thuốc vận mạch.  Lactat là 20, siêu âm tim tại giường (POC) ước tính EF 30%, còn siêu âm tim chính thức cho thấy EF chỉ 15%, thất phải bình thường.</p>
+<p>Nhận định là sốc tim nặng xảy ra đột ngột.</p>
+<p>Họ ghi một điện tâm đồ:</p>
+<figure><a class="o-anh" href="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_Day-2-covid-aftr-arrest.jpg"><img src="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_Day-2-covid-aftr-arrest.jpg" alt="" width="1382" height="464" loading="lazy" decoding="async"></a></figure>
+<p>ST chênh lên mới.  Đó là gì?</p>
+<p>Có STE ở V2-V6. Sóng QS ở V2 vẫn còn.  Cũng có STE ở I, aVL và II, nhưng gần như không thể nhận ra vì điện thế QRS rất nhỏ (và điện thế chung rất nhỏ) ở các chuyển đạo chi.</p>
+<p><strong>Lưu ý ST chênh lên có dạng dẹt: sóng T không cao hơn đoạn ST chênh lên.</strong>  Trong nhồi máu cơ tim cấp, sóng T lớn, và tỷ số T/ST cao.  Hình ảnh này điển hình hơn nhiều cho viêm cơ tim.</p>
+<p>Nhưng chẩn đoán viêm cơ tim là việc đầy rủi ro.  Vì vậy, khôn ngoan là nên xem xét các động mạch vành.</p>
+<p>Chụp mạch vành âm tính.</p>
+<p>Bệnh nhân vẫn tụt huyết áp và trong tình trạng sốc.</p>
+<p>Bệnh nhân được bắt đầu hỗ trợ sự sống ngoài cơ thể (Extracorporeal Life Support, “VA ECMO”)</p>
+<p>Đây là điện tâm đồ khi đang chạy ECMO:</p>
+<figure><a class="o-anh" href="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_Day2-on-ECMO.jpg"><img src="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_Day2-on-ECMO.jpg" alt="" width="1380" height="466" loading="lazy" decoding="async"></a></figure>
+<p>Điện thế rất thấp</p>
+<p>Vào ngày thứ 3, EF đã hồi phục (có vẻ nhanh!) và bệnh nhân được chuyển sang ECMO tĩnh mạch-tĩnh mạch (V-V) do suy hô hấp kéo dài.  Bệnh nhân vẫn được hỗ trợ bằng bóng đối xung động mạch chủ. Đây là điện tâm đồ khi chạy ECMO V-V:</p>
+<figure><a class="o-anh" href="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_Day-4-covid-off-AV-ecmo.jpg"><img src="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_Day-4-covid-off-AV-ecmo.jpg" alt="" width="1382" height="470" loading="lazy" decoding="async"></a></figure>
+<p>STE rất ít</p>
+<p>Bệnh nhân được đo troponin rất nhiều lần.  Kết quả như sau:</p>
+<figure><a class="o-anh" href="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_ScreenShot2020-11-06at12.36.04PM.jpg"><img src="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_ScreenShot2020-11-06at12.36.04PM.jpg" alt="" width="215" height="521" loading="lazy" decoding="async"></a></figure>
+<h3 id="nhung-diem-can-hoc">Những điểm cần học:</h3>
+<p>1. Chẩn đoán viêm cơ tim (-màng ngoài tim) là việc đầy rủi ro.  Điện tâm đồ này chắc chắn trông giống viêm cơ tim, và đúng là do viêm cơ tim, nhưng bỏ sót tắc mạch vành cấp là điều không thể chấp nhận.</p>
+<p>2. Nghĩ tới viêm cơ tim (-màng ngoài tim) trên điện tâm đồ khi tỷ số T/ST rất thấp.  Nhồi máu cơ tim cấp thường có sóng T lớn, trừ khi bắt đầu tái tưới máu và do đó sóng T đảo ngược.</p>
+<p>2. Hãy cảnh giác với troponin tăng ở bệnh nhân COVID.  Dưới đây tôi viết một bài tổng quan ngắn về chủ đề này.</p>
+<p><strong>Để xem tổng quan đầy đủ về troponin trong COVID, xem bài báo này:</strong></p>
+<p>Kavsak PA, Hammarsten O, Worster A, Smith SW, Apple FS. <a href="https://academic.oup.com/clinchem/advance-article/doi/10.1093/clinchem/hvaa225/5921202" rel="noopener" target="_blank">Cardiac Troponin Testing in Patients with COVID-19: A Strategy for Testing and Reporting Results</a>. Clin Chem [Internet] 2020;Truy cập tại: http://dx.doi.org/10.1093/clinchem/hvaa225</p>
+<h3 id="tong-quan-ngan-cua-smith">Tổng quan ngắn của Smith:</h3>
+<p><strong><u>Troponin<br>ở bệnh nhân COVID tại khoa cấp cứu</u></strong></p>
+<p>Troponin<br>tim (cTn) là một dấu ấn không đặc hiệu của tổn thương cơ tim.  Trong thời bình thường, công dụng phổ biến nhất của cTnI<br>là chẩn đoán, hoặc loại trừ, nhồi máu cơ tim cấp (AMI, một<br>phân nhóm của tổn thương cơ tim cấp.<br>Tuy nhiên, trong nhiều nghiên cứu, ngay cả khi không có AMI, cả tổn thương cơ tim cấp lẫn<br>mạn (được chẩn đoán bằng bất kỳ mức cTn tăng nào) đều là những dấu ấn<br>mạnh của kết cục bất lợi cả ngắn hạn lẫn dài hạn.<a href="https://paperpile.com/c/83fYPi/VylJ+3Hrw" rel="noopener" target="_blank"><sup>1,2</sup></a>  Dữ liệu mới về tổn thương<br>cơ tim cấp liên quan đến COVID-19 một lần nữa cho thấy mối liên quan độc lập<br>rất mạnh giữa cTnI tăng và mức độ nặng của bệnh, bao gồm tử vong,<br>và sự tương quan giữa mức độ nặng tăng dần với nồng độ troponin tăng dần.<a href="https://paperpile.com/c/83fYPi/4RaF+wpDu+9vDd+P2Vk+p2LR+HqfA" rel="noopener" target="_blank"><sup>3–8</sup></a></p>
+<p>Shi<br>và cs.<a href="https://paperpile.com/c/83fYPi/4RaF" rel="noopener" target="_blank"><sup>3</sup></a> đã nghiên cứu 416  bệnh nhân<br>nhập viện vì COVID tại Trung Quốc, trong đó 82 người có cTn(I) ban đầu vượt<br>giới hạn trên tham chiếu.  Những người có<br>cTnI tăng, so với những người không tăng, diễn tiến bệnh nặng hơn trên<br>nhiều thước đo, bao gồm tử vong: (42 trên 82 [51.2%] so với 15 trên 334 [4.5%];<br>P &lt; .001).  Những người có cTnI tăng<br>có nhiều bệnh tim đi kèm hơn hẳn, nhưng theo mô hình hồi quy Cox, tổn thương tim<br>liên quan độc lập với nguy cơ tử vong cao hơn, cả trong khoảng thời gian từ<br>khi khởi phát triệu chứng (tỷ số nguy cơ, 4.26 [KTC 95%, 1.92-9.49]) lẫn từ lúc nhập viện đến<br>thời điểm kết cục (tỷ số nguy cơ, 3.41 [KTC 95%, 1.62-7.16]).</p>
+<p>Guo<br>và cs.<a href="https://paperpile.com/c/83fYPi/wpDu" rel="noopener" target="_blank"><sup>4</sup></a> đã nghiên cứu 187 bệnh nhân nhập viện vì COVID.  Tỷ lệ tử vong là 7.6% ở những người không có<br>bệnh tim mạch (CVD) và cTnT bình thường, và lên tới 69% ở những người có<br>CVD và chỉ cần một lần troponin tăng.<br>Ở những người tử vong (n= 43), nồng độ troponin (và NT-proBNP) tăng đều đặn<br>trong suốt thời gian nằm viện; ở những người sống sót (n= 144), nồng độ<br>giữ ở mức bình nguyên.</p>
+<p>Trong<br>số 3047 bệnh nhân nhập viện tại 5 trung tâm y tế ở New York từ ngày 17 tháng Hai<br>đến ngày 12 tháng Tư, 2716 người được đo ít nhất một lần troponin I (0.030 ng/mL) trong<br>24 giờ đầu. 1601 người (62%) có troponin ban đầu trong giới hạn bình thường;<br>54 người có nồng độ ban đầu &gt; 2.0 ng/mL.<br>Tuổi trung vị là 66.4 tuổi; 40.7% trên 70 tuổi, và 60% là<br>nam giới.  Bệnh tim mạch phổ biến hơn ở<br>những người có troponin cao hơn.  Troponin<br>cao hơn tương quan với tiền sử suy tim, đái tháo đường và<br>tăng huyết áp nhiều hơn, cũng như D-dimer cao hơn và gần như mọi dấu ấn<br>viêm.  cTnI ban đầu trong khoảng 0.030<br>ng/mL đến 0.090 ng/mL (n = 455, 16.6%) có tỷ số nguy cơ tử vong đã hiệu chỉnh là<br>1.77 (1.39-2.26), và cTnI &gt; 0.090 ng/mL (n= 530, 19.4%) liên quan với<br>HR 3.23 (2.59-4.02). Các tác giả không báo cáo troponin được nói tới<br>là troponin ban đầu, troponin đỉnh, hay có đo nhiều hơn một lần<br>troponin hay không.<a href="https://paperpile.com/c/83fYPi/p2LR" rel="noopener" target="_blank"><sup>7</sup></a></p>
+<p>3<br>nghiên cứu này, cùng với 1 phân tích gộp nhỏ hơn,<a href="https://paperpile.com/c/83fYPi/P2Vk" rel="noopener" target="_blank"><sup>6</sup></a> và một nghiên cứu nhỏ khác,<a href="https://paperpile.com/c/83fYPi/HqfA" rel="noopener" target="_blank"><sup>8</sup></a> cho thấy rõ troponin liên quan với mức độ<br>nặng và tử vong tăng trong COVID khi đã hiệu chỉnh theo nhiều<br>biến số khác.  Tuy nhiên, cơ chế tổn thương<br>cơ tim liên quan đến COVID vẫn chưa chắc chắn, và có thể do<br>hội chứng vành cấp, viêm cơ tim, tổn thương trực tiếp từ các chất trung gian<br>viêm/cytokine, tổn thương vi mạch, nhồi máu cơ tim típ 2 do giảm oxy máu hoặc<br>nhịp nhanh, tổn thương vi mạch do vi huyết khối nội mạch lan tỏa,<br>SARS-CoV-2 xâm nhập trực tiếp vào tế bào cơ tim qua thụ thể ACE2, hoặc các<br>cơ chế chưa biết khác.</p>
+<p>Tuy nhiên, troponin<br>tăng không định hướng được chiến lược điều trị nào nhằm giảm thiểu<br>tổn thương cơ tim.  Chưa chắc chắn<br>liệu tổn thương cơ tim chỉ đơn thuần là dấu ấn của mức độ nặng, hay nó<br>góp phần vào mức độ nặng của bệnh và tử vong.  Ở thời điểm này, troponin tăng không<br>do nhồi máu cơ tim cấp không định hướng điều trị, nhưng vẫn thiết yếu để chẩn đoán nhồi máu cơ tim<br>cấp, tình trạng có thể cùng tồn tại với COVID.<br>Vì lý do này, một số người cho rằng không nên đo troponin ở bệnh nhân<br>trừ khi nhồi máu cơ tim cấp nằm trong chẩn đoán phân biệt.<a href="https://paperpile.com/c/83fYPi/qZpIh" rel="noopener" target="_blank"><sup>9</sup></a>  Tuy nhiên, vì<br>troponin là dấu ấn rõ ràng của mức độ nặng và là yếu tố tiên đoán độc lập<br>mạnh cho kết cục bất lợi, nó có thể khá hữu ích trong quyết định hướng xử trí<br>tại khoa cấp cứu: nếu troponin tăng, thì nên<br>cân nhắc lại việc điều trị ngoại trú.</p>
+<p>Khi<br>cTn tăng, có cách nào phân biệt AMI với tổn thương cơ tim<br>không phải AMI?  Không có phương pháp nào thật<br>chính xác, nhưng điện tâm đồ và siêu âm tim giúp xác định nhu cầu<br>chụp mạch vành.  Ở bệnh nhân không mắc COVID,<br>mức tăng troponin trong tổn thương cơ tim cấp không do thiếu máu cục bộ thấp hơn<br>đáng kể so với AMI típ 1 (dù tương tự AMI típ 2);<a href="https://paperpile.com/c/83fYPi/VylJ+mhkp+IaMN" rel="noopener" target="_blank"><sup>1,10,11</sup></a> ngược lại, dữ liệu của Guo cho thấy<br>giá trị cTnT ở bệnh nhân COVID rất nặng có tổn thương cơ tim tăng lên<br>mức rất cao.<a href="https://paperpile.com/c/83fYPi/wpDu" rel="noopener" target="_blank"><sup>4</sup></a><br>Đáng tiếc là bài báo này không cung cấp dữ liệu điện tâm đồ, siêu âm tim hay<br>chụp mạch vành, nên không chắc rằng các mức cao này xảy ra khi<br>không có nhồi máu cơ tim cấp.</p>
+<p>Trong<br>một loạt 18 bệnh nhân COVID có ST chênh lên, 8 người được chẩn đoán<br>STEMI, trong đó 6 người được chụp mạch vành và thấy bệnh mạch vành tắc nghẽn.<a href="https://paperpile.com/c/83fYPi/bBm3Y" rel="noopener" target="_blank"><sup>12</sup></a>   Tất cả bệnh nhân STEMI<br>đều có cTn rất cao, điển hình cho STEMI (cTnT &gt; 1.0 ng/mL hoặc cTnI &gt; 10 ng/mL),<br>nhưng 7/10 bệnh nhân không được chẩn đoán STEMI cũng có cTn cao tương tự, và tỷ lệ tử vong<br>rất cao ở cả hai nhóm.  Vì nhiều<br>bệnh nhân COVID biểu hiện triệu chứng phù hợp với AMI, cả STEMI lẫn NSTEMI<br>dường như rất khó phân biệt với các tổn thương cơ tim khác ở<br>bệnh nhân COVID rất nặng.  Tuy vậy,<br>nếu điện tâm đồ điển hình cho tắc mạch vành cấp (đặc biệt là STEMI),<br>khuyến cáo can thiệp ngay nếu có sẵn, và nếu bệnh nhân<br>không ở giai đoạn cuối<a href="https://paperpile.com/c/83fYPi/oaBg1" rel="noopener" target="_blank"><sup>13</sup></a>.  Khi điện tâm đồ<br>không chẩn đoán được tắc mạch vành, hoặc nghi ngờ bệnh nhân bị<br>nhồi máu cơ tim không do tắc, hãy cân nhắc siêu âm tim để hỗ trợ quyết định<br>chụp mạch vành.<a href="https://paperpile.com/c/83fYPi/oaBg1" rel="noopener" target="_blank"><sup>13</sup></a></p>
+<p>1.     <a href="http://paperpile.com/b/83fYPi/VylJ" rel="noopener" target="_blank">Sandoval Y, Smith SW,<br>Sexter A, và cs. Type 1 and 2 Myocardial Infarction and Myocardial Injury:<br>Clinical Transition to High-Sensitivity Cardiac Troponin I. Am J Med [Internet]<br>2017;130(12):1431–9.e4. Truy cập tại: </a><a href="http://dx.doi.org/10.1016/j.amjmed.2017.05.049" rel="noopener" target="_blank">http://dx.doi.org/10.1016/j.amjmed.2017.05.049</a></p>
+<p>2.     <a href="http://paperpile.com/b/83fYPi/3Hrw" rel="noopener" target="_blank">Sandoval Y, Thygesen K.<br>Myocardial Infarction Type 2 and Myocardial Injury. Clin Chem [Internet]<br>2017;63(1):101–7. Truy cập tại: </a><a href="http://dx.doi.org/10.1373/clinchem.2016.255521" rel="noopener" target="_blank">http://dx.doi.org/10.1373/clinchem.2016.255521</a></p>
+<p>3.     <a href="http://paperpile.com/b/83fYPi/4RaF" rel="noopener" target="_blank">Shi S, Qin M, Shen B, và<br>cs. Association of Cardiac Injury With Mortality in Hospitalized Patients With<br>COVID-19 in Wuhan, China. JAMA Cardiol [Internet] 2020;Truy cập tại: </a><a href="http://dx.doi.org/10.1001/jamacardio.2020.0950" rel="noopener" target="_blank">http://dx.doi.org/10.1001/jamacardio.2020.0950</a></p>
+<p>4.     <a href="http://paperpile.com/b/83fYPi/wpDu" rel="noopener" target="_blank">Guo T, Fan Y, Chen M, và<br>cs. Cardiovascular Implications of Fatal Outcomes of Patients With Coronavirus<br>Disease 2019 (COVID-19). JAMA Cardiol [Internet] 2020;Truy cập tại: </a><a href="http://dx.doi.org/10.1001/jamacardio.2020.1017" rel="noopener" target="_blank">http://dx.doi.org/10.1001/jamacardio.2020.1017</a></p>
+<p>5.     <a href="http://paperpile.com/b/83fYPi/9vDd" rel="noopener" target="_blank">Bonow RO, Fonarow GC,<br>O’Gara PT, Yancy CW. Association of Coronavirus Disease 2019 (COVID-19) With<br>Myocardial Injury and Mortality. JAMA Cardiol [Internet] 2020;Truy cập tại: </a><a href="http://dx.doi.org/10.1001/jamacardio.2020.1105" rel="noopener" target="_blank">http://dx.doi.org/10.1001/jamacardio.2020.1105</a></p>
+<p>6.     <a href="http://paperpile.com/b/83fYPi/P2Vk" rel="noopener" target="_blank">Lippi G, Lavie CJ,<br>Sanchis-Gomar F. Cardiac troponin I in patients with coronavirus disease 2019<br>(COVID-19): Evidence from a meta-analysis. Prog Cardiovasc Dis [Internet]<br>2020;Truy cập tại: </a><a href="http://dx.doi.org/10.1016/j.pcad.2020.03.001" rel="noopener" target="_blank">http://dx.doi.org/10.1016/j.pcad.2020.03.001</a></p>
+<p>7.     <a href="http://paperpile.com/b/83fYPi/p2LR" rel="noopener" target="_blank">Lala A, Johnson KW,<br>Russak AJ, và cs. Prevalence and Impact of Myocardial Injury in Patients<br>Hospitalized with COVID-19 Infection. medRxiv [Internet] 2020;Truy cập tại: </a><a href="https://www.medrxiv.org/content/10.1101/2020.04.20.20072702v1.abstract" rel="noopener" target="_blank">https://www.medrxiv.org/content/10.1101/2020.04.20.20072702v1.abstract</a></p>
+<p>8.     <a href="http://paperpile.com/b/83fYPi/HqfA" rel="noopener" target="_blank">He XW, Lai JS, Cheng J,<br>và cs. Impact of complicated myocardial injury on the clinical outcome of<br>severe or critically ill COVID-19 patients. Zhonghua Xin Xue Guan Bing Za Zhi<br>[Internet] 2020;48:E011–E011. Truy cập tại: </a><a href="https://europepmc.org/article/med/32171190" rel="noopener" target="_blank">https://europepmc.org/article/med/32171190</a></p>
+<p>9.     <a href="http://paperpile.com/b/83fYPi/qZpIh" rel="noopener" target="_blank">of Cardiology AC, và những tác giả khác.<br>Troponin and BNP Use in COVID-19. 2020;</a></p>
+<p>10.   <a href="http://paperpile.com/b/83fYPi/mhkp" rel="noopener" target="_blank">Sandoval Y, Smith SW,<br>Sexter A, Schulz K, Apple FS. Use of objective evidence of myocardial ischemia<br>to facilitate the diagnostic and prognostic distinction between type 2<br>myocardial infarction and myocardial injury. Eur Heart J Acute Cardiovasc Care<br>[Internet] 2020;9(1):62–9. Truy cập tại: </a><a href="http://dx.doi.org/10.1177/2048872618787796" rel="noopener" target="_blank">http://dx.doi.org/10.1177/2048872618787796</a></p>
+<p>11.   <a href="http://paperpile.com/b/83fYPi/IaMN" rel="noopener" target="_blank">Sandoval Y, Thordsen SE,<br>Smith SW, và cs. Cardiac troponin changes to distinguish type 1 and type 2<br>myocardial infarction and 180-day mortality risk. Eur Heart J Acute Cardiovasc<br>Care [Internet] 2014;3(4):317–25. Truy cập tại: </a><a href="http://dx.doi.org/10.1177/2048872614538411" rel="noopener" target="_blank">http://dx.doi.org/10.1177/2048872614538411</a></p>
+<p>12.   <a href="http://paperpile.com/b/83fYPi/bBm3Y" rel="noopener" target="_blank">Bangalore S, Sharma A,<br>Slotwiner A, và cs. ST-segment elevation in patients with Covid-19—A case<br>series. N Engl J Med [Internet] 2020;Truy cập tại: </a><a href="https://www.nejm.org/doi/full/10.1056/NEJMc2009020" rel="noopener" target="_blank">https://www.nejm.org/doi/full/10.1056/NEJMc2009020</a></p>
+<p>13.   <a href="http://paperpile.com/b/83fYPi/oaBg1" rel="noopener" target="_blank">Mahmud E, Dauerman HL,<br>Welt FG, và cs. Management of Acute Myocardial Infarction During the COVID-19<br>Pandemic. J Am Coll Cardiol [Internet] 2020;Truy cập tại: </a><a href="http://dx.doi.org/10.1016/j.jacc.2020.04.039" rel="noopener" target="_blank">http://dx.doi.org/10.1016/j.jacc.2020.04.039</a></p>
+<figure><a class="o-anh" href="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_0-Figure-6-REDLINE-UseinBlogs-9.jpg"><img src="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_0-Figure-6-REDLINE-UseinBlogs-9.jpg" alt="" width="613" height="24" loading="lazy" decoding="async"></a></figure>
+<p><span class="c-do">===================================</span></p>
+<h2 id="binh-luan-cua-toi-boi-ken-grauer-md-12-11-2020">BÌNH LUẬN CỦA TÔI, bởi KEN GRAUER, MD (12/11/2020):</h2>
+<p><span class="c-do">===================================</span></p>
+<p>Ca này có 2 đặc điểm độc đáo: <strong>i</strong><strong><span class="c-do">)</span></strong> <strong>Troponin</strong> <strong><em>tăng</em></strong> vọt ở bệnh nhân viêm phổi do COVID nguy kịch này (<em>điều mà Dr. Smith đã bàn chi tiết ở trên</em>); <u>và</u>, <strong>ii</strong><strong><span class="c-do">)</span></strong><strong> </strong><strong><u>Điện thế</u> <em><u>thấp</u></em></strong> <em>cực độ</em> trên điện tâm đồ.</p>
+<ul><li>Dựa vào 2 điện tâm đồ đầu tiên trong ca hôm nay — tôi tập trung bình luận vào dấu hiệu điện thế <em><u>thấp</u></em> trên điện tâm đồ. Để rõ ràng — tôi đã đưa lại 2 điện tâm đồ đầu tiên này trong <u>Hình 1</u>.</li></ul>
+<figure><a class="o-anh" href="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_Figure-1ECGs1252C2252811-6.22-20202529-USE.jpg"><img src="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_Figure-1ECGs1252C2252811-6.22-20202529-USE.jpg" alt="" width="1600" height="1345" loading="lazy" decoding="async"></a></figure>
+<p><strong><u>Hình 1:</u></strong><strong> </strong>2 điện tâm đồ đầu tiên trong ca hôm nay (<em>Xem bài</em>).</p>
+<h3 id="suy-nghi-cua-toi-ve-dien-tam-do-1">SUY NGHĨ CỦA TÔI về điện tâm đồ #1:</h3>
+<p>Theo Dr. Smith — bệnh nhân là nam giới 30 mấy tuổi đến viện vì giảm oxy máu do <strong>viêm phổi</strong> <strong><em>COVID</em></strong>. Vào thời điểm ghi <strong>điện tâm đồ <em>ban đầu</em> ( =</strong> <strong><u>điện tâm đồ #1</u>)</strong> — bệnh nhân giảm oxy máu mức độ vừa — nhưng đáp ứng với 2L oxy (<em>thở qua ống thông mũi</em>), độ bão hòa O2 trở lại 100%. Siêu âm tim tại giường lúc này cho thấy chức năng thất trái <em><u>bình thường</u></em> và <em><u>không</u></em> có tràn dịch màng ngoài tim hay tràn dịch màng phổi.</p>
+<ul><li><strong><u>ĐIỂM #1:</u></strong> Có <strong>nhiễu</strong> <strong><em>đường nền</em></strong> trên <u>điện tâm đồ #1</u> — rõ nhất ở các chuyển đạo chi. Chúng ta <strong><em><u>biết</u></em></strong> nguồn gốc của nhiễu này xuất phát từ <strong>chỗ nối điện cực RA (</strong> = <em>tay phải — <u>R</u>ight <u>A</u>rm</em><strong>)</strong> — vì: <strong>i</strong><strong><span class="c-do">)</span></strong><span class="c-do"> </span>Nhiễu lớn nhất ở các <strong>chuyển đạo chuẩn I</strong> và <strong>II</strong> — trong khi hầu như <em>không</em> có nhiễu ở chuyển đạo III. Điều này gợi ý <strong>Tay</strong> <strong><em>phải</em></strong> là <strong>chi</strong> <strong><em>“thủ phạm”</em></strong> — vì theo tam giác Einthoven, điện cực RA này tham gia <em>như nhau</em> vào việc tạo dựng điện học của chuyển đạo I và II; <strong>ii</strong><strong><span class="c-do">)</span></strong> <em><u>Không</u></em> có nhiễu đường nền ở <strong>chuyển đạo III</strong>. Lý do — là điện cực RA <em><u>không</u> </em>được dùng để tạo dựng điện học chuyển đạo III; <u>và</u>, <strong>iii</strong><strong><span class="c-do">)</span></strong> Trong 3 chuyển đạo tăng thế, nhiễu <strong><em>lớn nhất</em></strong> ở <strong>chuyển đạo aVR</strong> (<em>là chuyển đạo có điện cực RA</em>) — và mức nhiễu tương đối ở 2 chuyển đạo tăng thế còn lại xấp xỉ một nửa biên độ nhiễu thấy ở aVR <strong>(</strong><em>tương ứng chính xác với phương trình dùng để tính điện thế ở 2 chuyển đạo tăng thế còn lại này</em><strong>)</strong>. <strong><u>LƯU Ý:</u></strong> Ai quan tâm — tôi đã điểm lại chi tiết cách xác định “chi thủ phạm” gây nhiễu trong <em>Bình luận của tôi</em> ở <strong>bài <a href="https://drsmithsecgblog.com/2019/09/chest-pain-with-nondiagnostic-ecg-but.html" rel="noopener" target="_blank">ngày 27 tháng Chín năm 2019</a></strong> trên Dr. Smith’s ECG Blog.</li>
+<li></li>
+<li><strong><u>ĐIỂM #2:</u></strong> <strong>Biên độ</strong> <strong>QRS (</strong><em>điện thế</em><strong>)</strong> nói chung <strong>giảm <em>rõ rệt</em></strong> trên <u>điện tâm đồ #1</u>. Đáng chú ý — biên độ <strong>sóng P </strong>có vẻ bình thường, gần như thỏa tiêu chuẩn điện tâm đồ của RAA (<em>bất thường nhĩ phải — <u>R</u>ight <u>A</u>trial <u>A</u>bnormality</em>) ở chuyển đạo II, nơi sóng P nhọn và cao ~2 mm. Biên độ sóng P này lớn bằng (<em>hoặc lớn hơn</em>) biên độ QRS ở 8/12 chuyển đạo trên bản ghi này. Vì vậy — có <strong>điện thế</strong> <strong><em><u>thấp</u></em></strong> lan tỏa.</li>
+<li><em>Ngoài ra, trên</em> <u>điện tâm đồ #1</u> — nhịp là nhịp <strong><em>xoang</em></strong> tần số <strong>~95/phút</strong> — và các khoảng PR, QRS, QTc bình thường. <strong><em><u>Trục</u></em></strong> mặt phẳng trán <strong>không xác định (</strong>tức là, <em>nằm ở góc phần tư trên bên phải</em><strong>)</strong> — vì ngoài aVR, các phức bộ QRS rất nhỏ ở chuyển đạo chi hoặc đẳng điện, hoặc âm là chủ yếu. Không có lớn buồng tim.</li></ul>
+<h3 id="ve-thay-doi-q-r-s-t">Về Thay đổi Q–R–S–T:</h3>
+<ul><li>Có <strong>phức bộ <u>Q</u>S</strong> ở chuyển đạo V1 và V2 của <u>điện tâm đồ #1</u>. Do biên độ QRS rất nhỏ — khó nói có hay không có sóng Q ở chuyển đạo II. Tôi cho rằng các phức bộ ở những chuyển đạo chi còn lại đều có sóng lệch ban đầu dương.</li>
+<li><strong>Tăng tiến sóng </strong><strong><u>R</u></strong> phù hợp sau các phức bộ QS ở V1 và V2. Đáng chú ý (<em>và phù hợp với những gì thấy ở các chuyển đạo chi</em>) — biên độ QRS một lần nữa rất nhỏ ở các chuyển đạo ngực bên.</li>
+<li>Có hiện tượng thẳng đuỗn đoạn <strong><u>S</u>T</strong> ở nhiều chuyển đạo — kèm ST chênh lên nhẹ ở vài chuyển đạo ngực. Thấy <strong>sóng <u>T</u></strong> nhọn không tương xứng ở chuyển đạo I và V3. Dù vậy (<em>theo Dr. Smith</em>) — nhận định chung là điện tâm đồ #1 <em><u>không</u></em> có dấu hiệu gợi ý OMI.</li>
+<li>Về <u>lâm sàng</u> — dù troponin ban đầu tăng gấp 2 lần, siêu âm tim tại giường <em><u>bình thường</u></em> giúp yên tâm rằng không phải OMI hay thuyên tắc phổi.</li></ul>
+<h3 id="suy-nghi-cua-toi-ve-dien-tam-do-2">SUY NGHĨ CỦA TÔI về điện tâm đồ #2:</h3>
+<p>Tình trạng lâm sàng của bệnh nhân xấu đi vào ngày hôm sau. Troponin tăng rất mạnh — và bệnh nhân ngày càng giảm oxy máu. Anh mất mạch hơn 1 lần (<em>nhiều khả năng trong tình trạng phân ly điện cơ — EMD</em>) — nhưng đáp ứng với hồi sức <strong>+</strong> điều trị thuốc vận mạch, có mạch trở lại với nhịp tự nhiên. Trong giai đoạn này — <strong><u>điện tâm đồ #2</u></strong> được ghi (<u>Hình 1</u>). Về lâm sàng — bệnh nhân được nhận định là đang trong tình trạng <strong><em>sốc</em></strong> <strong>tim.</strong></p>
+<ul><li>Điện tâm đồ trên bản ghi <em>theo dõi</em> này (<strong><u>điện tâm đồ #2</u></strong>) một lần nữa cho thấy <strong>điện thế</strong> <strong><em><u>thấp</u></em></strong> lan tỏa, với biên độ QRS chung tương đương với <u>điện tâm đồ #1</u>. Nhiễu ở chuyển đạo chi (<em>từ chi RA “thủ phạm”</em>) đã hết. Nhịp một lần nữa là nhịp <strong>xoang</strong> — dù với <strong>tần số</strong> <strong><em>nhanh hơn</em></strong> so với điện tâm đồ #1. <strong>Nhịp nhanh</strong> <strong><em>xoang</em></strong> này <strong>(</strong><em>~130/phút</em><strong>)</strong> — phù hợp với tình trạng lâm sàng xấu đi của bệnh nhân, với sự xuất hiện của sốc <em>tim</em>.</li>
+<li>Điều thú vị là (<em>dù tôi không chắc vì sao …</em>) — biên độ sóng P đã giảm ở hầu hết các chuyển đạo trên điện tâm đồ #2 — và trục mặt phẳng trán không còn là không xác định nữa.</li>
+<li>Theo Dr. Smith — một thay đổi đáng chú ý giữa điện tâm đồ #1 và điện tâm đồ #2 là sự xuất hiện <strong>ST chênh lên</strong> <em>kín đáo nhưng có thật</em> ở <strong><em>nhiều</em></strong> <strong>chuyển đạo (</strong>tức là, <em>ở các chuyển đạo I, II, aVF; và ở các chuyển đạo ngực từ V2 đến V6</em><strong>)</strong>. Cũng có sự nổi bật của một “chỗ lõm” âm sau các đoạn ST chênh lên ở một số chuyển đạo (<em>các đường XANH chéo ở các chuyển đạo từ V3 đến V6, và “chỗ lõm” âm nhiều khả năng cũng có ở chuyển đạo II và aVF</em>). Chỗ lõm âm rộng đáng ngạc nhiên này là phần cuối sóng T âm (<em>dẫn đến QTc kéo dài</em>) <u>hay</u> có thể là sóng U đảo ngược thì chưa chắc chắn — nhưng dấu hiệu này rõ ràng không có trên điện tâm đồ #1.</li>
+<li><strong><u>ĐIỂM #3</u></strong><strong> (</strong><em> = ĐIỂM THEN CHỐT (PEARL) của Dr. Smith! </em><strong>):</strong> Một điểm đáng nhắc lại mà Dr. Smith đã nhấn mạnh ở trên là <strong><em><u>hình dạng</u></em></strong> của <strong>ST chênh lên</strong> mới xuất hiện trên <u>điện tâm đồ #2</u> — <em>vốn <strong><u>phẳng</u></strong>!</em> Trái với sóng T nhọn lên và tăng kích thước thường gặp trong nhồi máu cơ tim cấp — hình dạng ST chênh lên ngang bằng đáng ngạc nhiên ( = <em>phẳng</em>) thấy ở nhiều chuyển đạo trên điện tâm đồ #2 mà <em><u>không</u></em> có sóng T nổi bật thì đặc trưng hơn nhiều cho <strong><u>viêm cơ tim</u></strong> <strong><em>cấp</em></strong> so với OMI.</li></ul>
+<p><strong><u>BÌNH LUẬN:</u></strong><strong> </strong>Thông tim cho kết quả âm tính — và ủng hộ giả định lâm sàng là viêm cơ tim kèm troponin tăng rõ rệt. Ý nghĩa tiên lượng xấu của troponin tăng rõ rệt ở bệnh nhân Covid-19 bệnh cấp tính nặng này đã được Dr. Smith trình bày chi tiết. Nhưng dấu hiệu điện thế <em><u>thấp</u></em> trên điện tâm đồ đáng được nói thêm:</p>
+<ul><li>Tôi đã bàn về <strong><u>Điện thế</u></strong> <strong><em><u>Thấp</u></em></strong> trong <em>Bình luận của tôi</em> ở cuối trang của <strong>bài <a href="https://drsmithsecgblog.com/2020/01/ventricular-fibrillation-rosc-after.html" rel="noopener" target="_blank">ngày 24 tháng Một năm 2020 </a></strong> trên Dr. Smith’s ECG Blog.</li>
+<li><strong>Điện thế</strong> <strong>Thấp</strong> <em><u>thực sự</u></em> được định nghĩa là biên độ QRS <strong>≤5 mm</strong> ở <em><u>tất cả</u></em> <strong>chuyển đạo chi</strong>. Trong một quần thể không chọn lọc — điện thế thấp <em><u>thực sự</u></em> là dấu hiệu điện tâm đồ tương đối <em><u>ít gặp</u></em>. Đáng chú ý — có thể có (<em>hoặc không</em>) kèm điện thế thấp (<em>≤10 mm</em>) ở tất cả chuyển đạo ngực (<strong><u>Hình 2</u></strong>). Tiêu chuẩn của <strong>điện thế thấp</strong> <em><u>toàn thể</u></em> <strong>(</strong>tức là, <em>có ở <u>cả</u> chuyển đạo chi <u>lẫn</u> chuyển đạo ngực</em><strong>)</strong> — dễ dàng được thỏa ở <em><u>cả hai</u></em> bản ghi trong Hình 1.</li>
+<li><strong><u>ĐIỂM #4:</u></strong> <strong>Chẩn đoán</strong> <strong><em>phân biệt</em></strong> của <strong><em>“điện thế thấp”</em></strong> mà nhiều người thường đưa ra có xu hướng <em>bắt đầu và kết thúc</em> ở <strong><em>tràn dịch</em></strong> <strong>màng ngoài tim</strong>. Nhưng nhìn vào <strong><u>Hình 2</u></strong> sẽ nhắc chúng ta về một danh sách dài <strong>các bệnh cảnh <em><u>khác</u> </em>cần cân nhắc!</strong> Danh sách này càng thêm ý nghĩa trong bối cảnh đại dịch Covid-19 đang diễn ra — vốn tạo thuận lợi cho các biến cố huyết khối cấp, bệnh cơ tim do stress (<em>Takotsubo</em>), nhồi máu/thiếu máu cục bộ và viêm cơ tim. <em><u>Bất kỳ</u></em> bệnh cảnh nào trong số này cũng có thể gây <strong>“<u>choáng</u>”</strong> <strong><em>cơ tim</em> (</strong>tức là, <em>giảm mạnh thoáng qua sức co bóp của tim, xảy ra để đáp ứng với một tổn thương cấp tính lớn</em><strong>)</strong>.</li></ul>
+<figure><a class="o-anh" href="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_Figure-2LowVoltage252812-6.21-20202529-USE.jpg"><img src="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_Figure-2LowVoltage252812-6.21-20202529-USE.jpg" alt="" width="1600" height="1338" loading="lazy" decoding="async"></a></figure>
+<p><strong><u>Hình 2:</u></strong> Các nguyên nhân gây <strong>Điện thế</strong> <strong><em>Thấp</em></strong> trên điện tâm đồ (<em>Xem bài</em>).</p>
+<p>=  =  =  =  =</p>
+<p><strong><u>LƯU Ý:</u></strong> Để biết thông tin về <strong><em>“Bất tương xứng điện thế” (Voltage Discordance) </em>(</strong>tức là, <em>khi có điện thế thấp ở các chuyển đạo <u>chi</u> — nhưng điện thế bình thường ở các chuyển đạo <u>ngực</u></em><strong>)</strong> — Xem <em>PHẦN BỔ SUNG</em> ở cuối trang này.</p>
+<p><strong><u>ĐIỂM #5:</u></strong> Tôi xin kết thúc bằng một chút <em>suy đoán</em> dựa trên đối chiếu lâm sàng của ca hôm nay với các dấu hiệu điện tâm đồ trên 2 bản ghi trong <u>Hình 1</u>. Điện thế thấp đã được ghi nhận trên điện tâm đồ <em>ban đầu</em> (<u>điện tâm đồ #1</u>) — <em><u>dù</u></em> siêu âm tim tại giường lúc đó cho thấy chức năng thất trái bình thường.</p>
+<ul><li>Bên cạnh ý nghĩa tiên lượng xấu của troponin tăng mạnh ở bệnh nhân Covid-19 nặng — <strong>phải chăng dấu hiệu điện thế <em>thấp</em> lan tỏa trên điện tâm đồ là thêm một điềm báo về sự <em>suy giảm </em>chức năng thất trái sẽ <em><u>sớm</u></em> xảy ra?</strong></li>
+<li>Có độ trễ giữa điện thế thấp lan tỏa trên điện tâm đồ <u>và</u> dấu hiệu giảm co bóp trên siêu âm tim không?</li>
+<li>Điện thế thấp <strong>+</strong> troponin tăng dần trong bối cảnh của bệnh nhân hôm nay có phải là điềm báo của viêm cơ tim <em>liên quan đến Covid</em> không?</li>
+<li>Biên độ sóng P <em>được bảo tồn</em> (<em>như thấy trên</em> <u>điện tâm đồ #1</u>) trong khi các phức bộ QRS co nhỏ lại có phải là dấu hiệu của choáng cơ tim <em>sắp xuất hiện</em> không?</li>
+<li>NẾU bệnh nhân trong ca hôm nay hồi phục hoàn toàn — thì diễn tiến theo thời gian để biên độ QRS trên điện tâm đồ trở lại mức hợp lý <u>và</u> sức co bóp trên siêu âm tim cải thiện sẽ <em>NHƯ THẾ NÀO</em>?</li></ul>
+<p><em>Hãy chờ đón</em> câu trả lời!</p>
+<figure><a class="o-anh" href="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_0-Figure-6-REDLINE-UseinBlogs-10.jpg"><img src="2020-11-12-extreme-shock-and-cardiac-arrest-in_anh/2020_11_0-Figure-6-REDLINE-UseinBlogs-10.jpg" alt="" width="613" height="24" loading="lazy" decoding="async"></a></figure>
+<p>=============================================</p>
+<h3 id="phan-bo-sung-25-1-2025">PHẦN BỔ SUNG (25/1/2025):</h3>
+<p><strong><em>Thế nào là <u>Bất tương xứng</u> </em><u>Điện thế</u>?</strong></p>
+<ul><li>Đôi khi có điện thế thấp ở các chuyển đạo chi <strong>(</strong>tức là, <em>mọi điện thế QRS ở chuyển đạo chi đều ≤5 mm</em><strong>)</strong> — nhưng điện thế QRS ở các chuyển đạo ngực <em>bình thường</em>. Hiện tượng này được gọi là <strong><em>“Bất tương xứng điện thế” (Voltage Discordance) </em>(</strong><em>Chinitz và cs. — </em><strong><a href="https://www.sciencedirect.com/science/article/abs/pii/S0022073607009387" rel="noopener" target="_blank">J Electrocardiol 41(4):281-286, 2008</a>)</strong>.</li>
+<li>Điện thế thấp chỉ khu trú ở chuyển đạo chi sẽ liên quan đến cùng danh sách nguyên nhân tiềm tàng <strong>(</strong><em>như tôi đã nêu ở trên trong </em><u>Hình 2</u><strong>)</strong> — trong <u>chỉ</u> khoảng 50% trường hợp.</li>
+<li>Trong số các trường hợp <em>“Bất tương xứng điện thế”</em> còn lại — bệnh nhân sẽ có <strong>bệnh cơ tim</strong> <strong><em>giãn</em></strong>. Lời giải thích sinh lý về lý do thấy hiện tượng điện tâm đồ này được trình bày trong tệp PDF bên dưới <strong>(</strong><em>tệp PDF này được phỏng theo bài trình bày của </em><strong><a href="https://www.slideshare.net/AhmedElBorae1/voltage-discordance" rel="noopener" target="_blank">Ahmed ElBorae, MSc</a> </strong>— <em>2022, Đại học Cairo</em><strong>)</strong>.</li></ul>
+<p><strong><u>LƯU Ý:</u></strong> Bạn có thể cần cho phép Cookie để xem tệp PDF nhúng bên dưới <strong>(</strong><em>Tệp PDF này sẽ hiển thị trên Safari và Chrome — nhưng có thể hiển thị hoặc không trên Firefox.</em><strong>)</strong>.</p>
+<figure><div class="khung-video"><iframe src="https://drive.google.com/file/d/1Fzfz6pqJNAWqDI0_3bivHqL9XK9X0THd/preview" loading="lazy" allowfullscreen allow="fullscreen; encrypted-media; picture-in-picture"></iframe></div></figure>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
