@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>31/05/2020 — Một phụ nữ trẻ bị nhịp nhanh QRS hẹp, đều ở cả tần số 160 lẫn 240</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #1158 · DR. SMITH’S ECG BLOG</div>
+   <h1>31/05/2020 — Một phụ nữ trẻ bị nhịp nhanh QRS hẹp, đều ở cả tần số 160 lẫn 240</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/a-young-woman-with-regular-narrow/" target="_blank" rel="noopener">"A Young Woman with Regular Narrow Complex Tachy at both 160 and 240"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 7 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p>Một phụ nữ trẻ đến khám vì hồi hộp đánh trống ngực, cảm giác nặng ngực, khó thở (SOB) và mệt yếu.</p>
+<p>Cô có tần số tim nhanh và huyết áp tâm thu 140.  Cô không ở trong tình trạng nguy kịch.</p>
+<p>Các điện tâm đồ trước viện của cô cho thấy SVT ở 2 tần số khác nhau: 160 và 240 (xấp xỉ)</p>
+<p>Khi đến viện, đây là điện tâm đồ đầu tiên:</p>
+<figure><a class="o-anh" href="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_SVT-160.jpg"><img src="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_SVT-160.jpg" alt="" width="1600" height="760" loading="lazy" decoding="async"></a><figcaption>QRS hẹp, đều, tần số 160.<br>Không phải nhịp xoang.<br>Không có gợi ý nào của cuồng nhĩ.<br>Vậy đây là SVT kịch phát (PSVT).</figcaption></figure>
+<p>Cô được tiêm tĩnh mạch 6 mg adenosine, sau đó cô chuyển về nhịp xoang được 2 nhát, rồi có vài PAC, rồi quay lại SVT với tần số 240.</p>
+<p>Đây là điện tâm đồ của cô:</p>
+<figure><a class="o-anh" href="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_SVT-243.jpg"><img src="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_SVT-243.jpg" alt="" width="1600" height="805" loading="lazy" decoding="async"></a><figcaption>Giống như trên, nhưng với tần số 240.</figcaption></figure>
+<p>Chuyện gì đang xảy ra? Chúng ta làm gì?</p>
+<p><strong><span class="c-xanh">Để hiểu SVT, cần hiểu cách nó khởi phát và được duy trì lan truyền: </span></strong></p>
+<h3 id="sinh-ly-benh">Sinh lý bệnh</h3>
+<h3 id="trich-chuong-trong-bo-emrap-compendium-do-pendell-meyers-va-steve-smith-viet">(Trích chương trong bộ EmRap compendium do Pendell Meyers và Steve Smith viết)</h3>
+<ul><li>
+
+<span class="c-xanh">“Có được là nhờ “sinh lý nút AV kép” (dual AV nodal physiology), trong đó nút AV được cho là chứa 2 đường tách ra trong chốc lát rồi nhập lại bên trong nút AV, cả hai đều dẫn truyền từ tâm nhĩ xuống bó His.</span>
+</li>
+<li>
+
+<span class="c-xanh">““Đường nhanh” (fast pathway) dẫn truyền nhanh hơn nhưng có thời kỳ trơ dài hơn “đường chậm” (slow pathway).”</span>
+</li>
+<li>
+
+<span class="c-xanh">“Trong nhịp xoang, mỗi điện thế hoạt động (AP) lan truyền đồng thời xuống cả hai đường của nút AV mà không có cơ hội vào lại, vì 2 đường blốc lẫn nhau tại điểm nhập lại.</span>
+</li>
+<li>
+
+<span class="c-xanh">“Khoảng thời gian bình thường giữa các nhát bảo đảm cả hai đường đều sẵn sàng cho AP tiếp theo.</span>
+</li>
+<li>
+
+<span class="c-xanh">“Tuy nhiên, một nhát nhĩ sớm xuất hiện đúng thời điểm có thể đến nút AV sớm, vào lúc đường nhanh còn đang trơ nhưng đường chậm đã tái cực hoàn toàn và có thể tiếp nhận AP đang tới.</span>
+</li>
+<li>
+
+<span class="c-xanh">“Khi đó AP chỉ đi xuôi dòng xuống theo đường chậm, trong lúc đó đường nhanh hoàn tất tái cực.</span>
+</li>
+<li>
+
+<span class="c-xanh">“AP đến điểm nhập lại khi đó có thể đi vào đường nhanh, tiếp tục đi ngược dòng lên theo đường nhanh rồi sau đó đi xuôi dòng xuống theo đường chậm, phát AP tới cả tâm nhĩ lẫn tâm thất.</span>
+</li>
+<li>
+
+<span class="c-xanh">“Điều này tạo ra một nhịp nhanh đều với sóng P ngược dòng có thể xuất hiện trước, trong hoặc sau phức bộ QRS.”</span>
+</li>
+<li>
+
+<strong>Trong SVT do đường phụ (accessory pathway), sinh lý bệnh tương tự, ngoại trừ nhánh dẫn truyền thứ hai là đường phụ (bypass tract), <u>không phải</u> một nhánh khác trong nút AV.</strong>
+</li></ul>
+<h3 id="tai-sao-co-2-tan-so-khac-nhau">Tại sao có 2 tần số khác nhau?</h3>
+<ul><li>
+<u>Giả sử có CẢ 2 đường trong nút AV (dẫn truyền với tốc độ khác nhau) <strong>VÀ</strong> một đường phụ (tổng cộng 3 đường)?</u>
+</li>
+<li>
+Khi đó xung có thể dùng một trong hai đường của nút AV để đi xuống (với tần số khác nhau), và dùng đường phụ làm đường đi lên.
+</li></ul>
+<p><strong>Điểm quan trọng:</strong> Adenosine hay verapamil không làm nhịp chậm hơn tăng tốc thành nhịp nhanh hơn.  Một PAC có thể khởi phát SVT đi xuống theo một trong hai nhánh của nút AV, có vẻ điều này là ngẫu nhiên.  Vì vậy nhịp có thể tái khởi phát một cách ngẫu nhiên ở một trong hai tần số.</p>
+<h3 id="chung-ta-lam-gi-voi-no">Chúng ta làm gì với nó?</h3>
+<p>Vì đây là nhịp QRS hẹp, dẫn truyền xuôi dòng của nó hẳn phải đi qua nút AV.  Việc blốc tạm thời bằng adenosine xác nhận điều này.</p>
+<p><strong>Xử trí</strong>: Một đề xuất được đưa ra là dùng sốc điện chuyển nhịp, vì adenosine “không có tác dụng.”  Tuy nhiên, adenosine <u>đã</u> có tác dụng.  Nhưng tác dụng chỉ kéo dài vài giây.  Sau đó rối loạn nhịp được tái khởi phát (trong ca này là do các PAC, vốn là lý do cơ bản khiến SVT khởi phát, như đã nêu trên).</p>
+<p><strong>Sốc điện chuyển nhịp sẽ không có tác dụng!  </strong>Chúng ta cần hoặc:</p>
+<p>1) ngăn rối loạn nhịp tái khởi phát, bằng cách ngăn các PAC, HOẶC</p>
+<p>2) blốc dẫn truyền qua nút AV một cách <u>bền vững</u> bằng một thuốc có thời gian tác dụng tương đối dài (adenosine chỉ làm được điều này thoáng qua)</p>
+<p><strong>Có 2 nhóm thuốc chính cho mục đích này:</strong></p>
+<p>1) <strong>Chẹn kênh Ca</strong>, bằng verapamil hoặc diltiazem.  Verapamil là điều trị chuẩn vào đầu thập niên 80, trước khi có adenosine. Thuốc có khả năng gây hạ huyết áp cao hơn adenosine một chút (tỷ lệ 3,5% trong một nghiên cứu lớn)</p>
+<p>2) <strong>Chẹn beta</strong>, vừa ức chế PAC <em>vừa</em> làm chậm dẫn truyền qua nút AV.</p>
+<h3 id="dien-bien-lam-sang">Diễn biến lâm sàng</h3>
+<p>Chúng tôi quyết định dùng verapamil để blốc nút AV một cách bền vững.  Verapamil là thuốc giảm co bóp cơ tim mạnh, vì vậy không bao giờ được dùng khi chức năng thất trái kém.   Chúng tôi đã siêu âm tại giường, xác nhận co bóp rất tốt.</p>
+<p>Chúng tôi tiêm 5 mg verapamil trong 2 phút.</p>
+<p>Có thành công tạm thời, nhưng sau đó xuất hiện thêm PAC, và SVT khởi phát trở lại, lần này với tần số 240.</p>
+<p><strong>Nhịp cứ ngưng rồi lại khởi phát, ngẫu nhiên ở tần số 160 hoặc 240, luôn được khởi phát bởi một PAC.</strong></p>
+<p>Chúng tôi tiêm thêm 5 mg nữa, không mấy thành công.</p>
+<p>Sau đó, chúng tôi chuyển sang chẹn beta.  Dùng cả verapamil lẫn chẹn beta có thể nguy hiểm, do khả năng gây giảm tần số tim và giảm co bóp cơ tim nặng nề.  Vì vậy, chúng tôi chọn <strong>esmolol</strong>, thuốc có thời gian bán thải ngắn và có thể ngừng nếu có tác dụng bất lợi.</p>
+<p>Chúng tôi cho 500 mcg/kg esmolol và bắt đầu truyền liên tục 50 mcg/kg/phút.</p>
+<p>Đây là kết quả:</p>
+<figure><a class="o-anh" href="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_Post-esmolol.jpg"><img src="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_Post-esmolol.jpg" alt="" width="1600" height="706" loading="lazy" decoding="async"></a><figcaption>Nhịp xoang với nhiều PAC<br>Như vậy esmolol chủ yếu đang làm chậm dẫn truyền qua nút AV và chưa làm ngưng được các PAC</figcaption></figure>
+<p>Không lâu sau đó, một điện tâm đồ tiếp theo và mọi dải nhịp đều cho thấy nhịp xoang không còn PAC.  Esmolol đã có tác dụng.</p>
+<p>Vì cô xét nghiệm dương tính với COVID, không làm thăm dò điện sinh lý (EP).  Cô được xuất viện với thuốc chẹn beta.</p>
+<h3 id="them-ve-sinh-ly-benh">Thêm về sinh lý bệnh</h3>
+<p>Đây là một <strong>giải phẫu</strong> có khả năng cho bệnh nhân hôm nay của chúng ta.  Về khả năng còn lại, xem “Giải thích khác” bên dưới, và bình luận của Ken.</p>
+<p><span class="c-do">Tuy nhiên, ở bệnh nhân hôm nay hướng dẫn truyền sẽ <strong>NGƯỢC LẠI</strong> so với sơ đồ này.</span>  Xung đi <strong>xuống</strong> theo một trong các đường của nút AV, và đi <strong>LÊN</strong> theo đường phụ:</p>
+<figure><a class="o-anh" href="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_DualAVnodepathwaysplusAccessoryPathway.jpg"><img src="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_DualAVnodepathwaysplusAccessoryPathway.jpg" alt="" width="765" height="526" loading="lazy" decoding="async"></a><figcaption>Sơ đồ này lấy từ bài blog sau:
+
+Wide Complex Tachycardia in a 20 something. (Nhịp nhanh QRS rộng ở một người hai mươi mấy tuổi)
+Như đã nêu trên, nút AV có thể có 2 đường và đây là cơ chất giải phẫu của AVNRT. 
+Nhưng ở đây <strong>còn có</strong> một đường phụ, tổng cộng 3 đường.
+Nhịp nhanh có hai tần số khác nhau vì A và B có tốc độ dẫn truyền khác nhau.  
+<strong>Trái với ca hôm nay</strong>, ca trước có QRS rộng vì xung đi <strong>xuống theo đường phụ (</strong>gây tiền kích thích và QRS rộng<strong>) </strong>và <strong>lên qua nút AV</strong> <strong>(ngược chiều)</strong>.<br><strong><u>Ca trước</u>:</strong> dẫn truyền ngược lên qua nút AV có thể đi qua một trong hai nhánh bên trong nút AV.  Một nhánh nhanh và một nhánh chậm, và chúng có thời kỳ trơ khác nhau.  Tần số của nhịp nhanh phụ thuộc vào việc xung đi lên qua nhánh nào của nút AV.
+<strong><u>Ca hôm nay</u>: dẫn truyền <u>xuôi chiều</u>.  Tần số phụ thuộc vào nhánh nào của nút AV đang dẫn truyền.</strong></figcaption></figure>
+<h3 id="giai-thich-khac-khong-co-duong-phu">Giải thích khác: không có đường phụ.</h3>
+<p>Cũng có thể là KHÔNG có đường phụ, mà chỉ có 2 đường bên trong nút AV.  Nếu vậy, thì trong một trường hợp, xung đi xuống theo đường nhanh và lên theo đường chậm (tạo ra tần số rất nhanh), còn trong trường hợp kia, xung đi xuống theo đường chậm và lên theo đường nhanh (tạo ra tần số kém nhanh hơn).  <strong>Tuy nhiên, nếu đúng như vậy, xung vẫn phải đi qua cả một đường chậm lẫn một đường nhanh, nên vẫn khó giải thích hai tần số khác nhau TRỪ KHI tần số thay đổi tùy theo hướng đi.</strong></p>
+<p>Tần số phụ thuộc vào thời gian xung cần để đi trọn một vòng qua nút AV. Để hai tần số khác nhau, tốc độ dẫn truyền phải khác nhau tùy theo hướng đi của xung.  Điều này là có thể.</p>
+<p><strong>Procainamide</strong> và <strong>amiodarone</strong> cũng được một số người đề xuất để xử trí.  Tuy nhiên, chúng có tỷ lệ thành công rất hạn chế trong SVT kháng trị, đặc biệt là SVT có liên quan đến dẫn truyền qua nút AV.  Bài báo này đã nghiên cứu tác dụng của chúng ở trẻ em:</p>
+<p><a href="https://www.ahajournals.org/doi/full/10.1161/CIRCEP.109.901629" rel="noopener" target="_blank">https://www.ahajournals.org/doi/full/10.1161/CIRCEP.109.901629</a> (bài báo trên tạp chí Circulation: Arrhythmia and Electrophysiology về điều trị SVT kháng trị ở trẻ em)</p>
+<figure><a class="o-anh" href="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_0-Figure-6-REDLINE-UseinBlogscopy.jpg"><img src="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_0-Figure-6-REDLINE-UseinBlogscopy.jpg" alt="" width="613" height="24" loading="lazy" decoding="async"></a></figure>
+<p><span class="c-do">===================================</span></p>
+<h2 id="binh-luan-cua-toi-boi-ken-grauer-md-30-5-2020">BÌNH LUẬN CỦA TÔI, bởi KEN GRAUER, MD (30/5/2020):</h2>
+<p><span class="c-do">===================================</span></p>
+<p>Ca bệnh hấp dẫn do Dr. Smith trình bày (!) — về một phụ nữ trẻ đến khám vì hồi hộp đánh trống ngực và <strong>các nhịp SVT</strong> <strong><em><u>vào lại</u></em> nối tiếp nhau</strong> — ban đầu với tần số thất <strong>~160/phút</strong> — và sau đó, sau khi tiêm tĩnh mạch 6mg adenosine, là một SVT vào lại khác với <strong>tần số</strong> <strong><em>nhanh hơn</em></strong> nhiều, <strong>~240/phút</strong>. <em>LÀM SAO điều này có thể xảy ra?</em></p>
+<ul><li>Để rõ ràng — tôi đã ghép 3 điện tâm đồ của ca hôm nay trong <strong><u>Hình 1</u>.</strong></li>
+<li>Dr. Smith đã điểm lại (<em>ở trên</em>) sinh lý bệnh của đường dẫn truyền kép trong nút AV, vốn chịu trách nhiệm duy trì các nhịp SVT vào lại. Tôi tập trung <em>Bình luận của tôi</em> vào những hiểu biết bổ sung rút ra được từ ca này.</li></ul>
+<figure><a class="o-anh" href="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_Figure-1ECGs-1252C2252C325285-29.21-20202529-USE.jpg"><img src="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_Figure-1ECGs-1252C2252C325285-29.21-20202529-USE.jpg" alt="" width="1421" height="2048" loading="lazy" decoding="async"></a><figcaption><strong><u>Hình 1:</u></strong> 3 điện tâm đồ trong ca hôm nay (<em>Xem bài</em>).</figcaption></figure>
+<p><strong><u>ADENOSINE <em>KHÔNG</em> Phải Lúc Nào Cũng Lành Tính:</u></strong> Danh tiếng của adenosine như một thuốc tuyệt vời, <em>tác dụng nhanh</em> để điều trị các nhịp SVT <em>vào lại</em> đã được khẳng định vững chắc. Thuốc tác dụng ngay lập tức — với thời gian bán thải <em><u>dưới</u></em> 10 giây. Do đó — mọi tác dụng bất lợi có thể xảy ra hầu như luôn ngắn ngủi (<em>thường hết trong vòng 30 đến 90 giây</em>).</p>
+<ul><li><strong>Các tác dụng <em>bất lợi</em> thường gặp (</strong><em>vốn <u>là</u> điều được dự đoán trước</em><strong>)</strong> sau khi tiêm <strong>adenosine tĩnh mạch</strong> gồm: <strong>i</strong><strong><span class="c-do">)</span></strong> đau ngực; <strong>ii</strong><strong><span class="c-do">)</span></strong> ho (<em>do co thắt phế quản thoáng qua</em>); <strong>iii</strong><strong><span class="c-do">)</span></strong> giãn mạch da (<em>đỏ bừng da thoáng qua</em>); <strong>iv</strong><strong><span class="c-do">)</span></strong> vị kim loại trong miệng; <strong>v</strong><strong><span class="c-do">) </span></strong>buồn nôn, vã mồ hôi, bồn chồn, tê bì, choáng váng thoáng qua và cảm giác “sắp chết đến nơi”; <u>và</u>, <strong>vi</strong><strong><span class="c-do">)</span></strong> nhịp chậm thoáng qua có thể rõ rệt (<em>và thậm chí có thể gây một giai đoạn vô tâm thu ngắn</em>).</li>
+<li>Adenosine có thể rút ngắn thời kỳ trơ của mô <em>nhĩ</em> — <strong><em>điều này <u>có thể</u> khởi phát</em></strong> <strong>AFib</strong> ở người có cơ địa dễ mắc. Vì lý do này — cần thận trọng khi dùng adenosine ở bệnh nhân đã biết có WPW, do khả năng về mặt lý thuyết gây AFib (<em>điều có thể gây hậu quả đáng kể ở bệnh nhân có đường phụ</em>).</li>
+<li>Adenosine có thể gây tăng phản xạ trương lực giao cảm và catecholamine tuần hoàn. Điều này có thể dẫn tới tăng tần số tim; ngoại tâm thu nhĩ hoặc thất; <em>và/hoặc</em> tăng dẫn truyền qua đường phụ (Mallet ML: <strong><a href="https://emj.bmj.com/content/emermed/21/4/408.full.pdf" rel="noopener" target="_blank">Emerg Med J 21:408-410, 2004</a>).</strong></li>
+<li>Ngoài <strong>AFib</strong> — Mallet mô tả các <strong>tác dụng</strong> <strong><em>gây loạn nhịp</em></strong> khác của <strong>adenosine (</strong><em>tức là việc dùng thuốc này có thể <u>gây ra</u> một rối loạn nhịp khác</em>). Các tác dụng gây loạn nhịp này gồm: <strong>i</strong><strong><span class="c-do">)</span></strong> PVC <em>và/hoặc</em> VT không bền bỉ (<em>kể cả đôi khi VT đa dạng và xoắn đỉnh (Torsades de Pointes), đặc biệt khi rối loạn nhịp này phụ thuộc khoảng ngưng</em>); <strong>ii</strong><strong><span class="c-do">)</span></strong> Khởi phát các rối loạn nhịp nhĩ khác, gồm nhịp nhanh nhĩ (ATach) và cuồng nhĩ (AFlutter); <strong>iii</strong><strong><span class="c-do">)</span></strong> Tăng dẫn truyền AV ở cuồng nhĩ đã có sẵn (<em>từ dẫn truyền AV 2:1 thành 1:1</em>); <u>và</u>, <strong>iv</strong><strong><span class="c-do">)</span></strong> <strong><em>Tăng tốc</em> đáp ứng thất của một SVT <em>vào lại</em>.</strong> Tác dụng sau cùng này có lẽ là lời giải thích cho việc tần số thất tăng một cách nghịch thường trong ca này, với các nhịp SVT nối tiếp nhau cho thấy tần số tăng từ <strong>160/phút</strong> lên <strong>240/phút</strong> sau khi tiêm tĩnh mạch 6 mg adenosine (<u>Hình 1</u>). Như Curtis và cs. đã chỉ ra (<em>J Am Coll Cardiol 30[7]1778-84, 1997</em>) — đường dẫn truyền kép trong nút AV mà Dr. Smith đề cập (<em>ở trên</em>) có thể biểu hiện độ nhạy <em><u>khác nhau</u></em> với adenosine tĩnh mạch. Đặc tính này có thể đã tạo điều kiện cho sự <em>chuyển</em> dẫn truyền xuôi chiều (<em>đi tới</em>) từ đường <u>chậm</u> sang đường <u>nhanh</u> của nút AV vào thời điểm tần số tim tăng lên 240/phút (<u>điện tâm đồ #2</u> <em>trong Hình 1</em>).</li></ul>
+<p><strong><em><u>ĐIỀU</u></em></strong><strong><u> CỐT LÕI <em>Về Việc Dùng</em> Adenosine:</u></strong> Adenosine là một thuốc tuyệt vời — đặc biệt trong bối cảnh cấp cứu! Thuốc tác dụng nhanh. Thuốc <em>rất hiệu quả</em> với các nhịp SVT vào lại (<em>cả AVNRT lẫn AVRT!</em>). Ngoài ra:</p>
+<ul><li>Adenosine có thể đóng vai trò như một <em>“nghiệm pháp Valsalva hóa học”</em> — trong đó adenosine được dùng như một thử nghiệm chẩn đoán/điều trị cho một nhịp nhanh QRS <em>hẹp</em> (<em>nhịp SVT</em>) <em>chưa rõ</em> nguyên nhân. Có lẽ adenosine sẽ chuyển nhịp nếu đó là một SVT <em>vào lại</em>. Nếu không — hy vọng thuốc sẽ làm nhịp <em>chậm</em> lại đủ (<em>thoáng qua</em>) để có thể đưa ra chẩn đoán xác định (<em>giống như Valsalva …</em> ).</li>
+<li>Adenosine có thể là một thuốc có giá trị khi dùng như một <em>“thử nghiệm điều trị”</em> cho một nhịp nhanh QRS rộng (WCT) đều, đơn dạng, <em>chưa rõ</em> nguyên nhân — trong đó thuốc có thể chuyển nhịp nếu WCT là <u>hoặc</u> một dạng VT vô căn <em>nhạy với adenosine </em><u>hoặc</u> một nhịp SVT <em>vào lại</em>. Và, trong trường hợp adenosine không có tác dụng gì — các tác dụng bất lợi nói chung <em>ngắn ngủi</em> và được đa số bệnh nhân dung nạp tốt.</li>
+<li><u>NHƯNG</u> — Vì adenosine <em><u>không</u></em> lành tính — <strong>thuốc <em><u>không</u></em> nên được dùng</strong> trong những trường hợp thuốc <em><u>ít có khả năng</u></em> có tác dụng (tức là, <em>khi bệnh nhân có VT đa dạng hoặc xoắn đỉnh; hoặc với VT <u>đã biết</u> có nguyên nhân thiếu máu cục bộ</em>) — <u>và</u>, tuyệt đối <em><u>không</u></em> được dùng cho WPW kèm AFib nhanh.</li></ul>
+<p><strong><u>Một số Nhận xét <em>Bổ sung </em>về Hình 1:</u></strong> Như Dr. Smith đã nêu — điện tâm đồ đầu tiên tại khoa cấp cứu ( = <strong><u>điện tâm đồ #1</u></strong>) cho thấy một <strong>nhịp SVT</strong> <strong><em>đều</em></strong> với tần số <strong>~160/phút</strong>, <em><u>không</u></em> có dấu hiệu rõ ràng của hoạt động nhĩ. Sau 6 mg adenosine tĩnh mạch — tần số của SVT đều tăng lên <strong>240/phút ( </strong>=<strong> <u>điện tâm đồ #2</u>)</strong>.</p>
+<p><strong><u>ĐIỂM THEN CHỐT (PEARL):</u></strong> Việc tìm dấu hiệu của <strong>hoạt động nhĩ</strong> <strong><em><u>ngược dòng</u></em></strong> <em><u>trong lúc</u></em> có nhịp SVT đều có thể rất hữu ích — vì điều này có thể cung cấp manh mối quan trọng về cơ chế của nhịp SVT. Tôi bàn luận và minh họa chi tiết khái niệm then chốt này trong <em>Bình luận của tôi</em> ở cuối <strong>bài đăng <a href="https://drsmithsecgblog.com/2020/03/new-onset-heart-failure-and-frequent.html" rel="noopener" target="_blank">ngày 6 tháng Ba năm 2020</a></strong> trên Dr. Smith’s ECG Blog. <u>Tóm</u> <u>lại:</u></p>
+<ul><li>Với thể thông thường ( = <em>“chậm-nhanh”</em>) của <strong><u>AVNRT</u></strong> — khoảng RP’ trong cơn SVT thường rất ngắn (tức là, <em>sóng P ngược dòng hoặc bị ẩn trong phức bộ QRS, hoặc làm biến dạng phần cuối QRS</em>). Đó là vì với thể <em>“chậm-nhanh”</em> của AVNRT — vòng vào lại tương đối nhỏ hơn, nằm hoàn toàn <em><u>trong</u></em> nút AV (<em>do đó, quãng đường dẫn truyền ngược dòng ngắn — dẫn tới khoảng RP’ ngắn</em>).</li>
+<li>Ngược lại, với <strong><u>AVRT</u></strong> — khoảng RP’ trong cơn SVT có xu hướng dài hơn (<em>sóng P ngược dòng thường xuất hiện gần giữa sóng ST-T</em>). Đó là vì vòng vào lại <em>dài hơn</em>, do có sự tham gia của một AP (<em>đường phụ — <u>A</u>ccessory <u>P</u>athway</em>) nằm <em>bên ngoài</em> nút AV (<em>do đó, hoạt động nhĩ phải đi một quãng đường ngược dòng dài hơn — dẫn tới khoảng RP’ dài hơn</em>).</li>
+<li>Đáng tiếc — có nhiều <strong>nhiễu</strong> <strong><em>đường nền</em></strong> ở <em><u>cả</u></em> điện tâm đồ #1 lẫn điện tâm đồ #2. Vì vậy — rất khó tìm dấu hiệu hoạt động nhĩ. Dù vậy — tôi đồng ý với Dr. Smith rằng dường như <em><u>không</u></em> có sóng P xoang, <em><u>cũng không</u></em> có sóng cuồng nhĩ 2:1 ở điện tâm đồ #1 hay điện tâm đồ #2.</li>
+<li>Tôi <em><u>không</u></em> thấy dấu hiệu nào của hoạt động nhĩ ngược dòng ở <u>điện tâm đồ #1</u>.</li>
+<li>Tuy nhiên — <strong>tôi <em><u>có</u></em> thấy một khía dương rõ rệt (</strong><em>giả r’</em> <strong>) ở chuyển đạo V1</strong> của <strong><u>điện tâm đồ #2</u> (</strong><em>mũi tên ĐỎ chỉ vào khía r’ này trong vòng tròn ĐỎ ở điện tâm đồ #2</em><strong>)</strong>. Tôi tin rằng <strong>khía r’</strong> này ở <strong>chuyển đạo V1</strong> là <u>thật</u> — vì nó <em><u>không</u> </em>có mặt ở chuyển đạo V1 của điện tâm đồ #1 cũng như điện tâm đồ #3. Do đó — khía r’ này ở chuyển đạo V1 gần như chắc chắn đại diện cho <strong>hoạt động nhĩ <em>ngược dòng</em></strong> <em><u>trong</u></em> điện tâm đồ #2.</li></ul>
+<p><strong><u>GIẢ THUYẾT CỦA TÔI (<em>Vượt ra ngoài phần cốt lõi</em>):</u></strong> Việc chúng ta thấy sóng P ngược dòng này ở điện tâm đồ #2 nhưng <em><u>không</u></em> thấy ở điện tâm đồ #1 gợi ý rằng dẫn truyền xuôi chiều đã <em>chuyển</em> từ đường dẫn truyền này sang đường dẫn truyền kia trong nút AV.</p>
+<ul><li>Việc khía r’ này ở chuyển đạo V1 của <u>điện tâm đồ #2</u> biểu hiện một khoảng RP’ <em>ngắn</em> — gợi ý với tôi rằng dẫn truyền ngược dòng nằm gọn <em><u>trong</u></em> nút AV (<em>vì tôi sẽ chờ đợi một khoảng RP’ dài hơn nếu có dẫn truyền ngược dòng ẩn qua một AP</em>).</li>
+<li>Tôi ngờ rằng lý do chúng ta không thấy sóng P ngược dòng nào ở điện tâm đồ #1 — là vì <u>điện tâm đồ #1</u> dẫn truyền <u>xuống</u> theo đường dẫn truyền <em>chậm hơn</em> của nút AV (<em>do đó tần số chậm hơn = 160/phút</em>) — nhưng <em><u>ngược</u></em> <u>lên</u> theo đường dẫn truyền <em>nhanh hơn</em> của nút AV (<em>khiến khoảng RP’ ngắn hơn, và sóng P ngược dòng ở điện tâm đồ #1 bị ẩn hoàn toàn <u>trong</u> phức bộ QRS!</em>).</li>
+<li>Điều này ngược với những gì tôi ngờ là đã xảy ra ở <u>điện tâm đồ #2</u> — dẫn truyền xuống theo đường dẫn truyền <em>nhanh hơn</em> của nút AV (<em>do đó tần số nhanh hơn = 240/phút</em>) — nhưng rồi <em><u>ngược</u></em> <u>lên</u> theo đường dẫn truyền <em>chậm hơn</em> của nút AV. Kết quả là khoảng RP’ dài hơn một chút — <em>đủ dài</em> để sóng P ngược dòng ló ra khỏi QRS và tạo thành một <em>giả r’</em> ở chuyển đạo V1.</li>
+<li><strong><u>Do đó</u></strong><strong> —</strong> tôi cho rằng nhiều khả năng <em>không</em> có AP nào tham gia vào vòng vào lại (tức là, <em>không phải AVRT</em>) — mà thay vào đó, các nhịp SVT ở điện tâm đồ #1 và điện tâm đồ #2 đều là <strong>AVNRT</strong>, với vòng vào lại nằm hoàn toàn <em><u>trong</u></em> nút AV. <strong>(Dù vậy —</strong> <em>tôi hoàn toàn thừa nhận rằng tôi có thể sai, và tôi không thể loại trừ khả năng có sự tham gia của một đường phụ</em><strong>)</strong>.</li></ul>
+<p><strong><u>Cuối cùng — <em>Về</em> điện tâm đồ #3:</u></strong> Chúng ta cần nhớ từ phần trình bày của Dr. Smith rằng <u>điện tâm đồ #3</u> được ghi <em>sau</em> hai liều verapamil 5 mg — và <em>sau</em> liều nạp + truyền duy trì esmolol — <u>và</u> — rằng điện tâm đồ ngay sau đó cho thấy đã chuyển về nhịp xoang bình thường ( = <em>được cho là đã thành công trong việc duy trì chuyển nhịp về nhịp xoang sau khi dùng thuốc chẹn ß</em>).</p>
+<ul><li><strong><em>Hãy xem dải nhịp chuyển đạo II dài trong</em></strong> <strong><u>điện tâm đồ #3</u></strong>. Nhịp <strong>không đều <em>hoàn toàn</em></strong> — và <em><u>ngoại trừ</u></em> sóng P đứng trước nhát #2, các sóng lệch nhĩ trên dải nhịp chuyển đạo II dài có biên độ cực kỳ <em><u>nhỏ</u> </em>.</li>
+<li>Nếu bạn <em><u>chỉ</u></em> nhìn thấy dải nhịp chuyển đạo II dài của <u>điện tâm đồ #3</u>, chẳng phải sẽ rất <em>DỄ</em> nghĩ rằng đây là AFib với đáp ứng thất nhanh sao? <strong><u>LƯU Ý:</u></strong> <em>Không ở đâu</em> trên dải nhịp chuyển đạo II dài này chúng ta thấy 2 sóng lệch nhĩ giống nhau liên tiếp.</li>
+<li><u>Thú nhận:</u><strong><em> Ban đầu tôi <u>không</u> chắc nhịp ở điện tâm đồ #3 là gì</em></strong> sau khi xem dải nhịp chuyển đạo II dài này. <em><u>Chỉ</u></em> <u>sau khi</u> xem 11 chuyển đạo còn lại trên bản ghi này, tôi mới có thể khẳng định chắc chắn có sóng P. <strong>Sóng P thấy rõ nhất ở chuyển đạo V1</strong>, dù hình dạng sóng P thay đổi rõ rệt từ nhát này sang nhát kế tiếp ở chuyển đạo này (<em>các mũi tên TÍM, XANH LÁ và HỒNG ở chuyển đạo V1</em>). Áp dụng <strong>khái niệm</strong> <strong><em>các chuyển đạo ghi đồng thời</em></strong> — đường thẳng đứng mảnh màu <em>TÍM</em> bắt đầu dưới sóng P ở chuyển đạo V1 <em><u>khẳng định</u></em> rằng sóng lệch dương nhỏ xíu trước nhát #14 trên dải nhịp chuyển đạo II dài <u>đúng là</u> một sóng P.</li></ul>
+<p><strong><u>BÀI HỌC rút ra:</u></strong> Hãy luôn nhớ rằng, <strong><em>“12 chuyển đạo tốt hơn một”</em></strong>. Trong trường hợp <u>điện tâm đồ #3</u>— việc xem các chuyển đạo <em>ghi đồng thời</em> phía trên dải nhịp chuyển đạo II dài đóng vai trò quyết định trong việc khẳng định nhịp không đều <em>hoàn toàn</em> này <em><u>không phải</u></em> là AFib.</p>
+<ul><li><u>Về mặt kỹ thuật</u> (<em>vì nhịp ở điện tâm đồ #3 hoàn toàn không đều, và hình dạng sóng P <u>có</u> thay đổi từ nhát này sang nhát kế tiếp</em>) — nhịp ở điện tâm đồ #3 có lẽ được định nghĩa đúng nhất là <strong>MAT (</strong><em>nhịp nhanh nhĩ đa ổ — <u>M</u>ultifocal <u>A</u>trial <u>T</u>achycardia</em><strong>).</strong></li>
+<li>Dù vậy, trên thực tế — tôi nghĩ về nhịp ở điện tâm đồ #3 như một <strong>“nhịp đang chuyển tiếp”</strong> — ở bệnh nhân này, người ngay trước điện tâm đồ #3 còn đang trong cơn SVT vào lại với tần số 240/phút — đã được dùng nhiều thuốc chống loạn nhịp — và rồi không lâu sau điện tâm đồ #3, được ghi nhận là nhịp xoang bình thường, hoàn toàn không còn PAC nào.</li></ul>
+<p>Chúng tôi xin CẢM ƠN Dr. Smith đã trình bày ca bệnh sâu sắc này.</p>
+<figure><a class="o-anh" href="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_0-Figure-6-REDLINE-UseinBlogscopy-1.jpg"><img src="2020-05-31-a-young-woman-with-regular-narrow_anh/2020_05_0-Figure-6-REDLINE-UseinBlogscopy-1.jpg" alt="" width="613" height="24" loading="lazy" decoding="async"></a></figure>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
