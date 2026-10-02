@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>09/08/2019 — Tắc hoàn toàn cấp thân chung động mạch vành trái biểu hiện thế nào trên điện tâm đồ?</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #1059 · DR. SMITH’S ECG BLOG</div>
+   <h1>09/08/2019 — Tắc hoàn toàn cấp thân chung động mạch vành trái biểu hiện thế nào trên điện tâm đồ?</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/how-does-acute-left-main-occlusion/" target="_blank" rel="noopener">"How does Acute Total Left Main Coronary occlusion present on the ECG?"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 14 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p>Bài viết của Smith và Meyers</p>
+<p><strong>Sam Ghali (</strong><a href="https://twitter.com/EM_RESUS" rel="noopener" target="_blank">https://twitter.com/EM_RESUS</a>) <strong>vừa hỏi tôi (Smith):</strong></p>
+<p>Thêm bài này: https://drsmithsecgblog.com/sudden-shock-with-nasty-looking-ecg/</p>
+<p>Thêm bài này:</p>
+<p>“Steve, các trường hợp *tắc* thân chung động mạch vành trái (left main) (tắc thực sự, kèm<br>thiếu máu cục bộ xuyên thành) có ST chênh xuống hay ST chênh lên ở aVR?”</p>
+<h2 id="smith-va-meyers-tra-loi">Smith và Meyers trả lời:</h2>
+<p><strong>Thứ nhất</strong>, tắc thân chung (LM) hiếm gặp ở khoa cấp cứu (ED) vì phần lớn các bệnh nhân này tử vong trước khi kịp ghi được điện tâm đồ 12 chuyển đạo.</p>
+<p><strong>Nhưng nếu họ đến được viện:</strong></p>
+<p>Biểu hiện rất thường gặp là <strong>ST chênh xuống (STD) lan tỏa kèm ST chênh lên (STE) soi gương ở aVR</strong> KHÔNG phải là <em><strong>tắc</strong></em> thân chung; nó có thể do hội chứng vành cấp (ACS) với tổn thương thân chung <strong>gần</strong> hoàn toàn (subtotal), nhưng thường gặp hơn nhiều là do các tình trạng không phải ACS, đặc biệt là thiếu máu cục bộ do tăng nhu cầu.  Trong những trường hợp này, STE ở aVR luôn là <strong><em><u>soi gương</u></em> </strong>với ST chênh xuống của thiếu máu cục bộ dưới nội tâm mạc ở nơi khác (vectơ ST chênh xuống hướng về II và V5).</p>
+<p><strong>Tắc hoàn toàn thân chung</strong> có thể biểu hiện với <strong>STE </strong>hoặc <strong>STD </strong>ở aVR.</p>
+<p>Khi tắc hoàn toàn thân chung biểu hiện với STE ở aVR, LUÔN LUÔN có ST chênh lên ở nơi khác khiến STEMI rõ ràng hơn; nói cách khác, STE không bao giờ giới hạn <u><em><strong>chỉ</strong></em></u> ở aVR mà là một phần của một STEMI diện rộng và thường rõ ràng.</p>
+<p>Hình ảnh thấy được có thể, hoặc có thể không, đặc trưng riêng cho tắc thân chung.  Một số trường hợp tắc hoàn toàn LAD biểu hiện trên điện tâm đồ tương tự như một số trường hợp tắc thân chung. Tuy nhiên, tất cả đều rõ ràng là STEMI diện rộng.</p>
+<p>Xin nhắc lại phần quan trọng nhất liên quan đến câu hỏi của anh: <strong>tắc thân chung không biểu hiện bằng STE <em><u>đơn độc</u> </em>ở aVR. </strong> Tùy theo vectơ STE của tắc thân chung hiện ra ở đâu trên điện tâm đồ, aVR có thể có STE, hoặc STD, hoặc không có cả hai, và <strong>chuyển đạo aVR sẽ không phải là phần quan trọng trong việc đọc điện tâm đồ ở những trường hợp này.</strong></p>
+<p><strong>Dưới đây là 9 ca bệnh riêng lẻ (anecdotal) về tắc hoàn toàn thực sự thân chung động mạch vành trái, chỉ </strong><strong>một</strong><strong> ca có tuần hoàn bàng hệ:</strong></p>
+<p>—6 ca có STE ở aVR; 1 ca không có dịch chuyển ST ở aVR; 2 ca có STD ở aVR</p>
+<p>—3 ca có hình ảnh OMI phía Bắc (Northern OMI), 2 ca có RBBB + LAFB, 2 ca có STE aVR kèm STD lan tỏa, 2 ca có hình “vây cá mập” (Shark Fin) giống OMI LAD đoạn gần.</p>
+<h2 id="dien-tam-do-co-the-co-nhieu-kieu-bieu-hien-khac-nhau-trong-tac-than-chung-sau-day-toi-giai-thich">Điện tâm đồ có thể có nhiều kiểu biểu hiện khác nhau trong tắc thân chung.  Sau đây tôi giải thích:</h2>
+<p>Thứ nhất, ta không biết chắc tình trạng của động mạch tại thời điểm ghi điện tâm đồ. Nó có thể đã (vừa đủ) mở nhưng bị tắc vào thời điểm chụp mạch. Dù vậy, tắc hoàn toàn thân chung được dự đoán sẽ gây thiếu máu cục bộ dưới thượng tâm mạc (STE) ở các vùng cơ tim sau:</p>
+<h3 id="vecto-ste">Vectơ STE</h3>
+<p>1. Hướng ra trước (phía trước) do LAD (<strong>STE ở V2-V4, có thể cả V5, V6</strong>)</p>
+<p>2. Hướng sang bên (sang trái) do:</p>
+<p>2a. D1 (<strong>STE ở I, aVL, V5, V6</strong>) và</p>
+<p>2b. Động mạch mũ  (<strong>STE ở I, aVL V4-V6</strong>)</p>
+<p>3. Vách liên thất (hướng sang phải) từ LAD (<strong>STE ở aVR</strong>, <strong>V1</strong>, <strong>ST <em><u>chênh xuống</u></em> ở V4-V6</strong> soi gương)</p>
+<p><strong>ST chênh lên từ (2.) ở trên có thể triệt tiêu hoặc <em>đảo ngược</em></strong> cả STD soi gương ở V4-V6 lẫn STE ở V1 và aVR.</p>
+<p>4. Phía sau (do tắc động mạch mũ)   (<strong>ST chênh xuống ở các chuyển đạo trước</strong>)</p>
+<p><strong>     ST chênh xuống này có thể triệt tiêu STE ở các chuyển đạo trước!</strong></p>
+<p>5.  Hướng lên trên do thiếu máu cục bộ dưới thượng tâm mạc ở phần nhỏ của đáy tim, bao gồm vách liên thất, vốn hướng lên trên (STE ở V1, aVL, aVR)</p>
+<p><strong>     Điều này có thể dẫn đến ST <em>chênh xuống</em> ở các chuyển đạo dưới, hay <a href="https://www.annemergmed.com/article/S0196-0644(24)01250-2/fulltext#:~:text=An%20increasing%20body%20of%20evidence,infarction/nonocclusion%20myocardial%20infarction%20model." rel="noopener" target="_blank">OMI phía Bắc (Northern OMI)</a></strong></p>
+<p><strong>Mỗi <u>vectơ ST</u> sẽ đóng góp khác nhau ở những bệnh nhân khác nhau.  Chúng cộng lại với độ lớn khác nhau, tạo ra <em><u>nhiều kiểu</u></em> biểu hiện điện tâm đồ khác nhau.</strong></p>
+<p><strong>Ở cuối bài,</strong> tôi đã in lại phần về aVR trong bài báo của tôi về điện tâm đồ trong ACS đăng trên Canadian Journal of Cardiology, có một số cập nhật:</p>
+<p><a href="https://www.sciencedirect.com/science/article/abs/pii/S0828282X1731173X" rel="noopener" target="_blank">New Insights into the Use of the 12-lead Electrocardiogram for Diagnosing Acute Myocardial Infarction in the Emergency Department</a> (Những hiểu biết mới về việc sử dụng điện tâm đồ mười hai chuyển đạo để chẩn đoán nhồi máu cơ tim cấp tại khoa cấp cứu)</p>
+<h2 id="ca-1">Ca 1.</h2>
+<p><strong>Chris Mondie </strong><strong>thuộc <a href="https://www.rwjbh.org/for-healthcare-professionals/medical-education/newark-beth-israel-medical-center/emergency-medicine-residency/" rel="noopener" target="_blank">Newark Beth Israel Emergency Medicine Residency</a></strong><strong> (chương trình nội trú Y học cấp cứu) đã gửi ca 1 dưới đây về một trường hợp tắc 100% thân chung.  Các bình luận/câu hỏi của anh ấy được chèn bên dưới điện tâm đồ:</strong></p>
+<p>Một phụ nữ 50 mấy tuổi đến viện vì đau ngực từng cơn trong 3 ngày, nặng lên vào ngày đến viện, kèm vã mồ hôi và lan ra cánh tay trái, cùng với đau bụng.</p>
+<p>Đây là điện tâm đồ của bà:</p>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_LMCA-110-percent-occlusion.jpg"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_LMCA-110-percent-occlusion.jpg" alt="" width="1600" height="849" loading="lazy" decoding="async"></a></figure>
+<div class="khung-bang"><table><tbody><tr><td></td></tr><tr><td>Một STEMI rõ ràng, nhưng là động mạch nào? ST chênh lên ở aVR</td></tr></tbody></table></div>
+<p>Phòng thông tim (cath lab) đã được kích hoạt và phát hiện tắc 100% thân chung động mạch vành trái.</p>
+<p>Đây là <a href="https://www.annemergmed.com/article/S0196-0644(24)01250-2/fulltext#:~:text=An%20increasing%20body%20of%20evidence,infarction/nonocclusion%20myocardial%20infarction%20model." rel="noopener" target="_blank">hình ảnh “OMI phía Bắc” (Northern OMI).</a></p>
+<h3 id="binh-luan-cau-hoi-cua-chris">Bình luận/câu hỏi của Chris:</h3>
+<p>“Mọi ca “ST chênh lên ở aVR” mà tôi từng gặp đều là bệnh ba nhánh mạch vành, suy tuần hoàn (insufficiency), hoặc thiếu máu cục bộ dưới nội tâm mạc do tăng nhu cầu/toàn bộ thứ phát sau một tình trạng nhiễm khuẩn huyết/tăng nhu cầu chuyển hóa tiềm ẩn nào đó.”<br><br>“Câu hỏi của tôi là: chúng tôi được dạy rằng ST chênh lên ở aVR kèm ST chênh xuống lan tỏa có thể gợi ý tổn thương thân chung động mạch vành trái (LMCA).”</p>
+<p><span class="c-do"><strong>         Smith</strong>: điều được dạy này là <strong>sai</strong>; xem bài này: </span><a href="https://drsmithsecgblog.com/2014/08/the-difference-between-left-main.html" rel="noopener" target="_blank">ST Elevation in Lead aVR, with diffuse ST depression, does not represent left main occlusion</a><span class="c-xanh"> (ST chênh lên ở chuyển đạo aVR kèm ST chênh xuống lan tỏa không biểu thị tắc thân chung).</span></p>
+<p>“Trong ca của tôi ở trên quả thật có STE đáng kể ở aVR cũng như V1, cũng có STE ở aVL và V2, điều này dường như trái với khẳng định “STD lan tỏa”….   Tại sao chúng ta không thấy STE thành bên trong hình ảnh kinh điển được dạy là “STE ở aVR, và STD lan tỏa”? Nếu tổn thương ở đoạn gần như vậy, chẳng phải thông thường ta sẽ thấy STE thành bên thay vì STD ở các chuyển đạo bên hay sao?”</p>
+<p><strong>Smith trả lời về ca bệnh: “</strong>Không có gì ngạc nhiên khi điện tâm đồ này là của một bệnh nhân tắc cấp thân chung.” và <strong>tôi đã gửi anh ấy phần giải thích về vectơ ST ở trên.</strong></p>
+<h2 id="ca-2">Ca 2.</h2>
+<p>Đây là một ca tắc thân chung khác đã được xác định, ở một phụ nữ trẻ đến viện vì phù phổi đột ngột, được ghi điện tâm đồ này, sau đó ngừng tim và được hồi sức thành công sau 30 phút hồi sinh tim phổi (CPR):</p>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_20-something-yo-acute-pulmonary-edema-later-arrested.jpg"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_20-something-yo-acute-pulmonary-edema-later-arrested.jpg" alt="" width="1600" height="746" loading="lazy" decoding="async"></a></figure>
+<div class="khung-bang"><table><tbody><tr><td></td></tr><tr><td>Bản ghi có nhịp nhanh xoang kèm RBBB và LAFB, và STE ở V2-V6 cũng như I, aVL<br>Hình ảnh này cũng có thể gặp y như vậy trong tắc LAD.<br><strong>Bệnh nhân đã được xác định tắc 100% thân chung động mạch vành trái</strong><strong>.  Không có dịch chuyển ST ở aVR</strong>.</td></tr></tbody></table></div>
+<p>Hình ảnh RBBB/LAFB này cũng là hình ảnh thường gặp nhất trong loạt ca gồm 7 trường hợp tắc hoàn toàn thân chung của <a href="https://www.sciencedirect.com/science/article/abs/pii/S002207361200132X" rel="noopener" target="_blank">Fiol và cs. (tài liệu tham khảo 64 bên dưới)</a>.</p>
+<p><a href="http://eurheartj.oxfordjournals.org/content/33/1/86.short" rel="noopener" target="_blank">Xem bài báo này của Widimsky và cs.,</a> cho thấy mối liên quan chặt chẽ của RBBB, đặc biệt khi kèm LAFB, với tắc LAD.  <strong>Hơn nữa, trong số 35 bệnh nhân tắc cấp thân chung động mạch vành trái, 9 người có RBBB (phần lớn kèm LAFB) trên điện tâm đồ lúc nhập viện.</strong></p>
+<h2 id="ca-3">Ca 3.</h2>
+<p>Đây là một ca tắc hoàn toàn thân chung khác: <a href="https://drsmithsecgblog.com/2018/08/total-eclipse-of-heart.html" rel="noopener" target="_blank">Total eclipse of the heart</a> (Nhật thực toàn phần của trái tim) — do Pendell viết</p>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_totaleclipseoftheheart.jpg"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_totaleclipseoftheheart.jpg" alt="" width="1170" height="549" loading="lazy" decoding="async"></a></figure>
+<div class="khung-bang"><table><tbody><tr><td></td></tr><tr><td>ST chênh xuống ở aVR</td></tr></tbody></table></div>
+<p>Và có kẻ thêm các đường để chỉ ra điểm kết thúc của QRS:</p>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_totaleclipseoftheheart-withlines.jpg"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_totaleclipseoftheheart-withlines.jpg" alt="" width="963" height="369" loading="lazy" decoding="async"></a></figure>
+<div class="khung-bang"><table><tbody><tr><td></td></tr><tr><td>ST chênh xuống ở aVR</td></tr></tbody></table></div>
+<h2 id="ca-4">Ca 4.</h2>
+<p>Đây là một ca tắc 100% thân chung khác do Rohin Francis của Medlife Crisis đóng góp (<a href="https://twitter.com/MedCrisis" rel="noopener" target="_blank">https://twitter.com/MedCrisis</a>)</p>
+<h2 id="dien-tam-do-hinh-vay-ca-map-shark-fin-o-i-avl-v4-va-v5-dong-mach-nao-goi-y-benh-nhan-dang-soc-va-da-duoc-dat-ecmo">Điện tâm đồ hình “vây cá mập” (shark fin) ở I, aVL, V4 và V5. Động mạch nào? Gợi ý: bệnh nhân đang sốc và đã được đặt ECMO</h2>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_SmithSharkECG.jpg"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_SmithSharkECG.jpg" alt="" width="1600" height="823" loading="lazy" decoding="async"></a></figure>
+<div class="khung-bang"><table><tbody><tr><td></td></tr><tr><td>ST chênh xuống ở aVR</td></tr></tbody></table></div>
+<p>Đây là phim chụp mạch vành của ca bệnh do Rohin gửi:</p>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_SmithSharkGIF.gif"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_SmithSharkGIF.gif" alt="" width="410" height="410" loading="lazy" decoding="async"></a></figure>
+<h2 id="ca-5">Ca 5.</h2>
+<p>Đây là một ca hẹp 95% thân chung với dòng chảy TIMI-1: <a href="https://drsmithsecgblog.com/2014/10/a-hybrid-of-de-winters-t-waves-and.html" rel="noopener" target="_blank">A Hybrid of de Winter’s T-waves and Diffuse Subendocardial Ischemia: Left Main Ischemia</a> (Dạng lai giữa sóng T de Winter và thiếu máu cục bộ dưới nội tâm mạc lan tỏa: thiếu máu cục bộ do thân chung)</p>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_FirstEDECG.jpg"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_FirstEDECG.jpg" alt="" width="1515" height="727" loading="lazy" decoding="async"></a></figure>
+<div class="khung-bang"><table><tbody><tr><td></td></tr><tr><td>ST chênh lên ở aVR.  Nhưng ca này hơi khác: vẫn còn một chút dòng chảy tối thiểu, như bạn có thể thấy trên phim chụp mạch vành bên dưới. Và do đó đây là dạng lai giữa sóng T de Winter và thiếu máu cục bộ dưới nội tâm mạc lan tỏa.</td></tr></tbody></table></div>
+<p>Đây là phim chụp mạch vành:</p>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_angiogramwitharrows.jpg"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_angiogramwitharrows.jpg" alt="" width="839" height="877" loading="lazy" decoding="async"></a></figure>
+<div class="khung-bang"><table><tbody><tr><td></td></tr><tr><td>Các mũi tên đen là thân chung bị hẹp rất khít, mũi tên đỏ là LAD còn dòng chảy, và mũi tên vàng là động mạch mũ còn dòng chảy.</td></tr></tbody></table></div>
+<h2 id="ca-6">Ca 6.</h2>
+<h2 id="hay-canh-giac-voi-dau-that-nguc-tang-dan-crescendo-angina-o-benh-nhan-da-biet-co-benh-dong-mach-vanh-cad">Hãy cảnh giác với đau thắt ngực tăng dần (crescendo angina) ở bệnh nhân đã biết có bệnh động mạch vành (CAD)</h2>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_oldanterioroldinferiorMI-nowwithSTE.jpg"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_oldanterioroldinferiorMI-nowwithSTE.jpg" alt="" width="1391" height="483" loading="lazy" decoding="async"></a></figure>
+<div class="khung-bang"><table><tbody><tr><td></td></tr><tr><td>ST chênh lên ở aVR.  Đây là một ca <a href="https://www.annemergmed.com/article/S0196-0644(24)01250-2/fulltext#:~:text=An%20increasing%20body%20of%20evidence,infarction/nonocclusion%20myocardial%20infarction%20model." rel="noopener" target="_blank">OMI phía Bắc</a> khác, với STE ở aVR, V1, aVL và V2.</td></tr></tbody></table></div>
+<h2 id="ca-7">Ca 7.</h2>
+<p>Một ca tắc thân chung khác, nhưng ca này lại cho thấy thiếu máu cục bộ dưới nội tâm mạc.  Tại sao?</p>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_DiffuseSTdepressionduetoLMocclusion.jpg"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_DiffuseSTdepressionduetoLMocclusion.jpg" alt="" width="1019" height="256" loading="lazy" decoding="async"></a></figure>
+<div class="khung-bang"><table><tbody><tr><td></td></tr><tr><td>Đây là ca tắc cấp 100% thân chung. <strong>Bản ghi cho thấy hình ảnh Aslanger, với ST chênh xuống lan tỏa (thiếu máu cục bộ dưới nội tâm mạc), NHƯNG cũng có STE ở chuyển đạo III, cho thấy OMI thành dưới</strong><br>Điều này đi ngược nguyên tắc của tôi rằng ST chênh xuống lan tỏa, kèm STE soi gương ở aVR, <strong>KHÔNG </strong>gặp trong tắc hoàn toàn.<br>Tại sao?<br>Dưới đây là phim chụp mạch vành.<br>Bạn sẽ thấy có tuần hoàn bàng hệ từ RCA.</td></tr></tbody></table></div>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_LMocclusionLMangio.jpg"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_LMocclusionLMangio.jpg" alt="" width="800" height="726" loading="lazy" decoding="async"></a></figure>
+<div class="khung-bang"><table><tbody><tr><td></td></tr><tr><td>Thân chung quả thật bị tắc 100%</td></tr></tbody></table></div>
+<p>Nhưng phim chụp RCA cho thấy có tuần hoàn bàng hệ từ RCA cấp máu dưới thượng tâm mạc cho các vùng khác:</p>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_LMocclusionRCAcollaterals.jpg"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_LMocclusionRCAcollaterals.jpg" alt="" width="800" height="710" loading="lazy" decoding="async"></a></figure>
+<div class="khung-bang"><table><tbody><tr><td></td></tr><tr><td>Toàn bộ dòng chảy ở phía trên bên phải đang đi từ RCA vào vùng chi phối của LAD</td></tr></tbody></table></div>
+<h2 id="ca-8">Ca 8.</h2>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_Screen20Shot202023-04-1920at2010.32.3920AM.jpg"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2019_08_Screen20Shot202023-04-1920at2010.32.3920AM.jpg" alt="" width="1600" height="757" loading="lazy" decoding="async"></a></figure>
+<p>Đây lại là <a href="https://drsmithsecgblog.com/tag/aslanger-pattern/" rel="noopener" target="_blank">OMI phía Bắc</a>, với STE ở aVR, V1, aVL và V2.  Vectơ ST hướng lên trên với ST chênh xuống soi gương ở thành dưới</p>
+<h2 id="ca-9">Ca 9.</h2>
+<p>Đây lại là <a href="https://drsmithsecgblog.com/tag/aslanger-pattern/" rel="noopener" target="_blank">OMI phía Bắc</a>, với STE ở aVR, V1, aVL và V2.  Vectơ ST hướng lên trên với ST chênh xuống soi gương ở thành dưới</p>
+<figure><a class="o-anh" href="2019-08-09-how-does-acute-left-main-occlusion_anh/2025_12_ECG-SSmith-Case-9-from-August-2019-scaled.jpg"><img src="2019-08-09-how-does-acute-left-main-occlusion_anh/2025_12_ECG-SSmith-Case-9-from-August-2019-scaled.jpg" alt="" width="1600" height="664" loading="lazy" decoding="async"></a></figure>
+<p>Tắc 100% thân chung động mạch vành trái.  Đáng tiếc, bệnh nhân này đã không thể cứu được.</p>
+<h2 id="phan-duoi-day-duoc-phong-theo-va-cap-nhat-tu-bai-bao-cua-toi-tren-canadian-journal-of-cardiology">Phần dưới đây được phỏng theo (và cập nhật) từ bài báo của tôi trên Canadian Journal of Cardiology:</h2>
+<p><a href="https://www.sciencedirect.com/science/article/abs/pii/S0828282X1731173X" rel="noopener" target="_blank">New Insights into the Use ofthe 12-Lead Electrocardiogram for Diagnosing Acute Myocardial Infarction in the Emergency Department. </a> (Những hiểu biết mới về việc sử dụng điện tâm đồ mười hai chuyển đạo để chẩn đoán nhồi máu cơ tim cấp tại khoa cấp cứu)</p>
+<h3 id="chuyen-dao-avr-trong-hoi-chung-vanh-cap-61">Chuyển đạo aVR trong hội chứng vành cấp (61)</h3>
+<p>Nhiều chuyên gia coi hình ảnh điện tâm đồ STE ở aVR, kèm ST chênh xuống lan tỏa ở nơi khác (ở đây gọi là “hình ảnh STE aVR”), là biểu hiện của OMI thân chung (LM).(7)  Hướng dẫn STEMI 2013 của ACC/AHA coi đây là một “tương đương STEMI”, trong đó điều trị tiêu sợi huyết không bị chống chỉ định (mức bằng chứng B, không có nhóm khuyến cáo cụ thể).(16) Tuy nhiên, các kết luận này dựa trên những nghiên cứu mà tổn thương thân chung không phải là tắc gần hoàn toàn hoặc tắc hoàn toàn thực sự (tức là dòng chảy TIMI 0/1).(61,62)  Giới can thiệp định nghĩa bệnh thân chung gây tắc nghẽn là &gt;50% theo FFR, hoặc hẹp ≥75%,(63) nhưng can thiệp khẩn hoặc cấp cứu đối với những tổn thương không đạt các ngưỡng này chỉ bắt buộc khi đó là tổn thương có huyết khối và bệnh nhân có triệu chứng thiếu máu cục bộ kháng trị (tức là không hết khi dùng nitrat, thuốc kháng tiểu cầu và thuốc chống huyết khối). (Xem 3 ví dụ trong phụ lục: Hình S7a, S7b và S7c)   Mặc dù gần một nửa số bệnh nhân có STE ≥1 mm ở aVR do ACS sẽ cần phẫu thuật bắc cầu chủ vành để tái thông mạch,(61) động mạch gây nhồi máu thường không phải là thân chung, mà là LAD hoặc bệnh 3 nhánh mạch vành nặng. Quan trọng hơn, các dấu hiệu điện tâm đồ như vậy thường do các nguyên nhân không gây tắc (ví dụ LVH nền, thiếu máu cục bộ do tăng nhu cầu thứ phát sau suy hô hấp, hẹp van động mạch chủ, sốc mất máu).</p>
+<p><strong>Knotts</strong> và cs. (xem chi tiết bên dưới) nhận thấy chỉ 23% bệnh nhân có hình ảnh STE aVR có bất kỳ bệnh thân chung nào (ít hơn nếu định nghĩa là hẹp ≥ 50%). Chỉ 28% bệnh nhân có ACS ở bất kỳ nhánh mạch nào, và trong số đó, thân chung là thủ phạm ở chỉ 49% (14% tổng số ca).(56) Đây là một dấu hiệu<br>có sẵn từ nền ở 62% bệnh nhân, thường do LVH.</p>
+<p><strong>Harhash</strong> và cs. (xem bên dưới) nhận thấy trong số 80 bệnh nhân có STE ở aVR được chụp mạch vành, tắc mạch vành được cho là thủ phạm chỉ được xác định ở 8 bệnh nhân (10%), và không tổn thương nào là ở thân chung hay LAD.</p>
+<p>Do đó, một số bài tổng quan của chuyên gia nhấn mạnh độ đặc hiệu thấp của hình ảnh STE<br>aVR, và ưu tiên gọi nó là thiếu máu cục bộ dưới nội tâm mạc toàn chu vi; trong<br>hội chứng này, STE ở aVR là STE soi gương, soi gương với một vectơ ST chênh xuống hướng về<br>các chuyển đạo II và V5.(8,10,61)  Hình ảnh STE aVR cũng không nhạy đối với OMI thân chung. Mặt khác, STEMI thành trước kèm đồng thời blốc nhánh phải mới và blốc phân nhánh<br>trái trước gợi ý mạnh OMI thân chung.(64 65)  (Xem ví dụ điện tâm đồ 12 chuyển đạo trong phụ lục: Hình<br>S8)</p>
+<p>Cần nhấn mạnh lại rằng OMI thân chung thực sự (tức là dòng chảy TIMI 0) hiếm gặp ở khoa cấp cứu,<br>vì phần lớn hoặc tử vong trước khi đến viện hoặc được nhận biết trên lâm sàng do sốc tim.<br>Do đó, độ đặc hiệu được báo cáo của STE ở aVR đối với OMI thân chung dẫn đến giá trị tiên đoán<br>dương rất thấp. Trong số những người đến được khoa cấp cứu, nhiều người biểu hiện STE rõ ràng.(65, 64, 61)   ACC/AHA nêu rằng thuốc tiêu sợi huyết không bị chống chỉ định đối với STD lan tỏa<br>“đi kèm với” STE ở aVR. Do độ đặc hiệu kém của hình ảnh này đối với OMI thân chung, chúng tôi<br>đề nghị chỉ nên cân nhắc thuốc tiêu sợi huyết ở những bệnh nhân có ST chênh xuống<br>sâu, rõ ràng do ACS, kháng trị với mọi biện pháp điều trị nội khoa khác,<br>và chỉ khi hoàn toàn không thể thực hiện PCI.</p>
+<h3 id="chuyen-dao-avr-trong-stemi">Chuyển đạo aVR trong STEMI</h3>
+<p>Một số bệnh nhân có điện tâm đồ đã đạt tiêu chuẩn STEMI quy ước cũng có thể<br>có STE ở chuyển đạo aVR. Dấu hiệu này không làm thay đổi nhu cầu tiến hành tái tưới máu<br>cấp cứu, dù có thể gợi ý tiên lượng xấu hơn.(61,66) Ở bệnh nhân vốn đã có<br>STE đủ để chẩn đoán, STE thêm ở aVR không biểu thị OMI thân chung và không giúp ích trong<br>chẩn đoán động mạch liên quan đến nhồi máu hay vị trí tắc.(67) Dưới 3% STEMI<br>thành trước có OMI thân chung, và phần lớn được nhận biết trên lâm sàng do sốc tim. (68, 69)</p>
+<p><strong>Cuối cùng</strong>, có một loạt ca tắc hoàn toàn thân chung trong y văn (tài liệu tham khảo 64), và loạt ca này cũng có 7 ca.  Dưới đây là một đoạn từ công trình đó; phần giới thiệu của công trình này cũng mở đầu bằng nhận định rằng phần lớn bệnh nhân tắc hoàn toàn thân chung không sống sót, và chỉ 3 trong số 7 ca này sống sót:</p>
+<p>“Theo hiểu biết của chúng tôi, chưa có loạt ca nào mô tả tắc thân chung động mạch vành trái (LMT) (dòng chảy TIMI = 0) với hình ảnh STEMI được công bố trong y văn. Chúng tôi nhận thấy hình ảnh điện tâm đồ điển hình nhất trong loạt ca nhỏ của chúng tôi là hình ảnh được mô tả trong tắc đoạn gần của một LAD dài, gồm ST chênh lên ở các chuyển đạo trước tim từ V2 đến V4 cho tới V6 và ở các chuyển đạo I và aVL, cũng như ST chênh xuống ở các chuyển đạo dưới16 và thường kèm RBBB và LAH (LAFB). Trong tắc hoàn toàn LMT, có sự liên quan của động mạch mũ trái, vốn tạo ra ST chênh xuống ở V1 và aVR, và do đó làm giảm ST chênh lên ở cả hai chuyển đạo này. Điều này gây ra việc không có các thay đổi ST ở V1 và aVR, vốn thường gặp trong tắc hoàn toàn một LAD dài. Tuy nhiên, chúng ta phải nhớ rằng trong các trường hợp tắc LAD đoạn gần trước nhánh vách thứ nhất, ST chênh lên không phải lúc nào cũng có ở V1 (mặc dù tắc LAD ở đoạn gần trước nhánh xuyên vách thứ nhất) nếu tồn tại một nhánh nón lớn của động mạch vành phải (RCA)17 cùng với nhánh vách thứ nhất tưới máu cho phần cao của vách liên thất. Sự tưới máu kép cho phần cao của vách liên thất này giúp bảo vệ khỏi thiếu máu cục bộ. Những bệnh nhân tắc LMT còn sống sót thường có RCA ưu thế rất mạnh và tình trạng huyết động kém khi so với những bệnh nhân tắc LAD đoạn gần.”</p>
+<h2 id="2-nghien-cuu-quan-trong-duoc-sao-chep-tu-bai-nay">2 nghiên cứu quan trọng được sao chép từ bài này</h2>
+<h3 id="1-knotts-va-cs-nhan-thay-cac-dau-hieu-dien-tam-do-nhu-vay-ste-o-avr-chi-bieu-thi-acs-than-chung-o-14-cac-dien-tam-do-do">1. Knotts và cs. nhận thấy các dấu hiệu điện tâm đồ như vậy (STE ở aVR) chỉ biểu thị ACS thân chung ở 14% các điện tâm đồ đó:</h3>
+<p>Chỉ 23% bệnh nhân có hình ảnh STE aVR có <em>bất kỳ</em> bệnh thân chung nào (ít hơn nếu định nghĩa là hẹp ≥ 50%). Chỉ 28% bệnh nhân có ACS ở bất kỳ nhánh mạch nào, và trong số đó, thân chung là thủ phạm ở chỉ 49% (14% tổng số ca).  Đây là một dấu hiệu có sẵn từ nền ở 62% bệnh nhân, thường do LVH.</p>
+<p><strong>Tài liệu tham khảo</strong>: Knotts RJ, Wilson JM, Kim E, Huang HD, Birnbaum Y. Diffuse ST depression with ST elevation in aVR: Is this pattern specific for global ischemia due to left main coronary artery disease? J Electrocardiol 2013;46:240-8. (ST chênh xuống lan tỏa kèm ST chênh lên ở aVR: hình ảnh này có đặc hiệu cho thiếu máu cục bộ toàn bộ do bệnh thân chung động mạch vành trái không?)</p>
+<h3 id="2-hien-da-co-mot-bai-bao-cong-bo-nam-2019-chung-minh-dieu-nay-mot-cach-khong-con-nghi-ngo-du-cung-lam-ro-rang-hinh-anh-nay-di-kem-ty-le-tu-vong-rat-cao">2.  Hiện đã có một bài báo công bố năm 2019 chứng minh điều này một cách không còn nghi ngờ, dù cũng làm rõ rằng hình ảnh này đi kèm tỷ lệ tử vong rất cao.</h3>
+<p><a href="https://www.sciencedirect.com/science/article/abs/pii/S000293431930049X" rel="noopener" target="_blank">https://www.sciencedirect.com/science/article/abs/pii/S000293431930049X</a> (tóm tắt bài báo trên ScienceDirect)<br>Harhash AA và cs. <a href="https://www.amjmed.com/article/S0002-9343(19)30049-X/fulltext" rel="noopener" target="_blank">aVR ST Segment Elevation: Acute STEMI or Not? Incidence of an Acute Coronary Occlusion</a> (Đoạn ST chênh lên ở aVR: STEMI cấp hay không? Tỷ lệ tắc mạch vành cấp). Tạp chí American Journal of Medicine 132(5):622-630; tháng Năm năm 2019.</p>
+<p><span class="c-nhat">= = =</span></p>
+<h3 id="duoi-day-la-phan-tom-tat-cua-harhash-va-cs">Dưới đây là phần Tóm tắt của Harhash và cs.</h3>
+<p><strong>Bối cảnh</strong>: Việc nhận diện <a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/st-segment-elevation-myocardial-infarction" rel="noopener" target="_blank">nhồi máu cơ tim ST chênh lên</a> (STEMI) có ý nghĩa sống còn vì <a href="https://www.sciencedirect.com/topics/nursing-and-health-professions/reperfusion" rel="noopener" target="_blank">tái tưới máu</a> sớm có thể cứu vớt <a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/myocardium" rel="noopener" target="_blank">cơ tim</a> và tăng tỷ lệ sống còn. ST chênh lên (STE) ở chuyển đạo tăng thế vectơ phải (aVR), kèm theo ST chênh xuống ở nhiều chuyển đạo, đã được hướng dẫn STEMI năm 2013 công nhận là một dấu hiệu của tắc cấp thân chung động mạch vành trái hoặc tắc đoạn gần <a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/left-anterior-descending-coronary-artery" rel="noopener" target="_blank">động mạch liên thất trước</a>. Chúng tôi khảo sát tỷ lệ có một động mạch vành bị tắc cấp ở những bệnh nhân đến viện với STE-aVR kèm ST chênh xuống ở nhiều chuyển đạo.</p>
+<p><strong>Phương pháp</strong>: Xác định các trường hợp kích hoạt báo động STEMI từ tháng Một năm 2014 đến tháng Tư năm 2018 tại Trung tâm Y khoa Đại học Arizona (University of Arizona Medical Center). Toàn bộ <a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/electrocardiogram" rel="noopener" target="_blank">điện tâm đồ</a> (ECG) và <a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/angiography" rel="noopener" target="_blank">phim chụp mạch</a> vành được các <a href="https://www.sciencedirect.com/topics/nursing-and-health-professions/cardiologist" rel="noopener" target="_blank">bác sĩ tim mạch</a> giàu kinh nghiệm phân tích theo kiểu đọc mù. Trong 847 lần kích hoạt báo động STEMI, có 99 bệnh nhân (12%) được xác định có STE-aVR kèm ST chênh xuống ở nhiều chuyển đạo.</p>
+<p><strong>Bình luận của Smith: </strong>đây là một quần thể rất hạn chế, vì chỉ bao gồm những trường hợp đã được kích hoạt báo động STEMI. Nhiều khả năng còn nhiều bệnh nhân khác có STE-aVR nhưng không được kích hoạt báo động STEMI vì không bị nghi ngờ có ACS.</p>
+<p><strong>Kết quả</strong>: Chụp mạch vành cấp cứu được thực hiện ở 80% (79/99) bệnh nhân. Ba mươi sáu bệnh nhân (36%) nhập viện trong tình trạng ngừng tim, và 78% (28/36) trong số đó được chụp mạch vành cấp cứu. <a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/coronary-occlusion" rel="noopener" target="_blank">Tắc mạch vành</a> được cho là thủ phạm chỉ được xác định ở 8 bệnh nhân (10%), và không tổn thương nào trong số đó là tắc thân chung động mạch vành trái hay tắc động mạch liên thất trước. Tổng cộng 47 bệnh nhân (59%) được phát hiện có <a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/coronary-artery-disease" rel="noopener" target="_blank">bệnh mạch vành</a> nặng, nhưng phần lớn vẫn còn dòng chảy phía xa. Ba mươi hai bệnh nhân (40%) có bệnh nhẹ đến vừa hoặc không có bệnh đáng kể. Tuy nhiên, STE-aVR kèm ST chênh xuống ở nhiều chuyển đạo có liên quan với tỷ lệ tử vong trong bệnh viện 31%, so với chỉ 6.2% ở một phân nhóm 190 bệnh nhân STEMI không có STE-aVR (p nhỏ hơn 0.00001).</p>
+<p><strong>Bình luận</strong>: <strong>Một lần nữa</strong>, nghiên cứu này không bao gồm rất nhiều bệnh nhân STE-aVR không được kích hoạt báo động, nên số người có ACS còn ít hơn nữa, và tỷ lệ tử vong trong nhóm này cao hơn nhiều so với toàn bộ bệnh nhân STE-aVR.</p>
+<p><strong>Kết luận:</strong> STE-aVR kèm ST chênh xuống ở nhiều chuyển đạo chỉ liên quan đến tắc mạch vành do huyết khối cấp ở 10% bệnh nhân. Việc kích hoạt báo động STEMI thường quy khi có STE-aVR để <a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/revascularization" rel="noopener" target="_blank">tái thông mạch</a> cấp cứu là không có cơ sở, mặc dù <a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/catheterization" rel="noopener" target="_blank">thông tim</a> khẩn (thay vì cấp cứu) có vẻ là quan trọng.</p>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo</h2>
+<p>Rokos IC, French WJ, Mattu A, và cs. Appropriate cardiac cath lab activation:<br>optimizing electrocardiogram interpretation and clinical decision-making for acute STelevation myocardial infarction. Tạp chí American heart journal 2010;160:995-1003, .e1-8.</p>
+<p>O’Gara PT, Kushner FG, Ascheim DD, và cs. 2013 ACCF/AHA guideline for the<br>management of ST-elevation myocardial infarction: a report of the American College of<br>Cardiology Foundation/American Heart Association Task Force on Practice Guidelines.<br>Tạp chí Journal of the American College of Cardiology 2013;61:e78-140.</p>
+<p>Smith SW. Updates on the Electrocardiogram in Acute Coronary Syndromes.<br>Tạp chí Current Emergency and Hospital Medicine Reports 2013;1:43-52.</p>
+<p>Jong GP, Ma T, Chou P, Shyu MY, Tseng WK, Chang TC. Reciprocal changes in<br>12-lead electrocardiography can predict left main coronary artery lesion in patients with<br>acute myocardial infarction. Tạp chí International heart journal 2006;47:13-20.</p>
+<p>Stone GW, Sabik JF, Serruys PW, và cs. Everolimus-Eluting Stents or Bypass<br>Surgery for Left Main Coronary Artery Disease. Tạp chí The New England journal of medicine<br>2016;375:2223-35.</p>
+<p>Fiol M, Carrillo A, Rodriguez A, Pascual M, Bethencourt A, Bayes de Luna A.<br>Electrocardiographic changes of ST-elevation myocardial infarction in patients with complete occlusion of the left main trunk without collateral circulation: differential<br>diagnosis and clinical considerations. Tạp chí J Electrocardiol 2012;45:487-90.</p>
+<p>Widimsky P, Rohac F, Stasek J, và cs. Primary angioplasty in acute myocardial<br>infarction with right bundle branch block: should new onset right bundle branch block be<br>added to future guidelines as an indication for reperfusion therapy? Tạp chí European heart<br>journal 2012;33:86-95.</p>
+<p>Kukla P, Bryniarski L, Dudek D, Krolikowski T, Kawecka Jaszcz K. Prognostic<br>significance of ST segment changes in lead aVR in patients with acute inferior<br>myocardial infarction with ST segment elevation. Tạp chí Kardiologia polska 2012;70:111-8.</p>
+<p>Kosuge M, Ebina T, Hibi K, và cs. An early and simple predictor of severe left<br>main and/or three-vessel disease in patients with non-ST-segment elevation acute<br>coronary syndrome. Tạp chí The American journal of cardiology 2011;107:495-500.</p>
+<p>Zoghbi GJ, Misra VK, Brott BC, và cs. ST Elevation Myocardial Infarction Due To<br>LEFT Main Culprit Lesions: Percutaneous Coronary Intervention Outcomes. Tạp chí Journal of<br>the American College of Cardiology 2010;55:A183.E1712.</p>
+<p>Kurisu S, Inoue I, Kawagoe T, và cs. Electrocardiographic features in patients with<br>acute myocardial infarction associated with left main coronary artery occlusion. Tạp chí Heart<br>(British Cardiac Society) 2004;90:1059-60.</p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
