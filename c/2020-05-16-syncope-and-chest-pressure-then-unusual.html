@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>16/05/2020 — Ngất và tức ngực, sau đó là một nhịp chậm bất thường kèm sốc</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #1153 · DR. SMITH’S ECG BLOG</div>
+   <h1>16/05/2020 — Ngất và tức ngực, sau đó là một nhịp chậm bất thường kèm sốc</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/syncope-and-chest-pressure-then-unusual/" target="_blank" rel="noopener">"Syncope and Chest Pressure, then an Unusual Bradycardia with Shock"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 15 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p><strong>Bình luận về ca này là của Jerry Jones, và nó hay đến mức tôi dán nó lên đầu bài để mọi người đều đọc được:</strong></p>
+<p><strong><br></strong><br>“Khi vấn đề chỉ là nhịp chậm xoang, nguyên nhân thường là do tăng tác động phó giao cảm, làm ổ tạo nhịp xoang dịch chuyển từ phần trên nút SA xuống phần dưới nút SA (“càng thấp càng chậm”). Nếu nút SA bị thiếu máu cục bộ do động mạch nút SA bị tổn hại, bạn sẽ dễ gặp các khoảng ngưng xoang, blốc SA, ngưng xoang (SA arrest) hoặc rung nhĩ hơn. RCA cấp máu cho động mạch nút SA (về cơ bản đây là nguồn cấp máu cho TOÀN BỘ nhĩ phải) trong 55% trường hợp và LCx cấp máu cho động mạch này trong 45% trường hợp – và điều này không liên quan gì đến ưu thế mạch vành! Một LCx không ưu thế vẫn có thể cho ra động mạch nút SA.”</p>
+<p>“Mặt khác, nút AV không đáp ứng với tác động phó giao cảm mạnh như nút SA: dù phần trên nút AV chắc chắn bị ảnh hưởng, tác động của thần kinh tự chủ giảm đi đáng kể khi xuống tới phần dưới nút AV. Vì vậy, ảnh hưởng lên nút AV trong một nhồi máu cơ tim thành dưới đang diễn ra, khi do thiếu máu cục bộ của động mạch nút AV – thường dẫn đến blốc AV độ 3 (dù thường chỉ thoáng qua). Blốc AV độ một và blốc Mobitz I (còn gọi là dẫn truyền Wenckebach) thường qua trung gian phó giao cảm ở phần trên đến phần giữa nút AV (khi thay đổi là cấp tính). Blốc Mobitz II không xảy ra ở nút AV (như bạn đã biết) và là do tắc LAD.”</p>
+<h3 id="tai-lieu-tham-khao">Tài liệu tham khảo:</h3>
+<p>1. The Anatomy and Physiology of the Sinoatrial Node—A Contemporary Review (Giải phẫu và sinh lý nút xoang nhĩ — Một tổng quan cập nhật)</p>
+<p>Tác giả: OLIVER MONFREDI, M.B.CH.B.,* HALINA DOBRZYNSKI, PH.D.,* TAPAS MONDAL, M.D.,†</p>
+<p>MARK R. BOYETT, PH.D.,* và GWILYM M. MORRIS, BM.B.CH.*</p>
+<p>PACE, Tập 33, tháng Mười Một năm 2010</p>
+<p>2. PAUL MARTIN, The Influence of the Parasympathetic Nervous System on Atrioventricular Conduction (Ảnh hưởng của hệ thần kinh phó giao cảm lên dẫn truyền nhĩ thất)</p>
+<p>Circulation Research, Tập 41, Số 5, tháng Mười Một năm 1977</p>
+<p>3. Wit, Wellens, Josephson, Electrophysiological Foundations of Cardiac Arrhythmias (Nền tảng điện sinh lý của rối loạn nhịp tim), Nhà xuất bản Cardiotext, 2017</p>
+<p>4. Tôi cũng đính kèm một bài về giải phẫu mạch vành mà tôi đã làm thất lạc thông tin trích dẫn.</p>
+<p><strong><br></strong><br><strong><u>Ca này do một trong những bác sĩ nội trú năm 3 xuất sắc của chúng tôi, Aaron Robinson, cung cấp.</u></strong></p>
+<h2 id="mot-phu-nu-60-may-tuoi-bi-ngat">Một phụ nữ 60 mấy tuổi bị ngất</h2>
+<p>Một phụ nữ 60 mấy tuổi đến một cơ sở y tế vì ngất.</p>
+<p>Bà có tiền sử suy tim sung huyết (CHF), tăng áp phổi, bệnh động mạch vành (<strong>CAD</strong>) đã <strong>CABG</strong>, và bệnh thận giai đoạn cuối (ESRD) đang chạy thận nhân tạo. Bà vừa chạy thận một lần vào ngày hôm trước.</p>
+<p>Dấu hiệu sinh tồn trước viện: huyết áp 115/70, nhịp tim 65, nhịp thở 12. Bệnh nhân không được ghi điện tâm đồ 12 chuyển đạo trước viện.</p>
+<p>Bà đến khoa cấp cứu (ED) trong tình trạng tỉnh, tiếp xúc tốt, chỉ than <strong>tức ngực nhẹ</strong>.</p>
+<p>Điện tâm đồ 12 chuyển đạo được ghi ngay lập tức:</p>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_EKG1-inWenckebachseries.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_EKG1-inWenckebachseries.jpg" alt="" width="1600" height="845" loading="lazy" decoding="async"></a><figcaption>Aaron cho tôi xem bản ghi này và đây là những gì tôi nói:
+Gợi ý nhồi máu cơ tim dưới-sau, nhưng chưa đủ chẩn đoán.<br>Nhịp xoang (với một nhát dẫn truyền lệch hướng, nhát #2, có thể là nhiễu)<br>Có sóng T đảo ngược ở aVL, đây là một dấu hiệu nhẹ của nhồi máu cơ tim thành dưới.<br>Có một chút ST chênh xuống dốc xuống ở V2 gợi ý nhồi máu cơ tim thành sau.<br>Nhưng không có gì đủ để chẩn đoán.</figcaption></figure>
+<h2 id="dien-bien-lam-sang">Diễn biến lâm sàng</h2>
+<p>Siêu âm tim tại giường không thấy tràn dịch màng ngoài tim, không có đường B, nhưng thất phải giãn kèm vách liên thất bị đẩy cong, nên thuyên tắc phổi (PE) nằm trong chẩn đoán phân biệt.  Tuy nhiên, xem lại hồ sơ cho thấy bà có tiền sử tăng áp phổi và thất phải lớn trên các lần siêu âm tim trước đây.</p>
+<p>–Lactat 9.0.  Kali bình thường.</p>
+<p>–Troponin độ nhạy cao lần đầu (không rõ loại xét nghiệm) trả về tăng ở mức 174 ng/L (tương đương khoảng 0.174 ng/mL với xét nghiệm thế hệ hiện hành).</p>
+<p><strong>Đột nhiên, bệnh nhân khó thở dữ dội và đau ngực. </strong></p>
+<p>Trên monitor có nhịp chậm với QRS hẹp.</p>
+<p>Bệnh nhân được tiêm 1 mg atropine và được dán miếng dán tạo nhịp.</p>
+<p>Điện tâm đồ 12 chuyển đạo lần hai được ghi (điện tâm đồ 2).</p>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_EKG2inWenckebachseries.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_EKG2inWenckebachseries.jpg" alt="" width="1600" height="836" loading="lazy" decoding="async"></a><figcaption>Đã thấy nhịp theo nhóm; tuy vậy, nó vẫn được cho là blốc AV hoàn toàn.
+Khi đưa cho Dr. Smith xem, ông nói như sau:<br>Có nhịp theo nhóm, điển hình của Wenckebach.
+Blốc AV hoàn toàn sẽ có nhịp thoát bộ nối hoặc thất đều, chứ không theo nhóm
+Có một khoảng PR rất dài, nhưng dường như vẫn dẫn truyền.<br>Khoảng tiếp theo dài hơn.<br>Nhát tiếp theo bị rớt.<br><strong>Vậy đây là Wenckebach nhưng với khoảng PR ngắn nhất cũng trên 400 ms!</strong>
+<strong><br>Xem phân tích chi tiết của Ken Grauer bên dưới.</strong>
+<strong>Có sóng T hơi tối cấp ở III với sóng T tối cấp đảo ngược soi gương ở aVL.  </strong>
+<strong>Giờ thì càng nghi ngờ nhồi máu cơ tim thành dưới hơn nữa.</strong></figcaption></figure>
+<p><strong>Phân biệt đây là blốc AV hoàn toàn hay Wenckebach có quan trọng không?  Có.  </strong></p>
+<p><strong><br></strong><br><strong>Vì Wenckebach nhiều khả năng đáp ứng với atropine, trong khi blốc AV hoàn toàn ít có khả năng đáp ứng.</strong></p>
+<p>(Blốc AV hoàn toàn <u><em>có thể</em></u> đáp ứng với atropine khi QRS hẹp, vì điều này cho thấy vị trí blốc nằm trên bó His; khi QRS rộng, atropine sẽ không có tác dụng).</p>
+<p>Wenckebach thường là một nhịp lành tính.  Tuy nhiên, đây là một trường hợp Wenckebach cực đoan, và đi kèm ngất và sốc.  Vì vậy cần sẵn sàng điều trị như blốc AV hoàn toàn bằng thuốc tăng tần số tim như dobutamine, hoặc tạo nhịp, nếu cần.</p>
+<div class="note"><p><strong>Vì vậy, chẩn đoán đúng nhịp giúp bạn biết rằng atropine có thể có tác dụng, và đáng để dùng một liều lớn. </strong></p></div>
+<p>1 mg atropine có thể chưa đủ, và có thể dùng tới<strong> 3 mg atropine</strong>.</p>
+<p>Đã dùng 1 mg và tôi (Smith) không rõ nó có tác dụng <em><u>tức thì</u></em> nào.</p>
+<h3 id="dien-bien-lam-sang-tiep">Diễn biến lâm sàng (tiếp):</h3>
+<p>Người điều trị nhận định nguyên nhân ngất của bệnh nhân là blốc tim. Bệnh nhân lúc vào lúc ra khỏi blốc, nhưng <strong>bị tụt huyết áp với huyết áp tâm thu 60 mấy khi ở trong blốc.</strong></p>
+<p>Do không ổn định, bệnh nhân được <strong>đặt nội khí quản</strong> và <strong>tạo nhịp được để sẵn sàng</strong>.</p>
+<p><strong>Nhịp tim ổn định lại mà không cần can thiệp gì khác ngoài liều atropine duy nhất đó.</strong></p>
+<p>Bệnh nhân được chuyển đến một trung tâm tuyến cuối bằng trực thăng. Bệnh nhân ổn định khi chuyển viện.</p>
+<p>Tại trung tâm tuyến cuối, troponin của bệnh nhân đạt đỉnh 0.25 ng/mL (xấp xỉ 250 ng/L) và bệnh nhân được thông tim.</p>
+<h3 id="chup-mach-vanh">Chụp mạch vành</h3>
+<p><strong>Cầu nối tới LAD</strong> và <strong>động mạch mũ tự thân</strong> của bệnh nhân <strong>đều</strong> <strong>được đặt stent</strong>.</p>
+<p>Không thấy đề cập đến dòng chảy TIMI.</p>
+<p>Điện tâm đồ sau thông tim được ghi (điện tâm đồ 3).</p>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_EKG3-postcath.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_EKG3-postcath.jpg" alt="" width="1600" height="574" loading="lazy" decoding="async"></a><figcaption>Diễn giải của Dr. Smith:<br>Nhịp xoang với khoảng PR bình thường và không có bất kỳ loại blốc AV nào.<br>Sóng T ở III đã trở về bình thường.<br>Sóng T ở aVL vẫn đảo ngược, nhưng không còn tối cấp.<br>Điều này xác nhận rằng các dấu hiệu trên các điện tâm đồ trước đó đúng là do thiếu máu cục bộ.</figcaption></figure>
+<p>Bệnh nhân hồi phục hoàn toàn.</p>
+<p><strong>Siêu âm tim</strong> cho thấy EF 50-55% và không thấy đề cập rối loạn vận động thành.  Nhiều khả năng ổ nhồi máu nhỏ đến mức, nếu có rối loạn vận động thành (WMA), nó đã hồi phục khi tưới máu được tái lập.</p>
+<h2 id="nhung-diem-can-hoc">Những điểm cần học:</h2>
+<p>1. Blốc AV hoàn toàn có nhịp thoát đều, không phải nhịp theo nhóm.</p>
+<p>2. Khi blốc AV là Wenckebach và QRS hẹp, nhiều khả năng atropine sẽ có tác dụng.  Hãy thử liều cao, tới 3 mg.</p>
+<p>3.  Nếu atropine không có tác dụng, dobutamine là một lựa chọn tốt để thử tăng tần số tim.</p>
+<p>4.  Tạo nhịp nếu các biện pháp trên không hiệu quả, qua da hoặc qua tĩnh mạch.</p>
+<p>5.  Về xử trí sốc ở bệnh nhân bệnh thận giai đoạn cuối: bệnh nhân <strong>cực kỳ khó lấy đường truyền</strong>. Bác sĩ đã đặt được một đường truyền tĩnh mạch dưới hướng dẫn siêu âm, nhưng ngay từ đầu bệnh nhân đã không có mạch máu tốt.</p>
+<p>6. Để đặt nội khí quản nhanh (RSI), họ đã chọn <strong>sử dụng đường vào chạy thận của bệnh nhân</strong>, là một catheter dưới đòn hai nòng. Cách này hiệu quả rất tốt. Đừng quên rằng bạn có thể dùng các cổng đường vào chạy thận trong tình huống nguy kịch.</p>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_0-Figure-6-REDLINE-UseinBlogscopy-7.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_0-Figure-6-REDLINE-UseinBlogscopy-7.jpg" alt="" width="613" height="24" loading="lazy" decoding="async"></a></figure>
+<p><span class="c-do">===================================</span></p>
+<h2 id="binh-luan-cua-toi-boi-ken-grauer-md-16-5-2020">BÌNH LUẬN CỦA TÔI, bởi KEN GRAUER, MD (16/5/2020):</h2>
+<p><span class="c-do">===================================</span></p>
+<p>Dr. Smith gửi cho tôi điện tâm đồ trong <strong><u>Hình 1</u></strong>, và nhờ tôi diễn giải nó mà <em><u>không</u></em> có thông tin lâm sàng hỗ trợ.</p>
+<ul><li>Nếu <em>BẠN</em> được đưa điện tâm đồ ở Hình 1 mà <em><u>không có </u></em>bất kỳ thông tin lâm sàng nào hỗ trợ — <em>BẠN</em> sẽ diễn giải nó <em>NHƯ THẾ NÀO</em>?</li>
+<li><em>BẠN</em> có nghĩ là có blốc AV không? — <em><u>và</u>/<u>hoặc</u></em> Điều gì khác?</li>
+<li><strong><u></u></strong></li>
+<li><strong><u>T.B. (P.S.)</u></strong><strong> —</strong> Sau này tôi mới biết ca này do Dr. Aaron Robinson cung cấp — một trong những bác sĩ nội trú năm 3 <em>xuất sắc</em> của Dr. Smith. Dr. Robinson <em><u>ĐÃ</u></em> cung cấp phần thông tin lâm sàng còn thiếu mà tôi <em><u>chưa</u></em> biết vào lúc viết phần diễn giải của mình, kèm đầy đủ giản đồ bậc thang dựa trên điện tâm đồ thứ 2 mà Dr. Robinson đã trình bày ở trên. Với những ai trong số <em>CÁC BẠN</em> <em><u>quan tâm</u></em> đến việc diễn giải <strong>blốc AV</strong> — <em>XIN HÃY ĐI QUA</em> phần phân tích chi tiết <em>từng bước</em> của tôi dưới đây.</li>
+<li></li>
+<li><strong><u>T.B.T.B. (P.P.S.)</u></strong><strong> —</strong> Vì các vấn đề về <em><u>sử dụng</u></em> <strong>atropine</strong> <u>và</u> phân biệt giữa <strong>blốc AV</strong> <strong><em>không hoàn toàn</em></strong> <u>với</u> <strong><em>hoàn toàn</em></strong> đã được nêu ra trong phần bàn luận của Aaron — tôi đã thêm một <strong><em><u>PHẦN BỔ SUNG</u></em></strong> ở cuối cùng Bình luận của tôi bên dưới.</li>
+<li></li>
+<li><strong><u>CUỐI CÙNG</u> —</strong> Với những ai muốn có một <strong>bài ôn tập</strong> bằng <strong><em><u>Video</u></em></strong> về <strong>những điều cơ bản của blốc AV</strong> — xin <strong><a href="https://youtu.be/Ih5a1ER2umI" rel="noopener" target="_blank">BẤM VÀO ĐÂY</a></strong>. Và, nếu bạn bấm vào SHOW MORE (Hiện thêm) (<em>bên dưới video trên trang You-Tube</em>) — bạn sẽ thấy một Mục lục chi tiết <em><u>có liên kết</u></em> cho phép bạn nhảy đến bất kỳ phần nào về blốc AV mà bạn quan tâm.</li></ul>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-1ECG-125285-14.32-20202529-USE.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-1ECG-125285-14.32-20202529-USE.jpg" alt="" width="1600" height="1031" loading="lazy" decoding="async"></a><figcaption><strong><u>Hình 1:</u></strong> Tôi được nhờ diễn giải điện tâm đồ này. Tôi không được cung cấp thông tin lâm sàng nào. (<em>Đây là điện tâm đồ thứ 2 đã được trình bày ở trên trong phần trình bày ca bệnh của Aaron</em>).</figcaption></figure>
+<p><strong><u>Đây là một bản ghi <em>khó</em> diễn giải:</u></strong><strong> </strong>Có nhiều lý do khiến điện tâm đồ ở <u>Hình 1</u> <em><u>không</u></em> phải là một bản ghi dễ diễn giải. Những lý do này gồm:</p>
+<ul><li><em>Không có bệnh sử.</em></li>
+<li>Các dấu hiệu điện tâm đồ rất <strong>tinh tế (</strong>!<strong>) </strong>— đối với <em><u>cả</u></em> nhịp tim, lẫn những gì đang diễn ra trên điện tâm đồ 12 chuyển đạo.</li>
+<li>Phức bộ QRS <u>và</u> sóng P đều <em>rất nhỏ</em>. Và do nhịp chậm — trên toàn bộ bản ghi <em><u>chỉ</u></em> có 6 nhát.</li>
+<li>Có những vấn đề kỹ thuật cản trở việc diễn giải. Những vấn đề này gồm: <strong>i</strong><strong><span class="c-do">)</span></strong> bản ghi bị nghiêng và bị gấp (<em>do đó khó thực hiện các phép đo chính xác cần thiết khi đánh giá một rối loạn nhịp phức tạp</em>); <u>và</u>, <strong>ii</strong><strong><span class="c-do">)</span></strong> có nhiễu đường nền làm việc nhận diện sóng P càng thêm phức tạp.</li>
+<li>Cần một chút tư duy <em>“vượt ra khỏi khuôn khổ” </em>để diễn giải bản ghi này.</li>
+<li>Ngoài <strong>compa đo (calipers)</strong> — tôi cần một <strong><em>giản đồ bậc thang (laddergram)</em></strong> để xác nhận chẩn đoán mà tôi nghi ngờ. (<em>Tôi ước tính rằng 98-99% trường hợp, tôi <u>không</u> cần giản đồ bậc thang để xác nhận chẩn đoán nhịp mà tôi nghi ngờ — nhưng đây là một ca mà tôi cần ..</em>.)</li></ul>
+<p><strong><u>Cách tiếp cận <em>TỪNG BƯỚC</em> của tôi với điện tâm đồ #1:</u></strong><strong> </strong>Bất chấp những thách thức trên — <u>vẫn</u> có thể diễn giải chính xác điện tâm đồ #1 — và có thể làm được trong <em><u>không</u></em> <u>quá</u> vài khoảnh khắc ngắn ngủi. Dưới đây là cách tiếp cận <em>TỪNG BƯỚC</em> của tôi để đánh giá <u>điện tâm đồ #1</u>, như được trình bày trong <strong><u>Hình 1:</u></strong></p>
+<ul><li>Tôi thấy TỐT NHẤT là luôn bắt đầu đánh giá <em><u>bất kỳ</u></em> điện tâm đồ nào bằng <em>ít nhất</em> một cái nhìn nhanh vào nhịp. Điều thứ 1 tôi nhận thấy ở <u>Hình 1</u> là sự hiện diện của <strong><em>nhịp THEO NHÓM </em></strong><strong>(group beating) (</strong>tức là, <em>các khoảng dài-ngắn luân phiên ở 6 nhát trên bản ghi</em><strong>)</strong>.</li>
+<li><strong><u>ĐIỂM THEN CHỐT (PEARL) #1</u></strong><strong> —</strong> Sự hiện diện của <strong><em>nhịp theo</em></strong> <strong>nhóm</strong> thường có nghĩa là đang có một dạng hiện tượng <strong><em>Wenckebach</em></strong> nào đó. Khi <em><u>có</u></em> <strong>sóng P</strong> <u>và</u> <strong><em>phức bộ</em> QRS hẹp (</strong><em>như <u>đã</u> thấy ở</em> <u>Hình 1</u><strong>)</strong> — thì điều này thường gặp nhất là do <strong>Wenckebach AV (</strong>tức là, <em>blốc AV độ 2 Mobitz loại I</em><strong>)</strong>.</li>
+<li><strong><u>ĐIỂM THEN CHỐT (PEARL) #2</u></strong><strong> —</strong> Wenckebach AV <em>thường</em> gặp kèm với nhồi máu cơ tim <strong><em>thành dưới</em></strong> <strong>(MI)</strong> mới <u>hoặc</u> gần đây. Vì vậy — <em><u>bất cứ khi nào</u></em> nghi ngờ có Wenckebach AV, tôi luôn lập tức xem <em><u>thật</u></em> <strong>kỹ</strong> điện tâm đồ 12 chuyển đạo để tìm dù chỉ một gợi ý <em>nhỏ nhất</em> của nhồi máu cơ tim <em>thành dưới</em> gần đây <u>hoặc</u> cấp.</li>
+<li>NẾU tôi <u>có thể</u> nhận ra khả năng nhồi máu cơ tim <strong><em>thành dưới</em> gần đây</strong> hoặc cấp trên một bản ghi <u>có</u> <strong><em>nhịp theo</em></strong> <strong>nhóm</strong> — thì chẩn đoán <em>một</em> dạng <strong>Wenckebach AV</strong> nào đó gần như <em>chắc chắn</em>. Vấn đề chính khi đó trở thành tìm ra <em>CÁCH</em> chứng minh điều này.</li></ul>
+<p><strong><u>Tìm dấu hiệu nhồi máu cơ tim <em>thành dưới</em> trên điện tâm đồ ở Hình 1:</u></strong> Dù không biết bệnh sử — <u>vẫn</u> có gợi ý mạnh về một <strong>nhồi máu cơ tim <em>dưới-sau</em> tinh tế, gần đây (</strong><em>hoặc cấp</em><strong>):</strong></p>
+<ul><li>Có nhịp chậm (<em>rất thường gặp trong nhồi máu cơ tim thành dưới cấp</em>).</li>
+<li><strong>Sóng T</strong> ở <strong>chuyển đạo III</strong> và <strong>aVF</strong> có vẻ <strong>tối cấp (</strong>tức là, <em>nhọn hơn mức đáng có, xét theo biên độ nhỏ của phức bộ QRS ở các chuyển đạo này</em><strong>).</strong></li>
+<li>Đối diện với chuyển đạo III — có <strong>ST-T chênh xuống soi gương</strong> dạng <em><u>hình soi gương (mirror-image)</u></em> ở <strong>chuyển đạo aVL</strong>, cũng như ở <strong>chuyển đạo I.</strong></li>
+<li>ST-T ở <strong>chuyển đạo V2</strong> <em><u>không</u></em> bình thường (tức là, <em>sóng T ở V2 hai pha</em>). Trong bối cảnh nhồi máu cơ tim thành dưới tinh tế gần đây — điều này gợi ý khả năng có tổn thương thành sau. (<em>Đáng tiếc là nhiễu làm hỏng nhận định của chúng ta về những gì diễn ra ở chuyển đạo V3</em>).</li>
+<li><strong><em><u>Tổng hợp</u></em></strong><strong><em> <u>lại</u> —</em></strong> các dấu hiệu trên phải gợi ý <strong>nhồi máu cơ tim <em>dưới-sau</em> gần đây</strong> <em><u>cho đến khi</u></em> bạn chứng minh được điều ngược lại! Điều này càng củng cố khả năng <strong><em>nhịp theo</em></strong> <strong>nhóm</strong> là biểu hiện của một dạng <strong>Wenckebach AV</strong> nào đó.</li></ul>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-2ECG-125285-14.32-20202529-USE.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-2ECG-125285-14.32-20202529-USE.jpg" alt="" width="1600" height="1038" loading="lazy" decoding="async"></a><figcaption><strong><u>Hình 2:</u></strong> Tôi đã thêm các mũi tên <em>ĐỎ</em> phía trên những sóng lệch mà tôi chắc chắn là sóng P. Các mũi tên <em>TRẮNG</em> chỉ những sóng T có thể đang che giấu thêm sóng P (<em>Xem phần bài viết</em>).</figcaption></figure>
+<p><strong><u>Hình 2 — Xem <em>kỹ hơn</em> nhịp tim:</u></strong> Giờ đã được “trang bị” hiểu biết rằng <strong><em>nhịp theo</em></strong> <strong>nhóm</strong> mà chúng ta nhận ra ở Hình 1 có lẽ là kết quả của một dạng Wenckebach AV nào đó — tôi đã xem <em><u>kỹ hơn</u></em> để cố gắng nhận diện tất cả <strong>sóng P:</strong></p>
+<ul><li>Như đã nói ở trên — kích thước nhỏ của sóng P ( <strong>+</strong> <em>những khiếm khuyết kỹ thuật về chất lượng của bản ghi này</em>) khiến khó chắc chắn về một phần hoạt động nhĩ. Ở <strong><u>Hình 2</u></strong> — tôi đã thêm các mũi tên <em>ĐỎ</em> phía trên những sóng lệch mà tôi <em><u>chắc chắn</u></em> là <strong>sóng P.</strong></li>
+<li>Dùng <strong>COMPA ĐO (</strong><em>một công cụ <u>thiết yếu</u> để đánh giá bất kỳ rối loạn nhịp phức tạp nào</em><strong>)</strong> — sẽ hợp lý nếu <em><u>cũng</u></em> có sóng P ở những vị trí tôi đánh dấu bằng mũi tên <em>TRẮNG</em> ở <u>Hình 2</u>. Đó là vì một <strong><em>loạn nhịp</em> xoang</strong> nhẹ có khả năng là nhịp nền cao hơn nhiều so với một dạng blốc đường ra nút xoang bất thường nào đó. Nhìn kỹ — <em><u>có</u></em> sự tăng nhẹ biên độ sóng T của nhát #3 và 5, so với biên độ của các sóng T khác (<em>cũng như gợi ý tinh tế về một khía ở phần cuối sóng T của nhát #5</em>). Điều này gợi ý mạnh rằng <em><u>tất cả</u></em> các mũi tên tôi vẽ đều chỉ vào <strong>sóng P <em>xoang</em> nền (</strong><em>được thể hiện bằng các mũi tên ĐỎ ở</em> <strong><u>Hình 3</u>).</strong></li></ul>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-3ECG-125285-14.32-20202529-USE.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-3ECG-125285-14.32-20202529-USE.jpg" alt="" width="1600" height="1039" loading="lazy" decoding="async"></a><figcaption><strong><u>Hình 3:</u></strong> Dù khó chứng minh trên bản ghi có khiếm khuyết kỹ thuật này — <em>Bệnh thường gặp thì hay gặp!</em> — <u>và</u>, hợp lý nhất là có <strong>sóng P</strong> nằm dưới mỗi <strong>mũi tên <em>ĐỎ</em></strong> mà tôi đã vẽ ở <u>Hình 3</u>. Điều này khiến nhịp nền = <strong><em>loạn nhịp</em></strong> <strong>xoang</strong>.</figcaption></figure>
+<p><strong><u>Vẽ giản đồ bậc thang:</u></strong> Giờ <em>tất cả</em> sóng P đã được nhận diện — tôi sẵn sàng bắt đầu vẽ giản đồ bậc thang. <strong><u>LƯU Ý:</u></strong> Học cách vẽ giản đồ bậc thang <u>là</u> một thách thức <strong>(</strong><em>và việc này <u>đòi hỏi</u> chút thời gian và công sức</em><strong>)</strong>.<strong> </strong>Dù vậy — <strong><em>Học cách ĐỌC giản đồ bậc thang</em></strong> đã được vẽ sẵn cho bạn thì <strong>DỄ!</strong> Nhưng ngay cả NẾU giản đồ bậc thang hoàn toàn mới với bạn — tôi đoán bạn sẽ thấy dễ chịu hơn <em>nhiều</em> khi nhìn chúng <em><u>sau khi</u></em> xem 7 Hình tiếp theo — bắt đầu từ <u>Hình 4</u>!</p>
+<ul><li><strong><u>LƯU Ý:</u></strong> Với những ai muốn có một “Bài vỡ lòng” ngắn gọn về cách vẽ giản đồ bậc thang (laddergram) — <strong><a href="http://ecg-interpretation.blogspot.com/2013/06/ecg-interpretation-review-69-pvc-pjc.html" rel="noopener" target="_blank">BẤM VÀO ĐÂY</a></strong>. Nếu bạn thích ôn lại những điều cơ bản về giản đồ bậc thang qua video — <strong><a href="https://youtu.be/WJWotBhmirM" rel="noopener" target="_blank">BẤM VÀO ĐÂY</a>.</strong></li>
+<li>Để xem thêm một vài ca minh họa <em>CÁCH</em> sử dụng giản đồ bậc thang — <strong><a href="https://ecg-interpretation.blogspot.com/2019/05/ecg-blog-164-pacs-blocked-pacs.html" rel="noopener" target="_blank">BẤM VÀO ĐÂY</a></strong> — và <strong><a href="http://ecg-interpretation.blogspot.com/2012/11/ecg-interpretation-review-55-mobitz-i.html" rel="noopener" target="_blank">VÀO ĐÂY</a></strong> —</li></ul>
+<p><strong><u>Bắt đầu với Hình 4:</u></strong> Tôi <em><u>rất thích</u></em> dùng PowerPoint để vẽ giản đồ bậc thang. Với ứng dụng này, rất dễ nhân bản các thành phần giống nhau (<em>như các mũi tên hay đường thẳng nối với nhau</em>) — <u>và</u> PowerPoint cũng giúp dễ dàng thả các thành phần đường thẳng hay mũi tên <em>thẳng đứng</em> vào bất kỳ tầng nào của giản đồ bậc thang một cách <em>tiết kiệm thời gian</em>.</p>
+<ul><li>Giản đồ bậc thang thường được dựng với <strong>3 Tầng</strong>. Bình thường, xung điện được dẫn truyền <em><u>nhanh</u></em> qua <strong>Tầng</strong> <strong><em>Nhĩ</em></strong> và <strong><em>Thất</em></strong> — đó là lý do vì sao, trừ khi có blốc nhánh, thường có thể vẽ các đường thẳng đứng (<em>hoặc gần như thẳng đứng</em>).</li>
+<li>Dẫn truyền thường <em><u>chậm nhất</u></em> qua <strong>Tầng Nút AV</strong> — đó là lý do vì sao các đường đi qua tầng này nghiêng nhiều nhất.</li>
+<li><strong><u>ĐIỂM THEN CHỐT (PEARL) #3</u> —</strong> Tầng khó vẽ nhất hầu như luôn là Tầng Nút AV. Vì vậy — <em>Hãy để Tầng Nút AV lại <u>sau cùng</u> khi vẽ giản đồ bậc thang!</em></li></ul>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-4ECG-125285-14.21-20202529.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-4ECG-125285-14.21-20202529.jpg" alt="" width="1600" height="676" loading="lazy" decoding="async"></a><figcaption><strong><u>Hình 4:</u></strong> Mũi tên chấm chấm màu <em>XANH LAM</em> cho thấy cách dựng sóng P thứ 1 thành một đường thẳng đứng ở Tầng <em>Nhĩ</em><strong><em>. Chỉ cần lần lượt đọc theo chú thích của 6 Hình tiếp theo khi giản đồ bậc thang được dựng dần.</em></strong></figcaption></figure>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-5Laddergram25285-14.21-20202529.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-5Laddergram25285-14.21-20202529.jpg" alt="" width="1600" height="678" loading="lazy" decoding="async"></a><figcaption><strong><u>Hình 5:</u></strong> Các đường thẳng đứng màu <em>ĐỎ</em> giờ đã được vẽ cho <em><u>tất cả</u></em> các sóng P trên bản ghi này.</figcaption></figure>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-6Laddergram25285-14.21-20202529.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-6Laddergram25285-14.21-20202529.jpg" alt="" width="1600" height="680" loading="lazy" decoding="async"></a><figcaption><strong><u>Hình 6:</u></strong> Mũi tên chấm chấm màu <em>XANH LAM</em> cho thấy cách dựng các mũi tên <em>ĐỎ</em> gần thẳng đứng ở Tầng <em>Thất</em> cho mỗi phức bộ trong 6 phức bộ QRS.</figcaption></figure>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-7Laddergram25285-14.21-20202529.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-7Laddergram25285-14.21-20202529.jpg" alt="" width="1600" height="677" loading="lazy" decoding="async"></a><figcaption><strong><u>Hình 7:</u></strong> Cách <em><u>dễ nhất</u></em> để bắt đầu dựng Tầng <em>Nút AV</em> — là xác định những nhát mà bạn <em><u>BIẾT CHẮC</u></em> là được dẫn truyền — vì khoảng PR đứng trước <em><u>mỗi</u></em> nhát được dẫn truyền này đều <u>bằng nhau</u> (<em>các đường nghiêng màu XANH LAM ở Tầng Nút AV của Hình 7</em>).</figcaption></figure>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-8Laddergram25285-14.21-20202529.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-8Laddergram25285-14.21-20202529.jpg" alt="" width="1600" height="674" loading="lazy" decoding="async"></a><figcaption><strong><u>Hình 8:</u></strong> Từ đó, hợp lý khi chúng ta giả định tiếp rằng nhát thứ 2 trong hai nhóm 3 nhát cũng được dẫn truyền, dù với khoảng PR còn <em>dài hơn nữa</em> so với nhát thứ 1 của mỗi nhóm (<em>các đường nghiêng màu XANH LAM trong Hình 8</em>).</figcaption></figure>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-9Laddergram25285-14.21-20202529.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-9Laddergram25285-14.21-20202529.jpg" alt="" width="1600" height="673" loading="lazy" decoding="async"></a><figcaption><strong><u>Hình 9:</u></strong> Suy ra sóng P ở gần đầu khoảng ngưng ngắn (tức là <em>sóng P sau nhát #1</em>) <em><u>không</u> </em>được dẫn truyền (<em>đầu cụt màu XANH LAM ở Tầng Nút AV của Hình 9, cho thấy xung không dẫn tới được tâm thất</em>).</figcaption></figure>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-10Laddergram25285-14.21-20202529.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_Figure-10Laddergram25285-14.21-20202529.jpg" alt="" width="1600" height="681" loading="lazy" decoding="async"></a><figcaption><strong><u>Hình 10:</u></strong> <em>Hoàn tất giản đồ bậc thang! </em><strong><u>ĐIỀU CỐT LÕI:</u></strong> Nhịp là <strong>nhịp chậm xoang</strong> <u>kèm</u> <strong><em>loạn nhịp xoang</em></strong>, trong đó có <strong>blốc AV độ 1</strong> ở mọi nhát được dẫn truyền <strong>+ blốc AV độ 2, Mobitz loại I</strong>, với dẫn truyền AV 3:2 và 2:1. <strong><u>LƯU Ý:</u></strong> Lý do ví dụ blốc AV này <em><u>khác thường</u></em> — là vì <strong>khoảng PR <em>rất dài</em> (</strong><em>ít nhất 460 msec</em><strong>)</strong> ở nhát được dẫn truyền thứ 1 của mỗi nhóm — cùng khoảng PR còn dài hơn nữa (<em>trên 600 msec</em>) ở nhát được dẫn truyền thứ 2 trong các nhóm có 3 sóng P.</figcaption></figure>
+<figure><a class="o-anh" href="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_0-Figure-6-REDLINE-UseinBlogscopy-7.jpg"><img src="2020-05-16-syncope-and-chest-pressure-then-unusual_anh/2020_05_0-Figure-6-REDLINE-UseinBlogscopy-7.jpg" alt="" width="613" height="24" loading="lazy" decoding="async"></a></figure>
+<p><strong><u><span class="c-do">P</span>HẦN BỔ SUNG<span class="c-do">:</span></u></strong> Tôi viết Phần bổ sung này để giải đáp các thắc mắc xoay quanh việc dùng <strong>atropine</strong> — và <em>CÁCH </em>phân biệt giữa <strong>blốc AV hoàn toàn (</strong> = <em>độ 3</em><strong>)</strong> <u>với</u> các dạng <strong>blốc AV độ 2</strong> chỉ trong vài <u>giây!</u></p>
+<ul><li>Phần lớn các trường hợp, NẾU mức độ blốc AV là hoàn toàn (tức là <em>độ 3</em>) — thì <strong>nhịp <em>thất</em> ít nhất phải <em>khá</em> đều</strong>. Đó là vì các nhịp thoát xuất phát từ nút AV, bó His hoặc tâm thất thường là những nhịp <em>khá</em> đều. Có thể có ngoại lệ (<em>ngoại lệ dễ xảy ra hơn trong lúc hồi sinh tim phổi</em>) — nhưng ngay cả trong lúc hồi sinh, thường vẫn có một kiểu đều đặn của nhịp thất <em>nhận ra được</em>.</li>
+<li><strong><u>ĐIỂM THEN CHỐT (PEARL) #4</u></strong><strong> —</strong> NẾU nhịp thất trên một bản ghi có blốc AV <em><u>không</u></em> đều (<em>hoặc gần như đều</em>) — thì nhiều khả năng ít nhất <em>một phần</em> dẫn truyền vẫn đang diễn ra (tức là <em>thay vì độ 3 — nhiều khả năng đó là blốc AV độ 2 mức độ cao</em>). Nắm được điểm then chốt này đã giúp tôi <em><u>vô cùng</u></em> nhiều trong nhiều năm qua, cho phép tôi biết <strong><em><u>chỉ trong</u></em></strong> <strong>vài giây</strong> <strong>(!)</strong> khi nhìn vào <em>bất kỳ</em> bản ghi nào liệu có nhiều khả năng là blốc AV hoàn toàn hay không. Vì vậy, với <strong><u>Hình 1</u></strong> ở trên của tôi — tôi <em><u>ngay lập tức</u></em> biết đây <em><u>không phải</u></em> blốc AV hoàn toàn vì <em><u>không</u></em> có chút dáng dấp đều đặn nào trong nhịp thất.</li>
+<li><strong><u>ĐIỂM THEN CHỐT (PEARL) #5</u></strong><strong> —</strong> Một cách khác để chúng ta có thể <em><u>ngay lập tức</u></em> BIẾT rằng nhịp trong <u>Hình 1</u> của tôi (<em>ở trên</em>) <em><u>không phải</u></em> blốc AV hoàn toàn — là khoảng PR đứng trước các nhát #1, 2, 4 và 6 đều GIỐNG NHAU! Đây chính là lý do tôi có thể vẽ những đường nghiêng màu <em>XANH LAM</em> đó trong <u>Hình 7</u> của tôi cho giản đồ bậc thang (<em>Xem ở trên</em>).</li>
+<li><strong><u>ĐIỂM THEN CHỐT (PEARL) #6</u></strong><strong> —</strong> Khi xem một dạng blốc AV phức tạp gần như đều — nhưng biểu hiện một hoặc nhiều nhát rõ ràng xuất hiện <em>sớm hơn nhiều so với dự kiến</em> — nên biết rằng lý do một số nhát xuất hiện <em>sớm hơn dự kiến</em> là vì những <strong>nhát</strong> <strong><em>đến sớm hơn</em></strong> này <strong><em>có lẽ</em></strong> đang được <strong>dẫn truyền</strong>.</li>
+<li><strong><u>ĐIỂM THEN CHỐT (PEARL) #7</u></strong><strong> —</strong> Như trong <u>Hình 10</u> của tôi (<em>ở trên</em>) — nhát được dẫn truyền thứ 2 trong mỗi nhóm 3 nhát vẫn được dẫn truyền, dù khoảng PR <em><u>trên</u></em> 600 msec! Điều này dẫn đến câu hỏi <em>thường gặp</em>: khoảng PR có thể <em>DÀI ĐẾN MỨC NÀO</em> mà vẫn dẫn truyền được? TRẢ LỜI là = <em>RẤT</em> dài! Tôi đã gặp những ca có khoảng PR <em><u>lớn hơn</u></em> 1,0 giây (tức là <em>&gt;1000 msec</em>) — mà vẫn dẫn truyền được!</li></ul>
+<h3 id="diem-then-chot-pearl-8-la-quan-diem-cua-toi-ve-cau-hoi-khi-nao-nen-dung-atropine">ĐIỂM THEN CHỐT (PEARL) #8 — là “Quan điểm của tôi” về câu hỏi “KHI NÀO nên dùng atropine?”</h3>
+<ul><li>Atropine <em><u>không</u></em> vô hại. Đặc biệt trong bối cảnh thiếu máu cục bộ cấp hoặc nhồi máu — tần số xoang tăng lên do thuốc có thể gây hại vì làm tăng nhu cầu oxy cơ tim (<em>điều này có thể khởi phát rối loạn nhịp nhanh, kể cả VT!</em>).</li>
+<li>Atropine hiệu quả nhất khi điều trị nhịp chậm do tăng <strong><em>trương lực</em></strong> <strong>phế vị (</strong><em>và trương lực phế vị có xu hướng tăng, đặc biệt t</em><em>rong</em><em> những giờ <u>đầu</u> của nhồi máu thành dưới cấp</em><strong>).</strong></li>
+<li>Atropine <em><u>không</u></em> được khuyến cáo để điều trị nhịp chậm/blốc AV ở bệnh nhân nhồi máu cơ tim thành dưới cấp — <u>NẾU</u> bệnh nhân không có triệu chứng, với tần số tim ~50/phút <u>và</u> huyết áp có vẻ ổn định ở mức ~80-90 mm Hg (<em>Truyền dịch tĩnh mạch thận trọng có thể giúp ích; nhịp chậm có thể chỉ thoáng qua</em>).</li>
+<li>Mặt khác — atropine <u>được</u> khuyến cáo NẾU bệnh nhân nhồi máu cơ tim thành dưới cấp <u>có</u> triệu chứng (tức là <em>đau ngực, khó thở, tụt huyết áp</em>). Đôi khi <strong>“Phải <em>có mặt</em> ở đó mới biết” (</strong><em>tại giường bệnh</em><strong>) </strong>— để xác định <u>LIỆU</u> một bệnh nhân có tần số 40-50/phút <em><u>và/hoặc</u></em> huyết áp tâm thu ~80-90 mm Hg cần điều trị <em>ngay lập tức</em> <u>hay</u> chỉ cần theo dõi sát và “sẵn sàng” <em>điều trị</em> (<em>kể cả tạo nhịp chờ sẵn</em>).</li>
+<li>Atropine tác dụng nhờ hiệu ứng kháng phó giao cảm (parasympatholytic) làm tăng tần số phát xung của nút SA — đồng thời cải thiện dẫn truyền qua nút AV. Vì vị trí thường gặp của Wenckebach AV là <em><u>tại</u></em> nút AV — atropine thường có hiệu quả (<em>đặc biệt trong những giờ đầu của nhồi máu cơ tim thành dưới cấp</em>). Ngược lại, vì mức blốc trong Mobitz loại II thường nằm <em><u>dưới</u></em> nút AV — atropine <em>khó</em> có tác dụng với Mobitz II.</li>
+<li>Bệnh nhân nhồi máu cơ tim thành <em>dưới</em> cấp <u>kèm</u> tăng trương lực phó giao cảm do hệ quả của nó — đôi khi biểu hiện <u>tiến triển</u> <em><u>từng</u>–<u>bậc</u></em> từ blốc AV độ 1 — sang blốc AV độ 2, Mobitz loại I ( = <em>Wenckebach AV</em>) — rồi đến blốc AV độ 3 (<em>hoàn toàn</em>). Vì vậy — <em><u>ngay cả</u></em> blốc AV độ 3 xảy ra trong những giờ <em>đầu</em> của nhồi máu cơ tim thành dưới cấp cũng có thể phản ánh tăng trương lực phó giao cảm, và do đó đáp ứng với atropine (<em>đôi khi ở liều thấp hơn</em>). Ngược lại — blốc AV hoàn toàn kèm QRS giãn rộng thì ít có khả năng hơn <em><u>nhiều</u></em> là do một vấn đề tại nút AV có thể đáp ứng với atropine.</li>
+<li>Atropine có thể gây vấn đề trong blốc AV <em>do thiếu máu cục bộ</em>, vì nhu cầu cơ tim <em>tăng lên</em> mà <strong><em>nhịp nhanh</em></strong> <strong>hệ quả</strong> có thể gây ra.</li>
+<li>Mỗi bệnh nhân có thể đáp ứng khác nhau với atropine! (tức là <em>hãy cá thể hóa điều trị!</em>).</li>
+<li><strong><u>Liều</u></strong> <strong>atropine</strong> khuyến cáo = <strong>0,5-1,0 mg tĩnh mạch (</strong><em>hoặc trong xương</em><strong>)</strong> — có thể lặp lại sau 3-5 phút (<em>tới tổng liều ~3 mg</em>). NẾU dùng để điều trị vô tâm thu thời gian ngắn được cho là do cường phế vị — thì nên dùng liều khởi đầu <em>cao hơn</em> (tức là <em>1 mg tĩnh mạch hoặc trong xương — lặp lại sau 1-3 phút, tới tổng liều 3 mg</em>).</li>
+<li><strong><em><u>Về Ca NÀY</u></em></strong><strong> —</strong> Chúng ta được biết bệnh nhân trong ca này ban đầu đến viện trong nhịp xoang với tần số tim hợp lý — huyết áp ~115/70 mm Hg — <u>và</u> <em>không hơn</em> “cảm giác khó chịu nhẹ ở ngực”. Sau đó bà đột ngột xuất hiện đau ngực <u>và</u> nhịp Wenckebach AV như trong <u>Hình 1</u> của tôi ở trên. Lúc này thấy sóng T tối cấp mới ở chuyển đạo III và aVF — gợi ý <strong><em><u>mới</u> khởi phát</em> nhồi máu cơ tim <em><u>thành dưới</u></em> cấp +</strong> <strong><em>mới </em></strong><strong>xuất hiện nhịp chậm</strong> với <strong><u>Wenckebach</u> AV</strong> và nhịp <strong><em>QRS <u>hẹp</u></em> + <em>mới</em> xuất hiện <u>tụt huyết áp</u> (</strong><em>huyết áp tâm thu 60 mấy</em>). SUY NGHĨ CỦA TÔI — Tôi <em><u>không</u></em> thể nghĩ ra một tình huống nào thuận lợi hơn để atropine có khả năng hiệu quả với bệnh nhân này!</li>
+<li><strong><u><em>SUY NGHĨ CỦA TÔI</em> về liều atropine</u></strong> — Dù hoàn toàn thừa nhận rằng <em><u>không</u></em> có một “câu trả lời đúng” duy nhất (tức là <em>Phải có mặt ở đó mới biết”</em>) — tôi sẽ bắt đầu với 0,5 mg atropine cho nhịp mà tôi thấy trong <u>Hình 1</u> của tôi — rồi chờ bên giường bệnh trong vài phút tiếp theo. Thuốc này không vô hại (<em>như gạch đầu dòng thứ 1 của tôi ở trên, thuộc ĐIỂM THEN CHỐT (PEARL) #8</em>) — và bạn “không thể rút lại atropine” sau khi đã tiêm. Liều atropine luôn có thể được lặp lại nếu cần.</li></ul>
+<p>Chúng tôi xin CẢM ƠN Dr. Aaron Robinson đã trình bày ca bệnh thú vị này!</p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
