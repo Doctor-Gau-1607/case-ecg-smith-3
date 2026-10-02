@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>05/12/2019 — Một phụ nữ trẻ tăng thân nhiệt, mê sảng và khô da: Brugada do sốt khởi phát? Ngộ độc diphenhydramine? Thuốc chống trầm cảm ba vòng?</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #1098 · DR. SMITH’S ECG BLOG</div>
+   <h1>05/12/2019 — Một phụ nữ trẻ tăng thân nhiệt, mê sảng và khô da: Brugada do sốt khởi phát? Ngộ độc diphenhydramine? Thuốc chống trầm cảm ba vòng?</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/a-young-f-w-hyperthermic-delirious-and/" target="_blank" rel="noopener">"A young F is hyperthermic, delirious, and dry: Fever-induced Brugada? Diphenhydramine toxicity?  Tricyclic?"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 8 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<h2 id="ca-1">Ca 1.</h2>
+<p>Một bệnh nhân nữ 30 mấy tuổi, không có tiền sử bệnh lý, đến viện vì sốt cao và mê sảng 1 ngày.</p>
+<p>Nhiệt độ của cô ấy là 106 độ F.</p>
+<p>Trong quá trình thăm khám, cô ấy được ghi điện tâm đồ.</p>
+<p>Tôi bước vào phòng và thấy bản ghi này:</p>
+<figure><a class="o-anh" href="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_youngwomanhyperthermic.jpg"><img src="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_youngwomanhyperthermic.jpg" alt="" width="1600" height="725" loading="lazy" decoding="async"></a><figcaption>Bạn nghĩ sao?</figcaption></figure>
+<p>Có nhịp nhanh xoang và cả sóng R lớn ở aVR.</p>
+<p><strong>V1 và V2 có hình ảnh Brugada típ 1</strong></p>
+<p>Để xác định đây có thực sự là Brugada hay không, điều quan trọng là <strong>xác định xem QRS có thực sự kéo dài hay không.</strong></p>
+<p><strong>Nếu QRS kéo dài, thì chẩn đoán phân biệt bao gồm:</strong></p>
+<p><strong>1. Tăng kali máu</strong></p>
+<p><strong>2. Ngộ độc thuốc</strong>, đặc biệt là <strong><a href="https://journals.lww.com/pec-online/Abstract/2011/12000/Wide_Complex_Tachycardia_in_a_Pediatric.16.aspx" rel="noopener" target="_blank">diphenhydramine</a></strong>, thuốc có tác dụng chẹn kênh natri, và cả tác dụng kháng cholinergic có thể gây nhịp nhanh xoang, tăng thân nhiệt, mê sảng và khô da.</p>
+<p>—-Các thuốc khác có tác dụng chẹn kênh natri: <strong><a href="https://drsmithsecgblog.com/search/label/Tricyclic%20antidepressant" rel="noopener" target="_blank">thuốc chống trầm cảm ba vòng (tricyclic antidepressants)</a></strong>.  Các thuốc này gây sóng R lớn ở aVR, nhưng thường cũng làm QRS rộng hơn.</p>
+<p>—-Các thuốc chẹn kênh natri khác, như <strong>flecainide</strong>.</p>
+<p><strong>Tuy nhiên, nếu QRS không kéo dài, thì Brugada bị bộc lộ do sốt nhiều khả năng là thủ phạm.</strong></p>
+<p>Ở đây tôi đã vẽ một đường từ điểm kết thúc QRS ở chuyển đạo II kéo ngang qua phía dưới lên tới V1 và V2.</p>
+<figure><a class="o-anh" href="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_Fever-Brugada-with-line.jpg"><img src="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_Fever-Brugada-with-line.jpg" alt="" width="1250" height="564" loading="lazy" decoding="async"></a><figcaption>Đường này cho thấy phần lớn cái trông như sóng R’ ở V1 và V2 thực ra là đoạn ST dốc xuống.  Do đó, Brugada là chẩn đoán nhiều khả năng nhất</figcaption></figure>
+<p>_______</p>
+<p>Tài liệu được trích dẫn dưới đây về các tiêu chuẩn điện tâm đồ hiện hành cho hình ảnh Brugada đưa ra một lời giải thích rất hay về điều này.</p>
+<p><a href="https://www.sciencedirect.com/science/article/pii/S0022073612002026" rel="noopener" target="_blank">Bayes de Luna, A và cs. Current electrocardiographic criteria for diagnosis of Brugada pattern: a </a><a href="https://www.sciencedirect.com/science/article/pii/S0022073612002026" rel="noopener" target="_blank">consensus report. J Electrocardiology 45 (2012):433-442</a> (Các tiêu chuẩn điện tâm đồ hiện hành để chẩn đoán hình ảnh Brugada: báo cáo đồng thuận).</p>
+<p><a href="https://www.researchgate.net/profile/Antonio_Luna4/publication/235697888_consensus_Brugada/links/09e41512b1bb5b580a000000/consensus-Brugada.pdf" rel="noopener" target="_blank">Toàn văn tại Researchgate</a></p>
+<h3 id="rbbb-don-thuan">RBBB đơn thuần</h3>
+<p>Brugada típ 1 và RBBB tiến triển (advanced RBBB) đều có đặc điểm là một sóng dương tận cùng và sóng T âm ở V1-V2.  Việc phân biệt 2 tình trạng này không khó vì, thông thường, trong RBBB tiến triển, đoạn ST không chênh lên ở các chuyển đạo trước tim bên phải, sóng tận cùng (r’ hoặc R’) xảy ra đồng thời với sóng S rộng quan sát thấy ở chuyển đạo I và V6, và QRS rộng hơn (≥120 mili giây).</p>
+<p>Tuy nhiên, trong hình ảnh Brugada (BrP) típ 1, thường không có sóng S rộng ở các chuyển đạo bên trái, vì các lực tận cùng của phức bộ thất ở V1-V2 chỉ có thể ghi được bởi các điện cực đặt gần vị trí xảy ra hoạt động điện bất thường (đường ra thất phải) chứ không ghi được từ các chuyển đạo ở xa hơn. Vì vậy, QRS ở các chuyển đạo bên trái thường dưới 120 mili giây.</p>
+<p>_________</p>
+<p><strong><a href="https://drsmithsecgblog.com/2015/03/is-this-type-2-brugada-syndromeecg.html" rel="noopener" target="_blank">Hội chứng Brugada típ 1</a></strong>, có thể có sẵn ở điện tâm đồ nền hoặc bị bộc lộ do sốt, có thời gian QRS bình thường nhưng sóng R’ ở V1 và V2 trông rộng do đoạn ST dốc xuống.</p>
+<h3 id="dien-bien-lam-sang">Diễn biến lâm sàng:</h3>
+<p>Bệnh nhân được chẩn đoán viêm thận-bể thận và được hạ sốt bằng thuốc hạ sốt.  Cô ấy được truyền dịch, tình trạng cải thiện và trở nên tỉnh táo.  Cô ấy có thể cho biết mình không dùng thuốc nào, không dùng chất gây nghiện, không dùng thuốc không kê đơn (OTC), không dùng thực phẩm chức năng.</p>
+<p>Chúng tôi ghi lại điện tâm đồ:</p>
+<figure><a class="o-anh" href="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_youngwomanhyperthermicafterdefervescence.jpg"><img src="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_youngwomanhyperthermicafterdefervescence.jpg" alt="" width="1600" height="551" loading="lazy" decoding="async"></a><figcaption>Hình ảnh Brugada đã gần như hết.</figcaption></figure>
+<p><strong>Bệnh sử bổ sung sau đó:</strong> Bản thân bệnh nhân không có thêm đặc điểm nguy cơ cao nào (ngất / tiền ngất), nhưng mẹ cô ấy đã bị ngừng tim đột ngột trong khi ngủ.</p>
+<p>Theo dõi vào buổi sáng hôm sau:</p>
+<figure><a class="o-anh" href="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_youngwomanhyperthermicnextday.jpg"><img src="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_youngwomanhyperthermicnextday.jpg" alt="" width="1600" height="561" loading="lazy" decoding="async"></a><figcaption>Hình ảnh Brugada đã hết</figcaption></figure>
+<p><strong>Dưới đây là khuyến cáo của bác sĩ điện sinh lý.</strong></p>
+<p>Khuyến cáo này dựa trên <a href="https://academic.oup.com/eurheartj/article/38/22/1756/3098019" rel="noopener" target="_blank">công cụ tính nguy cơ của Sieira và cs., 2017</a>, cho điểm nguy cơ ở mức ranh giới (2).</p>
+<p>–Xét nghiệm di truyền có thể hữu ích để khẳng định chẩn đoán và cho phép tầm soát những thành viên khác trong gia đình có nguy cơ.</p>
+<p>–Khuyến cáo thăm dò điện sinh lý (EP) để phân tầng nguy cơ thêm cho cô ấy, việc cấy ICD tùy thuộc vào kết quả.  –Bất kể việc đánh giá thêm ra sao, cô ấy nên tránh nhịp chậm, thuốc ức chế nút AV, thuốc chẹn kênh natri và sốt.</p>
+<p>–Nếu bị sốt, cô ấy nên tích cực dùng acetaminophen và/hoặc ibuprofen và, nếu không cải thiện, sẽ cần đến khoa cấp cứu (ED) để đánh giá thêm.</p>
+<p>–Nếu có bất kỳ cơn ngất hay tiền ngất nào, cô ấy cần được đánh giá ngay tại khoa cấp cứu.</p>
+<p>–Tất cả người thân bậc 1 nên được ghi điện tâm đồ 1 lần.</p>
+<p>__________________________________</p>
+<h2 id="ca-2">Ca 2.</h2>
+<p>Vài ngày sau, bệnh nhân này đến viện vì cúm:</p>
+<p>Bệnh nhân 70 mấy tuổi, sốt 38,0 độ, được chẩn đoán cúm (5523467)</p>
+<figure><a class="o-anh" href="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_72yofeverinfluenzanohoBrugada.jpg"><img src="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_72yofeverinfluenzanohoBrugada.jpg" alt="" width="1600" height="577" loading="lazy" decoding="async"></a><figcaption>Bản ghi này được máy tính và bác sĩ đọc lại (overread) đọc là:
+“Hình ảnh Brugada típ 3”<br>Có đúng không?</figcaption></figure>
+<p>Không!  Đây là hình ảnh Brugada típ 1 kinh điển.</p>
+<p>Đọc thêm về các típ của hội chứng Brugada tại đây.  Típ 2 và típ 3 đã được gộp thành Típ 2 và trông khác hẳn.</p>
+<h3 id="is-this-type-2-brugada-syndrome-ecg-pattern-day-co-phai-la-hoi-chung-brugada-hinh-anh-dien-tam-do-brugada-tip-hai-khong">Is this Type 2 Brugada syndrome/ECG pattern? (Đây có phải là hội chứng Brugada / hình ảnh điện tâm đồ Brugada típ hai không?)</h3>
+<p>Bản ghi này được ghi khoảng 30 phút sau đó:</p>
+<figure><a class="o-anh" href="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_72yoafterfevergone.jpg"><img src="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_72yoafterfevergone.jpg" alt="" width="1600" height="530" loading="lazy" decoding="async"></a><figcaption>Tương tự</figcaption></figure>
+<p>Đã tìm được một điện tâm đồ cũ và bản ghi đó bình thường.</p>
+<p>Bệnh nhân phủ nhận hoàn toàn đau ngực, và troponin lúc ban đầu và sau 2 giờ đều không phát hiện được. Siêu âm tim tại giường cho thấy chức năng tâm thu nhìn chung bình thường đến tăng động, không có vùng rối loạn vận động thành rõ ràng. Xét nghiệm đáng chú ý có test nhanh cúm A dương tính và hạ natri máu.</p>
+<p>Bệnh nhân được tư vấn về tầm quan trọng của việc kiểm soát sốt, theo dõi với bác sĩ chăm sóc ban đầu và cả bác sĩ tim mạch.</p>
+<p>Họ đã không kiểm tra xem hình ảnh Brugada có hết khi kiểm soát được sốt hay không.  Việc này là nên làm.</p>
+<p>_____________________________________________</p>
+<p>_____________________________________________</p>
+<h3 id="duoi-day-la-them-cac-ca-sot-va-brugada">Dưới đây là thêm các ca Sốt và Brugada:</h3>
+<h3 id="hyperthermia-and-st-elevation-tang-than-nhiet-va-st-chenh-len">—Hyperthermia and ST Elevation (Tăng thân nhiệt và ST chênh lên)</h3>
+<h3 id="hoi-chung-brugada-va-sot-da-duoc-ban-luan-chi-tiet">— Hội chứng Brugada và Sốt đã được bàn luận chi tiết</h3>
+<h3 id="a-patient-with-syncope-mot-benh-nhan-bi-ngat">—A Patient with Syncope (Một bệnh nhân bị ngất)</h3>
+<h3 id="mot-ca-ngat-rat-kin-dao-do-brugada-da-bi-bo-sot-o-lan-den-vien-dau-tien-va-chi-duoc-chan-doan-khi-benh-nhan-ngat-tai-phat-3-nam-sau-do">— một ca ngất rất kín đáo do Brugada đã bị bỏ sót ở lần đến viện đầu tiên và chỉ được chẩn đoán khi bệnh nhân ngất tái phát 3 năm sau đó.</h3>
+<p><a href="https://drsmithsecgblog.com/2014/01/syncope-and-st-segment-elevation-and.html" rel="noopener" target="_blank">–Syncope and ST Segment Elevation. And another finding. How well does the computer interpretation perform?</a> (Ngất và ST chênh lên. Và một dấu hiệu khác. Kết quả đọc bằng máy tính hoạt động tốt đến đâu?)</p>
+<p>— trong ca này, máy tính chẩn đoán STEMI nhưng bệnh nhân bị Sốt kèm Brugada</p>
+<p>______________________________________________</p>
+<p>______________________________________________</p>
+<h2 id="sot-va-brugada-cac-bai-bao-quan-trong">Sốt và Brugada–Các bài báo quan trọng</h2>
+<p><strong>Y văn dưới đây cho thấy Brugada do sốt khởi phát (fever-induced Brugada) thực sự có nguy cơ cao xảy ra biến cố rối loạn nhịp.</strong></p>
+<p><strong><br></strong><br><strong><br></strong><br><strong>Bài báo này nói về Brugada nói chung, không chỉ Brugada do sốt khởi phát:</strong></p>
+<h2 id="a-score-model-to-predict-risk-of-events-in-patients-with-brugada-syndrome-mot-mo-hinh-thang-diem-du-doan-nguy-co-bien-co-o-benh-nhan-hoi-chung-brugada">A score model to predict risk of events in patients with Brugada Syndrome (Một mô hình thang điểm dự đoán nguy cơ biến cố ở bệnh nhân hội chứng Brugada)</h2>
+<h2 id="toan-van-tai-day-https-academic-oup-com-eurheartj-article-38-22-1756-3098019">Toàn văn tại đây: https://academic.oup.com/eurheartj/article/38/22/1756/3098019</h2>
+<p>Đây là một đoàn hệ đơn trung tâm gồm 400 bệnh nhân hội chứng Brugada.  78 bệnh nhân có điện tâm đồ típ I tự phát.  Biểu hiện lâm sàng là đột tử được cứu sống ở 20 bệnh nhân, ngất ở 111 và không triệu chứng ở 269 bệnh nhân.  Tiền sử gia đình có ngất hoặc đột tử được ghi nhận ở 184 bệnh nhân, trong đó 31 trường hợp là người thân bậc một dưới 35 tuổi.  ICD được cấy cho 176 bệnh nhân.  Trong thời gian theo dõi trung bình 80,7 tháng, có 34 biến cố rối loạn nhịp xảy ra<br>(tỷ lệ biến cố: 1,4%/năm). <strong>Các biến số liên quan có ý nghĩa với biến cố<br>là:</strong> biểu hiện bằng đột tử do tim (SCD) được cứu sống (tỷ số nguy cơ [HR] 20,0), ngất (HR<br>3,7), típ I tự phát (HR 2,7), giới nam (HR 2,7), đột tử do tim sớm ở<br>người thân bậc một (HR 2,9), rối loạn chức năng nút xoang (SND) (HR 5,0), rối loạn nhịp thất gây ra được (VA) (HR 4,7) và<br>tình trạng là người mang bệnh đầu tiên (proband) (HR 2,1). Một thang điểm bao gồm hình ảnh điện tâm đồ, tiền sử gia đình<br>có SCD sớm, thăm dò điện sinh lý gây ra được rối loạn nhịp, biểu hiện bằng<br>ngất hoặc đột tử được cứu sống và SND có hiệu năng dự đoán là 0,82. Một<br>điểm số lớn hơn 2 tương ứng với xác suất biến cố trong 5 năm là 9,2%.</p>
+<p>_____________</p>
+<h3 id="cac-bai-sau-day-noi-rieng-ve-brugada-do-sot-khoi-phat">Các bài sau đây nói riêng về Brugada do sốt khởi phát</h3>
+<p><strong><a href="https://onlinelibrary.wiley.com/doi/pdf/10.1111/anec.12723" rel="noopener" target="_blank">Arrhythmic events in Brugada syndrome patients induced by fever.  Annals of Noninvasive Electrocardiology 2019.</a></strong> (Các biến cố rối loạn nhịp do sốt gây ra ở bệnh nhân hội chứng Brugada)</p>
+<p>Các tác giả này đã phân tích tất cả các báo cáo hiện có về sốt kèm Brugada và nhận thấy <strong>tỷ lệ biến cố rối loạn nhịp ở bệnh nhân đang sốt kèm Brugada là 38% (rất cao!).</strong>  (Kết quả này có nguy cơ sai lệch chọn lựa cao, vì tất cả đều là các ca được báo cáo.)</p>
+<p>Nghiên cứu này dẫn chiếu bằng chứng thực nghiệm cho thấy nhiệt độ cao hơn làm thay đổi dẫn truyền natri qua màng tế bào ở bệnh nhân mang đột biến SCN5A.</p>
+<p>Các nghiên cứu đã cho thấy tỷ lệ hiện mắc hội chứng Brugada (BrS) ở bệnh nhân sốt cao hơn so với bệnh nhân không sốt.  <strong>Sốt không chỉ làm bộc lộ điện tâm đồ dạng Brugada mà còn làm tăng nguy cơ rối loạn nhịp nhanh thất như rung thất (VF) hoặc đột tử do tim. </strong> Cơ chế nền của hiện tượng này có thể liên quan đến sự giảm dòng natri khi nhiệt độ tăng, điều gần đây đã được mô tả trên tế bào cơ tim người biệt hóa từ tế bào gốc vạn năng cảm ứng.</p>
+<p>Các tác giả nhấn mạnh rằng cần tiến hành<br>phân tích thêm để tìm ra một cách thống nhất về việc điều trị<br>bệnh nhân có BrS do sốt khởi phát cũng như để xác định<br>nguy cơ biến cố rối loạn nhịp có thể đe dọa những bệnh nhân này trong<br>đợt sốt tiếp theo.</p>
+<p><strong>Kết luận của bài báo này:</strong> Sốt là một yếu tố nguy cơ lớn đối với các biến cố rối loạn nhịp ở bệnh nhân hội chứng Brugada. Bệnh nhân đã biết có hội chứng Brugada do sốt khởi phát cần được theo dõi chặt chẽ khi sốt và được bắt đầu điều trị hạ sốt càng sớm càng tốt.  Dữ liệu về tác động của thăm dò điện sinh lý ở bệnh nhân BrS khởi phát do sốt còn hạn chế.  Thăm dò điện sinh lý có thể hữu ích ở bệnh nhân có triệu chứng (Sroubek và cs., 2016) khi có điện tâm đồ BrS tự phát<br>hoặc điện tâm đồ BrS do thuốc gây ra.</p>
+<p><strong><a href="https://www.sciencedirect.com/science/article/abs/pii/S1547527116300881" rel="noopener" target="_blank">The prognostic significance of fever-induced Brugada syndrome.  Heart Rhythm 2016.</a></strong> (Ý nghĩa tiên lượng của hội chứng Brugada do sốt khởi phát)</p>
+<p>Tám mươi tám bệnh nhân không triệu chứng có hội chứng Brugada Típ 1 do sốt khởi phát có tuổi trung bình 45,8 ± 18,7 tuổi và 71,6% (67 trên<br>88) là nam giới. Hai mươi mốt phần trăm (18 trên 88) có tiền sử gia đình đột tử do tim<br>và 26,4% (14 trên 53) mang đột biến SCN5A gây bệnh. Thử thách bằng thuốc dương tính<br>ở 29 trên 36 bệnh nhân được làm (80,6%). <strong>Nguy cơ rung thất ở bệnh nhân không triệu chứng<br>là 0,9%/năm (3 trên 88, 43,6 ± 37,4 tháng).</strong></p>
+<p><a href="https://www.sciencedirect.com/science/article/abs/pii/S1547527118303461" rel="noopener" target="_blank">Fever-related arrhythmic events in the multicenter Survey on Arrhythmic Events in Brugada Syndrome.  Heart Rhythm 2018.</a> (Các biến cố rối loạn nhịp liên quan đến sốt trong Khảo sát đa trung tâm về các biến cố rối loạn nhịp ở hội chứng Brugada.)  Trong số 588 bệnh nhân đã biết có hội chứng Brugada và <strong>có biến cố rối loạn nhịp đầu tiên, 35 bệnh nhân xảy ra biến cố trong lúc sốt. </strong> Tiền sử gia đình có đột tử, tiền sử ngất và điện tâm đồ Brugada típ 1 tự phát lần lượt được ghi nhận ở 17%, 40% và 71% bệnh nhân. Rung thất (VF) được gây ra khi thăm dò điện sinh lý (EP) ở 9 trên 19 bệnh nhân (47%). Đột biến <em>SCN5A</em> được tìm thấy ở 14 trên 28 bệnh nhân (50%). Tỷ lệ biến cố rối loạn nhịp (AE) liên quan đến sốt cao nhất được ghi nhận ở nhóm trẻ em (dưới 16 tuổi), với tỷ lệ biến cố cao một cách không tương xứng ở trẻ rất nhỏ (0–5 tuổi) (65%).</p>
+<figure><a class="o-anh" href="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_0-REDLINE-UseinBlogs-12.jpg"><img src="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_0-REDLINE-UseinBlogs-12.jpg" alt="" width="613" height="24" loading="lazy" decoding="async"></a></figure>
+<p><span class="c-do">===================================</span></p>
+<h2 id="binh-luan-cua-toi-boi-ken-grauer-md-5-12-2019">BÌNH LUẬN CỦA TÔI, bởi KEN GRAUER, MD (5/12/2019):</h2>
+<p><span class="c-do">===================================</span></p>
+<p>Chúng tôi đã nhiều lần bàn về <strong>các hình ảnh Brugada trên điện tâm đồ</strong> và <strong><em>hội chứng</em> Brugada</strong> trên Dr. Smith’s ECG Blog (<strong><a href="https://drsmithsecgblog.com/2019/09/do-you-recognize-this-ecg-yet.html" rel="noopener" target="_blank">ngày 8 tháng Chín năm 2019</a></strong>) — (<strong><a href="https://drsmithsecgblog.com/2019/01/hyperthermia-and-st-elevation.html" rel="noopener" target="_blank">ngày 30 tháng Một năm 2019</a></strong>) — <em>và nhiều bài khác …</em></p>
+<ul><li>Trong bài hôm nay — Dr. Smith nhấn mạnh khả năng <strong>sốt <em>cao</em></strong> làm khởi phát hình ảnh Brugada típ 1 trên điện tâm đồ, kèm theo nguy cơ <em>tăng</em> xảy ra biến cố <em>rối loạn nhịp</em>.</li></ul>
+<p>Phần điểm lại y văn liên quan đã được Dr. Smith trình bày (<em>ở trên</em>). Tôi chỉ giới hạn bình luận của mình ở những suy nghĩ tổng hợp sau đây:</p>
+<ul><li>Hình ảnh điện tâm đồ của <strong>hình ảnh Brugada típ 1 (</strong><em>như trên điện tâm đồ đầu tiên của ca này</em><strong>)</strong> cần được nhận ra <em><u>ngay lập tức</u></em>. Các bác sĩ cấp cứu cần thành thạo việc nhận diện hình ảnh điện tâm đồ này.</li>
+<li><strong>Bệnh lý <em>sốt</em> cấp tính</strong> có thể “làm lộ” hội chứng Brugada trước đó chưa được chẩn đoán. Điều trị nguyên nhân gây sốt (<em>là viêm thận-bể thận cấp ở Ca #1 nêu trên</em>) — có thể làm hết (<em>hoặc giảm đi rất nhiều</em>) hình ảnh điện tâm đồ bất thường (<em>như đã xảy ra ở Ca #1</em>).</li>
+<li><strong>Điều <u>đã</u> rõ —</strong> là những bệnh nhân có hình ảnh Brugada típ 1 trên điện tâm đồ tự phát <u>hoặc</u> được gây ra (<em>kể cả do sốt gây ra</em>) có <strong>nguy cơ <em>tăng rất cao</em></strong> xảy ra biến cố rối loạn nhịp ác tính trong tương lai <u>NẾU</u> có: <strong>i</strong><strong><span class="c-do">)</span></strong><span class="c-do"> </span>Tiền sử gia đình có đột tử — <em>và/hoặc</em> — <strong>ii</strong><strong><span class="c-do">)</span></strong> Hình ảnh Brugada típ 1 <em>tự phát</em> trên điện tâm đồ ở một người thân trực hệ bậc 1 — <em>và/hoặc</em> — <strong>iii</strong><strong><span class="c-do">)</span></strong> Bản thân bệnh nhân có tiền sử ngất, tiền ngất, co giật hoặc thở ngáp (agonal) về đêm — <em>và/hoặc</em> — <strong>iv</strong><strong><span class="c-do">)</span></strong> Nghiệm pháp thử thách bằng thuốc chẹn kênh natri dương tính <em><u>sau khi</u></em> vấn đề cấp tính khởi phát đã được giải quyết.</li>
+<li><strong>Điều <em><u>chưa</u></em> rõ bằng —</strong> là một bệnh nhân <strong><em>không triệu chứng</em></strong>, ngoài ra khỏe mạnh và có tim bình thường về cấu trúc phải đối mặt với nguy cơ lớn đến mức nào, đặc biệt NẾU hình ảnh Brugada típ 1 trên điện tâm đồ biến mất sau khi biến cố khởi phát đã được giải quyết. <strong><u>C</u></strong><strong><u>ÂU HỎI</u></strong><strong><u> </u></strong><strong><em><u>M</u></em></strong><strong><em><u>ẤU CHỐT</u></em></strong><strong><u>:</u></strong> Người phụ nữ trẻ 30 mấy tuổi trước đó khỏe mạnh ở Ca #1, có hình ảnh Brugada típ 1 trên điện tâm đồ phần lớn đã hết khi điều trị bệnh lý sốt cấp tính — <strong>Cô ấy có <em><u>thực sự</u></em> cần ICD không? (</strong><em>máy khử rung tim cấy được</em>), với nguy cơ lâu dài gặp các biến chứng <em>liên quan đến thiết bị</em> ICD, bao gồm các cú sốc <em>không phù hợp</em>?</li></ul>
+<p><strong><u>ĐIỀU CỐT LÕI:</u></strong> Trong khi việc ra quyết định là rõ ràng đối với những bệnh nhân <em>có triệu chứng</em> có hình ảnh Brugada típ 1 trên điện tâm đồ — thì với những người <em>không triệu chứng</em> và <em>không có</em> bất thường điện tâm đồ dai dẳng, việc này lại phức tạp và vẫn còn phần nào là một “mục tiêu di động”. Tôi sẵn lòng chuyển những bệnh nhân này đến chuyên khoa điện sinh lý tim (EP) để được đánh giá chính thức.</p>
+<p><strong><u>T.B. (P.S.)</u> (</strong><em>tôi viết phần này vào ngày hôm sau, ngày 6/12/2019</em><strong>):</strong> Tôi đã bỏ sót phần <em>“Bệnh sử bổ sung thu thập được về sau”</em> khi viết bình luận ban đầu vào ngày 5/12. Phần bệnh sử bổ sung này cho biết thêm rằng mặc dù bản thân bệnh nhân <em>không</em> bị ngất/tiền ngất — <em><strong>mẹ của cô ấy</strong></em> đã bị <strong>ngừng <em>tim</em> đột ngột trong lúc ngủ ==&gt;</strong> Do đó, đây là <strong>Tiền sử gia đình <em>dương tính</em></strong>, điều mà với người phụ nữ trẻ này rõ ràng xứng đáng được chuyên khoa điện sinh lý tim (EP) đánh giá <u><em>đầy đủ</em></u>!</p>
+<figure><a class="o-anh" href="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_0-REDLINE-UseinBlogs-13.jpg"><img src="2019-12-05-a-young-f-w-hyperthermic-delirious-and_anh/2019_12_0-REDLINE-UseinBlogs-13.jpg" alt="" width="613" height="24" loading="lazy" decoding="async"></a></figure>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
