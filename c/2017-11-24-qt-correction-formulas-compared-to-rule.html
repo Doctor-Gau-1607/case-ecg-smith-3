@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>24/11/2017 — Các công thức hiệu chỉnh QT so với quy tắc kinh nghiệm (“Một nửa RR”)</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #809 · DR. SMITH’S ECG BLOG</div>
+   <h1>24/11/2017 — Các công thức hiệu chỉnh QT so với quy tắc kinh nghiệm (“Một nửa RR”)</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/qt-correction-formulas-compared-to-rule/" target="_blank" rel="noopener">"QT Correction Formulas Compared to The Rule of Thumb (“Half the RR”)"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 8 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<figure><a class="o-anh" href="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_LongQTbyBazett500butveryfastrate160morethanhalf.jpg"><img src="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_LongQTbyBazett500butveryfastrate160morethanhalf.jpg" alt="" width="1600" height="741" loading="lazy" decoding="async"></a><figcaption>Tần số tim là 167; khoảng RR là 0.36 ms [người dịch: nguyên văn ghi “ms”, nhiều khả năng là giây]
+Không dễ nhận ra điểm kết thúc của sóng T, vì nó bị sóng P làm biến dạng.
+Nhưng QT chắc chắn dài hơn một nửa khoảng RR.
+<strong>Như vậy, quy tắc kinh nghiệm cho rằng QT kéo dài, nhưng quy tắc này ước tính QT quá cao ở tần số tim nhanh</strong>
+
+<strong>Còn nếu đo thì sao?</strong>
+Tôi (Smith) đo được QT là 320 ms
+QTc hiệu chỉnh theo Bazett bằng QT chia cho căn bậc hai của 0.36, tức là 0.6 
+320 chia cho 0.6 = <strong>533 ms (kéo dài nguy hiểm)<br>Tuy nhiên, công thức Bazett được biết là cho ra QT hiệu chỉnh kéo dài giả tạo ở tần số tim nhanh.</strong>
+<strong>Vậy QT có thực sự kéo dài không? Làm sao chúng ta biết?</strong></figcaption></figure>
+<p><strong>Trả lời</strong>: bạn phải điều trị bệnh lý nền của bệnh nhân gây ra nhịp nhanh xoang, và ghi lại điện tâm đồ khi tần số tim đã thấp hơn.</p>
+<h2 id="tai-lieu-can-doc">Tài liệu cần đọc:</h2>
+<p>Liên kết toàn văn:</p>
+<p><a href="http://www.onlinejacc.org/content/53/11/982" rel="noopener" target="_blank">AHA/ACCF/HRS Recommendations for the Standardization and Interpretation of the Electrocardiogram, Part IV: The ST Segment, T and U Waves, and the QT Interval</a> (liên kết toàn văn; Khuyến cáo của AHA/ACCF/HRS về chuẩn hóa và diễn giải điện tâm đồ, Phần IV: đoạn ST, sóng T và U, và khoảng QT).</p>
+<p>—-Các phần cuối của bài báo này nói về khoảng QT và là tài liệu cần đọc:</p>
+<h3 id="duoi-day-la-mot-so-diem-then-chot-pearl-tu-bai-bao-nay-truoc-khi-chung-ta-bat-dau">Dưới đây là một số điểm then chốt (pearl) từ bài báo này trước khi chúng ta bắt đầu:</h3>
+<p>1. Những vấn đề lớn nhất với khoảng QT là:</p>
+<p>a) Nhận ra điểm khởi đầu của QRS và điểm kết thúc của sóng T</p>
+<p>b) Xác định các chuyển đạo phù hợp để đo</p>
+<p>c) Điều chỉnh QT theo sự gia tăng thời gian QRS, theo giới tính và tần số tim</p>
+<p>(Với LBBB, Dodd và Smith đề xuất dùng khoảng từ đỉnh T đến cuối T, với giá trị &gt; 85-100 ms là kéo dài)</p>
+<p>2. Nên dùng QT dài nhất trong 12 chuyển đạo. Thường là V2 hoặc V3.</p>
+<p>3. Không đo QT ở bất kỳ chuyển đạo nào bị che lấp, đặc biệt là bởi sóng U. Các chuyển đạo aVR và aVL ít có khả năng biểu hiện sóng U nhất.</p>
+<p>4. Bắt buộc phải kiểm chứng bằng mắt các khoảng QT do thuật toán máy tính báo cáo, vì chúng thường không chính xác, đặc biệt khi QT kéo dài. <a href="http://www.onlinejacc.org/content/70/9/1183?sso=1&amp;sso_redirect_count=1&amp;access_token=" rel="noopener" target="_blank">Xem bài tổng quan này về điện tâm đồ được máy tính diễn giải.</a></p>
+<p>5. Các công thức hiệu chỉnh Bazett và Fridericia có thể sai đáng kể, đặc biệt ở tần số tim nhanh.</p>
+<p>6. Đặc biệt, công thức hiệu chỉnh Bazett có thể cho ra QT hiệu chỉnh kéo dài giả tạo ở tần số tim nhanh</p>
+<p>7. Các hàm hồi quy tuyến tính theo khoảng R-R được giới thiệu gần đây chính xác hơn</p>
+<p>8. Không nên hiệu chỉnh theo tần số khi khoảng RR biến thiên lớn, như trong rung nhĩ.</p>
+<p>9. QT kéo dài thường được coi là 450 ms ở nam, 460 ms ở nữ.</p>
+<p>10. QT kéo dài nguy hiểm là 480, đặc biệt là trên 500 ms.</p>
+<p>11. Ngắn bất thường là dưới 390 ms. Các tác giả không nói nên dùng công thức hiệu chỉnh nào khi đánh giá các khoảng QT dài hoặc ngắn bất thường này.</p>
+<p>Trong bài báo đó, các tác giả không nói <strong><em>thế nào</em></strong> <strong><em>là QT ngắn <u>nguy hiểm</u></em></strong> (ví dụ <strong><u>hội chứng QT ngắn</u></strong>, SQTS). Tuy nhiên, <a href="http://www.sciencedirect.com/science/article/pii/S0735109710047212#" rel="noopener" target="_blank">theo các tiêu chuẩn chẩn đoán này</a> (JACC 2011; 57(7):802), đó là QT hiệu chỉnh theo Bazett dưới 330-370, tùy thuộc vào các tiêu chuẩn chẩn đoán khác, bao gồm 1) tiền sử ngừng tim, 2) ngất đột ngột, 3) tiền sử gia đình có người ngừng tim đột ngột không rõ nguyên nhân trước 40 tuổi, 4) tiền sử gia đình có SQTS.</p>
+<h3 id="mot-so-diem-khac">Một số điểm khác:</h3>
+<p>1. Các thuật toán máy tính tự động khác nhau (của các nhà sản xuất khác nhau) cho kết quả khác nhau</p>
+<p>2. Các thuật toán tự động thường có phương pháp hiệu chỉnh độc quyền riêng mà họ sẽ không tiết lộ.</p>
+<p>3. Các máy điện tâm đồ<br>kỹ thuật số hiện đại tính khoảng QT bằng cách chồng các chuyển đạo đã được căn chỉnh theo thời gian <strong>và chọn khoảng dài nhất</strong>,<br>nghĩa là QT tính được sẽ dài hơn số đo ở mọi chuyển đạo đơn lẻ, trừ một chuyển đạo. Các giá trị hiện được coi là bình thường đã được<br>thiết lập vào thời điểm các máy cũ đo khoảng QT trên từng<br>chuyển đạo riêng lẻ, và các giá trị này nhiều khả năng không tương quan với các khoảng QT<br>tính toán hiện đại.</p>
+<p>·<br>Công thức<br>Fridericia: QTc = QT / √3(RR)  (QT chia cho căn bậc ba của<br>khoảng RR)</p>
+<p>·<br>Công thức<br>Framingham: QTc=QT+0.154*(1–RR)</p>
+<p>·<br>Công thức<br>Hodges: QTc = QT + 1.75*(HR−60)</p>
+<p>hay viết cách khác: = QT + 105/RR − 105</p>
+<p>Cuối cùng, <a href="http://qjmed.oxfordjournals.org/content/100/10/609.full" rel="noopener" target="_blank"><strong>một toán đồ (nomogram) tương đối mới đã được công bố</strong></a> và đó có thể là cách tốt nhất để xác định, theo kiểu nhị phân, QT có kéo dài hay không. Đây là toán đồ đó:</p>
+<figure><a class="o-anh" href="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_QTNomogram.jpg"><img src="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_QTNomogram.jpg" alt="" width="1484" height="830" loading="lazy" decoding="async"></a><figcaption>Nếu tổ hợp QT và tần số tim đặt bệnh nhân của bạn nằm trên đường này thì QT kéo dài.<br>Nếu tổ hợp này đặt bệnh nhân nằm dưới đường thì QT không kéo dài.
+<strong>Lưu ý rằng toán đồ này, ở tần số tim dưới 60, không làm cho QTc ngắn hơn QT!</strong>
+<strong>Điều này một lần nữa chỉ ra mối nguy của việc hiệu chỉnh ở tần số tim chậm!</strong><br>Toán đồ hoạt động tốt đến mức nào trong nghiên cứu xây dựng (derivation) này?
+Độ nhạy và độ đặc hiệu của toán đồ QT lần lượt là 96.9% (KTC 95% 93.9–99.9) và 98.7% (KTC 95% 96.8–100). Với QTc Bazett = 440 ms, độ nhạy và độ đặc hiệu lần lượt là 98.5% (KTC 95% 96.3–100) và 66.7% (KTC 95% 58.6–74.7), trong khi với QTc Bazett =500 ms, các giá trị này lần lượt là 93.8% (KTC 95% 89.6–98.0) và 97.2% (KTC 95% 94.3–100).</figcaption></figure>
+<h2 id="quy-tac-kinh-nghiem-rule-of-thumb">Quy tắc kinh nghiệm (rule-of-thumb)</h2>
+<p>Với nền tảng đó<br>trong đầu, giờ đây chúng ta có thể chuyển sang quy tắc kinh nghiệm thường được sử dụng. Quy tắc này nói rằng để <strong><em><u>ước tính</u></em></strong> xem<br>QT có kéo dài hay không, người ta chỉ cần xác định khoảng QT<br>có chiếm hơn một nửa khoảng RR hay không.</p>
+<p><strong><span class="c-do">Nhưng quy tắc này<br>có hiệu quả không, và trong những trường hợp nào chúng ta nên lo rằng nó cho một<br>ước tính quá ngắn hoặc quá dài?</span></strong></p>
+<p><strong></strong>Lý tưởng nhất, chúng ta sẽ khảo sát bằng cách<br>so sánh quy tắc kinh nghiệm với một công thức hoặc toán đồ tiêu chuẩn vàng đã được<br>hiệu chuẩn cẩn thận dựa trên một cơ sở dữ liệu lớn với kết cục là tử vong.</p>
+<p>Mặc dù các quy tắc hiện có không được <em>xây dựng</em> dựa trên<br>kết cục tử vong, công thức hiệu chỉnh Bazett đã được dùng để liên hệ QTc dài với<br>kết cục trong các nghiên cứu được trích dẫn ở trên.</p>
+<p>Thay vào đó, trong bài blog này<br>chúng tôi sẽ so sánh quy tắc kinh nghiệm với từng công thức trong bốn công thức, về thực chất là<br>lấy thực hành thường quy thay cho tiêu chuẩn vàng về kết cục vốn không thể có được.</p>
+<h2 id="so-sanh-quy-tac-kinh-nghiem-voi-cac-cong-thuc">So sánh quy tắc kinh nghiệm với các công thức</h2>
+<p><strong></strong><br>Để đánh giá mức độ đồng thuận giữa các quy tắc, chúng tôi xem xét các khoảng QT từ 300 ms đến 1000 ms, và các khoảng RR từ 350 ms đến 1500 ms. Chúng tôi không dùng bất kỳ dữ liệu người hay bệnh nhân nào; chúng tôi chỉ so sánh quy tắc kinh nghiệm với các công thức khác nhau, vốn có thể đã hoặc chưa được kiểm chứng tương ứng bằng dữ liệu sức khỏe (ví dụ, nguy cơ đột tử do tim).</p>
+<p><strong>Hình 1.</strong> Ở đây chúng ta có thể so sánh các công thức khác nhau, dùng điểm cắt <strong>480 ms</strong><br>để xác định khi nào QTc kéo dài. Công thức có tên “Half” (Một nửa) là<br>quy tắc kinh nghiệm cho rằng QT kéo dài nếu khoảng QT kéo dài hơn<br>một nửa khoảng RR.</p>
+<figure><a class="o-anh" href="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_Figure1.jpg"><img src="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_Figure1.jpg" alt="" width="1344" height="960" loading="lazy" decoding="async"></a></figure>
+<p>Ngay lập tức, chúng ta đã thấy sự khác biệt giữa các quy tắc. <strong>Có thể thấy ở đây rằng quy tắc kinh nghiệm cho thấy QTc kéo dài với mọi QT từ 300 ms trở lên nếu khoảng RR dưới 0.6 (HR trên 100). </strong>Điều này <em><strong>trái ngược</strong></em> với các công thức, vốn có thể cho QTc trong giới hạn bình thường trong những trường hợp như vậy.</p>
+<p><strong><span class="c-do"><u>Quan trọng là, so với các công thức</u></span>, </strong>ở tần số tim nhanh (RR thấp), quy tắc kinh nghiệm một nửa RR có xu hướng xếp quá nhiều QT là bất thường. Ở tần số tim chậm (RR cao), quy tắc kinh nghiệm có xu hướng xếp quá nhiều QT là bình thường.</p>
+<h3 id="day-la-mot-cach-nhin-khac">Đây là một cách nhìn khác:</h3>
+<p>Chúng ta có thể vẽ cùng biểu đồ đó, nhưng với <strong><u>QT biểu thị dưới dạng phần trăm của RR</u></strong>, và đặt RR hoặc HR trên trục x.</p>
+<p><strong>Hình 2. Ở đây chúng tôi đặt RR trên trục x:</strong></p>
+<figure><a class="o-anh" href="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_Figure2.jpg"><img src="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_Figure2.jpg" alt="" width="1344" height="960" loading="lazy" decoding="async"></a></figure>
+<p>Bạn cũng có thể thấy rõ rằng ở tất cả các công thức khác: 1) Có nhiều trường hợp QT dài hơn một nửa RR, nhưng QTc vẫn <strong>bình thường </strong>theo công thức. 2) Ngược lại, có nhiều trường hợp QT ngắn hơn một nửa RR, nhưng lại <strong>kéo dài </strong>theo công thức.</p>
+<p><strong>Hình 3. Ở đây chúng tôi đặt HR (thay vì RR) trên trục x:</strong></p>
+<figure><a class="o-anh" href="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_Figure3.jpg"><img src="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_Figure3.jpg" alt="" width="1344" height="960" loading="lazy" decoding="async"></a></figure>
+<p><strong>Đặt tỷ lệ phần trăm trên trục Y cho thấy<br>không thể có một công thức hoàn hảo dựa trên tỷ lệ phần trăm: </strong>nếu chúng ta dịch<br>đường ngang đó lên (bằng cách tăng tỷ lệ % của RR được<br>coi là kéo dài lên trên 50%), xét nghiệm sẽ nhạy hơn đối với QT kéo dài (ít âm tính giả hơn) nhưng phải trả giá bằng nhiều dương tính giả hơn (xếp nhiều cặp QT-RR là kéo dài trong khi chúng nằm trong giới hạn bình thường theo các công thức). <strong>Với tần số tim bình thường, từ 60-90, nhiều khoảng QT kéo dài theo các công thức lại KHÔNG kéo dài theo quy tắc kinh nghiệm.</strong></p>
+<p>Nếu không biết kết cục sức khỏe, không thể cân nhắc chính xác giữa<br>các ca bỏ sót và các ca chẩn đoán quá mức; không thể xác định điểm cắt<br>đúng nên là bao nhiêu. Một biểu đồ đường cong đặc trưng hoạt động<br>của bộ thu (receiver operating characteristic) trên tất cả các điểm cắt phần trăm khác nhau có thể<br>giúp cân nhắc những đánh đổi đó một cách chính thức hơn. Ngoài ra, lưu ý rằng có thể xây dựng một công thức cho biết khi nào mỗi công thức không đồng thuận với quy tắc kinh nghiệm, nhưng thực hiện bằng đồ thị thì cung cấp nhiều thông tin hơn, vì vậy đó là cách tiếp cận được dùng ở đây.</p>
+<h2 id="cac-quy-tac-kinh-nghiem-rot-cho-biet-khi-nao-quy-tac-kinh-nghiem-dang-ngo">Các quy tắc kinh nghiệm (RoT) cho biết khi nào quy tắc kinh nghiệm đáng ngờ</h2>
+<p><strong>Hình 4.</strong> Có vẻ như có một vùng mà quy tắc kinh nghiệm dường như<br>đặc biệt tốt. Điểm chuyển tiếp nằm ở đâu?</p>
+<p>Để<br>xem xét chúng đồng thuận và không đồng thuận ở đâu, chúng tôi sẽ vẽ lại thành ba cột:</p>
+<p>1.   Cột<br>bên trái cho thấy những vùng quy tắc kinh nghiệm cho là kéo dài.</p>
+<p>2.   Cột<br>giữa cho thấy những vùng mỗi công thức cho là kéo dài.</p>
+<p>3.<br>Cột bên phải cho thấy những vùng chúng không đồng thuận.</p>
+<p>Chúng tôi sẽ vẽ bốn công thức, với HR trên trục X, và QT tính theo phần trăm RR trên trục Y. <strong><span class="c-do">Bấm vào hình để xem kích thước đầy đủ.</span></strong></p>
+<figure><a class="o-anh" href="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_Figure4.jpg"><img src="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_Figure4.jpg" alt="" width="1024" height="2048" loading="lazy" decoding="async"></a></figure>
+<p>Có<br>một dải tần số tim hẹp mà trong đó không thể sai được. Trên hoặc<br>dưới dải đó, sự đồng thuận có những điểm trục trặc.</p>
+<p><strong>Dưới 62 nhịp/phút, quy tắc kinh nghiệm đã không nhận ra QT kéo dài như<br>cả bốn công thức chỉ ra. <em><u>Điều này xảy ra bất chấp thực tế là<br>QT dài nguy hiểm nhất khi nhịp chậm.</u></em>   </strong></p>
+<p>Ví dụ, ở tần số tim 40 nhịp/phút hoặc thấp hơn, cả 4 công thức đều coi một<br>QT chỉ kéo dài 40% RR là kéo dài. Ngược lại, trên 66 nhịp/phút,<br>quy tắc kinh nghiệm lại quá thận trọng. Ở 96 nhịp/phút, cả bốn quy tắc đều coi một QT<br>trải dài 60% khoảng RR là bình thường.</p>
+<h2 id="ket-luan">Kết luận</h2>
+<p>Chúng ta có thể nghĩ đến hai lý do để quan tâm đến khoảng QT kéo dài ở khoa cấp cứu (ED). Lý do <strong>thứ nhất</strong> là để thực hiện các biện pháp phù hợp nhằm ngăn ngừa nguy cơ cấp tính tiến triển thành xoắn đỉnh (TdP); lý do <strong>thứ hai</strong> là để tránh cho xuất viện một người có thể được xác định là có nguy cơ đột tử.</p>
+<p>Là một công cụ sàng lọc ở tần số tim bình thường, có sự đồng thuận tốt giữa các công thức chính và quy tắc kinh nghiệm. Vì quy tắc kinh nghiệm thận trọng ở tần số tim cao hơn, và nguy cơ TdP cũng thấp hơn ở tần số tim cao hơn, việc quy tắc kinh nghiệm không cho thấy QTc kéo dài sẽ giúp yên tâm.</p>
+<p>Mặt khác, quy tắc kinh nghiệm khi nhịp chậm dễ cho kết quả âm tính giả và có lẽ không nên dùng ở những tần số tim thấp này. Điều thú vị là công thức Bazett, vốn được dùng phổ biến nhất trong các công cụ tính trực tuyến và trong máy điện tâm đồ, lại kém thận trọng nhất ở những tần số tim thấp này (tức là, đây là công thức có khả năng cho QTc dưới 480 cao nhất ở tần số tim thấp, bất chấp tiếng là hiệu chỉnh chưa đủ của nó). Vì vậy, một QTc ở ngưỡng giới hạn trong bối cảnh nhịp chậm có thể kém yên tâm hơn so với các công thức khác.</p>
+<p>Ngoài ra, <a href="http://heart.bmj.com/content/76/5/422.short" rel="noopener" target="_blank">các thuật toán máy tính không chính xác</a> (<span class="c-do">Heart </span><span class="c-do">1996;</span><span class="c-do">76:</span><span class="c-do">422-426) </span>trong việc đo QT thô khi QT kéo dài, và những khó khăn trong việc đo được trình bày rõ trong bài báo của Drew và cs. <a href="http://www.pedclerk.sites.uchicago.edu/sites/pedclerk.uchicago.edu/files/uploads/docs/EKGscreenLongQT.Pediatrics.2001.pdf" rel="noopener" target="_blank">Đây là một nghiên cứu khác cho thấy các thuật toán máy tính kém nhạy thế nào đối với QT dài</a>  (Pediatrics 2001;108:8 –12).</p>
+<p><strong>Khi QT trông có vẻ dài bằng mắt thường, phải đo bằng tay, bất kể máy tính đo được bao nhiêu.</strong></p>
+<h2 id="do-nhay-do-dac-hieu-va-duong-cong-roc">Độ nhạy/Độ đặc hiệu và đường cong ROC</h2>
+<p>Một cách khác để xem xét vấn đề này là tiếp cận như thể chúng ta phải tự chọn tỷ lệ phần trăm của mình từ đầu. Thay vì bắt đầu với 50% (một nửa RR) làm quy tắc kinh nghiệm, chúng tôi sẽ tính mức độ đồng thuận giữa các quy tắc khác nhau và cả một dải quy tắc kinh nghiệm, mỗi quy tắc có một điểm cắt khác nhau.</p>
+<p>Lưu ý rằng các chỉ số này phụ thuộc vào giá trị của quần thể, và vì chúng tôi đã tạo ra một quần thể giá trị một cách tùy ý, phân tích này tự bản chất đã có vấn đề. Dù vậy, khi không có dữ liệu về mức độ phổ biến của các cặp RR và QT ở khoa cấp cứu, khó mà làm tốt hơn.</p>
+<p>Khi vẽ đường cong đặc trưng hoạt động của bộ thu (Receiver Operating Characteristic, ROC) so với từng công thức làm tiêu chuẩn vàng, và ghi nhãn các điểm cắt (tức là 50 đại diện cho quy tắc kinh nghiệm một nửa QT [người dịch: nguyên văn ghi “QT”, nhiều khả năng ý là RR]), chúng ta thấy rằng một nửa QT không phải là lựa chọn bất hợp lý so với 40% hoặc 60% của QT. Quy tắc này hoạt động đặc biệt tốt khi được đánh giá bằng công thức Bazett; đáng tiếc là, theo nhiều tiêu chí (xem y văn ở trên), công thức Bazett có thể là công thức kém chính xác nhất trong việc xác định nguy cơ liên quan đến QT.</p>
+<figure><a class="o-anh" href="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_ScreenShot2017-11-10at2.44.42PM.jpg"><img src="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_ScreenShot2017-11-10at2.44.42PM.jpg" alt="" width="906" height="839" loading="lazy" decoding="async"></a></figure>
+<figure><a class="o-anh" href="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_ScreenShot2017-11-10at2.45.49PM.jpg"><img src="2017-11-24-qt-correction-formulas-compared-to-rule_anh/2017_11_ScreenShot2017-11-10at2.45.49PM.jpg" alt="" width="526" height="499" loading="lazy" decoding="async"></a></figure>
+<p>Lưu ý rằng các chỉ số này phụ thuộc vào giá trị của quần thể, và vì chúng tôi đã tạo ra một quần thể giá trị một cách tùy ý, phân tích này tự bản chất đã có vấn đề. Dù vậy, khi không có dữ liệu về mức độ phổ biến của các cặp RR và QT ở khoa cấp cứu, khó mà làm tốt hơn.</p>
+<h2 id="con-khoang-qt-hieu-chinh-trong-bloc-nhanh-thi-sao">Còn khoảng QT hiệu chỉnh trong blốc nhánh thì sao?</h2>
+<p>Một bài báo của Dr. Ken Dodd và Dr. Stephen W. Smith đăng trên International Journal of Cardiology cho rằng khoảng từ đỉnh T đến cuối T (TpTe) là chỉ số tốt nhất cho QT kéo dài. Trong bài báo này, các tác giả không hiệu chỉnh theo tần số. Nhiều khả năng điều này cũng áp dụng cho các rối loạn chậm dẫn truyền trong thất khác và cả RBBB. QT kéo dài là dài hơn 85 ms – 100 ms trong BBB.</p>
+<p>Dodd KW và cs. <a href="http://www.sciencedirect.com/science/article/pii/S0167527316324445" rel="noopener" target="_blank">Among patients with left bundle branch block, T-wave peak to T-wave end time is prolonged in the presence of acute coronary occlusion</a> (Ở bệnh nhân blốc nhánh trái, thời gian từ đỉnh đến cuối sóng T kéo dài khi có tắc mạch vành cấp). Tháng Sáu 2016; 236:1-4</p>
+<p><strong></strong><br><strong>Bài báo này có phần bàn luận hay về các thuốc gây QT kéo dài</strong></p>
+<h2 id="emergency-department-approach-to-qtc-prolongation-cach-tiep-can-qtc-keo-dai-tai-khoa-cap-cuu">Emergency department approach to QTc prolongation (Cách tiếp cận QTc kéo dài tại khoa cấp cứu)</h2>
+<h3 id="xem-cac-ca-sau-de-thay-vi-du-ve-viec-may-tinh-do-sai-khoang-qt">Xem các ca sau để thấy ví dụ về việc máy tính đo sai khoảng QT:</h3>
+<h3 id="chest-pain-and-a-very-abnormal-ecg-dau-nguc-va-mot-dien-tam-do-rat-bat-thuong">Chest Pain and a Very Abnormal ECG (Đau ngực và một điện tâm đồ rất bất thường)</h3>
+<h3 id="syncope-and-bradycardia-ngat-va-nhip-cham">Syncope and Bradycardia (Ngất và nhịp chậm)</h3>
+<h3 id="long-qt-do-not-trust-the-computerized-qt-interval-when-the-qt-is-long-qt-dai-dung-tin-khoang-qt-do-may-tinh-do-khi-qt-dai">Long QT: Do not trust the computerized QT interval when the QT is long (QT dài: Đừng tin khoảng QT do máy tính đo khi QT dài)</h3>
+<p><u>Xem ca này về VT đa dạng do QT dài mắc phải</u>:</p>
+<h3 id="polymorphic-ventricular-tachycardia-nhip-nhanh-that-da-dang">Polymorphic Ventricular Tachycardia (Nhịp nhanh thất đa dạng)</h3>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
