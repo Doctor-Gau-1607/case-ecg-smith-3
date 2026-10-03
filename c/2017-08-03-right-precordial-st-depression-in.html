@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>03/08/2017 — ST chênh xuống ở chuyển đạo trước tim phải ở bệnh nhân đau ngực</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #775 · DR. SMITH’S ECG BLOG</div>
+   <h1>03/08/2017 — ST chênh xuống ở chuyển đạo trước tim phải ở bệnh nhân đau ngực</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/right-precordial-st-depression-in/" target="_blank" rel="noopener">"Right precordial ST depression in a patient with chest pain"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 3 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p><strong><u>Ca bệnh này do Sam Ghali  (<a href="https://twitter.com/EM_RESUS" rel="noopener" target="_blank">@EM_RESUS</a>) cung cấp.  Cảm ơn Sam!</u></strong></p>
+<p>Một người đàn ông 70 tuổi gọi 911 sau khi đột ngột bị đau ngực dữ dội. Đây là điện tâm đồ 12 chuyển đạo của ông:</p>
+<figure><a class="o-anh" href="2017-08-03-right-precordial-st-depression-in_anh/2017_08_ECG-4.jpg"><img src="2017-08-03-right-precordial-st-depression-in_anh/2017_08_ECG-4.jpg" alt="" width="1000" height="282" loading="lazy" decoding="async"></a><figcaption>Bạn nghĩ gì?​<br>Kết quả đọc bằng máy tính: “Bất thường ST không đặc hiệu, cân nhắc thiếu máu cục bộ dưới nội tâm mạc thành trước”</figcaption></figure>
+<p>Sóng R rất kém ở V1-V4, gợi ý nhồi máu cơ tim thành trước cũ. Đáng chú ý là có ST chênh xuống sâu ở V1-V4, chính điều này đã dẫn tới kết quả đọc của máy tính. Trước hết, thiếu máu cục bộ dưới nội tâm mạc không định khu được trên điện tâm đồ 12 chuyển đạo. Điều này có nghĩa là ngay cả khi các chỗ ST chênh xuống ở chuyển đạo trước tim phải này đúng là biểu hiện của thiếu máu cục bộ dưới nội tâm mạc, chúng cũng không nhất thiết cho biết vùng thiếu máu là thành trước. Các thuật toán máy tính vẫn còn lạc hậu về mặt này.</p>
+<p>Nhưng câu hỏi thực sự đặt ra là: Các chỗ ST chênh xuống ở chuyển đạo trước tim này có phải là hậu quả của thiếu máu cục bộ dưới nội tâm mạc không?</p>
+<p>Có hai nguyên nhân chính gây ST chênh xuống do thiếu máu cục bộ:</p>
+<p>1) thiếu máu cục bộ dưới nội tâm mạc</p>
+<p>2) soi gương (reciprocal) với ST chênh lên ở thành đối diện</p>
+<p>Ở đây có các sóng R rõ ràng kèm ST chênh xuống rõ rệt ở hầu hết các chuyển đạo trước tim. <em>Hãy để ý rằng mức chênh xuống lớn nhất ở các chuyển đạo V2-V4</em>. Đây là một điểm tinh tế nhưng then chốt. ST chênh xuống ở chuyển đạo trước tim rất thường gặp trong thiếu máu cục bộ dưới nội tâm mạc, nhưng trong những trường hợp đó, vectơ chênh xuống tối đa thường hướng về V4-V6.</p>
+<p><strong>Hình ảnh ST chênh xuống ở chuyển đạo trước tim trên điện tâm đồ này (và trong bối cảnh lâm sàng này) phải lập tức làm dấy lên nghi ngờ STEMI thành sau!</strong></p>
+<p>STEMI thành sau xảy ra ở khoảng 15-20% số ca nhồi máu cơ tim cấp, nhưng trong đại đa số trường hợp, nó đi kèm với STEMI thành dưới (dưới-sau) hoặc thành bên (sau-bên) (1). Vì vậy, việc tiếp theo tôi sẽ làm là soi kỹ các chuyển đạo dưới (II, III, aVF) và các chuyển đạo bên cao (I &amp; aVL) để tìm bất kỳ bằng chứng kín đáo nào của STEMI đi kèm. Điều này có thể giúp khẳng định chẩn đoán. Nhưng nếu không có – thì ít nhất bạn đang đứng trước một STEMI thành sau đơn độc cho tới khi chứng minh được điều ngược lại.</p>
+<p>Trong các ca STEMI thành sau điển hình (đi kèm với tổn thương thành dưới hoặc thành bên), những thay đổi điện tâm đồ thành sau đi kèm không làm thay đổi quyết định tái tưới máu, nên có thể bạn thậm chí không hề để ý tới chúng. Nhưng nếu nhồi máu cơ tim chỉ <em>khu trú đơn độc</em> ở thành sau [3-11% số ca (2)], thì việc nhận ra những thay đổi ở chuyển đạo trước tim này là then chốt để đưa ra chẩn đoán!</p>
+<p>Một điều thú vị nữa cần lưu ý là có ST chênh lên ở V6 trên điện tâm đồ. Ý nghĩa của điều này là gì? Bạn thường thấy dấu hiệu này trong STEMI thành sau (kể cả STEMI thành sau đơn độc), và đó là kết quả của tổn thương lan tới phần phía sau của thành bên.</p>
+<p>Nếu bạn “lật” điện tâm đồ 180 độ theo chiều ngang <em>và</em> 180 độ theo chiều dọc thì nó giống như được ghi từ mặt đối diện (mặt sau) của tim. Bạn có thể làm điều này với điện tâm đồ trên giấy bằng cách giơ nó lên trước nguồn sáng, vì khi đó bạn sẽ nhìn xuyên qua mặt sau của tờ giấy.</p>
+<p>Đây là điện tâm đồ của bệnh nhân chúng ta sau khi lật<span class="c-xanh">:</span></p>
+<figure><a class="o-anh" href="2017-08-03-right-precordial-st-depression-in_anh/2017_08_ECG-FLIPPED-252B-180.jpg"><img src="2017-08-03-right-precordial-st-depression-in_anh/2017_08_ECG-FLIPPED-252B-180.jpg" alt="" width="1000" height="282" loading="lazy" decoding="async"></a><figcaption>Những chỗ “ST chênh xuống” đó thực ra là những chỗ ST chênh lên rất đáng lo ngại. Mặc dù bạn không cần làm việc này (vì nếu có ST chênh xuống ở V1-V3 thì tất yếu sẽ có ST chênh lên trên điện tâm đồ đã lật, và việc lật không giúp chẩn đoán <strong>nguyên nhân</strong> của ST chênh xuống), nó có thể giúp bạn có cảm nhận trực quan tốt hơn về những gì thực sự đang xảy ra ở thành sau!</figcaption></figure>
+<p>Một biện pháp hỗ trợ chẩn đoán khác là ghi các chuyển đạo phía sau. Đây là các chuyển đạo đặt trên lưng bệnh nhân, bên dưới xương bả vai trái, và nhìn thẳng vào thành sau. Bạn có thể di chuyển bất kỳ ba chuyển đạo nào. Tôi thường dùng V4-V6 để chúng trở thành các chuyển đạo V7-V9 như thấy dưới đây:</p>
+<figure><a class="o-anh" href="2017-08-03-right-precordial-st-depression-in_anh/2017_08_ECG-3-POSTERIOR-LABELED.jpg"><img src="2017-08-03-right-precordial-st-depression-in_anh/2017_08_ECG-3-POSTERIOR-LABELED.jpg" alt="" width="1000" height="285" loading="lazy" decoding="async"></a><figcaption>Lưu ý rằng V4-V6 giờ được đánh nhãn lần lượt là V7-V9. Vì các chuyển đạo này ở xa tim hơn và tín hiệu phải xuyên qua lớp không khí cách điện của phổi, chỉ cần ST chênh lên 0,5 mm ở chỉ một chuyển đạo (trong các chuyển đạo V7-V9) là đã vừa nhạy vừa đặc hiệu cho chẩn đoán STEMI thành sau (4,5). Hơn nữa, mặc dù chưa có y văn nào về hình thái ST chênh lên ở các chuyển đạo phía sau, điều thú vị cần lưu ý là bản thân hình thái của những chỗ chênh lên này cũng đáng lo ngại.</figcaption></figure>
+<h2 id="ket-cuc-cua-ca-benh">Kết cục của ca bệnh:</h2>
+<p>Bệnh nhân được cho dùng aspirin, liều nạp ticagrelor, và phòng thông tim (cath lab) được kích hoạt. Kết quả phát hiện một tổn thương huyết khối cấp, tắc 100% ở đoạn giữa động mạch mũ trái (LCx).</p>
+<h2 id="ket-luan">Kết luận:</h2>
+<p>Không ai bỏ sót các chỗ ST chênh xuống ở chuyển đạo trước tim trong ca này. Vấn đề thường không nằm ở việc nhận ra những bất thường này mà ở việc xác định nguyên nhân của chúng. Đáng tiếc là bệnh nhân STEMI thành sau đơn độc thường không được điều trị tái tưới máu thích hợp, chỉ đơn giản vì nhồi máu ở vùng giải phẫu này của cơ tim biểu hiện khác đi trên điện tâm đồ 12 chuyển đạo chuẩn. Nhiệm vụ của chúng ta là nhận diện thực thể này và bảo đảm những bệnh nhân này được chăm sóc giống như khi họ bị STEMI ở bất kỳ vùng chi phối của động mạch vành nào khác.</p>
+<h2 id="meo-nhan-biet-stemi-thanh-sau-cap">Mẹo nhận biết STEMI thành sau cấp:</h2>
+<p>1. Nhận diện hình ảnh (pattern recognition) là một trong những cơ chế mạnh mẽ nhất – và thường là vô thức – giúp chúng ta đọc điện tâm đồ. Hãy ghi nhớ hình ảnh kinh điển này của STEMI thành sau trên điện tâm đồ 12 chuyển đạo chuẩn.</p>
+<p>2. Hãy nhớ mẹo “lật” điện tâm đồ. Mặc dù nó thực ra không bổ sung thêm giá trị chẩn đoán nào, nó có thể giúp bạn có cảm nhận trực quan tốt hơn về những gì thực sự đang xảy ra ở thành sau.</p>
+<p>3. Nếu bạn lo ngại STEMI thành sau, bạn luôn có thể ghi điện tâm đồ phía sau. ST chênh lên chỉ 0,5 mm ở <em>bất kỳ</em> chuyển đạo nào trong V7-V9 dường như là nhạy và đặc hiệu nhất. Chỉ cần lưu ý rằng mặc dù độ nhạy của tiêu chuẩn này tốt, nó không đạt 100%. Có thể có những ca STEMI thành sau cấp đơn giản là không thỏa tiêu chuẩn này.</p>
+<p>4. Đừng quên siêu âm tim. Một rối loạn vận động thành ở thành sau (thành dưới-đáy) sẽ khẳng định nhồi máu cơ tim thành sau. Mặc dù trong ca này không cần đến nó để chẩn đoán, siêu âm tim có thể là một biện pháp hỗ trợ chẩn đoán khá mạnh.</p>
+<p>5. Hãy hiểu rằng, rốt cuộc, không có dấu hiệu điện tâm đồ nào kể trên sẽ đủ thường xuyên giúp chẩn đoán STEMI thành sau. Đó chính là hạn chế của điện tâm đồ trong chẩn đoán tắc mạch vành cấp. <strong>Khái niệm quan trọng nhất cần nhớ là: nếu về mặt lâm sàng bạn cảm thấy bệnh nhân đang bị đau ngực do thiếu máu cục bộ và bạn không thể kiểm soát được triệu chứng bằng điều trị nội khoa, bạn phải cân nhắc nghiêm túc rằng mình đang đối mặt với một tình trạng tắc mạch vành cấp sẽ có lợi từ tái tưới máu cấp cứu!</strong></p>
+<p>Lưu ý rằng Hướng dẫn điều trị STEMI của Trường Môn Tim mạch Hoa Kỳ (American College of Cardiology) và Hội Tim mạch Hoa Kỳ (American Heart Association) nêu rõ rằng thuốc tiêu sợi huyết thực sự được chỉ định trong tình huống này khi nghi ngờ nhồi máu cơ tim thành sau thực sự (thành dưới-đáy). Vì vậy, việc xử trí những ca này như STEMI hoàn toàn nằm trong phạm vi khuyến cáo của hướng dẫn (6).</p>
+<h3 id="tai-lieu-tham-khao">Tài liệu tham khảo:</h3>
+<p>1. Brady WJ, Erling B, Pollack M, Chan TC. Electrocardiographic Manifestations: Acute posterior wall myocardial infarction. Tạp chí J Emerg Med 2001; 20:391-401.</p>
+<p>2. Smith S, Zvosec Deborah, Sharkey Scott. The ECG in Acute MI – An Evidence Based Manual of Reperfusion Therapy (sách), năm 2002.</p>
+<p>3. Van Gorselen EO, Verheugt FW, Meursing BT, Oude Ophuis AJ. Posterior myocardial infarction: the dark side of the moon. Tạp chí Neth Heart J. 2007; 15: 16-21.</p>
+<p>4. Wung SF, Drew BJ. New electrocardiographic criteria for posterior wall myocardial ischemia validated by percutaneous transluminal coronary angioplasty model of acute myocardial infarction. Tạp chí Am J Cardiol 2001; 87:970-4; A4.</p>
+<p>5. Matetzky S, Friemark D, Feinberg MS, và cs. Acute myocardial infarction with isolated ST-segment elevation in posterior chest leads V7-V9: “hidden” ST-elevations revealing acute posterior infarction. Tạp chí J Am Coll Card 1999; 34:748-753.</p>
+<p>6. O’Gara và cs. 2013 ACCF/AHA Guideline for the Management of ST-Elevation Myocardial Infarction: A Report of the American College of Cardiology Foundation/American Heart Association Task Force on Practice Guidelines. Tạp chí Circulation, tháng Mười Hai năm 2012.</p>
+<h2 id="them-binh-luan-cua-smith">Thêm bình luận của Smith</h2>
+<h3 id="st-chenh-xuong-don-doc-o-chuyen-dao-truoc-tim-khong-kem-st-chenh-len-trong-hoi-chung-vanh-cap-acs">ST chênh xuống đơn độc ở chuyển đạo trước tim (không kèm ST chênh lên) trong hội chứng vành cấp (ACS)</h3>
+<p>ST chênh xuống (STD) đơn độc ở chuyển đạo trước tim có thể do thiếu máu cục bộ dưới nội tâm mạc (thường ở V4-V6) hoặc là hình ảnh soi gương của ST chênh lên thành sau (STD tối đa ở V1-V4).  Có một số nghiên cứu gián tiếp cho thấy tỷ lệ STEMI khu trú đơn độc ở thành sau, và tỷ lệ này dao động từ 3% đến 11%.<strong>(1, 2)</strong></p>
+<p>Một nghiên cứu phụ lớn của thử nghiệm TRITON-TIMI 38 (tài liệu tham khảo <strong>2.5</strong>), gồm 3534 ca STEMI thực sự, cho thấy <strong>1/3 số ca nhồi máu cơ tim cấp biểu hiện bằng “ST chênh xuống đơn độc ở chuyển đạo trước tim” (không có STE ở nơi khác) ở các chuyển đạo V1-V4 và được chụp mạch vành không khẩn cấp (thời gian trung bình 29 giờ) hóa ra có tắc mạch vành cấp (n = 314).  </strong>Những bệnh nhân này có kết cục xấu hơn so với bệnh nhân có ST chênh xuống mà không tắc mạch; một nửa số ca này là động mạch mũ.  Vì khoảng 25% động mạch bị tắc sẽ tự tiêu huyết khối (autolysis) trong vòng 24 giờ, nhiều bệnh nhân có động mạch thông vào lúc chụp hẳn đã bị tắc vào thời điểm ghi điện tâm đồ, nên ước tính một nửa số bệnh nhân có STD ở V1-V4 bị tắc mạch cấp.  Chỉ một số ít trong 314 bệnh nhân này được hưởng lợi từ điều trị tái tưới máu cấp cứu.</p>
+<p>Nếu STD tối đa ở V1-V4, thì nó là do tắc mạch ảnh hưởng tới thành sau (nay thường được gọi là thành bên, hoặc thành dưới-đáy).<strong>(3) </strong>Một nghiên cứu khác, nhỏ hơn một chút, trên các ca NSTEMI cũng cho kết quả gần như giống hệt.<strong>(4)  </strong></p>
+<p><strong>STEMI thành sau cấp: sóng T dương hay đảo ngược? </strong> Có một quan niệm sai lầm rằng nhồi máu cơ tim thành sau cấp biểu hiện bằng STD ở chuyển đạo trước tim thì phải có sóng T dương; trên thực tế, sóng T có thể đảo ngược hoặc dương. Tiêu chuẩn kinh điển của nhồi máu cơ tim thành sau, gồm ST chênh xuống, sóng R nổi bật và sóng T dương ở các chuyển đạo trước tim phải, nhiều khả năng phản ánh một nhồi máu cơ tim <em>bán cấp, đã tiến triển</em>.<strong>(5) </strong>  Việc nhấn mạnh vào các tiêu chuẩn này có thể làm chậm việc nhận ra hình ảnh thành sau thực sự cấp tính: ST chênh xuống ở các chuyển đạo trước tim phải, không có sóng R đáng kể, và thường kèm sóng T đảo ngược hoàn toàn  <strong>(6)</strong>.<strong>  </strong></p>
+<p><strong>Cơ chế quyết định hướng của sóng T:</strong> Các chuyển đạo trước phản ánh tổng hợp hoạt động điện từ cả thành trước ở gần và thành sau ở xa hơn. Trong nhồi máu cơ tim thành sau cấp, thành sau có sóng T tối cấp với vectơ hướng ra sau (âm ở các chuyển đạo trước).  Tổng của vectơ dương từ các chuyển đạo trước và vectơ âm từ các chuyển đạo sau có thể tạo ra sóng T dương hoặc âm ở các chuyển đạo trước.</p>
+<p><strong>Khi tiến triển, hoặc đặc biệt là sau tái tưới máu, sóng T trong STEMI thành sau luôn dương ở các chuyển đạo trước tim, và to ra</strong>: vectơ sóng T của thành sau quay ra trước, và khi kết hợp với sóng T dương của thành trước thì luôn tạo ra sóng T dương ở các chuyển đạo trước. Do đó, tái tưới máu đặc biệt tạo ra các sóng T cao, nhọn ở chuyển đạo trước, mà chúng tôi gọi là “sóng T tái tưới máu thành sau” hay hội chứng Wellens của thành sau.(7)  Trước đây, các tác giả đã nhầm lẫn giữa nhồi máu cơ tim thành sau do tắc cấp (có thể có sóng T dương hoặc đảo ngược) với, mặt khác, nhồi máu cơ tim thành sau kéo dài hoặc đã tái tưới máu (cả hai đều thực sự có sóng T dương).</p>
+<p><strong>Có sóng R cao ở các chuyển đạo trước tim phải trong STEMI thành sau cấp không? </strong> Tương tự, sóng R cao ở V1 hoặc V2 <em>không</em> phải là đặc điểm của STEMI thành sau cấp, mà là của nhồi máu cơ tim đang tiến triển, và phản ánh hoại tử cơ tim, tương tự như sóng Q.</p>
+<p><strong>Chuyển đạo phía sau:</strong> Các chuyển đạo phía sau V7-V9 có giá trị trong chẩn đoán nhồi máu cơ tim thành sau. Khoảng một nửa số bệnh nhân được nong bóng động mạch mũ theo chương trình sẽ có ST chênh lên ≥ 1mm ở các chuyển đạo phía sau.<strong>(8-12)</strong>  <strong> </strong>Do điện thế ở các chuyển đạo phía sau thấp, ngưỡng ST chênh lên để chẩn đoán chỉ là ≥  0.5 mm ở ≥ 1 chuyển đạo phía sau, và ít gặp dương tính giả.<strong>(6) </strong> Việc dùng chuyển đạo phía sau ở bệnh nhân tại khoa cấp cứu (ED) không bị nghi ngờ cao là thiếu máu cục bộ không cho thấy lợi thế gì hơn so với điện tâm đồ 12 chuyển đạo chuẩn, nhưng có làm tăng độ nhạy ở những bệnh nhân bị nghi ngờ cao là hội chứng vành cấp (ACS).<strong> (13, 14)</strong>. <strong> Khi điện tâm đồ 12 chuyển đạo chuẩn đã đủ để chẩn đoán nhồi máu cơ tim thành sau, các chuyển đạo phía sau vẫn có thể âm tính giả!  </strong>Điều này càng đúng nếu điện tâm đồ phía sau được ghi muộn hơn nhiều so với điện tâm đồ ban đầu; vào lúc đó, động mạch có thể đã tái tưới máu tự phát, và ST chênh xuống ở các chuyển đạo trước tim phải cũng có thể đã hết.  Dù thế nào đi nữa, ST chênh xuống ở V2 luôn phải hiện ra thành ST chênh lên ở chuyển đạo V8: chúng ngược chiều nhau!  Biên độ có thể khác nhau, nhưng hướng phải ngược nhau.  Nếu không như vậy, thì tình trạng của động mạch có thể đã thay đổi.</p>
+<h3 id="tai-lieu-tham-khao-2">Tài liệu tham khảo</h3>
+<p><strong>1.  </strong>Wang T, Zhang M, Fu Y, và cs. Incidence, distribution, and prognostic impact of occluded culprit arteries among patients with non–ST-elevation acute coronary syndromes undergoing diagnostic angiography. Tạp chí Am Heart J, 2009;157:716-23</p>
+<p><strong>2.    </strong>Matetzky S, Friemark D, Feinberg MS, và cs. Acute myocardial infarction with isolated ST-segment elevation in posterior chest leads V7-V9: “hidden” ST-segment elevations revealing acute posterior infarction. Tạp chí J Am Coll Card, 1999;34(3):748-53.</p>
+<p><strong>2.5</strong>  Pride YB, Tung P, Mohanavelu S, và cs. Angiographic and Clinical Outcomes Among Patients With Acute Coronary Syndromes Presenting With Isolated Anterior ST-Segment Depression: A TRITON–TIMI 38 (Trial to Assess Improvement in Therapeutic Outcomes by Optimizing Platelet Inhibition With Prasugrel–Thrombolysis In Myocardial Infarction 38) Substudy. Tạp chí Journal of the American College of Cardiology: Cardiovascular Interventions, 2010;3:806-11.</p>
+<p><strong>3.    </strong>Matetzky S, Freimark D, Chouraqui P, và cs. Significance of ST segment elevations in posterior chest leads (V7-V9) in patients with acute inferior myocardial infarction: application for thrombolytic therapy. Tạp chí J Am Coll Card, 1998;31(3):506-11.</p>
+<p><strong>4.  </strong>Wung SF, Drew BJ. New electrocardiographic criteria for posterior wall acute myocardial ischemia validated by a percutaneous transluminal coronary angioplasty model of acute myocardial infarction. Tạp chí Am J Cardiol, 2001;87(8):970-4</p>
+<p><strong>5.  </strong>Birnbaum Y, Baves de Luna A, Fiol M. Common pitfalls in the interpretation of electrocardiograms from patients with acute coronary syndromes with narrow QRS: a consensus report. Tạp chí <a href="https://www.ncbi.nlm.nih.gov/pubmed/22920785" rel="noopener" target="_blank">J Electrocardiol.</a>, tháng Chín năm 2012;45(5):463-75.</p>
+<p><strong>6.    </strong>Boden WE, Kleiger RE, Gibson RS. Electrocardiographic evolution of posterior acute myocardial infarction: importance of early precordial ST-segment depression. Tạp chí Am J Cardiol, ngày 1 tháng Tư năm 1987;59(8):782-7.</p>
+<p><strong>7.</strong>  Driver BE. Shroff G. Smith SW.  <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=ZBKuiKwAAAAJ&amp;cstart=20&amp;pagesize=80&amp;sortby=pubdate&amp;citation_for_view=ZBKuiKwAAAAJ:Ns2bVKt8YxIC" rel="noopener" target="_blank">Posterior reperfusion T-waves: Wellens’ syndrome of the posterior wall</a> (Sóng T tái tưới máu thành sau: hội chứng Wellens của thành sau). Tạp chí Emergency Medicine Journal 34(2):119, tháng Bảy năm 2016.</p>
+<p><strong>8.    </strong>Goldwasser D, Senthlikumar A, Bayes de Luna A. Lateral MI Explains the Presence of Prominent R Wave (R ≥ S) in V1. Tạp chí <a href="https://www.ncbi.nlm.nih.gov/pubmed/25764092" rel="noopener" target="_blank">Ann Noninvasive Electrocardiol.</a>, tháng Mười Một năm 2015;20(6):570-7.</p>
+<p><strong>9.    </strong>Anand U, Kulkarni MD, Renee B. Clinical use of posterior electrocardiographic leads: A prospective electrocardiographic analysis during coronary occlusion. <a href="http://www.ahjonline.com/issue/S0002-8703(00)X0855-1" rel="noopener" target="_blank">Tháng Tư năm 1996</a>, Tập 131, Số 4, Trang 736-741</p>
+<p><strong>10.    </strong>Chia BL, Tan HC, Yip JW. Electrocardiographic patterns in posterior chest leads (V7, V8, V9) in normal subjects. Tạp chí <a href="https://www.ncbi.nlm.nih.gov/pubmed/10758941" rel="noopener" target="_blank">Am J Cardiol.</a>, ngày 1 tháng Tư năm 2000;85(7):911-2, A10.</p>
+<p><strong>11. </strong>Rosengarten P, Kelly AM, Dixon D. Does routine use of the 15-lead ECG improve the diagnosis of acute myocardial infarction in patients with chest pain? Tạp chí Emerg Med (Fremantle), tháng Sáu năm 2001;13(2):190-3.</p>
+<p><strong>12. </strong>Trägårdh E, Claesson M, Wagner GS. Detection of acute myocardial infarction using the 12-lead ECG plus inverted leads versus the 16-lead ECG (with additional posterior and right-sided chest electrodes). Tạp chí <a href="https://www.ncbi.nlm.nih.gov/pubmed/17944659" rel="noopener" target="_blank">Clin Physiol Funct Imaging.</a>, tháng Mười Một năm 2007;27(6):368-74.</p>
+<p><strong>13.</strong> Langer A, Goodman SG, Topol EJ, và cs. Late assessment of thrombolytic efficacy (LATE) study: prognosis in patients with non-Q wave myocardial infarction. Tạp chí J Am Coll Cardiol, 1996;27:1327-32.</p>
+<h3 id="thu-muc-co-chu-giai-ve-nghien-cuu-cua-langer-va-cs">Thư mục có chú giải về nghiên cứu của Langer và cs.:</h3>
+<p><strong><em>Langer A và cs., Late Assessment of Thrombolytic Efficacy (LATE) Study: Prognosis in patients with non-Q wave myocardial infarction, 1996 </em></strong><em><u>và</u></em><em> <strong>Braunwald E và cs., Non-Q-wave and ST segment depression myocardial infarction: Is there a role for thrombolytic therapy? 1996. </strong></em></p>
+<p><u>Phương pháp:</u>  Langer và cs. (167), cùng với Braunwald và cs. (168), đã thực hiện một phân tích hậu kiểm (post-hoc) trên dữ liệu của thử nghiệm LATE (169) (xem Phụ lục).</p>
+<p><u>Kết quả:</u>  Trong số 5711 bệnh nhân, 1480 bệnh nhân có biểu hiện ST chênh xuống mà không có ST chênh lên; 4759 trong số 5711 bệnh nhân (83%) được khẳng định nhồi máu cơ tim cấp (AMI) dựa vào nồng độ men CK cao gấp đôi bình thường.  Trong số 4759 bệnh nhân này, 1309 (28%) bị AMI không sóng Q, trong đó 528 (40%) có <strong>ST chênh xuống đơn độc ít nhất 2 mm.</strong>  Tỷ lệ tử vong sau ba mươi lăm ngày ở nhóm này là 8.6% (tPA) so với 16.6% (giả dược).  Tỷ lệ tử vong sau một năm là 20.1% (tPA) so với 31.9% (giả dược).  Thực tế, phân tích này cho thấy <strong>TOÀN BỘ lợi ích của tPA được chứng minh trong nghiên cứu LATE đều nằm ở phân nhóm ST chênh xuống đơn độc ít nhất 2mm này</strong>. Những bệnh nhân có ST chênh lên được điều trị ít nhất 6 giờ sau khởi phát triệu chứng dường như không được hưởng lợi.</p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
