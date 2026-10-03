@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>03/11/2017 — 12 ca ví dụ sử dụng công thức 3 biến và 4 biến, cùng công thức đơn giản hoá, để phân biệt ST chênh lên bình thường với tắc LAD kín đáo</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #801 · DR. SMITH’S ECG BLOG</div>
+   <h1>03/11/2017 — 12 ca ví dụ sử dụng công thức 3 biến và 4 biến, cùng công thức đơn giản hoá, để phân biệt ST chênh lên bình thường với tắc LAD kín đáo</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/12-cases-of-use-of-3-and-4-variable/" target="_blank" rel="noopener">"12 Example Cases of Use of 3- and 4-variable formulas, plus Simplified Formula, to differentiate normal STE from subtle LAD occlusion"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 20 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p><strong>Dưới đây là 12 ca ví dụ sử dụng công thức 3 biến và công thức 4 biến, giúp phân biệt ST chênh lên bình thường ở các chuyển đạo V2-V4 với ST chênh lên do tắc LAD kín đáo.</strong></p>
+<p><strong></strong><span class="c-do"><strong>CẢNH BÁO:</strong> công thức này không hoàn hảo. Hãy thận trọng khi dùng nó để đảo ngược nhận định trước đó của bạn rằng điện tâm đồ thể hiện tắc LAD. Tôi khuyên dùng công thức khi bạn lo ngại rằng một điện tâm đồ có vẻ là ST chênh lên bình thường lại có thể là tắc LAD. Độ nhạy không hoàn hảo.</span></p>
+<p><span class="c-do"><strong>Cảnh báo mới: khi dùng QTc, KHÔNG hiệu chỉnh nếu tần số tim dưới 60 nhịp/phút.<br></strong></span></p>
+<h3 id="huong-dan-su-dung-ung-dung-iphone-mien-phi-subtlestemi-cho-cong-thuc-3-bien-phien-ban-cong-thuc-4-bien-se-ra-mat-sau">Hướng dẫn sử dụng ứng dụng iPhone miễn phí subtleSTEMI cho công thức 3 biến. Phiên bản công thức 4 biến sẽ ra mắt sau.</h3>
+<p>Đây là một bài giảng video về tắc LAD kín đáo: <a href="https://drsmithsecgblog.com/2015/04/one-hour-lecture-on-subtle-ecg-findings.html" rel="noopener" target="_blank">One hour lecture on Subtle ECG Findings of Coronary Occlusion</a> (Bài giảng một giờ về các dấu hiệu điện tâm đồ kín đáo của tắc mạch vành)</p>
+<p><strong>Công thức 3 biến xuất phát từ bài báo này:</strong></p>
+<p>Smith SW và cs. <a href="http://www.annemergmed.com/article/S0196-0644(12)00160-6/pdf" rel="noopener" target="_blank">Electrocardiographic Differentiation of Early Repolarization FromSubtle Anterior ST-Segment Elevation Myocardial Infarction</a> (Phân biệt bằng điện tâm đồ giữa tái cực sớm và nhồi máu cơ tim ST chênh lên thành trước kín đáo). Tạp chí Annals of Emergency Medicine 2012;60:45-56.</p>
+<p><strong>Công thức 4 biến xuất phát từ bài báo tiếp theo này:</strong></p>
+<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/28460689" rel="noopener" target="_blank">A new 4-variable formula to differentiatenormal variant ST segment elevation in V2-V4 (early repolarization) from subtle left anterior descending coronary occlusion – Adding QRS amplitude of V2improves the model.</a> (Một công thức 4 biến mới để phân biệt ST chênh lên biến thể bình thường ở V2-V4 (tái cực sớm) với tắc động mạch liên thất trước kín đáo – Bổ sung biên độ QRS ở V2 giúp cải thiện mô hình.)</p>
+<p><strong>Công thức đã được thẩm định ngoài trong nghiên cứu này:</strong></p>
+<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/29938879" rel="noopener" target="_blank">A tale of two formulas: Differentiation of subtle anterior MI from benign ST segment elevation</a> (Chuyện về hai công thức: phân biệt nhồi máu cơ tim thành trước kín đáo với ST chênh lên lành tính)</p>
+<p><span class="c-do">Điều cốt yếu là chỉ dùng công thức khi chẩn đoán phân biệt là tắc LAD kín đáo với tái cực sớm. Do đó, phải có ST chênh lên ít nhất 1 mm ở bất kỳ chuyển đạo nào trong V2-V4. Nếu có LVH, công thức có thể không áp dụng được. Nếu có các đặc điểm khiến tắc LAD trở nên rõ ràng (ST chênh xuống ở thành dưới hoặc thành trước, ST dạng lồi, biến dạng phần cuối QRS, sóng Q, hoặc ST chênh lên từ 5 mm trở lên), thì công thức CÓ THỂ KHÔNG áp dụng được. Những ca loại này đã bị loại khỏi nghiên cứu vì là STEMI thành trước rõ ràng.</span></p>
+<p>–QTc là giá trị đo bằng máy tính. <strong><span class="c-xanh">Không hiệu chỉnh theo tần số tim nếu tần số dưới 60</span></strong></p>
+<p>–RAV4 = biên độ sóng R, tính bằng mm, ở chuyển đạo V4.</p>
+<p>–ST chênh lên (STE) được đo tại 60 mili giây sau điểm J, so với đoạn PR, tính bằng milimét.</p>
+<p><strong>Công thức</strong>: (1.196 x STE tại 60 ms sau điểm J ở V3, tính bằng mm) + (0.059 x QTc đo bằng máy tính) – (0.326 x biên độ sóng R ở V4, tính bằng mm).</p>
+<p><strong>Giá trị lớn hơn 23.4</strong> có độ nhạy và độ đặc hiệu khá cao đối với tắc LAD.</p>
+<p><strong>Giá trị lớn hơn 22.0</strong> nhạy hơn, ít âm tính giả hơn, nhưng độ đặc hiệu giảm xuống 80%.</p>
+<p><strong>Công thức 4 biến (chính xác hơn một chút so với công thức 3 biến):</strong></p>
+<p>Dùng cùng các số đo, nhưng bổ sung tổng biên độ QRS (cả sóng R và sóng S) ở chuyển đạo V2:</p>
+<p><strong>Công thức</strong>: (1.062 x STE tại 60 ms sau điểm J ở V3, tính bằng mm) + (0.052 x QTc đo bằng máy tính) – (0.151 x QRSV2) – (0.268 x biên độ sóng R ở V4, tính bằng mm).</p>
+<p><strong>Giá trị lớn hơn 18.2</strong> có độ nhạy và độ đặc hiệu khá cao đối với tắc LAD.</p>
+<p><strong><br></strong><br><strong>Công thức 4 biến dựa trên bài báo này: </strong></p>
+<h2 id="driver-be-va-cs-a-new-4-variable-formula-to-differentiate-normal-variant-st-segment-elevation-in-v2-v4-early-repolarization-from-subtle-left-anterior-descending-coronary-occlusion-adding-qrs-amplitude-of-v2-improves-the-model-tap-chi-j-electrocardiology-50-5-561-569-thang-chin-thang-muoi-nam-2017">Driver, BE và cs. A new 4-variable formula to differentiate normal variant ST segment elevation in V2-V4 (early repolarization) from subtle left anterior descending coronary occlusion – Adding QRS amplitude of V2 improves the model. Tạp chí J Electrocardiology 50(5):561-569; tháng Chín/tháng Mười năm 2017.</h2>
+<p><strong>Truy cập vào đây để tìm các applet Excel. Bạn nhập các <a href="https://drsmithsecgblog.com/p/rules-equations.html" rel="noopener" target="_blank">https://drsmithsecgblog.com/p/rules-equations.html</a></strong></p>
+<p><strong><br></strong><br><strong>Giá trị công thức càng gần điểm cắt 18.2 thì càng chính xác. </strong></p>
+<h3 id="xem-bai-nay-de-dien-giai-chinh-xac-hon-ket-qua-cua-cong-thuc-4-bien-co-kem-do-thi">Xem bài này để diễn giải chính xác hơn kết quả của công thức 4 biến, có kèm đồ thị.</h3>
+<p><strong>Tóm lại: </strong></p>
+<p><strong>Ở điểm cắt 17.0, công thức có độ nhạy 97%. </strong></p>
+<p><strong>Ở điểm cắt 19.0, công thức có độ đặc hiệu 97%.</strong></p>
+<p><strong>Cuối cùng, có một công thức đơn giản hoá <u>không hiệu chỉnh QT</u>: </strong></p>
+<p>Aslanger. Tạp chí Am J Cardiol 2018; 122(8):1303-1309.</p>
+<p><strong>(RAV4 tính bằng mm + QRSV2 tính bằng mm) – [(QT tính bằng mm) + STE60V3 tính bằng mm)</strong></p>
+<p><strong>Giá trị nhỏ hơn 12 tương ứng với tắc LAD; giá trị lớn hơn 12 tương ứng với ST chênh lên biến thể bình thường</strong></p>
+<p><strong>Độ nhạy, độ đặc hiệu, độ chính xác = 86.9%, 92.3%, 90.1%</strong></p>
+<h2 id="ca-1">Ca 1</h2>
+<h3 id="stemi-thanh-truoc-cap-do-tac-lad-hay-tai-cuc-som-lanh-tinh-ber">STEMI thành trước cấp do tắc LAD, hay tái cực sớm lành tính (BER)?</h3>
+<p>Đây là điện tâm đồ đầu tiên tại khoa cấp cứu của một bệnh nhân nam 46 tuổi bị đau ngực:</p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_Forcase1innewblogpost.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_Forcase1innewblogpost.jpg" alt="" width="1600" height="780" loading="lazy" decoding="async"></a><figcaption>QTc là 420<br>ST chênh lên tại 60 ms sau điểm J ở chuyển đạo V3 = 2.5 mm<br>Biên độ sóng R ở V4 = 2<br>QRS V2 = 19 mm<br>Công thức 3 biến = 27.11 (trên 23.4, phù hợp với tắc LAD)<br>Công thức 4 biến = 21.09 (trên 18.2, phù hợp với tắc LAD)</figcaption></figure>
+<p>Bệnh nhân này bị chẩn đoán nhầm là ST chênh lên biến thể bình thường. Anh ấy được nhập viện để “loại trừ nhồi máu cơ tim”. Kết quả khẳng định nhồi máu cơ tim cấp với troponin I đỉnh 130 ng/mL.</p>
+<p><strong>Dưới đây tôi minh họa cách đo STE tại 60 ms sau điểm J ở chuyển đạo V3:</strong></p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_Screenshot202024-11-1420at2011.29.3220AM.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_Screenshot202024-11-1420at2011.29.3220AM.jpg" alt="" width="1600" height="1208" loading="lazy" decoding="async"></a></figure>
+<p><strong>Chụp mạch vành ngày hôm sau cho thấy tắc 100% LAD đoạn gần.</strong> Bệnh nhân có rối loạn vận động thành trước ở giai đoạn hồi phục.</p>
+<h2 id="ca-2">Ca 2</h2>
+<h3 id="nhoi-mau-co-tim-cap-do-tac-lad-hay-tai-cuc-som">Nhồi máu cơ tim cấp do tắc LAD, hay tái cực sớm?</h3>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_excellentMImimicsBER-1432-meanR11.5-QT455-ST1.17.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_excellentMImimicsBER-1432-meanR11.5-QT455-ST1.17.jpg" alt="" width="1600" height="564" loading="lazy" decoding="async"></a><figcaption>QTc là 455<br>ST chênh lên tại 60 ms sau điểm J ở chuyển đạo V3 = 3.0 mm<br>Biên độ sóng R ở V4 = 17<br>QRS V2 = 16 mm<br>Công thức 3 biến = 24.89 (trên 23.4, phù hợp với tắc LAD)<br>Công thức 4 biến = 19.87 (trên 18.2, phù hợp với tắc LAD)</figcaption></figure>
+<p><strong><u></u></strong><br>Điều này đã không được nhận ra; điện tâm đồ ghi lại ở phút thứ 69 cho thấy sóng Q mới ở V2-V4 nhưng không được để ý, và bệnh nhân phải chờ một thời gian dài tại khoa cấp cứu trước khi STEMI được chẩn đoán.</p>
+<p><strong>Tắc 100% LAD.</strong></p>
+<h2 id="ca-3">Ca 3</h2>
+<h3 id="hom-qua-toi-dang-doc-mot-chong-dien-tam-do-va-thay-ban-nay-khong-kem-thong-tin-lam-sang-nao">Hôm qua tôi đang đọc một chồng điện tâm đồ và thấy bản này, không kèm thông tin lâm sàng nào….</h3>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_ExampleCase3FirstECG.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_ExampleCase3FirstECG.jpg" alt="" width="1600" height="494" loading="lazy" decoding="async"></a><figcaption>QTc là 400<br>ST chênh lên tại 60 ms sau điểm J ở chuyển đạo V3 = 1.5 mm<br>Biên độ sóng R ở V4 = 4.0<br>QRS V2 = 22 mm
+Công thức 3 biến = 24.1 (trên 23.4, phù hợp với tắc LAD)
+Công thức 4 biến = 18.0 (dưới 18.2, phù hợp với ST chênh lên bình thường)</figcaption></figure>
+<p>Công thức 3 biến dương tính, nhưng do QRS ở V2 cao 22 mm, công thức 4 biến chỉ vừa sát ngưỡng âm tính. Bất cứ khi nào giá trị tiến gần điểm cắt, kết luận âm tính là rất nguy hiểm. Một cách đúng đắn, các bác sĩ đã ghi lại điện tâm đồ 20 phút sau và bản ghi đó cho phép chẩn đoán STEMI thành trước.</p>
+<p><strong>Tắc 100% LAD.</strong></p>
+<h2 id="ca-4">Ca 4</h2>
+<h3 id="stemi-thoang-qua-cac-dien-tam-do-lien-tiep-tu-truoc-vien-den-benh-vien-moi-ket-qua-troponin-deu-am-tinh-duoi-0-04-ng-ml">STEMI thoáng qua, các điện tâm đồ liên tiếp từ trước viện đến bệnh viện, mọi kết quả troponin đều âm tính (dưới 0.04 ng/ml)</h3>
+<p>Một bệnh nhân nam 45 tuổi gọi 911 vì đau ngực:</p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_2-1544-nowwith2-3mmSTEandSTEinhighlatQT409.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_2-1544-nowwith2-3mmSTEandSTEinhighlatQT409.jpg" alt="" width="1118" height="420" loading="lazy" decoding="async"></a><figcaption>QTc là 400<br>ST chênh lên tại 60 ms sau điểm J ở chuyển đạo V3 = 3.5 mm<br>Biên độ sóng R ở V4 = 13<br>QRS V2 = 18 mm
+Công thức 3 biến = 23.54 (trên 23.4, phù hợp với tắc LAD)
+Công thức 4 biến = 18.315 (trên 18.2, phù hợp với tắc LAD)</figcaption></figure>
+<p>Ca này đã không được chẩn đoán. May mắn là mạch đã tái tưới máu tự phát và các điện tâm đồ sau đó cho thấy ST chênh lên đã hồi phục. Mọi kết quả troponin đều dưới giới hạn phát hiện.</p>
+<p><strong>Chụp mạch vành cho thấy hẹp khít LAD có huyết khối. Bệnh nhân được phẫu thuật bắc cầu chủ vành (CABG).</strong></p>
+<h2 id="ca-5-am-tinh-gia-voi-ca-hai-cong-thuc">Ca 5. Âm tính giả với cả hai công thức.</h2>
+<h3 id="benh-nhan-nam-ngoai-40-tuoi-mot-chut-dau-nguc-1-5-gio">Bệnh nhân nam ngoài 40 tuổi một chút, đau ngực 1.5 giờ</h3>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_Patient3_0625presentation.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_Patient3_0625presentation.jpg" alt="" width="1145" height="440" loading="lazy" decoding="async"></a><figcaption>Đây là câu trả lời của tôi: 
+<strong>“Ca khó. Nhiều khả năng là tắc LAD cấp, cần ghi điện tâm đồ liên tiếp/siêu âm tim.”</strong>
+
+<strong><u>Các công thức</u></strong>
+QTc là 410<br>ST chênh lên tại 60 ms sau điểm J ở chuyển đạo V3 = 2.5 mm<br>Biên độ sóng R ở V4 = 14<br>QRS V2 = 16 mm
+Công thức 3 biến = 22.6 (dưới 23.4, phù hợp với ST chênh lên bình thường)
+Công thức 4 biến = 17.8 (dưới 18.2, phù hợp với ST chênh lên bình thường)</figcaption></figure>
+<p><strong>Ở điểm cắt 23.4</strong> (điểm cắt tôi thường khuyến nghị), độ nhạy đối với tắc LAD trong số các ca kín đáo là 86% (cao hơn nhiều nếu lấy toàn bộ các ca tắc LAD làm mẫu số), với độ đặc hiệu 91%.</p>
+<p><strong>Ở điểm cắt 22.0</strong>, độ nhạy là 96% nhưng độ đặc hiệu giảm xuống 81%. <strong>Tôi lo ngại với bất kỳ giá trị nào lớn hơn 22.</strong><strong><br></strong>Với tôi, các sóng T trông quá đầy đặn để có thể là bình thường. Và dù giá trị công thức không lớn hơn 23.4, ở mức 22.6 hay 23.2 thì nó cũng đủ gần để phải lo ngại.</p>
+<p>Ở thời điểm 7 giờ sau khi đến viện, sau nhiều kết quả troponin dương tính, bệnh nhân được chụp mạch vành và có <strong>tắc 100% LAD.</strong> Troponin T đỉnh rất cao, ở mức 2.11 ng/mL.</p>
+<h2 id="ca-6">Ca 6.</h2>
+<p><strong><u></u></strong><br>Một phụ nữ 75 tuổi than phiền bị “trào ngược”.</p>
+<h3 id="ca-benh-dang-kinh-ngac-minh-hoa-gia-tri-cua-viec-ghi-dien-tam-do-lien-tiep-thuong-xuyen">Ca bệnh đáng kinh ngạc minh họa giá trị của việc ghi điện tâm đồ liên tiếp thường xuyên</h3>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_STE-and-HATW-serial-ECGs.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_STE-and-HATW-serial-ECGs.jpg" alt="" width="1250" height="593" loading="lazy" decoding="async"></a><figcaption>QTc là 400<br>ST chênh lên tại 60 ms sau điểm J ở chuyển đạo V3 = 2.5 mm<br>Biên độ sóng R ở V4 = 4.5<br>QRS V2 = 6 mm
+Công thức 3 biến = 25.12 (trên 23.4, phù hợp với tắc LAD)
+Công thức 4 biến = 21.17 (trên 18.2, phù hợp với tắc LAD)</figcaption></figure>
+<p>Điều này dẫn đến việc ghi các điện tâm đồ liên tiếp:</p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_Animation-Full252812529.gif"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_Animation-Full252812529.gif" alt="" width="1005" height="582" loading="lazy" decoding="async"></a><figcaption>Những thay đổi động này đã xác nhận hội chứng vành cấp (ACS)</figcaption></figure>
+<p>Có <strong>tắc 100% một nhánh bờ tù lớn</strong> (thật bất ngờ, không phải LAD! Nhưng thực ra, công thức chỉ cho bạn biết rằng vùng thành tim nằm dưới các chuyển đạo V2-V4 bị tổn thương; nó không thể thực sự xác định động mạch liên quan).</p>
+<h2 id="ca-7">Ca 7.</h2>
+<h3 id="gia-binh-thuong-hoa-song-wellens">Giả bình thường hóa sóng Wellens</h3>
+<p><strong>Một bệnh nhân nam 60 tuổi bị đau ngực đang giảm dần</strong></p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_pseudonormalization-of-wellens-waves.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_pseudonormalization-of-wellens-waves.jpg" alt="" width="1503" height="552" loading="lazy" decoding="async"></a><figcaption>Có ST chênh lên tối thiểu và có <strong>sóng T đảo ngược kín đáo ở V2-V5</strong>, rất gợi ý hội chứng Wellens.<br>ST chênh lên có bình thường không? Biên độ sóng R rất thấp gợi ý là KHÔNG. Xem công thức tại đây:
+
+QTc là 380<br>ST chênh lên tại 60 ms sau điểm J ở chuyển đạo V3 = 1.5 mm<br>Biên độ sóng R ở V4 = 2.5<br>QRS V2 = 15.5 mm
+Công thức 3 biến = 23.4 (bằng điểm cắt 23.4, phù hợp với tắc LAD)<br>Công thức 4 biến = 18.34 (trên 18.2, phù hợp với tắc LAD)</figcaption></figure>
+<p>Vì vậy, điều này, cùng với <strong>đau ngực đang giảm dần</strong>, có vẻ là một ca tắc LAD đang tái tưới máu.</p>
+<p>Trong hội chứng Wellens, động mạch đang mở. Sóng T đảo ngược cho thấy động mạch liên quan đến nhồi máu đã được tái tưới máu.</p>
+<p>Huyết áp tăng, mạch giảm xuống 45. Bệnh nhân được dùng aspirin (ASA), Plavix 600mg, heparin và truyền nitroglycerin liên tục.</p>
+<p>Một điện tâm đồ khác ghi 15 phút sau, khi hết đau, có sóng T đảo ngược nhiều hơn.</p>
+<p>Rồi 15 phút sau đó, cơn đau tái phát và sóng T giả bình thường hóa. ST chênh lên vẫn kín đáo, nhưng giá trị công thức còn cao hơn nữa.</p>
+<p><strong>Bệnh nhân được thông tim và có hẹp 99% LAD đoạn xa kèm huyết khối và dòng chảy TIMI-2.</strong></p>
+<p>Troponin I ban đầu trả về ở mức 1.5 ng/ml. Đỉnh là 8.1 ng/ml.</p>
+<h2 id="ca-8">Ca 8.</h2>
+<h3 id="cong-thuc-duong-tinh-voi-tac-lad-nhung-sieu-am-tim-khong-thay-roi-loan-van-dong-thanh-do-la-gi">Công thức dương tính với tắc LAD. Nhưng siêu âm tim không thấy rối loạn vận động thành! Đó là gì?</h3>
+<p>Một bệnh nhân nam 35 tuổi than phiền đau ngực:</p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_CASO201.ECG-subtle-LADO-cropped.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_CASO201.ECG-subtle-LADO-cropped.jpg" alt="" width="968" height="384" loading="lazy" decoding="async"></a><figcaption>QTc là 405<br>ST chênh lên tại 60 ms sau điểm J ở chuyển đạo V3 = 4.0 mm<br>Biên độ sóng R ở V4 = 12.5<br>QRS V2 = 12.5 mm
+Công thức 3 biến = 23.95 (trên 23.4, phù hợp với tắc LAD)
+Công thức 4 biến = 19.53 (trên 18.2, phù hợp với tắc LAD)</figcaption></figure>
+<p>Bản điện tâm đồ này được gửi cho tôi mà không kèm thông tin lâm sàng nào, để hỏi ý kiến của tôi. Tôi lo ngại tắc LAD. Các bác sĩ lâm sàng cho rằng nó bình thường, nhưng do troponin tăng nên nghĩ là viêm cơ tim. Không có rối loạn vận động thành. Sau nhiều giờ, họ quyết định rằng chụp mạch vành là phù hợp và phát hiện tắc đoạn xa LAD, đã được tái thông và đặt stent.</p>
+<p><strong>Tắc 100% đoạn xa LAD.</strong></p>
+<h2 id="ca-9">Ca 9.</h2>
+<p><a href="https://drsmithsecgblog.com/2017/06/patient-presentation-is-important-and.html" rel="noopener" target="_blank"><strong>Patient presentation is important</strong></a> (Bệnh cảnh lâm sàng của bệnh nhân là quan trọng)</p>
+<p>Đây là một bệnh nhân hơn 60 tuổi bị đau ngực cấp:</p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_SlowandlargeT-waves.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_SlowandlargeT-waves.jpg" alt="" width="1600" height="550" loading="lazy" decoding="async"></a><figcaption>Nhịp chậm xoang tần số 44. 
+ST chênh lên 2 mm ở V2 và V3 (tại điểm J, so với điểm nối PQ), thấp hơn “tiêu chuẩn” cho nam giới dưới 40 tuổi (2.5 mm). 
+Có lõm hướng lên
+Không có ST chênh xuống
+Không có sóng Q
+Không có<a href="https://drsmithsecgblog.com/search?q=terminal+qrs+distortion" rel="noopener" target="_blank"> biến dạng phần cuối QRS (terminal QRS distortion)</a>
+Vì vậy tái cực sớm là một khả năng.
+Các bác sĩ tim mạch không thấy điện tâm đồ này đáng lo.</figcaption></figure>
+<p>Tuy nhiên, có ST chênh lên rất đáng ngờ ở III và aVF, kèm ST chênh xuống ở aVL.    Với tôi, điều này khiến điện tâm đồ gần như đủ để chẩn đoán thiếu máu cục bộ, dù nếu đây là tắc LAD thì đáng lẽ phải có ST <em>chênh xuống </em>ở III và aVL, nên hơi khó hiểu.  <strong><em>Trừ khi bạn tính đến một LAD "vòng qua mỏm" (wraparound) tới thành dưới. </em></strong><br><br>Cũng có sóng T dương ở V1, lớn hơn ở V6.  Đây là một dấu hiệu rất yếu của tắc LAD, và không cải thiện thêm khả năng chẩn đoán so với mô hình công thức của chúng tôi trong chẩn đoán tắc LAD so với tái cực sớm.  Trong nghiên cứu đó, dấu hiệu này có mặt ở 39% trường hợp tắc LAD và 15% trường hợp tái cực sớm.</p>
+<p><strong>Các số đo là:</strong><br><strong><br></strong>RA V4 = 6.5<br>STE60V3 = 3.0<br>QRSV2 = 12.5<br>QTc = 362 ms<br><br><strong>Do đó giá trị các công thức là:</strong><br><br>Công thức 3 biến:<strong> 22.83</strong> (dưới 23.4; ngưỡng chính xác nhất, nhưng không nhạy nhất).  Tôi vẫn lo khi giá trị trên 22.0 (vẫn bỏ sót 4% trường hợp tắc LAD khi dưới 22.0)<br><br>Công thức 4 biến <strong>18.38</strong> (trên 18.2; ngưỡng chính xác nhất, nhưng không nhạy nhất). Vì vậy kết quả này gợi ý mạnh tắc LAD.<br><br><strong>QTc đo bằng máy tính = 362 ms</strong> (giá trị này RẤT ngắn đối với tắc LAD, nhưng ngắn như vậy là do hiệu chỉnh theo nhịp tim chậm; QT đo được là 413 ms.)  <strong>Đây là lý do chính khiến giá trị công thức không cao lắm.</strong><br><br>Như vậy, điện tâm đồ là tái cực sớm theo công thức 3 biến cũ và là tắc LAD theo công thức mới.<br><br>Mặc dù ST chênh lên chưa đủ để chẩn đoán, và sóng T với kích thước này có thể gặp trong tái cực sớm, nhưng biên độ QRS và sóng R thấp thì không.<br><br>Các dấu hiệu ST ở thành dưới cũng khiến điện tâm đồ này đủ để chẩn đoán.<br><br>Trong trường hợp bạn thắc mắc về sóng T và nhịp chậm, kali máu bình thường.<br><br><strong>Tại sao nhịp chậm?</strong>  Hãy nghĩ về ST chênh lên ở thành dưới đó.  Có thể còn có nhồi máu cơ tim thành dưới do LAD "vòng qua mỏm" kèm theo nhịp chậm xoang.</p>
+<h3 id="ket-cuc">Kết cục</h3>
+<p>Bác sĩ cấp cứu đã kích hoạt phòng thông tim (cath lab). Bệnh nhân bị tắc 100% LAD và troponin I đỉnh là 51 ng/mL.</p>
+<h2 id="ca-10">Ca 10.</h2>
+<h3 id="mot-benh-nhan-hon-50-tuoi-bi-dau-nguc-va-st-chenh-len-toi-thieu-o-cac-chuyen-dao-truoc-tim">Một bệnh nhân hơn 50 tuổi bị đau ngực và ST chênh lên tối thiểu ở các chuyển đạo trước tim</h3>
+<p>Điện tâm đồ này được ghi lúc 1350, khi cơn đau giảm sau dùng nitroglycerine:</p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_Subtle-LAD-at-1350.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_Subtle-LAD-at-1350.jpg" alt="" width="1600" height="583" loading="lazy" decoding="async"></a><figcaption>ST chênh lên 1 mm tại điểm J ở cả V2 và V3 (trong giới hạn bình thường).<br>Kết quả đọc bằng máy tính là bình thường<br>Bác sĩ tim mạch đọc lại là bình thường<br>Bạn nghĩ sao?</figcaption></figure>
+<p><strong>Mô tả thêm: </strong>Còn có tăng tiến sóng R kém, với sóng R nhỏ ở V4. Sóng T hơi rộng và lớn, nhưng có lẽ chưa thể gọi là tối cấp. Có ST chênh xuống tối thiểu ở aVF.</p>
+<p><strong>Một bác sĩ nội trú của chúng tôi đã nhắn tin cho tôi điện tâm đồ-1 này, kèm lời nhắn:</strong></p>
+<p>“Đau ngực 3 giờ, QTc = 415 ms, công thức 3 biến là <strong>25.3</strong>.  Thầy nghĩ sao?”</p>
+<p>[<strong>Công thức 3 biến</strong> để phân biệt ST chênh lên biến thể bình thường với ST chênh lên của tắc LAD kín đáo có thể truy cập bằng cách bấm vào đường link ở đầu trang và nhập các giá trị vào ứng dụng excel trực tuyến.  Các giá trị là: 1. ST chênh lên tại 60 ms sau điểm J ở chuyển đạo V3.  2. Biên độ sóng R ở V4. 3. QTc đo bằng máy tính.  Xem thêm ứng dụng iPhone miễn phí “SubtleSTEMI”.  Xem thêm <a href="https://www.mdcalc.com/subtle-anterior-stemi-calculator" rel="noopener" target="_blank">MDcalc</a>.]</p>
+<p><strong><span class="c-do">Giá trị trên 23.4 rất đáng lo ngại tắc LAD.</span></strong></p>
+<p>[<strong>Công thức 4 biến </strong>bổ sung toàn bộ biên độ QRS ở chuyển đạo V2 và chính xác hơn công thức 3 biến.  Công thức là: (1.062 x ST chênh lên tại 60 ms sau điểm J ở V3 tính bằng mm) + (0.052 x QTc đo bằng máy tính) – (0.151 x QRSV2) – (0.268 x biên độ sóng R ở V4 tính bằng mm).  Cũng có thể truy cập công thức ở đầu trang, nhập giá trị vào ứng dụng excel.]</p>
+<p><strong><br></strong><strong>Bài công bố công thức có thể xem tại đây: <a href="http://www.jecgonline.com/article/S0022-0736(17)30107-3/pdf" rel="noopener" target="_blank">A new 4-variable formula</a></strong></p>
+<p><span class="c-do"><strong>Giá trị trên 18.2 khá nhạy và đặc hiệu cho tắc LAD. </strong></span></p>
+<p>Giá trị tính được là <strong>19.2 (gợi ý cao tắc mạch)</strong></p>
+<p>Tôi đề nghị ghi các điện tâm đồ liên tiếp, và chúng đã được ghi khi bệnh nhân giảm đau dần sau dùng nitroglycerine:</p>
+<p><strong>Đây là các điện tâm đồ liên tiếp, V1-V3</strong></p>
+<p><strong>Hình đầu tiên là một điện tâm đồ ghi trước đó, mà các bác sĩ điều trị không biết đến.</strong></p>
+<p><strong>                   </strong>1300               1350, đau giảm               1430                  1700, hết đau       1800, vẫn hết đau</p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_All-5-V1-V3-side-by-side.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_All-5-V1-V3-side-by-side.jpg" alt="" width="1006" height="398" loading="lazy" decoding="async"></a><figcaption><strong>Điều này cho thấy sóng T (vốn chưa bao giờ thật sự tối cấp) đang xẹp dần và có thể đã ở dạng tối cấp trước khi bệnh nhân đến viện.</strong></figcaption></figure>
+<h3 id="ket-cuc-2">Kết cục:</h3>
+<p>Troponin I lần thứ ba, lấy máu 4.5 giờ sau khi nhập viện, có kết quả 4.2 ng/mL.</p>
+<p>Bệnh nhân được chụp mạch vành và có hẹp 80% do huyết khối ở LAD đoạn giữa kèm bệnh LAD đoạn gần, cũng như một tổn thương 90% ở nhánh chéo.  Ông được phẫu thuật bắc cầu chủ vành (CABG).</p>
+<p>Kết cục này hoàn toàn phù hợp với tất cả các điện tâm đồ.</p>
+<h3 id="nhung-diem-can-hoc">Những điểm cần học:</h3>
+<p>1. Chú ý đến biên độ sóng T giảm dần trong khi cơn đau giảm dần.</p>
+<p>2. Các công thức rất chính xác.  Tôi luôn nghĩ rằng mình có thể làm tốt hơn các công thức của mình, nhưng giờ thì tôi đang nghi ngờ điều đó.</p>
+<p>3.  Một số bệnh nhân có ST chênh lên gần như bằng không lúc ban đầu. <strong><em><u>Bất kỳ</u></em></strong> mức ST chênh lên nào ở những bệnh nhân này đều là bất thường.  Ở những bệnh nhân như vậy, tắc LAD có thể chỉ gây ST chênh lên rất kín đáo.</p>
+<h2 id="ca-11">Ca 11.</h2>
+<h3 id="mot-nam-gioi-40-may-tuoi-bi-dau-nguc-dang-giam-dan-ban-nghi-gi">Một nam giới 40 mấy tuổi bị đau ngực đang giảm dần – bạn nghĩ gì?</h3>
+<p>Một nam giới 40 mấy tuổi đến khám vì đau ngực đang giảm dần.  Đây là điện tâm đồ đầu tiên của anh:</p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_1-WaningchestpainfirstECG-QTc379.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_1-WaningchestpainfirstECG-QTc379.jpg" alt="" width="1549" height="561" loading="lazy" decoding="async"></a><figcaption>Nhịp xoang. 
+QTc là 379 ms. 
+Có ST chênh lên ở V2-V4 nhưng không đạt “tiêu chuẩn” STEMI là ít nhất 1 mm ở 2 chuyển đạo trở lên (trừ V2 và V3, nơi đòi hỏi từ 2.0 mm trở lên đối với nam trên 40 tuổi).
+Vì vậy trông giống tái cực sớm.</figcaption></figure>
+<p>Các bác sĩ lâm sàng đã dùng công thức subtleSTEMI.  Tôi không chắc chính xác họ đã dùng những con số nào, nhưng họ cho tôi biết giá trị họ tính được là 21.2.</p>
+<p><strong><u>Hãy cùng xem xét điều đó:</u></strong></p>
+<p>QTc do máy tính đo là 379 ms.</p>
+<p>Biên độ sóng R ở chuyển đạo V4 từ 11-14 mm, tùy phức bộ được dùng để đo.</p>
+<p>Đây là ảnh phóng to V3 để đo ST chênh lên tại 60 ms sau điểm J ở chuyển đạo V3:</p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_2-witharrows.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_2-witharrows.jpg" alt="" width="559" height="332" loading="lazy" decoding="async"></a><figcaption><strong>Mũi tên đen</strong> chỉ điểm J.  <span class="c-do"><strong>Mũi tên đỏ</strong></span> nằm ở 60 ms (1.5 ô nhỏ) sau điểm J.  Bờ dưới của <strong>đường xanh lá phía trên</strong> là nơi cần đo từ đó.  Bờ trên của <strong>đường xanh lá phía dưới</strong> nằm ở điểm nối PQ.  Khoảng cách giữa hai đường này là 4 mm.  Một số người có thể nói là 3.5 mm</figcaption></figure>
+<p><u>Nếu đưa các giá trị này vào công thức, dùng QTc là 379, chúng ta có 6 giá trị khác nhau tùy theo số đo:</u></p>
+<p>RAV4 (biên độ sóng R ở V4) = 11 (tối thiểu)                     RAV4 = 12.5 (trung bình)                  RAV4 = 14 (tối đa)</p>
+<p>_________________________________________________________________________________</p>
+<p>ST chênh lên = 3.5 mm                   22.96                                       22.5                                             22.0</p>
+<p>ST chênh lên = 4.0 mm                   <strong><span class="c-do">23.56</span></strong>                                       23.1                                             22.6</p>
+<p><span class="c-do">Chỉ một trong 6 giá trị này là rất đặc hiệu cho tắc LAD (23.56, lớn hơn 23.4)</span></p>
+<p>Tất cả các giá trị còn lại đều lớn hơn 22.0, ngưỡng mà trên đó chắc chắn phải lo ngại và ghi các điện tâm đồ liên tiếp.</p>
+<p><span class="c-do"><strong>QRS V2 (biên độ QRS ở V2) = 15.5 mm; </strong><strong>công thức 4 biến</strong> cho giá trị thấp nhất là 17.6 và cao nhất là 18.9. Với điểm cắt chính xác nhất là 18.2, giá trị này cũng mơ hồ.</span></p>
+<p>Vì vậy một điện tâm đồ thứ hai được ghi 12 phút sau đó:</p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_2-waningCP2ndECG-QTc383.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_2-waningCP2ndECG-QTc383.jpg" alt="" width="1541" height="564" loading="lazy" decoding="async"></a><figcaption>QTc lúc này là 383 ms.  STE 60 V3 (ST chênh lên tại 60 ms sau điểm J ở V3) = 2.5 mm.  RAV4 (biên độ sóng R ở V4) = 11-12 mm. 
+<strong>Công thức 3 biến = 21.7</strong>
+<strong>Công thức 4 biến = 17.0</strong>
+Như vậy, giá trị của cả hai đều đã giảm</figcaption></figure>
+<p>Giá trị công thức lúc này thấp hơn một chút.</p>
+<p><strong>Hai điện tâm đồ này khác nhau đáng kể, nhưng các bác sĩ điều trị đã không nhận ra.</strong></p>
+<p><strong>Hãy xem hai điện tâm đồ đặt cạnh nhau.  Và hãy nhớ rằng cơn đau đang <em><u>giảm dần.</u></em></strong></p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_Sidebyside.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_Sidebyside.jpg" alt="" width="753" height="541" loading="lazy" decoding="async"></a><figcaption>Điện tâm đồ đầu tiên ở bên trái, điện tâm đồ theo dõi ở bên phải.
+<strong>Biên độ sóng T ở V3 là 10 mm trên điện tâm đồ trước và chỉ còn 7 mm trên điện tâm đồ sau.</strong>
+<strong>Điều này làm thay đổi ST chênh lên tại 60 ms sau điểm J từ 4.0 xuống 2.5.</strong></figcaption></figure>
+<p>Điều này khiến gần như chắc chắn rằng ST chênh lên trên điện tâm đồ đầu tiên là do thiếu máu cục bộ.</p>
+<p>Mặc dù các bác sĩ lâm sàng không chắc chắn và thu được giá trị công thức rất thấp cho cả hai điện tâm đồ, họ vẫn lo ngại về triệu chứng của bệnh nhân và đã kích hoạt phòng thông tim một cách thích hợp.</p>
+<p>Chụp mạch vành cho thấy tắc 99% do huyết khối với dòng chảy TIMI-II (đủ dòng chảy mạch vành để ngăn ST chênh lên rõ rệt).</p>
+<p>Nhiều khả năng động mạch đã tắc hoàn toàn vào thời điểm đau ngực nhiều nhất.</p>
+<h3 id="nhung-diem-can-hoc-2">Những điểm cần học:</h3>
+<p>1. Sóng T tối cấp giảm kích thước khi động mạch tái tưới máu</p>
+<p>2. Công thức dễ cho kết quả âm tính giả hơn khi động mạch đang tái tưới máu.</p>
+<p>3. Giá trị dưới 23.4 nhưng vẫn lớn hơn 22.0 vẫn có thể là do tắc hoặc gần tắc LAD.</p>
+<p>4.  Các điện tâm đồ liên tiếp là rất quan trọng nhưng phải được soi kỹ để tìm thay đổi, vốn có thể rất kín đáo (xem bên dưới).</p>
+<h2 id="ca-12">Ca 12.</h2>
+<h3 id="sieu-am-tim-ngay-ca-khi-hoac-nhat-la-khi-co-danh-dau-mo-speckle-tracking-co-the-khien-ban-gap-rac-roi">Siêu âm tim, ngay cả khi (hoặc nhất là khi) có đánh dấu mô (speckle tracking), có thể khiến bạn gặp rắc rối.</h3>
+<p>Đây là một phụ nữ 30 mấy tuổi bị đau vùng cơ thang hai bên.</p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_F40schestpainlargeT-waves.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_F40schestpainlargeT-waves.jpg" alt="" width="1600" height="536" loading="lazy" decoding="async"></a><figcaption>Có sóng T tối cấp<br>Có 1 mm ST chênh lên ở V3, vì vậy có thể dùng công thức để xác định đây có phải ST chênh lên bình thường hay không<br>QTc là 444 ms.<br>STE 60 V3 (ST chênh lên tại 60 ms sau điểm J ở V3) = 1.5 mm, biên độ sóng R ở V4 = 15 mm<br><strong>Giá trị công thức là 23.1, gần với giá trị tắc LAD là 23.4.  Nó dưới điểm cắt 23.4, nhưng trên giá trị an toàn của tôi là 22.0
+Giá trị công thức 4 biến = 19.38 (phù hợp với tắc LAD)</strong></figcaption></figure>
+<p>Biên độ QRS ở V2 rất nhỏ so với tái cực sớm, và đó là lý do công thức cho kết quả đúng ở ca này.</p>
+<p>Ca này đã bị các bác sĩ bỏ sót, ngay cả khi có siêu âm đánh dấu mô (speckle tracking) tại giường: không thấy rối loạn vận động thành.</p>
+<p>Troponin I lần đầu dưới ngưỡng phát hiện.</p>
+<p>Bệnh nhân được nhập viện để loại trừ nhồi máu cơ tim, nhưng troponin thứ 2 tăng, vì vậy cô được ghi một điện tâm đồ khác:</p>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_F40schestpainlargeT-waves4hrslater.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_F40schestpainlargeT-waves4hrslater.jpg" alt="" width="1600" height="526" loading="lazy" decoding="async"></a><figcaption>Điện tâm đồ này cho thấy sóng T bình thường của bệnh nhân này trông như thế nào, và rằng cô hoàn toàn không có ST chênh lên lúc ban đầu.</figcaption></figure>
+<p><strong>May mắn cho cô, động mạch đã tái tưới máu tự phát.  ‘</strong></p>
+<h3 id="ket-cuc-3">Kết cục</h3>
+<p><strong><br></strong><br>Cô được chụp mạch vành ngay sau đó và có tổn thương LAD có huyết khối, đang thông với dòng chảy TIMI-3.  Tổn thương được đặt stent.</p>
+<h2 id="ca-10-2">Ca 10.</h2>
+<h3 id="mot-nguoi-25-tuoi-bi-kho-chiu-vung-thuong-vi-nang-hon-khi-nam-ngua-do-hon-khi-ngoi-day">Một người 25 tuổi bị khó chịu vùng thượng vị, nặng hơn khi nằm ngửa, đỡ hơn khi ngồi dậy.</h3>
+<figure><a class="o-anh" href="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_3rdECGDiagnosticandformulaabove25.jpg"><img src="2017-11-03-12-cases-of-use-of-3-and-4-variable_anh/2017_11_3rdECGDiagnosticandformulaabove25.jpg" alt="" width="960" height="692" loading="lazy" decoding="async"></a><figcaption>STE60V3 (ST chênh lên tại 60 ms sau điểm J ở V3) = 2.5 mm<br>QTc do máy tính đo = 437<br>(hãy chú ý nó đã kéo dài ra so với các giá trị trước đó là 372 và 402 ms!)<br>Biên độ sóng R ở V4 = 9 mm, QRS = 26<br>Công thức 3 biến = <strong>25.839</strong> (lớn hơn 23.4 thì gần như chẩn đoán tắc LAD)<br>Công thức 4 biến = 19.0 (lớn hơn 18.2 thì gần như chẩn đoán tắc LAD)</figcaption></figure>
+<p>Phòng thông tim được kích hoạt, và chụp mạch vành cho thấy tổn thương 90% ở LAD đoạn xa có huyết khối.  Điện tâm đồ sau PCI cho thấy sóng T tái tưới máu.</p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
