@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>04/01/2019 — Thử nghiệm VERDICT</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #967 · DR. SMITH’S ECG BLOG</div>
+   <h1>04/01/2019 — Thử nghiệm VERDICT</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/the-verdict-trial/" target="_blank" rel="noopener">"The VERDICT Trial"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 0 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p>Bài viết của Pendell Meyers, Steve Smith biên tập</p>
+<p>Thử nghiệm VERDICT vừa được công bố gần đây. Đây lại là một nghiên cứu nữa xem xét thời điểm tối ưu để thông tim trong bối cảnh nhồi máu cơ tim không ST chênh lên (NSTEMI).</p>
+<p>Dưới đây là các điểm tóm tắt chính của RCT này:</p>
+<p><u>Tài liệu tham khảo:</u> Kofoed và cs. Early Versus Standard Care Invasive Examination and Treatment of Patients With Non-ST-Segment Elevation Acute Coronary Syndrome VERDICT Randomized Controlled Trial. Tạp chí Circulation. 2018;138:2741–2750.</p>
+<p><strong><u>Giả thuyết được nêu:</u></strong> “rằng chiến lược chụp mạch vành xâm lấn (ICA) rất sớm và tái thông mạch nếu cần, được thực hiện trong vòng 12 giờ kể từ thời điểm chẩn đoán, vượt trội so với chiến lược xâm lấn theo chăm sóc chuẩn, tức là ICA trong vòng 48 đến 72 giờ, xét về kết cục lâm sàng dài hạn.”</p>
+<h3 id="phuong-phap">Phương pháp:</h3>
+<p>Nhiều trung tâm tại Đan Mạch</p>
+<p><strong>Tiêu chuẩn chọn</strong>: bệnh nhân nghi hội chứng vành cấp (ACS) không đạt tiêu chuẩn STEMI, có ít nhất 1 trong các tiêu chuẩn nguy cơ cao sau: (1) thay đổi điện tâm đồ cho thấy thiếu máu cục bộ mới (ST chênh xuống mới, dạng đi ngang hoặc dốc xuống, ít nhất 0,05 mV ở 2 chuyển đạo liên tiếp, hoặc sóng T đảo ngược ít nhất 0,01 mV ở 2 chuyển đạo có sóng R nổi trội hoặc tỷ số R/S lớn hơn 1); và (2) tăng chất chỉ điểm thiếu máu cục bộ mạch vành (troponin). Bài báo không đề cập gì đến bệnh nhân có ST chênh lên kín đáo; về lý thuyết, những bệnh nhân này có thể đã được đưa vào nghiên cứu.</p>
+<p><strong>Tiêu chuẩn loại trừ</strong>: “có chỉ định ICA cấp (hội chứng vành cấp không ST chênh lên (NSTE-ACS) nguy cơ rất cao, bao gồm thiếu máu cục bộ đang tiếp diễn dù đã truyền nitroglycerin tĩnh mạch, mất ổn định huyết động hoặc mất ổn định điện học, suy tim cấp, biến chứng cơ học, hoặc ngừng tim)”</p>
+<h3 id="cac-nhanh-can-thiep">Các nhánh can thiệp:</h3>
+<p>Nhánh “Đánh giá xâm lấn rất sớm”: thông tim trong vòng 12 giờ</p>
+<p>Nhánh “Chăm sóc xâm lấn chuẩn”: thông tim trong vòng 48-72 giờ</p>
+<p><strong><u>Tiêu chí chính:</u></strong> Tổ hợp của tử vong do mọi nguyên nhân, nhồi máu cơ tim tái phát không tử vong, nhập viện vì thiếu máu cục bộ cơ tim kháng trị, hoặc nhập viện vì suy tim</p>
+<h3 id="ket-qua-chinh">Kết quả chính:</h3>
+<p>2147 bệnh nhân được phân ngẫu nhiên</p>
+<p>1075 bệnh nhân ở nhóm “xâm lấn rất sớm”, được thông tim sau thời gian trung vị 4,7 giờ kể từ khi <em>phân ngẫu nhiên (hãy nhớ rằng việc phân ngẫu nhiên tốn khá nhiều thời gian, và trong nghiên cứu này tác giả không nêu thời điểm đó cách lúc khởi phát triệu chứng hay cách lúc đến viện bao lâu) </em>1072 bệnh nhân ở nhóm “chăm sóc xâm lấn chuẩn”, được thông tim sau thời gian trung vị 61,6 giờ</p>
+<p>Với thời gian theo dõi trung vị 4,3 năm (khoảng tứ phân vị, 4,1–4,4), tiêu chí chính xảy ra ở 296 (27,5%) người tham gia trong nhóm ICA rất sớm và 316 (29,5%) người trong nhóm chăm sóc chuẩn (tỷ số nguy cơ, 0,92; KTC 95%, 0,78–1,08).</p>
+<p>Ở những bệnh nhân có điểm nguy cơ GRACE (Global Registry of Acute Coronary Events) lớn hơn 140, chiến lược điều trị xâm lấn rất sớm cải thiện kết cục chính so với điều trị xâm lấn chuẩn (tỷ số nguy cơ, 0,81; KTC 95%, 0,67–1,01; giá trị P cho tương tác=0,023). Cần lưu ý, khoảng 50% bệnh nhân có điểm GRACE ít nhất là 140.</p>
+<p>Lưu ý: điểm GRACE 140 tương ứng với tỷ lệ tử vong trong bệnh viện 3%</p>
+<p><a href="https://www.outcomes-umassmed.org/grace/grace_risk_table.aspx" rel="noopener" target="_blank">Bấm vào đây để xem các nhóm nguy cơ theo điểm GRACE</a></p>
+<p>Ví dụ một bệnh nhân có điểm GRACE 140:</p>
+<p>Nam 60 tuổi, tần số tim 96, huyết áp tâm thu 120, creatinin 1,2, có ST chênh xuống ít nhiều, troponin dương tính và không có bằng chứng suy tim sung huyết (CHF).</p>
+<h2 id="suy-nghi-cua-toi">Suy nghĩ của tôi:</h2>
+<p>Trước hết, hãy nhớ những bệnh nhân này là ai: đây là các bệnh nhân ACS không đạt tiêu chuẩn STEMI nhưng có troponin dương tính và/hoặc “ST chênh xuống mới, dạng đi ngang hoặc dốc xuống 0,05 mV ở 2 chuyển đạo liên tiếp, hoặc sóng T đảo ngược ít nhất 0,1 mV ở 2 chuyển đạo có sóng R nổi trội hoặc tỷ số R/S lớn hơn 1).” Quan trọng nhất, họ đã loại trừ những bệnh nhân có thiếu máu cục bộ kháng trị (kháng với điều trị kháng tiểu cầu và chống huyết khối tối đa cũng như nitroglycerin tĩnh mạch), mất ổn định huyết động hoặc điện học, suy tim cấp, biến chứng cơ học, hoặc ngừng tim, <u>vì chụp mạch vành cấp cứu vốn đã được chỉ định ở những bệnh nhân như vậy</u>.</p>
+<p><em>Ví dụ những bệnh nhân bắt buộc phải được thông tim cấp cứu theo các hướng dẫn này:</em></p>
+<p><em><br></em><br><em>Ca 1: Một bệnh nhân được chẩn đoán lâm sàng là ACS, kể cả khi không có bất kỳ dấu hiệu nào trên điện tâm đồ, đã được điều trị nội khoa tối đa mà vẫn còn than đau dù chỉ còn chút ít (hoặc triệu chứng tương đương đau thắt ngực) khi đánh giá lại sau 20-30 phút.</em></p>
+<p><em><br></em><br><em>Ca 2: Một bệnh nhân được chẩn đoán lâm sàng là ACS đến viện vì đau ngực và có “ST chênh xuống do thiếu máu cục bộ” (trong ví dụ này, hãy giả định rằng vì lý do nào đó người điều trị không nghĩ tới nhồi máu cơ tim do tắc (Occlusion MI) thành sau, mà chỉ nghĩ là “thiếu máu cục bộ”). Sau khi được điều trị nội khoa, bệnh nhân nói rằng giờ đã hết đau, hoặc có lẽ “chỉ còn hơi ê ẩm một chút”, tuy nhiên các điện tâm đồ ghi lại cho thấy ST chênh xuống do thiếu máu cục bộ vẫn tồn tại, ngang bằng lúc mới đến, ngay cả 20 phút sau khi cơn đau đã đỡ. Bệnh nhân này, dù không được nhận định là còn triệu chứng, vẫn có bằng chứng điện tâm đồ chắc chắn về thiếu máu cục bộ đang tiếp diễn. Do đó, bệnh nhân có thiếu máu cục bộ dai dẳng kháng với điều trị nội khoa. Theo các hướng dẫn của chúng ta, bệnh nhân bắt buộc phải được thông tim cấp cứu bất kể triệu chứng đã cải thiện.</em></p>
+<p><em><br></em><br><em>Ca 3: Một bệnh nhân có “điện tâm đồ không chẩn đoán” và đang đau, được cho là có lẽ do trào ngược dạ dày-thực quản (GERD) hoặc đau thành ngực, nhưng troponin lần thứ 2 hoặc thứ 3 trả về dương tính. Cơn đau vẫn tiếp diễn. Nếu bệnh nhân này đã được điều trị nội khoa tối đa mà vẫn còn đau hoặc troponin tăng dần, các hướng dẫn yêu cầu phải thông tim cấp cứu.</em></p>
+<p>Hãy nhớ rằng tất cả bệnh nhân đều đã được dùng aspirin, heparin và clopidogrel/ticagrelor, ngoài truyền nitroglycerin liên tục như đã nêu ở trên (phối hợp này thỏa mãn định nghĩa “điều trị nội khoa tối đa” của ACC/AHA và của châu Âu; sau đó, nếu thiếu máu cục bộ vẫn tiếp diễn theo triệu chứng hoặc dấu hiệu điện tâm đồ thì cần thông tim cấp cứu). Do đó, tất cả các bệnh nhân này đều phải hết đau hoàn toàn VÀ các dấu hiệu điện tâm đồ phải đã hết hoàn toàn, nếu không họ đã bị loại trừ vì còn bằng chứng thiếu máu cục bộ đang tiếp diễn.</p>
+<p>Vấn đề quan trọng nhất của nghiên cứu này là 4,7 giờ <em>sau phân ngẫu nhiên</em> không phải là “rất sớm”. Hãy nhớ, những bệnh nhân duy nhất về lý thuyết có thể hưởng lợi từ thông tim sớm thay vì muộn là những người có ACS tắc nghẽn cấp, gây giảm dòng chảy tới cơ tim đến mức nhồi máu đang xảy ra tức thì và không hồi phục. Tắc đang tiếp diễn một mạch lớn hiển nhiên là nguyên nhân giải phẫu điển hình của tình trạng này, và tình trạng đó được phát hiện ở 25% các ca NSTEMI khi thông tim muộn. Trong tình huống này, phải giả định rằng mốc thời gian mang lại lợi ích của tái tưới máu rất giống với STEMI, mà ở đó tất cả chúng ta đều hiểu rằng lợi ích giảm mạnh theo thời gian. Không ai chờ 4,7 giờ mới thông tim một ca STEMI, vì tất cả chúng ta đều biết từ <a href="https://www.sciencedirect.com/science/article/pii/S0140673696025147" rel="noopener" target="_blank">dữ liệu FTT</a> rằng lợi ích đã giảm đi rất nhiều vào thời điểm đó. Tuy vậy, các nghiên cứu vẫn tiếp tục định nghĩa thông tim “rất sớm” cho STEMI khác với cho NSTEMI, như thể một ca NSTEMI có tắc mạch vận hành theo một sinh lý nhồi máu khác với STEMI có tắc mạch, trong khi chúng ta không có bằng chứng hay cơ sở lý luận nào ủng hộ quan niệm này. Điều này dường như xuất phát từ niềm tin dai dẳng vào một khác biệt nhị phân thực sự giữa OMI đạt tiêu chuẩn STEMI và OMI không đạt các tiêu chuẩn này. Với tỷ lệ đáng kể bệnh nhân NSTEMI thực sự có tắc hoặc gần tắc đang tiếp diễn <em>mà không có tuần hoàn bàng hệ</em>, họ phải được tái tưới máu càng sớm càng tốt, nhanh hơn nhiều so với 4,7 giờ, cho đến khi chứng minh được điều ngược lại. Với đa số bệnh nhân NSTEMI không có tắc mạch hay thiếu máu cục bộ xuyên thành đang tiếp diễn, khác biệt giữa thông tim sớm và muộn chủ yếu sẽ là do tắc lại hoặc thiếu máu cục bộ tái phát trong thời gian chờ đợi.</p>
+<p>Để khẳng định hiểu biết hiện có của chúng ta về nhồi máu cơ tim do tắc (Occlusion MI), nghiên cứu này một lần nữa xác nhận thực tế rằng 25% các ca “NSTEMI” này thực sự có tắc hoàn toàn một động mạch vành khi thông tim. Đáng tiếc là tác giả không cung cấp dữ liệu về khác biệt kết cục: nhóm STEMI(-) OMI(+) (OMI STEMI âm tính) có được lợi về kết cục từ tái tưới máu “sớm” nhiều hơn nhóm STEMI(-) OMI (-) hay không? Phỏng đoán của tôi, dù “sớm” không thực sự “sớm”, là những bệnh nhân này hẳn sẽ cho thấy được lợi nhiều hơn. Bệnh nhân OMI là những bệnh nhân chúng ta cần nhận diện một cách tiến cứu và thông tim sớm hơn 4,7 giờ. Tuy nhiên, có một điểm cần lưu ý: các tác giả này không nêu rõ động mạch bị tắc có phải là động mạch thủ phạm hay không (nhiều người có sẵn tắc hoàn toàn mạn tính từ trước). Các nhà nghiên cứu trong tương lai cần đảm bảo cho người đọc biết các chỗ tắc phát hiện khi thông tim là tổn thương thủ phạm (tắc cấp do huyết khối) hay tắc hoàn toàn mạn tính, nếu có thể (đôi khi rất khó xác định điều này).</p>
+<p>Ngay cả khi họ thực sự chụp mạch vành cấp cứu (ví dụ dưới 1 giờ), vẫn cần cỡ mẫu rất lớn mới chứng minh được lợi ích, vì 75% (những người có động mạch thông) có lẽ chỉ được lợi rất ít. Tôi sẽ không ngạc nhiên nếu nghiên cứu này không cho thấy lợi ích, vì họ không chụp mạch cho đúng phân nhóm. Khi bạn thông tim cấp cứu một nhóm bệnh nhân không có bất kỳ triệu chứng kháng trị hay bằng chứng điện tâm đồ kháng trị nào về thiếu máu cục bộ và có 75% khả năng không bị tắc mạch, thì khả năng giúp được những bệnh nhân đó là thấp. Nhưng nếu bạn có thể chọn ra những người có thiếu máu cục bộ đang tiếp diễn, được xác định bằng triệu chứng kháng trị hoặc dấu hiệu thiếu máu cục bộ kháng trị trên điện tâm đồ (bao gồm cả các dấu hiệu của OMI), rồi dành nguồn lực thông tim cấp cứu cho nhóm nhỏ bệnh nhân đó, tôi tin rằng sẽ có lợi ích. Đây là phân nhóm có nguy cơ cao nhất, và tất cả các thử nghiệm NSTEMI tương tự đều đã xác nhận rằng các phân nhóm nguy cơ cao hơn thực sự được lợi từ chiến lược “sớm”, mặc dù phần lớn các nghiên cứu thực ra chưa hề thông tim “sớm”.</p>
+<p>Cuối cùng, điều thú vị là 25% bệnh nhân bị tắc mạch nhưng lại được cho là không có triệu chứng đang tiếp diễn (họ đã được đưa vào nghiên cứu, do đó lẽ ra không có bất kỳ triệu chứng đang tiếp diễn nào, nếu không họ đã bị loại trừ và được thông tim cấp cứu). Thế nhưng, tắc mạch vành cấp đang tiếp diễn hiếm khi hoàn toàn không có triệu chứng. Tôi tin rằng thường gặp hơn là bệnh nhân xem nhẹ các triệu chứng còn lại, và người điều trị đặt câu hỏi dẫn dắt với mong muốn triệu chứng đã hết – kết quả là một bệnh nhân “không triệu chứng” trên giấy tờ. Tuy nhiên, còn một khả năng quan trọng khác giải thích vì sao các “chỗ tắc” này được cho là không có triệu chứng: Phải chăng đây là các chỗ tắc mạn tính và do đó không gây triệu chứng? Họ không đánh giá tuần hoàn bàng hệ, nên có thể đây là các chỗ tắc cấp hoặc mạn có tuần hoàn bàng hệ tốt và không có thiếu máu cục bộ đang tiếp diễn. Nếu vậy, các chỗ tắc này có thể không được lợi từ thông tim cấp cứu, với giả định chúng không tắc lại trong thời gian trì hoãn. Những câu hỏi này không thể trả lời được bằng dữ liệu trình bày trong nghiên cứu, nhưng chúng có thể giúp chúng ta hiểu điều gì đang xảy ra với những bệnh nhân này. Các nghiên cứu trong tương lai cần lưu tâm đến những câu hỏi này.</p>
+<h2 id="nhung-diem-can-hoc-tu-kofoed-va-cs">Những điểm cần học từ Kofoed và cs.:</h2>
+<p>Mọi bệnh nhân ACS có bằng chứng thiếu máu cục bộ dai dẳng (triệu chứng, dấu hiệu điện tâm đồ hoặc troponin dai dẳng) dù đã điều trị nội khoa đều cần thông tim cấp cứu. Điều này phù hợp với tất cả các hướng dẫn, và vì lý do đó đã là một tiêu chuẩn loại trừ trong nghiên cứu này. Hãy ghi nhớ điều này!</p>
+<p>4,7 giờ không phải là “rất sớm” khi nói đến cơ tim đang chết dần.</p>
+<p>Dù không thực sự được thông tim sớm, một nửa đoàn hệ (những người có điểm GRACE ít nhất 140) vẫn được lợi.</p>
+<p>Nghiên cứu này không thể kết luận liệu bệnh nhân nhồi máu cơ tim do tắc STEMI âm tính (STEMI(-) Occlusion MI) có được lợi từ thông tim cấp cứu hay không, vì đó không phải là quần thể được nghiên cứu và phân nhóm này không được đề cập.</p>
+<p>Nghiên cứu này chỉ là nghiên cứu mới nhất trong một chuỗi rất, rất dài các y văn tương tự. Bối cảnh là tất cả để hiểu được nghiên cứu này. Xem bên dưới phần trích từ <a href="https://drsmithsecgblog.com/2018/04/the-omi-manifesto.html" rel="noopener" target="_blank">OMI Manifesto</a> (Tuyên ngôn OMI), phần này tóm tắt y văn hiện có và trình bày chi tiết từng nghiên cứu:</p>
+<p>————————————————————————————————————–</p>
+<p>Lập luận phản bác: “Chẳng phải đã có các RCT cho thấy can thiệp sớm so với trì hoãn không mang lại lợi ích ở bệnh nhân NSTEMI sao? Nếu vậy, tại sao các ca tắc mạch vành cấp (ACO) kín đáo trong các đoàn hệ NSTEMI này lại không tạo ra lợi ích cho các nhóm can thiệp sớm?”</p>
+<p>Có một khối lượng y văn ở mức vừa phải đã bị sử dụng sai để khẳng định rằng không có khác biệt về kết cục giữa điều trị xâm lấn tức thì và điều trị xâm lấn khẩn ở NSTEMI, như được giải thích chi tiết dưới đây. Ngay cả khi đây là sự phản ánh chính xác về y văn, nó cũng không bác bỏ được giả thuyết rằng phân nhóm bệnh nhân NSTEMI có ACO được lợi từ xử trí xâm lấn cấp cứu. Nếu tỷ lệ bệnh nhân có ACO thấp trong quần thể NSTEMI được nghiên cứu, thì ngay cả một lợi ích lớn về tử vong (ở những người có ACO) cũng sẽ không quan sát được trong một RCT nhỏ. Nếu bạn phân ngẫu nhiên năm bệnh nhân có ACO cùng với 300 bệnh nhân không có ACO, bạn có thể không phát hiện được khác biệt về kết cục ngay cả khi cả năm bệnh nhân ACO đều được cứu sống nhờ can thiệp cấp cứu. Tuy nhiên, nếu bạn dùng cách đọc điện tâm đồ của chuyên gia để chọn ra thành công số ít bệnh nhân có ACO đó, lợi ích sẽ rõ ràng (vì tắc mạch cấp chính là đối tượng được lợi). Chưa từng có nghiên cứu can thiệp tiến cứu nào dùng cách đọc điện tâm đồ của chuyên gia để khảo sát tác động của thông tim tức thì so với không tức thì. Chúng tôi hy vọng sẽ thay đổi điều này trong tương lai.</p>
+<p>Tuy vậy, chúng ta phải tự “tiêm phòng” bằng y văn về điều trị xâm lấn tức thì so với khẩn ở NSTEMI, vì y văn này thường xuyên được dùng để phản bác ý tưởng rằng có thể có một phân nhóm bệnh nhân NSTEMI nào đó cần can thiệp cấp cứu. Những ngộ nhận trong các nghiên cứu sau đây nhìn chung bắt nguồn từ thực tế rằng can thiệp “sớm” thực ra không được tiến hành cấp cứu, và rằng bệnh nhân NSTEMI có thiếu máu cục bộ kháng với điều trị nội khoa tối đa đã bị loại khỏi các thử nghiệm (vì họ vốn đã có chỉ định chụp mạch vành cấp cứu [dưới 2 giờ] theo cả hướng dẫn của Hội Tim mạch châu Âu lẫn hướng dẫn của ACC/AHA (24,25).</p>
+<h3 id="mehta-va-cs-early-versus-delayed-invasive-intervention-in-acute-coronary-syndromes-the-timacs-timing-of-intervention-in-acs-trial-tap-chi-nejm-2009">Mehta và cs. Early versus delayed invasive intervention in acute coronary syndromes. The TIMACS (Timing of Intervention in ACS) Trial. Tạp chí NEJM, 2009</h3>
+<p>3031 bệnh nhân NSTEMI được phân ngẫu nhiên vào nhóm can thiệp “sớm” (dưới 24 giờ) so với can thiệp trì hoãn (từ 36 giờ trở đi). Thời gian trung vị từ lúc đến viện đến khi chụp mạch vành lần lượt là 14 so với 50 giờ ở nhóm “sớm” và nhóm trì hoãn. Vì can thiệp “sớm” thực ra không sớm, nghiên cứu này không thể dùng để định hướng quyết định can thiệp xâm lấn cấp cứu (thường được hiểu là dưới 2 giờ) ở bệnh nhân NSTEMI, huống chi là ở bệnh nhân ACO không có ST chênh lên (STE) rõ ràng. Không ngạc nhiên, không có khác biệt về tỷ lệ tử vong, nhồi máu cơ tim hay đột quỵ giữa hai nhóm này. Dù không được nêu trong phần phương pháp, trao đổi riêng giữa tác giả chính và Dr. Smith cho thấy bệnh nhân có thiếu máu cục bộ kháng trị đã bị loại hoàn toàn khỏi thử nghiệm (một cách phù hợp). Khi phân tầng tác động của can thiệp sớm theo điểm nguy cơ GRACE, ghi nhận mức giảm có ý nghĩa của kết cục chính (tổ hợp tử vong, nhồi máu cơ tim hoặc đột quỵ) ở nhóm có điểm GRACE trên 140 (13,9% so với 21,0%, P=0,006).</p>
+<h3 id="hoedemaker-va-cs-early-invasive-versus-selective-strategy-for-non-st-segment-elevation-acute-coronary-syndrome-the-ictus-trial-tap-chi-jacc-2017">Hoedemaker và cs. Early Invasive Versus Selective Strategy for Non-ST-Segment Elevation Acute Coronary Syndrome: The ICTUS Trial. Tạp chí JACC, 2017</h3>
+<p>Thử nghiệm ICTUS phân ngẫu nhiên 1.200 bệnh nhân NSTEMI có troponin T tăng vào nhóm “xâm lấn sớm” (“trong vòng 24 đến 48 giờ sau phân ngẫu nhiên”) so với nhóm “xâm lấn chọn lọc”. Không có khác biệt về tử vong sau 1 năm (2,5% ở cả hai nhóm) hay nhồi máu cơ tim tự phát, nhưng có mức tăng tuyệt đối 5% (15 so với 10%) về nhồi máu cơ tim ở nhóm xâm lấn sớm, được quy cho nhồi máu cơ tim liên quan đến thủ thuật. Khi theo dõi 10 năm, một lần nữa không có khác biệt có ý nghĩa thống kê về tử vong hay nhồi máu cơ tim tự phát (34 so với 29%). Đáng chú ý, bệnh nhân bị loại trừ nếu có “chỉ định điều trị tái tưới máu, mất ổn định huyết động hoặc suy tim sung huyết rõ”, mà theo các hướng dẫn hiện hành thì bao gồm cả thiếu máu cục bộ kháng trị. Tỷ lệ tắc mạch trên chụp mạch và phân tích điện tâm đồ chi tiết không được báo cáo. Dù nghiên cứu này không liên quan gì đến bất kỳ câu hỏi nào về điều trị tái tưới máu cấp cứu, mức tăng tuyệt đối 5% nhồi máu cơ tim quanh thủ thuật (số người cần điều trị để gây hại một ca, NNH=20) càng củng cố những tác hại đáng kể của thông tim cấp cứu ở những người không được lợi (những người không có ACO).</p>
+<h3 id="van-t-hof-va-cs-a-comparison-of-two-invasive-strategies-in-patients-with-non-st-elevation-acute-coronary-syndromes-results-of-the-early-or-late-intervention-in-unstable-angina-elisa-pilot-study-tap-chi-european-heart-journal-2003">van’t Hof và cs. A comparison of two invasive strategies in patients with non-ST elevation acute coronary syndromes: results of the Early or Late Intervention in unStable Angina (ELISA) pilot study. Tạp chí European Heart Journal, 2003</h3>
+<p>220 bệnh nhân ACS không ST chênh lên được phân ngẫu nhiên vào nhóm “sớm” so với “muộn” (thời gian trung vị đến khi chụp mạch 6 so với 50 giờ). Không có khác biệt về kết cục lâm sàng khi theo dõi 30 ngày. Thiếu máu cục bộ kháng trị bị loại trừ. Dù 6 giờ chắc chắn sớm hơn 24-48 giờ, nó vẫn chưa đủ sớm để được xem là điều trị tái tưới máu cấp cứu. Không thực hiện phân tích điện tâm đồ chi tiết, và không báo cáo dữ liệu tắc mạch trên chụp mạch. Hãy nhớ thực tế quan trọng này: đau ngực kháng trị đã bị loại trừ. Bệnh nhân OMI có tắc mạch dai dẳng thường có đau kháng trị; do đó, những bệnh nhân như vậy hẳn đã bị loại trừ.</p>
+<h3 id="neumann-va-cs-evaluation-of-prolonged-antithrombotic-pretreatment-cooling-off-strategy-before-intervention-in-patients-with-unstable-coronary-syndromes-a-randomized-controlled-trial-the-isar-cool-study-tap-chi-jama-2003">Neumann và cs. Evaluation of prolonged antithrombotic pretreatment (“cooling-off” strategy) before intervention in patients with unstable coronary syndromes: a randomized controlled trial. The ISAR-COOL Study. Tạp chí JAMA, 2003</h3>
+<p>410 bệnh nhân ACS không STE nhưng có ST chênh xuống hoặc nồng độ troponin T tăng được phân ngẫu nhiên vào nhóm điều trị chống huyết khối trước trong 3-5 ngày hoặc nhóm can thiệp sớm với dưới 6 giờ điều trị trước. Hai nhóm được thông tim sau thời gian trung vị lần lượt 2,4 so với 86 giờ kể từ lúc đến viện. Tất cả bệnh nhân đều được dùng aspirin, clopidogrel, heparin và tirofiban. Tỷ lệ tử vong hoặc nhồi máu cơ tim “lớn” cao hơn có ý nghĩa ở nhóm chiến lược trì hoãn so với nhóm xâm lấn sớm (11,6% so với 5,9%, P=0,04). Khác biệt này là do dư thừa 3 ca tử vong và 10 ca nhồi máu cơ tim lớn ở nhóm chiến lược trì hoãn, tất cả đều xảy ra trước khi chụp mạch trì hoãn. Thật khó tin, kết luận của tác giả lại được “lái” như sau: “Ở bệnh nhân có hội chứng vành không ổn định, việc trì hoãn can thiệp để điều trị chống huyết khối trước kéo dài không cải thiện kết cục so với can thiệp ngay kèm điều trị kháng tiểu cầu tích cực.” Nói một cách phù hợp hơn với chính ẩn dụ mở đầu của họ, có vẻ như giai đoạn được gọi là “làm nguội” (cooling-off) thực ra giống một giai đoạn cháy âm ỉ hơn, trong đó cơ tim của bệnh nhân đang “xèo xèo” trên bếp phụ. Không báo cáo dữ liệu tắc mạch trên chụp mạch hay phân tích điện tâm đồ chi tiết.</p>
+<h3 id="thiele-va-cs-optimal-timing-of-invasive-angiography-in-stable-non-st-elevation-myocardial-infarction-the-leipzig-immediate-versus-early-and-late-percutaneous-coronary-intervention-trial-in-nstemi-lipsia-nstemi-trial-tap-chi-european-heart-journal-2012">Thiele và cs. Optimal timing of invasive angiography in stable non-ST-elevation myocardial infarction: the Leipzig Immediate versus early and late PercutaneouS coronary Intervention triAl in NSTEMI (LIPSIA-NSTEMI Trial). Tạp chí European Heart Journal, 2012</h3>
+<p>201 bệnh nhân NSTEMI được phân ngẫu nhiên để thông tim tức thì (dưới 2 giờ, trung vị 1,1 giờ), trong khi 200 bệnh nhân được phân ngẫu nhiên để thông tim sau 10-48 giờ (trung vị 18,6 giờ). Không có khác biệt về tử vong hay nhồi máu cơ tim trong vòng 6 tháng. Tiêu chuẩn loại trừ đã bao gồm một cách phù hợp thiếu máu cục bộ kháng trị. Không có phân tích điện tâm đồ chi tiết, và không có kết quả về tắc mạch trên chụp mạch. Với thời gian đến khi thông tim thực sự ngắn ở nhóm tức thì, giải thích khả dĩ nhất cho việc không có lợi ích là những bệnh nhân có tắc mạch kín đáo (là những người nhiều khả năng có triệu chứng thiếu máu cục bộ kháng trị hơn) đã bị loại trừ đúng ngay từ đầu.</p>
+<h3 id="montalescot-va-cs-immediate-vs-delayed-intervention-for-acute-coronary-syndromes-a-randomized-clinical-trial-tap-chi-jama-2009">Montalescot và cs. Immediate vs delayed intervention for acute coronary syndromes: a randomized clinical trial. Tạp chí JAMA, 2009</h3>
+<p>352 bệnh nhân ACS không STE, điểm TIMI từ 3 trở lên, nhưng không có thiếu máu cục bộ kháng trị được phân ngẫu nhiên để can thiệp tức thì hoặc can thiệp vào ngày làm việc kế tiếp (trong khoảng 8 đến 60 giờ). Thời gian trung bình thực tế từ phân ngẫu nhiên đến khi đặt ống mở đường mạch (sheath) giữa hai nhóm là 70 phút so với 21 giờ. Giá trị troponin I đỉnh trung vị không khác nhau giữa hai nhóm (2,1 so với 1,7 ng/mL). Không có khác biệt về tiêu chí phụ gộp gồm tử vong, nhồi máu cơ tim hoặc tái thông mạch khi theo dõi 1 tháng (13,7 so với 10,2%). Không có dữ liệu về tỷ lệ tắc mạch trên chụp mạch, cũng không có phân tích điện tâm đồ chi tiết của chuyên gia. Một lần nữa, việc không có lợi ích nhiều khả năng xác nhận rằng bệnh nhân có tắc mạch kín đáo đã bị loại trừ đúng khỏi nghiên cứu dựa trên triệu chứng kháng trị.</p>
+<h3 id="reuter-va-cs-early-invasive-strategy-in-high-risk-acute-coronary-syndrome-without-st-segment-elevation-the-sisca-randomized-trial-tap-chi-international-journal-of-cardiology-2015">Reuter và cs. Early invasive strategy in high-risk acute coronary syndrome without ST-segment elevation. The Sisca randomized trial. Tạp chí International Journal of Cardiology, 2015</h3>
+<p>170 bệnh nhân được đưa vào nghiên cứu, chủ yếu ở giai đoạn trước viện, dựa trên NSTE-ACS và ít nhất một trong ba dấu hiệu điện tâm đồ ở ít nhất hai chuyển đạo liền kề: “(1) sóng T đảo ngược sâu hơn 3 mm, (2) ST chênh xuống ít nhất 0,5 mm và/hoặc (3) ST chênh lên thoáng qua ít nhất 1 mm.” Những bệnh nhân này được phân ngẫu nhiên vào chiến lược xâm lấn sớm (chụp mạch trong vòng 6 giờ) hoặc chiến lược xâm lấn trì hoãn (không khuyến nghị chụp mạch trong vòng 6 giờ nhưng tùy quyết định của bác sĩ). Đáng chú ý, vì những bệnh nhân này được đưa vào nghiên cứu ở giai đoạn trước viện, “đau thắt ngực kháng trị” không thể bị loại trừ do bệnh nhân chưa được điều trị nội khoa tối đa. Thời gian trung vị từ phân ngẫu nhiên đến khi đặt sheath là 2,8 giờ ở nhóm chiến lược xâm lấn sớm so với 20,9 giờ ở nhóm chiến lược xâm lấn trì hoãn.</p>
+<p>Tiêu chí chính (kết cục gộp gồm tử vong, nhồi máu cơ tim hoặc tái thông mạch khẩn tại thời điểm 30 ngày) thấp hơn có ý nghĩa ở nhóm chiến lược xâm lấn sớm (2% so với 24%, giá trị p nhỏ hơn<span class="c-do"><strong> </strong></span>0,01). Tuy nhiên, xem xét kỹ hơn cho thấy khác biệt này phần lớn là do 14 bệnh nhân ở nhóm chiến lược trì hoãn được tái thông mạch khẩn trước giờ thứ sáu sau phân ngẫu nhiên. Hai mươi mốt (24%) bệnh nhân ở nhóm chiến lược xâm lấn trì hoãn bị bác sĩ điều trị thay đổi chiến lược đã được phân ngẫu nhiên do diễn tiến thành STEMI (n=2), đau ngực dai dẳng (n=13), đau tái phát (n=3), rối loạn nhịp (n=2), và không ghi nhận lý do (n=1); 14 bệnh nhân trong số đó được PCI, và sau đó được tính vào kết cục gộp 30 ngày như một lần tái thông mạch khẩn. Có xu hướng giảm nhồi máu cơ tim trong lần nhập viện chỉ điểm ở nhóm xâm lấn sớm (1 so với 10 ca nhồi máu cơ tim, 1% so với 12%), nhưng chưa đạt ý nghĩa thống kê do cỡ mẫu rất nhỏ. Tử vong dài hạn là 16% ở cả hai nhóm sau thời gian theo dõi trung vị 4,1 năm. Không có phân tích điện tâm đồ chi tiết, và không cung cấp dữ liệu tắc mạch trên chụp mạch.</p>
+<h3 id="milosevic-va-cs-immediate-versus-delayed-invasive-intervention-for-non-stemi-patients-the-riddle-nstemi-study-tap-chi-jacc-cardiovascular-intervention-2016">Milosevic và cs. Immediate versus delayed invasive intervention for non-STEMI patients: the RIDDLE-NSTEMI Study. Tạp chí JACC Cardiovascular Intervention. 2016</h3>
+<p>323 bệnh nhân không có STEMI nhưng có troponin I tim tăng và “ST chênh xuống mới ít nhất 1mV và/hoặc sóng T đảo ngược ở ít nhất 2<strong><span class="c-do"> </span></strong>chuyển đạo liền kề” được phân ngẫu nhiên vào nhóm can thiệp tức thì (dưới 2 giờ) và nhóm can thiệp trì hoãn (2 đến 72 giờ). Đau thắt ngực kháng trị bị loại trừ, cũng như “nhồi máu cơ tim thành sau” (không nêu tiêu chuẩn). Thời gian trung vị từ phân ngẫu nhiên đến khi chụp mạch là 1,4 so với 61,0 giờ. Tiêu chí chính (xảy ra tử vong hoặc nhồi máu cơ tim mới khi theo dõi 30 ngày) ít gặp hơn ở nhóm can thiệp tức thì so với nhóm can thiệp trì hoãn (4,3% so với 13%, P=0,008). Khác biệt này gần như hoàn toàn là do dư thừa các kết cục bất lợi xảy ra ở nhóm can thiệp trì hoãn trước khi thông tim (0 ca tử vong và 0 ca nhồi máu cơ tim ở nhóm can thiệp tức thì so với 1 ca tử vong và 10 ca nhồi máu cơ tim ở nhóm can thiệp trì hoãn trước khi thông tim). Tại thời điểm 1 năm, tử vong do mọi nguyên nhân thấp hơn không có ý nghĩa ở nhóm can thiệp tức thì (4,9 so với 5,6%), nhưng mức giảm có ý nghĩa về nhồi máu cơ tim vẫn duy trì (3,1% so với 13,8%, P=0,002), cũng như mức giảm có ý nghĩa của kết cục gộp tử vong hoặc nhồi máu cơ tim (6,8% so với 18,8%, P=0,002). Không thực hiện phân tích điện tâm đồ chi tiết, và tỷ lệ tắc mạch trên chụp mạch không được báo cáo.</p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
