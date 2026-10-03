@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>22/10/2018 — Một người đàn ông 80 mấy tuổi bị đau ngực</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #937 · DR. SMITH’S ECG BLOG</div>
+   <h1>22/10/2018 — Một người đàn ông 80 mấy tuổi bị đau ngực</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/a-man-in-his-80s-with-chest-pain/" target="_blank" rel="noopener">"A man in his 80s with chest pain"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 5 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p>Tác giả: Pendell Meyers</p>
+<p>Một bệnh nhân nam 80 mấy tuổi, có tiền sử ung thư đại tràng, tăng huyết áp (HTN) và bệnh động mạch vành (CAD), vừa được đặt stent LAD khoảng 1 tháng trước, đến viện vì khó thở cấp và đau ngực. Không có điện tâm đồ cũ.</p>
+<p>Đây là điện tâm đồ của ông lúc 07:08:</p>
+<figure><a class="o-anh" href="2018-10-22-a-man-in-his-80s-with-chest-pain_anh/2018_10_ScreenShot2018-10-19at7.29.15PM.jpg"><img src="2018-10-22-a-man-in-his-80s-with-chest-pain_anh/2018_10_ScreenShot2018-10-19at7.29.15PM.jpg" alt="" width="1186" height="448" loading="lazy" decoding="async"></a><figcaption>Có ST chênh lên (STE) ở V2, I và aVL, nhưng không đạt tiêu chuẩn STEMI vì không có hai chuyển đạo liền kề nào có STE đạt tiêu chuẩn. Ngoài ra còn có ST chênh xuống (STD) ở V3-V6, cũng như ở II, III và aVF. Nhiều khả năng có đặt sai vị trí điện cực liên quan đến V2, giải thích cho hình ảnh tăng tiến sóng R. Những dấu hiệu này cùng hình thái đi kèm là bằng chứng chắc chắn của thiếu máu cục bộ xuyên thành ở thành trước và thành bên, thường gặp nhất là do OMI. Sự phân bố này đôi khi có thể gặp khi có một nhánh chéo thứ nhất lớn, tuy nhiên chúng ta đã biết trước rằng bệnh nhân vừa được đặt stent LAD đoạn gần, khiến vị trí này rất có khả năng và cũng phù hợp với hình ảnh nêu trên.</figcaption></figure>
+<p>Phòng thông tim đã được kích hoạt.</p>
+<p>Khi bác sĩ tim mạch đến nơi, bệnh nhân bắt đầu xấu đi nhanh chóng. Ông rơi vào sốc tim cấp, nặng nề. Ông chưa bao giờ có VF/VT, mà thay vào đó nhanh chóng trở nên nhịp chậm và tụt huyết áp trước khi ngừng tim với hoạt động điện vô mạch (PEA).</p>
+<p>Đây là điện tâm đồ cuối cùng có được trước khi ngừng tim, lúc 07:29:</p>
+<figure><a class="o-anh" href="2018-10-22-a-man-in-his-80s-with-chest-pain_anh/2018_10_ScreenShot2018-10-19at7.29.38PM.jpg"><img src="2018-10-22-a-man-in-his-80s-with-chest-pain_anh/2018_10_ScreenShot2018-10-19at7.29.38PM.jpg" alt="" width="1190" height="444" loading="lazy" decoding="async"></a><figcaption>Có RBBB và LAFB mới xuất hiện (điện tâm đồ trước đó có trục mặt phẳng trán tương tự, nhưng nay rộng hơn, đủ tiêu chuẩn LAFB). Đây là một dấu hiệu tiên lượng rất xấu của tắc LAD. Điện tâm đồ này có thể vừa đủ dương tính theo tiêu chuẩn STEMI với STE 1mm ở chuyển đạo I. Chuyển đạo V2 vẫn rõ ràng bị đặt sai vị trí, nhiều khả năng đặt quá cao trên thành ngực.</figcaption></figure>
+<p>Đã tiến hành hồi sinh tim phổi (CPR) và hồi sinh tim phổi nâng cao (ACLS) nhưng không có đáp ứng.</p>
+<p>Do tuổi tác và các bệnh lý nền, ông không phải là ứng viên cho ECMO, và quyết định lâm sàng được đưa ra là không tiến hành thông tim trong khi đang ép tim. Thuốc tiêu sợi huyết đã được cân nhắc nhưng không được dùng, và đó không phải là trọng tâm của bài viết này. Ông chưa bao giờ được thông tim và đã không thể hồi sinh được.</p>
+<p>Gần như chắc chắn (nhưng chưa được chứng minh) rằng bệnh nhân này tử vong do tắc LAD cấp.</p>
+<h2 id="nhung-diem-can-hoc">Những điểm cần học:</h2>
+<p>OMI gây tử vong nhanh có thể biểu hiện mà không đạt tiêu chuẩn STEMI. Mặc dù các bác sĩ lâm sàng đã kích hoạt phòng thông tim ngay từ điện tâm đồ đầu tiên, họ vẫn không thể cứu được ông. Cơ hội của ông thậm chí còn tệ hơn nếu các bác sĩ chờ đến khi có tiêu chuẩn STEMI  mới hành động.</p>
+<p>RBBB và LAFB mới xuất hiện là một dấu hiệu tiên lượng rất xấu của tắc LAD.</p>
+<figure><a class="o-anh" href="2018-10-22-a-man-in-his-80s-with-chest-pain_anh/2018_10_REDLINE.jpg"><img src="2018-10-22-a-man-in-his-80s-with-chest-pain_anh/2018_10_REDLINE.jpg" alt="" width="854" height="66" loading="lazy" decoding="async"></a></figure>
+<p><span class="c-do">———————————————————–</span></p>
+<h2 id="binh-luan-cua-ken-grauer-md-22-10-2018">Bình luận của KEN GRAUER, MD (22/10/2018):</h2>
+<p><span class="c-do">———————————————————–</span></p>
+<p>Một ca bệnh đáng tiếc do Dr. Meyers trình bày, về diễn tiến tử vong nhanh chóng của một người đàn ông 80 tuổi bị đau ngực mới khởi phát, với tình trạng xấu đi nhanh dù đã được nhận diện và xử trí phù hợp. Tôi chỉ giới hạn bình luận ở vài điểm về 2 bản ghi điện tâm đồ của ông (<strong><u>Hình 1</u></strong>).</p>
+<figure><a class="o-anh" href="2018-10-22-a-man-in-his-80s-with-chest-pain_anh/2018_10_Figure1-STdep-PEA252810-22.23-20182529.jpg"><img src="2018-10-22-a-man-in-his-80s-with-chest-pain_anh/2018_10_Figure1-STdep-PEA252810-22.23-20182529.jpg" alt="" width="1600" height="1267" loading="lazy" decoding="async"></a><figcaption><strong><u>Hình 1:</u> </strong>So sánh 2 điện tâm đồ được trình bày trong ca này (<em>Xem phần nội dung</em>).</figcaption></figure>
+<p>Chính những ca như thế này là những ca chúng ta rất muốn học hỏi. Bệnh nhân được đặt stent LAD chỉ mới 1 tháng trước — nhưng không có điện tâm đồ cũ của ông:</p>
+<ul><li>Nếu có thể tiếp cận điện tâm đồ cũ đó — chúng ta sẽ ở vị thế tốt hơn nhiều để trả lời các câu hỏi về vấn đề vị trí đặt điện cực và những bất thường điện tâm đồ trước đó mà ông có thể đã có sau khi đặt stent một tháng trước.  </li>
+<li>Và, vì bệnh nhân này tử vong trước khi được thông tim — chúng ta sẽ không bao giờ biết chắc chắn nguyên nhân giải phẫu dẫn đến cái chết của ông.</li></ul>
+<p>=======================</p>
+<h3 id="suy-nghi-ve-dien-tam-do-1">Suy nghĩ về Điện tâm đồ #1:</h3>
+<ul><li>Nhịp là nhịp nhanh xoang, tần số vừa hơn 100 lần/phút. Có ST chênh xuống lan tỏa — ngoại trừ các chuyển đạo I, aVL, aVR và V2 cho thấy đoạn ST chênh lên.</li>
+<li>Tôi diễn giải trục trung bình mặt phẳng trán là -30 độ, nếu không muốn nói là ít âm hơn một chút. Đó là vì nếu “lấy trung bình” sóng lệch QRS thực của 4 nhát ở chuyển đạo II của điện tâm đồ #1 — trục gần như đẳng điện (<em>phần dương và phần âm bằng nhau</em>). Để có LAHB, trục mặt phẳng trán phải <em>âm hơn </em>-30 độ một cách rõ ràng — điều dễ nhận ra chỉ bằng cách để ý xem sóng lệch QRS thực ở chuyển đạo II có âm rõ ràng hay không. Trục mặt phẳng trán cách ~90 độ so với chuyển đạo mặt phẳng trán nào đẳng điện. Vì vậy nếu sóng lệch QRS thực ở chuyển đạo II (<em>ở +60 độ</em>) âm nhiều hơn dương — thì trục mặt phẳng trán cách xa hơn 90 độ (<em>hay âm hơn -30 độ</em>). Điểm này <u>có</u> ý nghĩa trong ca này — vì không còn nghi ngờ gì rằng sóng lệch QRS thực ở chuyển đạo II của điện tâm đồ #2 nay <u>thực sự</u> âm nhiều hơn dương. <strong><u><span class="c-do">L</span></u></strong><strong><u>ƯU Ý</u></strong><strong><span class="c-do"><u>:</u> </span></strong>Người ta ước tính rằng sự hiện diện của một blốc phân nhánh (<em>LAHB hoặc LPHB</em>) làm tăng thời gian QRS không quá 0,01-0,02 giây. Do đó — phức bộ QRS không nhất thiết phải rộng thì mới có LAHB (<em>mặc dù phần lớn các trường hợp có ít nhất QRS giãn rộng nhẹ</em>).</li>
+<li>Như Dr. Meyers đã nêu — hình thái QRS ở <strong>chuyển đạo V2 </strong>của điện tâm đồ #1 không hợp lý. Dù đúng là tắc cấp nhánh chéo thứ 1 hoặc thứ 2 của LAD có thể tạo ra hình ảnh điện tâm đồ với ST chênh lên chỉ giới hạn ở chuyển đạo V2 (<em>hoặc chỉ giới hạn ở chuyển đạo V2 + chuyển đạo aVL</em>) — tôi không giải thích được dạng qR ở V2, xuất hiện ở đây cùng với các phức bộ rS liền kề ở các chuyển đạo lân cận V1 và V3 — <em><u>trừ khi</u> </em>có lỗi đặt điện cực đáng kể. Điều này <u>có</u> ý nghĩa — vì thông tin điện tâm đồ then chốt về OMI có thể bị mất do lỗi đặt sai vị trí điện cực trước tim. Việc động mạch “thủ phạm” trong ca này là nhánh chéo thứ 1, LAD đoạn gần — hay có lẽ là bệnh <em>nhiều nhánh mạch vành </em>nặng, có thể không có tắc cấp — theo tôi vẫn còn là câu hỏi bỏ ngỏ.</li>
+<li><strong><u><span class="c-do">Đ</span></u></strong><strong><u>iểm </u></strong><strong><u><span class="c-do">M</span></u></strong><strong><u>ẤU CHỐT</u> </strong>— Không điều gì trong phần bàn luận của chúng ta về động mạch “thủ phạm” tiềm năng quan trọng bằng thực tế là các bác sĩ điều trị trong ca này đã nhanh chóng nhận ra rằng <em>bất kể </em>tiêu chuẩn STEMI có được đáp ứng chính thức hay không — đây là một bệnh nhân <u>cần</u> kích hoạt phòng thông tim <em>ngay lập tức</em>!</li></ul>
+<p>=======================</p>
+<h3 id="suy-nghi-ve-dien-tam-do-2">Suy nghĩ về Điện tâm đồ #2:</h3>
+<ul><li>Ở điện tâm đồ #2 — <strong><em>Nhịp đã thay đổi! </em></strong>Sóng P dương với khoảng PR bình thường vốn thấy rõ ở chuyển đạo II của điện tâm đồ #1 nay không còn nữa! Ngoại trừ một PVC muộn trong chu kỳ (<em>PVC cuối tâm trương</em>) duy nhất — nhịp trông đều với tần số chậm hơn một chút (<em>80-85 lần/phút</em>) — và, nhịp ở điện tâm đồ #2 có vẻ xuất phát từ hệ thống dẫn truyền vì các sóng lệch <em>ban đầu </em>gần như giống hệt ở hầu như tất cả các chuyển đạo so với điện tâm đồ #1. Dù khó chắc chắn do nhiễu đường nền và biên độ hoạt động nhĩ thấp — dường như có các sóng P dương nhỏ với khoảng PR rất ngắn ở chuyển đạo I và aVL. Hoạt động nhĩ không rõ ràng ở các chuyển đạo khác. Điều này gợi ý một <strong><em>nhịp nhĩ </em>thấp</strong>.</li>
+<li>Như Dr. Meyers đã nêu — phức bộ QRS của nhịp trên thất đã giãn rộng so với điện tâm đồ #1. <strong>RBBB </strong>được gợi ý bởi hình ảnh trông như rsR’ ở chuyển đạo V1 (<em>hay có lẽ là qR ở V1?</em>) — <u>kèm theo</u> sự xuất hiện <em>mới </em>ở điện tâm đồ #2 của một sóng S tận mà phải thừa nhận là còn hẹp ở chuyển đạo I, nhưng nay cũng rộng hơn nhiều so với trước đây ở chuyển đạo V6. <strong>LAHB </strong>mới được chẩn đoán dựa vào hoạt động <em>âm </em>nay chiếm ưu thế của phức bộ QRS ở chuyển đạo II — so với phức bộ QRS về cơ bản đẳng điện ở chuyển đạo II trên điện tâm đồ #1.</li>
+<li>Có lẽ hơn bất cứ điều gì khác, chính <strong><em>sự kết hợp </em></strong>giữa tình trạng lâm sàng xấu đi nhanh chóng <strong><span class="c-do">+</span> </strong>RBBB/LAHB mới <strong><span class="c-do">+</span> </strong>ST chênh lên ở ít nhất một chuyển đạo trước tim gợi ý rằng “thủ phạm” có thể là tắc LAD đoạn gần. Dù vậy, như đã nhấn mạnh ở trên — điểm MẤU CHỐT trong ca này là bất kể mạch nào có thể là động mạch “thủ phạm”, bệnh nhân này cần được thông tim <em>ngay lập tức</em> để chẩn đoán vấn đề cấp tính, cũng như để có thể tái tưới máu.</li></ul>
+<figure><a class="o-anh" href="2018-10-22-a-man-in-his-80s-with-chest-pain_anh/2018_10_REDLINE-1.jpg"><img src="2018-10-22-a-man-in-his-80s-with-chest-pain_anh/2018_10_REDLINE-1.jpg" alt="" width="854" height="66" loading="lazy" decoding="async"></a></figure>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
