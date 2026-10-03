@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>11/08/2018 — “Đây có phải sóng T tối cấp không?” – bạn khuyên nhóm điều trị thế nào trong hai ca này?</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #912 · DR. SMITH’S ECG BLOG</div>
+   <h1>11/08/2018 — “Đây có phải sóng T tối cấp không?” – bạn khuyên nhóm điều trị thế nào trong hai ca này?</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/are-these-hyperacute-t-waves-what-is/" target="_blank" rel="noopener">"“Are these hyperacute T-waves?” – what is your recommendation for the team in these two cases?"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 6 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p>Bài viết của Pendell Meyers, Steve Smith biên tập</p>
+<p>Khi người thực hành học một khái niệm điện tâm đồ mới lần đầu tiên, họ rất tự nhiên phải trải qua một giai đoạn "chuẩn độ" trí óc của mình với dấu hiệu mới, qua các giai đoạn nhận diện quá mức rồi nhận diện chưa đủ. Theo kinh nghiệm của tôi, đây là hiện tượng bình thường trong toàn bộ y khoa, và đặc biệt là trong đọc điện tâm đồ.</p>
+<p>Vì gần đây tôi đang thúc đẩy việc nhận diện sóng T tối cấp (hyperacute T waves) trong nhóm của mình, tôi nhận được ngày càng nhiều điện tâm đồ nhắn tin cho tôi, rất đúng đắn, để hỏi “<em><strong>đây có phải sóng T tối cấp không?</strong></em>”</p>
+<h2 id="vay-hay-cung-diem-qua-mot-so-nguyen-tac-co-ban-ve-song-t-toi-cap">Vậy hãy cùng điểm qua một số “nguyên tắc cơ bản” về sóng T tối cấp:</h2>
+<p>– Không có định nghĩa chính thức, phổ quát về thế nào là một sóng T tối cấp. Có lẽ chúng có thể được định nghĩa là sự gia tăng tỷ lệ giữa diện tích dưới đoạn ST và sóng T so với diện tích/kích thước của phức bộ QRS. Mặc dù các nhóm trước đây mô tả sóng T tối cấp đơn giản là “cao và đối xứng”(1), Smith và cs. đã cho thấy rằng ở những bệnh nhân có triệu chứng thiếu máu cục bộ và ST chênh lên (STE) ít nhất 1mm ở V2-V4, biên độ tuyệt đối của sóng T không khác nhau giữa bệnh nhân OMI LAD kín đáo và bệnh nhân ST chênh lên biến thể bình thường (“tái cực sớm”). Khi sóng T ở cả hai nhóm được đo dưới dạng tỷ số so với sóng R đi trước, những người có OMI LAD kín đáo có sóng T lớn hơn xét theo tỷ lệ so với những người có ST chênh lên biến thể bình thường (tỷ số T/R = 0.7 với tái cực sớm lành tính (BER) so với 3.1 với OMI LAD) (2).</p>
+<p>– Tuy nhiên, theo kinh nghiệm của tôi, chừng đó là chưa đủ. Còn phải xét đến hình thái. Sóng T tối cấp “béo” hơn sóng T bình thường và thường đối xứng hơn (những đặc điểm này cũng làm tăng diện tích dưới STT).</p>
+<p>– Sóng T tối cấp <a href="https://drsmithsecgblog.com/2018/02/shoulder-pain-after-lifting-heavy-box.html" rel="noopener" target="_blank">đôi khi</a> ấn tượng đến mức chúng có giá trị chẩn đoán bất kể tình huống nào. <a href="https://drsmithsecgblog.com/2017/11/a-male-in-his-50s-with-chest-pain-what.html" rel="noopener" target="_blank">Những lúc khác</a>, bạn chỉ có thể chẩn đoán sóng T tối cấp bằng cách so sánh các sóng T còn nghi vấn hiện tại với một điện tâm đồ cũ.</p>
+<p>– Vì sóng T tối cấp là một phần của Tiến triển OMI (OMI Progression), chúng khu trú theo vùng phân bố bị ảnh hưởng và cũng có các dấu hiệu soi gương khu trú.</p>
+<p>– Giống như các dấu hiệu OMI khác, chúng thường rõ nhất ở vùng thiếu máu cục bộ nặng nhất, và giảm dần theo hướng tỏa ra mọi phía từ tâm điểm của OMI.</p>
+<p>– Những gì trông giống sóng T tối cấp có thể là hình soi gương của sóng T tái tưới máu ở vùng phân bố đối diện. Nếu vậy, cơn đau sẽ đang giảm dần hoặc đã hết (ví dụ: sóng T tái tưới máu thành sau, sóng T ở aVL sau khi tái tưới máu ở III, sóng T ở III sau khi tái tưới máu ở aVL).</p>
+<p>Dưới đây là hai ca như vậy mà tôi nhận được gần đây. Bạn sẽ nói gì với nhóm điều trị?</p>
+<h2 id="ca-1-benh-nhan-45-tuoi-dau-nguc-khong-co-dien-tam-do-cu-v3-co-phai-toi-cap-khong">Ca 1: “Bệnh nhân 45 tuổi đau ngực. Không có điện tâm đồ cũ. V3 có phải tối cấp không?”</h2>
+<figure><a class="o-anh" href="2018-08-11-are-these-hyperacute-t-waves-what-is_anh/2018_08_IMG_5389-2.jpg"><img src="2018-08-11-are-these-hyperacute-t-waves-what-is_anh/2018_08_IMG_5389-2.jpg" alt="" width="1080" height="551" loading="lazy" decoding="async"></a><figcaption>Bạn nghĩ sao?</figcaption></figure>
+<p><strong>Trả lời của tôi:</strong> “Tôi không nghĩ có bằng chứng điện tâm đồ của tắc mạch. Tôi sẽ ghi các điện tâm đồ liên tiếp để chắc chắn không có tiến triển hay thay đổi động. Cho tôi biết thêm.”</p>
+<p>Tại sao tôi không nghĩ V3 là tối cấp?</p>
+<p>Hãy giả sử trong chốc lát rằng chúng ta chỉ có chuyển đạo V3 để xem. Sóng T ở V3 quả thật lớn so với QRS của nó. Tôi không nghĩ nó có dáng “rộng” hay “béo” như phần lớn các sóng T tối cấp. Nó cũng không giống tăng kali máu. Không có biến dạng phần cuối QRS hay sóng Q bệnh lý. Nếu xét riêng, tôi sẽ không thể nói cho bạn biết đây có phải là sóng T tối cấp hay không. Trong bối cảnh phù hợp của các chuyển đạo và đặc điểm xung quanh, nó có thể là.</p>
+<p>Bây giờ hãy lùi ra xa và xem xét nó trong bối cảnh, vì chính bối cảnh cho tôi biết rằng sóng T này không phải là tối cấp.</p>
+<p>Nếu V3 thực sự đang cho thấy bằng chứng của OMI, thì các “hàng xóm sát vách” của nó thường (nhưng không phải luôn luôn) sẽ giúp chứng thực nhận định này. Khi bạn đọc điện tâm đồ giỏi hơn, bạn thực sự không thể không nhân cách hóa chúng trong đầu. Dr. Smith luôn nói rằng “điện tâm đồ giống như những khuôn mặt, bạn chỉ cần nhận ra chúng.”</p>
+<p>Hãy xét phép so sánh này: Bạn nhận được báo cáo từ một ngôi nhà duy nhất rằng có thể đang xảy ra động đất ở khu vực đó. Bạn gọi cho nhà bên cạnh và họ vẫn sinh hoạt bình thường, hoàn toàn không biết bạn đang nói gì. Câu chuyện không được người hàng xóm sát vách chứng thực. Có điều gì đó không khớp.</p>
+<p>V2 có điện thế nhỏ và sóng T tương đối lớn, mà nếu tách khỏi bối cảnh thì về lý thuyết cũng có thể là tối cấp.</p>
+<p>Tuy nhiên, V4 là hình mẫu mà mọi V4 đều hướng tới: sóng R cao ráo, ngăm đen và đẹp trai, tiếp theo là đoạn ST nằm hoàn hảo trên đường nền, rồi đến sóng T tương xứng hoàn hảo. V4 không đồng tình với ý cho rằng V3 là tối cấp. Người hàng xóm sát vách không hề biết bạn đang nói gì.</p>
+<p>Trên điện tâm đồ không có sóng Q bệnh lý, không có biến dạng phần cuối QRS, không có thay đổi soi gương và không có dấu hiệu hình thái ST nào đáng lo ngại.</p>
+<p>Vì tò mò, tôi đã đưa nó vào công thức:</p>
+<figure><a class="o-anh" href="2018-08-11-are-these-hyperacute-t-waves-what-is_anh/2018_08_image1.jpg"><img src="2018-08-11-are-these-hyperacute-t-waves-what-is_anh/2018_08_image1.jpg" alt="" width="750" height="1334" loading="lazy" decoding="async"></a><figcaption>Điểm càng gần điểm cắt đã được xây dựng là 18.2 (ví dụ lớn hơn 17.7 hoặc nhỏ hơn 18.7) thì càng có khả năng là âm tính giả hoặc dương tính giả.
+<strong>Vậy là kết quả này chỉ vừa sát ngưỡng dương tính!</strong></figcaption></figure>
+<p>Tôi đơn giản là không nghĩ đây là OMI dựa trên điện tâm đồ. Vì vậy tôi nói với nhóm điều trị như thế, nhưng nhắc họ rằng điện tâm đồ không phải là dữ kiện duy nhất trong quyết định chụp thông tim cấp cứu. Bệnh nhân có vẻ không trông bệnh nặng, siêu âm giới hạn trong lúc đau có vẻ không có gì bất thường, và không có mất ổn định huyết động hay điện học.</p>
+<p>Họ đã ghi nhiều điện tâm đồ liên tiếp, tất cả đều không thay đổi. Đến một lúc thì cơn đau ngực hết.</p>
+<p>Ba lần troponin đều âm tính.</p>
+<p>Cuối cùng, bệnh nhân được chụp CT mạch vành (CTCA), cho thấy các động mạch vành bình thường.</p>
+<p>Bệnh nhân được cho xuất viện một cách hợp lý với chẩn đoán đau ngực chưa rõ nguyên nhân.</p>
+<h2 id="ca-2-nam-40-tuoi-den-vien-vi-dau-nguc-du-doi-nhu-bi-de-nghien-mo-ta-la-giong-nhu-nhung-con-dau-tim-truoc-day-cua-toi-dong-thoi-da-bo-lo-buoi-loc-mau-v3-co-phai-toi-cap-khong">Ca 2: “Nam 40 tuổi đến viện vì đau ngực dữ dội như bị đè nghiến, mô tả là ‘giống như những cơn đau tim trước đây của tôi’, đồng thời đã bỏ lỡ buổi lọc máu. V3 có phải tối cấp không?”</h2>
+<figure><a class="o-anh" href="2018-08-11-are-these-hyperacute-t-waves-what-is_anh/2018_08_ScreenShot2018-07-23at4.37.57PM.jpg"><img src="2018-08-11-are-these-hyperacute-t-waves-what-is_anh/2018_08_ScreenShot2018-07-23at4.37.57PM.jpg" alt="" width="1203" height="512" loading="lazy" decoding="async"></a><figcaption>Bạn nghĩ sao?</figcaption></figure>
+<p><strong>Trả lời của tôi:</strong> “Tôi không nghĩ có sóng T tối cấp. Tôi không thấy bằng chứng tắc mạch, nhưng hãy nhớ điện tâm đồ không phải lý do duy nhất để kích hoạt. Tôi sẽ ghi các điện tâm đồ liên tiếp và theo dõi xem có tiến triển không, giả sử không có gì khác đáng lo ngại. Có thể có thay đổi nhẹ do tăng kali máu, cần có điện tâm đồ nền.”</p>
+<p>Họ lập tức nhắn tin lại cho tôi: <em>“Troponin T của anh ấy là 1.21 thì có làm thay đổi cách diễn giải của anh không?”</em></p>
+<p>Nói chung, chỉ riêng mức troponin này trong bối cảnh đau ngực dữ dội như bị đè nghiến quả thật đã là chỉ định chuyển phòng thông tim, bất kể điện tâm đồ cho thấy gì.</p>
+<p><strong>Trả lời của tôi:</strong> “Không thay đổi về điện tâm đồ. Nhưng nó cần được tính đến trong toàn bộ ca bệnh. Điện tâm đồ nền đâu? Câu chuyện bệnh sử là gì?”</p>
+<p>Tại sao tôi nghĩ V3 không phải là tối cấp?</p>
+<p>Nếu xét riêng lẻ, V3 đúng là có sóng T lớn, cao, to so với phức bộ QRS của nó. Giống như ca trước, nó không béo hay rộng. Tự thân nó sẽ đáng lo ngại nhưng không đủ để chẩn đoán sóng T tối cấp.</p>
+<p>Vậy hãy nhìn sang nhà bên cạnh: V2 có điện thế rất cao, theo sau là ST chênh lên nhỏ như dự kiến và sóng T dương mà thực ra rất nhỏ so với một phức bộ QRS lớn như vậy. Nếu V3 là sóng T tối cấp, thì V2 ít nhất cũng phải gợi ý rằng sóng T của nó ít nhiều đáng lo ngại. Nhưng ngược lại, V2 hoàn toàn bình thường so với QRS của nó.</p>
+<p>V2 không chứng thực cho V3. V4 cũng vậy.</p>
+<p>Ngoài ra, tôi nghĩ đây là một sai lầm thường gặp, xảy ra thường nhất ở chuyển đạo chuyển tiếp. “Chuyển đạo chuyển tiếp” là chuyển đạo trước tim mà ở đó QRS chuyển từ chủ yếu các thành phần âm sang chủ yếu các thành phần dương. Trong ca này, V2 chủ yếu âm, và V4 chủ yếu dương. Do đó V3 là chuyển đạo chuyển tiếp, và gần như đẳng điện. Cả V2 và V4 đều có điện thế đáng kể.</p>
+<p>Bạn có thể hỏi “vậy toàn bộ điện thế này đi đâu giữa V2 và V4?”, “thế thì tại sao V3 lại có QRS nhỏ như vậy?” Cách tôi trả lời là nói rằng điện thế ở V3 bị “gấp gọn” bên trong phức bộ QRS. Điều này đôi khi xảy ra ở chuyển đạo chuyển tiếp, vì QRS thường đẳng điện và có nhiều vectơ thành phần mâu thuẫn nhau. Thường gặp nhất, chuyển đạo chuyển tiếp đơn giản là có cùng điện thế QRS tổng thể nhưng với các thành phần R và S bằng nhau. Tuy nhiên, đôi khi chuyển đạo chuyển tiếp tạo ra thứ trông như một phức bộ QRS nhỏ nằm giữa hai phức bộ QRS lớn có điện thế cao. Tôi hình dung điều này như điện thế bị “gấp gọn” vào phức bộ QRS của chuyển đạo chuyển tiếp. Điều này giúp tôi hiểu tại sao sóng T trông lớn như vậy ở chuyển đạo này.</p>
+<p><strong><em>Tuy nhiên, tôi không tìm được y văn nào ủng hộ hay bác bỏ nhận định này.</em></strong></p>
+<p>Bạn cũng có thể hỏi về sóng T âm ở aVL, băn khoăn liệu đây có phải là manh mối của OMI thành dưới hay không. Không, vì các chuyển đạo thành dưới không cho thấy bằng chứng OMI, và QRS ở aVL cũng âm, nên có sóng T âm ở trạng thái nền là điều không bất ngờ.</p>
+<p>Đây là điện tâm đồ nền:</p>
+<figure><a class="o-anh" href="2018-08-11-are-these-hyperacute-t-waves-what-is_anh/2018_08_ScreenShot2018-07-23at4.37.26PM.jpg"><img src="2018-08-11-are-these-hyperacute-t-waves-what-is_anh/2018_08_ScreenShot2018-07-23at4.37.26PM.jpg" alt="" width="1208" height="515" loading="lazy" decoding="async"></a><figcaption>Có một số khác biệt, bao gồm điện thế thấp hơn. Theo ý kiến của tôi, những khác biệt này không làm cho điện tâm đồ hiện tại đáng lo ngại hơn.</figcaption></figure>
+<p>Đây là điện tâm đồ ghi lại:</p>
+<figure><a class="o-anh" href="2018-08-11-are-these-hyperacute-t-waves-what-is_anh/2018_08_ScreenShot2018-07-23at4.39.22PM.jpg"><img src="2018-08-11-are-these-hyperacute-t-waves-what-is_anh/2018_08_ScreenShot2018-07-23at4.39.22PM.jpg" alt="" width="1186" height="486" loading="lazy" decoding="async"></a><figcaption>Tôi nghĩ không có thay đổi đáng kể.</figcaption></figure>
+<p>Một điện tâm đồ ghi lại khác, không có thay đổi đáng kể:</p>
+<figure><a class="o-anh" href="2018-08-11-are-these-hyperacute-t-waves-what-is_anh/2018_08_ScreenShot2018-07-23at4.40.07PM.jpg"><img src="2018-08-11-are-these-hyperacute-t-waves-what-is_anh/2018_08_ScreenShot2018-07-23at4.40.07PM.jpg" alt="" width="1178" height="481" loading="lazy" decoding="async"></a></figure>
+<p>Tôi xem lại hồ sơ của bệnh nhân và phát hiện ra rằng anh ấy đã có nhiều lần đến viện tương tự, mỗi lần đều bỏ lỡ lọc máu rồi sau đó đau ngực dữ dội như bị đè nghiến và troponin tăng rất cao, luôn kèm các điện tâm đồ tương tự. Lần đầu tiên, phòng thông tim đã được kích hoạt và bệnh nhân có động mạch vành bình thường, hoàn toàn không có bệnh động mạch vành (CAD). Mỗi lần, troponin T của anh ấy tăng cao hơn 1.0 ng/mL với kiểu tăng rồi giảm đủ để chẩn đoán nhồi máu cơ tim, nhưng rõ ràng không phải nhồi máu cơ tim do tắc. Đây là nhồi máu cơ tim típ 2, nhiều khả năng do nhiều yếu tố khác nhau.</p>
+<p><strong><u><em>Cảnh báo:</em></u></strong> Đây là một ca kỳ lạ. Rất bất thường khi nồng độ troponin T thường quy cao đến mức này trong một đợt đau ngực dữ dội như bị đè nghiến mà không có hội chứng vành cấp (ACS). 15% bệnh nhân rối loạn chức năng thận có troponin nền tăng, nhưng thường không quá 5x giới hạn trên tham chiếu, đôi khi lên đến 15x, nhưng hiếm khi cao hơn (3). Troponin T thường quy từ 1.0 ng/mL trở lên gặp nhiều hơn hẳn trong bối cảnh nhồi máu cơ tim do tắc so với nhồi máu cơ tim không do tắc. Nếu không có tiền sử những lần đến viện giống hệt trước đó với kết quả thông tim hoàn toàn âm tính gần đây, thì việc kích hoạt phòng thông tim dựa trên đau ngực dữ dội như bị đè nghiến và troponin tăng cao như vậy là hoàn toàn phù hợp, ngay cả khi không có dấu hiệu điện tâm đồ.</p>
+<p>Nhóm điều trị đã tìm được thông tin này, và vì các điện tâm đồ liên tiếp không thay đổi cùng với tiền sử như vậy, họ đã cho bệnh nhân nhập viện để lọc máu cấp cứu. Sau lọc máu, các triệu chứng của anh ấy hết. Troponin tăng rồi giảm, đạt đỉnh 1.64 ng/mL. Troponin nền của anh ấy không rõ. Không tiến hành thông tim.</p>
+<p><em><u><strong>Cảnh báo</strong></u></em>: Tôi không nói rằng một sóng T tối cấp luôn phải có bằng chứng chứng thực ở cả hai chuyển đạo lân cận. Tôi chỉ nói rằng kiểm tra cả hai chuyển đạo kề bên là một bước hữu ích để xác định liệu các dấu hiệu ở một chuyển đạo có gợi ý OMI hay không, khi không có các đặc điểm đáng lo ngại hoặc chứng thực nào khác. Dưới đây là một số ca bạn có thể dùng để bảo tôi sai, vì các sóng T tối cấp dường như có một vài chuyển đạo xung quanh mà không phải ai cũng thấy đáng lo ngại:</p>
+<h2 id="phu-nu-30-tuoi-dau-nguc-voi-mot-dien-tam-do-binh-thuong-theo-may-tinh-ca-nay-o-truoc-vien">Phụ nữ 30 tuổi đau ngực với một “điện tâm đồ bình thường” theo máy tính, ca này ở trước viện</h2>
+<h2 id="omi-truoc-vien-duoc-mot-nhan-vien-cap-cuu-ngoai-vien-tuyet-voi-nhan-ra-ngay-lap-tuc">OMI trước viện được một nhân viên cấp cứu ngoài viện tuyệt vời nhận ra ngay lập tức</h2>
+<p>Tuy nhiên, trong cả hai ca, đều có những đặc điểm đáng lo ngại khác, ngay cả khi một trong các chuyển đạo lân cận với sóng T tối cấp tương đối bình thường.</p>
+<h2 id="nhung-diem-can-hoc">Những điểm cần học:</h2>
+<p>Chỉ có kinh nghiệm và thời gian mới giúp bạn giỏi hơn trong việc phân biệt sóng T tối cấp với các biến thể bình thường. Hãy xem nhiều ví dụ sau để so sánh:</p>
+<p><a href="https://drsmithsecgblog.com/2016/04/ten-10-examples-of-hyperacute-t-waves.html" rel="noopener" target="_blank">10 ca sóng T tối cấp thành trước ở V2-V3</a></p>
+<p><a href="https://drsmithsecgblog.com/2017/04/ten-cases-of-hyperacute-t-waves-in-v4-v6.html" rel="noopener" target="_blank">10 ca sóng T tối cấp thành trước/thành bên ở V4-V6</a></p>
+<p><a href="https://drsmithsecgblog.com/2016/05/10-cases-of-inferior-hyperacute-t-waves.html" rel="noopener" target="_blank">10 ca sóng T tối cấp thành dưới</a></p>
+<p><a href="https://drsmithsecgblog.com/search/label/inferior%20hyperacute%20T-waves" rel="noopener" target="_blank">Bỏ sót sóng T tối cấp, sau đó bệnh nhân tử vong</a></p>
+<p><a href="https://drsmithsecgblog.com/search/label/hyperacute%20T-waves" rel="noopener" target="_blank">Sóng T tối cấp không bao giờ biểu hiện ST chênh lên dù đã ghi các điện tâm đồ liên tiếp, với nhồi máu toàn bộ thành trước</a></p>
+<p><a href="https://drsmithsecgblog.com/2017/09/30-yo-woman-with-chest-pain-and-normal.html" rel="noopener" target="_blank">Bệnh nhân 30 tuổi có sóng T tối cấp được chẩn đoán ở trước viện</a></p>
+<p><a href="https://drsmithsecgblog.com/2014/12/chest-pain-relieved-by-maalox-and.html" rel="noopener" target="_blank">Bỏ sót sóng T tối cấp, sau đó ngừng tim lúc đang làm thủ tục xuất viện</a></p>
+<p><a href="https://drsmithsecgblog.com/2017/09/just-few-cases-that-computer-called.html" rel="noopener" target="_blank">Sóng T tối cấp bị máy tính đọc là “bình thường”</a></p>
+<p><a href="https://drsmithsecgblog.com/2018/07/prehospital-omi-recognized-immediately.html" rel="noopener" target="_blank">Một ca sóng T tối cấp khác ở trước viện</a></p>
+<p>Sóng T tối cấp không có định nghĩa chính thức, và đôi khi cần so sánh với các điện tâm đồ cũ và điện tâm đồ ghi lại.</p>
+<p>Hãy “tra hỏi” các chuyển đạo lân cận xem chúng có chứng thực cho một dấu hiệu còn nghi vấn hay không.</p>
+<p>Kỹ năng phát hiện nhồi máu cơ tim do tắc kín đáo phải được phát triển song song với khả năng loại bỏ các hình ảnh giả. Chúng ta đang cố gắng mang lại tái tưới máu ngay lập tức cho những người bị OMI và tránh gây hại không cần thiết cho những người không bị.</p>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo:</h2>
+<p>1) Nikus K, Pahlm O, Wagner G, và cs. Electrocardiographic classification of acute coronary syndromes: a review by a committee of the International Society for Holter and Non-Invasive Electrocardiology. J Electrocardiol 2010;43:91-103.</p>
+<p>2) Smith và cs. Electrocardiographic differentiation of early repolarization from subtle anterior ST-segment elevation myocardial infarction. Annals of Emergency Medicine 2012.</p>
+<p>3) Vasudevan và cs. Renal function and scaled troponin in patients presenting to the Emergency Department with symptoms of myocardial infarction. Am J Nephrol 2017;45:304-309.</p>
+<h2 id="binh-luan-cua-k-wang">Bình luận của K. Wang:</h2>
+<p>Những ca bệnh và phần bàn luận hay về sóng T cao ở các chuyển đạo trước tim. Sóng T cao ở các chuyển đạo trước tim nên khiến ta nghĩ đến ba tình trạng, cụ thể là tăng kali máu, thiếu máu cục bộ tối cấp và biến thể bình thường. Các ví dụ điển hình của ba tình trạng này được minh họa trong cuốn “<a href="https://www.amazon.com/Atlas-Electrocardiography-K-M-D-Wang/dp/9350902095/r/ref=as_li_ss_il?ie=UTF8&amp;linkCode=li3&amp;tag=hqmeded-20&amp;linkId=8b12701ebc96bc888f1ff1d9d5955289" rel="noopener" target="_blank">Atlas of Electrocardiography của K. Wang</a>”, trang 171.</p>
+<p>Như có thể thấy rõ, chúng trông khác nhau. Hai loại đầu đối xứng trong khi biến thể bình thường thì không (nhánh lên kéo dài hơn nhánh xuống). Trong thiếu máu cục bộ tối cấp, nhánh lên là một đường thẳng, và nhánh xuống cũng vậy, trong khi chúng có dạng “lều” (tented) trong tăng kali máu. Dĩ nhiên, ở đây tôi đã chọn các ví dụ điển hình. Không may là không phải ca nào cũng điển hình và một số ca rơi vào vùng ranh giới, khiến chúng ta phải đau đầu. Nhưng cuộc sống là vậy! Dù sao, người ta vẫn phải biết các ca điển hình trông như thế nào để bắt đầu bàn luận.</p>
+<p>Cái hay của Dr. Smith’s ECG blog là nó dựa trên nhiều năm kinh nghiệm lâm sàng của ông, được củng cố bằng chụp mạch vành và kết cục của bệnh nhân.</p>
+<p>K. Wang.</p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
