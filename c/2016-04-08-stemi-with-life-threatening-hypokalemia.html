@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>08/04/2016 — STEMI kèm hạ kali máu đe dọa tính mạng và xoắn đỉnh dai dẳng liên tục</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #652 · DR. SMITH’S ECG BLOG</div>
+   <h1>08/04/2016 — STEMI kèm hạ kali máu đe dọa tính mạng và xoắn đỉnh dai dẳng liên tục</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/stemi-with-life-threatening-hypokalemia/" target="_blank" rel="noopener">"STEMI with Life-Threatening Hypokalemia and Incessant Torsades de Pointes"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 4 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p>Một người đàn ông cuối tuổi trung niên đến viện vì đau ngực đã một giờ.  Ông có tiền sử bệnh động mạch vành (CAD) đáng kể với phẫu thuật bắc cầu chủ vành (CABG) x5, rồi CABG lại x 2, cũng như sau đó can thiệp mạch vành qua da (PCI) cầu nối tới RCA (hai lần) và cầu nối tới nhánh chéo.   Siêu âm tim gần nhất cho thấy phân suất tống máu (EF) 60%.  Ông cũng có tiền sử bệnh thận mạn (CKD) giai đoạn III.</p>
+<p>Gần đây ông vừa bị một đợt nhồi máu cơ tim không ST chênh lên (NonSTEMI). Chụp mạch vành khi đó cho thấy có tổn thương cấp ở cầu nối tĩnh mạch hiển (SVG) tới động mạch liên thất sau (PDA) xuất phát từ RCA.  Ông được điều trị nội khoa bằng clopidogrel.  Nhân viên cấp cứu ngoài viện cho biết ông đã không uống clopidogrel suốt 2 tuần.</p>
+<p>Bệnh nhân có vẻ đang trong tình trạng sốc.  Siêu âm tại giường không thấy tràn dịch màng ngoài tim, chức năng thất trái giảm mức độ vừa, kèm các đường B của phù phổi.</p>
+<p>Đây là điện tâm đồ của ông tại khoa cấp cứu (ED):</p>
+<figure><a class="o-anh" href="2016-04-08-stemi-with-life-threatening-hypokalemia_anh/2016_04_HypokalemiaandSTEMI.jpg"><img src="2016-04-08-stemi-with-life-threatening-hypokalemia_anh/2016_04_HypokalemiaandSTEMI.jpg" alt="" width="1600" height="705" loading="lazy" decoding="async"></a><figcaption>Có STEMI dưới-sau rõ ràng.<br>Ngoài STEMI, bạn còn lo ngại điều gì nữa?<br>Xem bên dưới.</figcaption></figure>
+<p>Khoảng QT hiệu chỉnh cực kỳ dài, khoảng 500 ms.   Điều này gợi ý một bất thường điện giải hoặc tác dụng của thuốc (QT dài mắc phải).  Ngoài ra còn có nhịp chậm.  Nhịp chậm khiến bệnh nhân có nguy cơ bị xoắn đỉnh (Torsades de Pointes) “phụ thuộc khoảng ngưng” (pause-dependent).</p>
+<p><strong>Xoắn đỉnh</strong> trong QT dài mắc phải dễ xảy ra hơn nhiều khi có nhịp chậm, vì khoảng QT theo sau một khoảng ngưng dài còn dài hơn nữa.  Do đó, xoắn đỉnh trong QT dài mắc phải được gọi là “phụ thuộc khoảng ngưng”: nếu có một nhát xoang sau một khoảng ngưng dài (tạo ra khoảng QT dài hơn), thì một PVC sớm (“hậu khử cực sớm”, EAD) sẽ dễ xuất hiện hơn nhiều trong thời kỳ tái cực và khởi phát xoắn đỉnh.  <strong>Trình tự thường gặp là:</strong> nhát xoang, rồi PVC sớm, rồi một khoảng ngưng dài vì PVC đến sớm, từ đó tạo ra một khoảng QT đặc biệt dài, rồi một PVC khác với hiện tượng “R trên T” (R on T) khởi phát xoắn đỉnh.</p>
+<h3 id="day-la-cac-thuoc-ong-dang-dung-khong-thuoc-nao-lam-keo-dai-qt">Đây là các thuốc ông đang dùng, không thuốc nào làm kéo dài QT:</h3>
+<p>–Imdur 60mg mỗi ngày một lần</p>
+<p>–Furosemide 40mg ngày hai lần (BID)</p>
+<p>–Lisinopril 5mg mỗi ngày một lần</p>
+<p>–Amlodipine 10mg mỗi ngày một lần</p>
+<p>–Digoxin 125mcg cách ngày (q48)</p>
+<p>–Clopidogrel 75mg mỗi ngày một lần</p>
+<p>–Atorvastatin 20mg mỗi ngày một lần</p>
+<p>–Metoprolol 100mg ngày hai lần (BID)</p>
+<h2 id="dien-bien-lam-sang">Diễn biến lâm sàng</h2>
+<p><strong>Kết quả kali máu của ông là 1,8 mEq/L.  </strong>Mức này thấp đến mức nguy hiểm.  Có rất nhiều y văn liên hệ K dưới 3,5 với rung thất trong nhồi máu cơ tim cấp (xem nhiều tài liệu tham khảo bên dưới).</p>
+<p>Creatinin là 1,8 mg/dL.</p>
+<p>Bệnh nhân được đặt nội khí quản, được dùng thuốc kháng tiểu cầu và chống huyết khối, bắt đầu truyền 10 mEq KCl tĩnh mạch, và được chuyển tới phòng thông tim (cath lab).</p>
+<p>Tại phòng thông tim, ông lập tức bị xoắn đỉnh dai dẳng liên tục (incessant), phải khử rung 7 lần và phải đặt máy tạo nhịp qua tĩnh mạch (transvenous pacer) để tạo nhịp vượt tần số (overdrive pacing) với tần số 80.  Ông được dùng amiodarone và lidocaine liều nạp rồi truyền duy trì, cùng truyền liên tục K và Mg.  Sau khi tạo nhịp, xoắn đỉnh không tái phát.</p>
+<p>Sau hồi sức, phát hiện một tổn thương huyết khối hẹp 90% ở chính cầu nối tĩnh mạch hiển tới động mạch liên thất sau phải đó.  Tổn thương này được đặt stent.</p>
+<p>Bệnh nhân ổn định trở lại.</p>
+<p>Điện tâm đồ tiếp theo này được ghi sau khi K đã tăng lên 2,2 mEq/L:</p>
+<figure><a class="o-anh" href="2016-04-08-stemi-with-life-threatening-hypokalemia_anh/2016_04_K2.2laterinday.jpg"><img src="2016-04-08-stemi-with-life-threatening-hypokalemia_anh/2016_04_K2.2laterinday.jpg" alt="" width="1600" height="686" loading="lazy" decoding="async"></a><figcaption>ST chênh lên (STE) đã hồi phục.<br>QT ngắn hơn nhiều<br>Giờ đây có sóng U rõ ở V2 và V3</figcaption></figure>
+<p>2 ngày sau, điện tâm đồ này được ghi khi K là 3,5:</p>
+<figure><a class="o-anh" href="2016-04-08-stemi-with-life-threatening-hypokalemia_anh/2016_04_K3.52dlater.jpg"><img src="2016-04-08-stemi-with-life-threatening-hypokalemia_anh/2016_04_K3.52dlater.jpg" alt="" width="1600" height="684" loading="lazy" decoding="async"></a><figcaption>Có rung nhĩ.  QT còn ngắn hơn nhiều nữa.</figcaption></figure>
+<p>Bệnh nhân ổn định và có kết cục tốt.</p>
+<h2 id="binh-luan">Bình luận:</h2>
+<p>STEMI kèm hạ kali máu, nhất là khi có QT dài, khiến bệnh nhân có nguy cơ rất cao bị xoắn đỉnh hoặc rung thất (xem nhiều tài liệu tham khảo, kèm tóm tắt, bên dưới).  Hai nhịp này thường không phân biệt được trên máy theo dõi (monitor) hay trên điện tâm đồ.  Nếu còn mạch, bạn sẽ gọi đó là xoắn đỉnh.  Nếu có VT đa dạng kèm QT dài trên điện tâm đồ nền, thì thường chúng ta gọi đó là xoắn đỉnh, nhưng VT đa dạng không phải xoắn đỉnh có thể chỉ do thiếu máu cục bộ gây ra.</p>
+<p>Phân loại thế nào thì cũng không quá quan trọng!  <strong>Điều quan trọng là điều trị ban đầu giống nhau cho cả hai</strong>, nhất là khi không còn mạch: <strong>khử rung, như đã làm ở đây</strong> (KHÔNG phải sốc điện chuyển nhịp đồng bộ).</p>
+<p>Việc nhịp được kiểm soát bằng tạo nhịp vượt tần số cùng kali và magnesi gợi ý rằng đó đúng là xoắn đỉnh, nhưng mặt khác, thuốc chống loạn nhịp và kali cũng đã được dùng.</p>
+<p><strong>Xem tại đây về xử trí</strong> <a href="https://drsmithsecgblog.com/2013/10/polymorphic-ventricular-tachycardia.html" rel="noopener" target="_blank">Polymorphic Ventricular Tachycardia</a> (nhịp nhanh thất đa dạng), bao gồm cả xoắn đỉnh.</p>
+<h3 id="lieu-cac-roi-loan-nhip-nay-co-the-phong-ngua-duoc-khong">Liệu các rối loạn nhịp này có thể phòng ngừa được không?</h3>
+<p>Tôi tìm được rất ít y văn về điều trị hạ kali máu nặng đe dọa tính mạng.  Đặc biệt có rất ít tài liệu về cách điều trị khi K dưới 2, và/hoặc khi có nhồi máu cơ tim cấp.  Đây là Hướng dẫn của Hội Tim mạch Hoa Kỳ (American Heart Association):</p>
+<ul><li><a href="http://circ.ahajournals.org/content/112/24_suppl/IV-121.full" rel="noopener" target="_blank">2005 American Heart Association Guidelines for Cardiopulmonary Resuscitation and Emergency Cardiovascular Care</a> (Hướng dẫn của Hội Tim mạch Hoa Kỳ về hồi sinh tim phổi và cấp cứu tim mạch)</li></ul>
+<h2 id="phan-10-1-cac-bat-thuong-dien-giai-de-doa-tinh-mang">Phần 10.1: Các bất thường điện giải đe dọa tính mạng</h2>
+<p><a href="http://circ.ahajournals.org/content/112/24_suppl/IV-121.full" rel="noopener" target="_blank">Treatment of Hypokalemia</a> (Điều trị hạ kali máu)</p>
+<p>“Điều trị hạ kali máu gồm hạn chế tối đa việc mất kali thêm và bù kali.  Chỉ định dùng kali đường tĩnh mạch khi có rối loạn nhịp hoặc hạ kali máu nặng (nồng độ kali dưới 2,5 mEq/L).  Điều chỉnh hạ kali máu từ từ được ưu tiên hơn điều chỉnh nhanh, trừ khi bệnh nhân không ổn định về lâm sàng.</p>
+<p>“Trong tình huống cấp cứu, có thể dùng kali theo kinh nghiệm.  Khi có chỉ định, lượng kali bù đường tĩnh mạch tối đa nên là 10 đến 20 mEq/giờ, kèm <strong><span class="c-do">theo dõi điện tâm đồ liên tục</span></strong> trong khi truyền.  Có thể truyền dung dịch kali đậm đặc hơn nếu dùng <strong><span class="c-do">đường truyền tĩnh mạch trung tâm</span></strong>, nhưng đầu ống thông dùng để truyền không được đi vào tới nhĩ phải.</p>
+<p><strong><em>“Nếu ngừng tim do hạ kali máu sắp xảy ra (tức là đang có rối loạn nhịp thất ác tính), cần bù kali nhanh.  Truyền liều khởi đầu 10 mEq tĩnh mạch trong 5 phút; nhắc lại một lần nếu cần.  Ghi rõ trong hồ sơ bệnh án rằng việc truyền nhanh là có chủ ý, nhằm đáp ứng với tình trạng hạ kali máu đe dọa tính mạng.”</em></strong></p>
+<h3 id="binh-luan-2">Bình luận:</h3>
+<p>Phần cuối này phù hợp với ca bệnh này.  Ai cũng lo ngại, một cách chính đáng, về việc cho K quá nhanh.  Truyền nhanh làm tăng K lên bao nhiêu?  Một lần nữa, tôi tìm được rất ít dữ liệu thực nghiệm về vấn đề này (xem 2 nghiên cứu bên dưới, vốn không thực sự trả lời được câu hỏi).  Có lẽ có những nghiên cứu trên động vật mà tôi chưa tìm thấy?</p>
+<p><strong>Kali toàn cơ thể: </strong>một người 70 kg có khoảng 7500 mEq K toàn cơ thể, nhưng dịch ngoại bào chỉ chứa khoảng 48 mEq!   Dĩ nhiên, cái khó của việc bù K là lượng dự trữ toàn cơ thể có thể đã bị thiếu hụt nhiều hơn rất nhiều so với lượng có thể bù nhanh được.  Mức thiếu hụt ước tính tương ứng với kali huyết thanh giảm từ 4,0 xuống 3,0 mEq/L là 100-200 mEq K toàn cơ thể, và từ 3,0 xuống 2,0 thì lượng mất tương ứng gấp đôi, tức 200-400 mEq.*</p>
+<p>[Sterns RH, và cs. Internal potassium balance and the control of the plasma potassium concentration. Medicine (Baltimore). 1981;60:339-54].</p>
+<p><strong>Nhưng 100 mEq cho một lần sẽ làm K huyết thanh tăng thêm 30 mEq/L (và gây tử vong ngay lập tức)!!</strong></p>
+<p>*Bài tổng quan trên NEJM được dẫn bên dưới (và ACLS, dù giá trị đến đâu đi nữa) nói rằng, tính trung bình, ở một người “điển hình” 70 kg, K huyết thanh giảm 0,3 mEq/L cho mỗi 100 mEq thiếu hụt toàn cơ thể.  Tuy nhiên, bài tổng quan này dẫn bài báo của Sterns ở trên, mà theo tôi đọc thì bài đó <em><u>không</u></em> nói như vậy.</p>
+<h3 id="day-la-vai-phep-tinh-cho-mot-lieu-nhanh-an-toan">Đây là vài phép tính cho một liều nhanh an toàn:</h3>
+<p>Một người 70 kg có khoảng 5 lít máu, trong đó 3 lít là huyết thanh (2 lít là hồng cầu).  Nếu cho 10 mEq thật nhanh, không để kịp thời gian dịch chuyển vào nội bào, thì K huyết thanh sẽ tăng khoảng 3,3 mEq/L.  Nếu bệnh nhân đang ở mức 1,8, K sẽ tăng lên 5,1 mEq/L.  <strong>Chỉ cần đưa K lên trên 3,0 là đã giảm nguy cơ rất nhiều (dù trong STEMI, mức tối ưu là khoảng 4,0-4,5 mEq/L).</strong>  Bơm nhanh 5 mEq sẽ làm K của bệnh nhân này tăng thêm 1,6, từ 1,8 lên 3,4 mEq/L.   <strong>Cái khó là ước tính lượng đang tiếp tục dịch chuyển.</strong>  Khi bạn truyền K, nó sẽ bắt đầu dịch chuyển vào các tế bào đang thiếu kali và K huyết thanh sẽ lại giảm nhanh.  Vì vậy, ở những bệnh nhân như thế này, điều tối quan trọng là sau mỗi liều bơm phải đo K lặp lại và nhanh chóng, rồi bổ sung khi cần.</p>
+<p>Trong ca được trình bày, tôi không rõ 10 mEq K có được cho nhanh hay không.  Tôi ngờ rằng nó được cài trên bơm truyền để chạy trong 1 giờ, vốn là cách làm thông thường.  Sẽ khó mà thuyết phục được điều dưỡng cho nhanh hơn!  <strong>Tuy nhiên, trong ca này, cho trong 5-10 phút là phù hợp, kèm theo dõi, rồi đo lại K ngay và sẵn sàng cho thêm.</strong></p>
+<p>Vấn đề còn phức tạp hơn ở chỗ hạ kali máu nặng có thể gây tiêu cơ vân và sau đó giải phóng K, dẫn tới tăng kali máu!</p>
+<p>________________</p>
+<p>Đây là một bài khác về hạ kali máu: <a href="https://drsmithsecgblog.com/2017/02/patient-with-severe-dka-look-at-ecg.html" rel="noopener" target="_blank">Patient with severe DKA, look at the ECG</a> (Bệnh nhân nhiễm toan ceton do đái tháo đường nặng, hãy nhìn điện tâm đồ)</p>
+<p><u>Trong bài này, tôi đã bàn về một bệnh nhân khác mà tôi điều trị</u>: <strong>Ngừng tim trước viện do hạ kali máu</strong></p>
+<p><strong><br></strong>Gần đây tôi gặp một ca ngừng tim trước viện mà hóa ra là do hạ kali máu.</p>
+<p>Chúng tôi không cứu sống được bà, nhưng chúng tôi đã có tưới máu rất tốt nhờ ép tim bằng thiết bị LUCAS, đến mức máy đo độ bão hòa oxy qua mạch nảy cho dạng sóng rất tốt và độ bão hòa 100%, CO2 cuối thì thở ra là 35, và theo dõi tưới máu não gần như bình thường trong suốt quá trình hồi sức.  Đó là trước khi chúng tôi bắt đầu làm ECMO cho rung thất (VFib) kháng trị.</p>
+<p>Trong lúc hồi sức, tôi ra y lệnh bơm 10 mEq KCl, nhưng bệnh nhân lại được <strong>bơm 40 mEq KCl (nhiều hơn mức khuyến cáo rất nhiều)</strong>. Bác sĩ nội trú đã ra y lệnh 40 mEq và đó là con số các điều dưỡng nghe được.</p>
+<p>40 mEq là quá nhiều? Hay là lượng vừa đúng?</p>
+<p>Trái với dự đoán của tôi, sau khi bơm 40 mEq, K chỉ tăng lên 4,2 mEq/L.</p>
+<h3 id="luong-k-can-bom-bao-nhieu-la-dung-trong-ha-kali-mau-de-doa-tinh-mang">Lượng K cần bơm bao nhiêu là đúng trong hạ kali máu đe dọa tính mạng?</h3>
+<p>Ở một người 70 kg, có 5 lít máu và <strong>3 lít huyết thanh</strong>.  Vì K cần một khoảng thời gian (bao lâu?) để dịch chuyển ra khỏi lòng mạch vào khoảng kẽ rồi vào nội bào, <strong>về lý thuyết 3,0 mEq K <u>được bơm nhanh và đã hòa vào tuần hoàn</u> sẽ làm K huyết thanh tăng ngay 1,0 mEq/L, và 10 mEq sẽ làm tăng 3,3 mEq/L, từ 1,9 lên 5,2</strong>.   <strong><span class="c-do">Như vậy, 40 mEq lẽ ra phải làm tăng 13 mEq/L!!</span> </strong></p>
+<p>Nhưng đó là trước khi có sự tái phân bố vào khoảng kẽ.</p>
+<p>Như tôi đã nêu ở trên, trong ca ngừng tim của chúng tôi, sau khi bơm 40 mEq, K chỉ tăng lên 4,2 mEq/L.</p>
+<p><strong>Một người 70 kg có khoảng 13 lít dịch ngoại bào</strong> (10 lít dịch kẽ + 3 lít huyết thanh).  Vì vậy, nếu K tái phân bố rất nhanh vào khoang ngoại bào này, thì 40 mEq là phù hợp.</p>
+<p><strong>Cái khó là ước tính lượng đang tiếp tục dịch chuyển.</strong>  Khi bạn truyền K, nó sẽ bắt đầu dịch chuyển vào các tế bào đang thiếu kali và K huyết thanh sẽ lại giảm nhanh.  Vì vậy, ở những bệnh nhân như thế này, điều tối quan trọng là sau mỗi liều bơm phải đo K lặp lại và nhanh chóng, rồi bổ sung khi cần.</p>
+<p><a href="http://www.nejm.org/doi/full/10.1056/NEJM199808133390707" rel="noopener" target="_blank">Đây là bài tổng quan về hạ kali máu trên NEJM</a>, nhưng phần lớn nói về nguyên nhân, và nói rất ít về bù nhanh trong hạ kali máu đe dọa tính mạng, NGOẠI TRỪ việc nhấn mạnh bù nhanh nguy hiểm đến mức nào.</p>
+<p>Tôi từng đọc các bài báo nói rằng bệnh nhân không có thiếu máu cục bộ có nguy cơ biến chứng do hạ kali máu thấp.  Nhưng không phải là hoàn toàn không có nguy cơ.  Tôi đã khám người phụ nữ 30 tuổi này, không có bệnh tim, được hồi sức thành công sau rung thất:</p>
+<figure><a class="o-anh" href="2016-04-08-stemi-with-life-threatening-hypokalemia_anh/2016_04_Prehospital_ECG_young_w_w_v_fib.jpg"><img src="2016-04-08-stemi-with-life-threatening-hypokalemia_anh/2016_04_Prehospital_ECG_young_w_w_v_fib.jpg" alt="" width="1600" height="616" loading="lazy" decoding="async"></a><figcaption>Hạ kali máu điển hình, với sóng U lớn.  K là 1,3 mEq/L.</figcaption></figure>
+<h2 id="nhung-diem-can-hoc">Những điểm cần học:</h2>
+<p>1. Hạ kali máu nặng trong bối cảnh STEMI hoặc rối loạn nhịp là tình trạng đe dọa tính mạng và cần được điều trị rất nhanh. Với K ở mức 1,8 mEq/L, cho 5-10 mEq trong 5-10 phút là phù hợp.</p>
+<p>2. Hãy chắc chắn rằng giá trị xét nghiệm của bạn là chính xác và tương ứng với các dấu hiệu trên điện tâm đồ! Nếu điện tâm đồ không cho thấy bằng chứng nào của hạ kali máu, đó có thể là một giá trị giả tạo (artifactual). Nếu điện tâm đồ không cho thấy bằng chứng nào, ít có khả năng đó là tình trạng đe dọa tính mạng!</p>
+<p>3. Ở một người 70 kg, một liều bơm nhanh (bolus) 10 mEq sẽ làm tăng K huyết thanh thêm 3,3 mEq/L nếu không có bất kỳ sự dịch chuyển nào vào trong tế bào</p>
+<p>4. Tốt nhất là cho liều bơm nhanh như vậy qua đường truyền tĩnh mạch trung tâm, nhưng điều này không phải lúc nào cũng làm được.</p>
+<p>5. Rất khó điều chỉnh K nếu không đồng thời điều chỉnh tình trạng magnesi thấp. Trong ca này, Mg là 1,9 mEq/L (trong giới hạn bình thường)</p>
+<p>6. <a href="https://drsmithsecgblog.com/2013/10/polymorphic-ventricular-tachycardia.html" rel="noopener" target="_blank">Tìm hiểu cách xử trí VT đa dạng, bao gồm cả xoắn đỉnh (Torsades). </a></p>
+<h2 id="y-van">Y văn</h2>
+<h3 id="hai-bai-bao-ve-bu-kali-nhanh">Hai bài báo về bù kali nhanh</h3>
+<h3 id="efficacy-and-safety-of-potassium-infusion-therapy-in-hypokalemic-critically-ill-patients-hieu-qua-va-do-an-toan-cua-lieu-phap-truyen-kali-o-benh-nhan-nang-bi-ha-kali-mau-crit-care-med-thang-nam-1991-19-5-694-9">Efficacy and safety of potassium infusion therapy in hypokalemic critically ill patients (Hiệu quả và độ an toàn của liệu pháp truyền kali ở bệnh nhân nặng bị hạ kali máu). Crit Care Med. tháng Năm 1991;19(5):694-9</h3>
+<p>Mục tiêu: Đánh giá hiệu quả và độ an toàn của truyền dịch bù kali ở bệnh nhân nặng.</p>
+<p>Thiết kế: Nghiên cứu đoàn hệ tiến cứu.</p>
+<p>Bối cảnh: Đơn vị hồi sức tích cực đa chuyên khoa.</p>
+<p>Can thiệp: Truyền kali clorid (20, 30 hoặc 40 mmol trong 100 mL nước muối sinh lý trong 1 giờ) cho bệnh nhân có nồng độ kali huyết thanh &lt;3 .5=”” but=”” style=”font-family: times, “times new roman”, serif;”&gt;3.2 mmol/L (n = 26), 3,0 đến 3,2 mmol/L (n = 11) và&lt;/3&gt; [người dịch: đoạn này trong bản gốc bị lỗi mã định dạng nên mất một phần nội dung]</p>
+<p>Đo lường và Kết quả: Tất cả bệnh nhân đều dung nạp được việc truyền mà không có bằng chứng tổn hại huyết động, thay đổi điện tâm đồ hay rối loạn nhịp mới cần điều trị. Mức tăng kali tối đa trung bình lần lượt là 0,5 ± 0,3 mmol/L, 0,9 ± 0,4 mmol/L và 1,1 ± 0,4 mmol/L ở các nhóm 20, 30 và 40 mmol. Mức tăng kali huyết thanh đạt tối đa khi kết thúc truyền và có ý nghĩa thống kê (p &lt; .05) so với ban đầu ở tất cả các nhóm. Nồng độ kali đỉnh ở bệnh nhân có chức năng thận bình thường (n = 33) giống với bệnh nhân suy thận (n = 15).</p>
+<p>Bài tiết kali qua nước tiểu tăng ở tất cả các nhóm trong khi truyền và có ý nghĩa thống kê (p &lt; .05) ở nhóm 30 và 40 mmol, nhưng không cao hơn ở những bệnh nhân đã dùng thuốc lợi tiểu (n = 8) so với những bệnh nhân không dùng (n = 40).</p>
+<p>Kết luận: Ở nhóm bệnh nhân hạ kali máu chọn lọc được nghiên cứu, truyền kali 20 đến 40 mmol trong 1 giờ là an toàn và làm tăng nồng độ kali huyết thanh một cách hiệu quả, theo cách phụ thuộc liều và có thể dự đoán được. Hơn nữa, các kết quả này không phụ thuộc vào chức năng thận nền của bệnh nhân hay việc dùng kèm thuốc lợi tiểu. (Crit Care Med 1991; 19:694)</p>
+<p><a href="http://onlinelibrary.wiley.com/doi/10.1002/j.1552-4604.1994.tb01984.x/abstract" rel="noopener" target="_blank">Concentrated Potassium Chloride Infusions in Critically Ill Patients with Hypokalemia</a> (Truyền kali clorid đậm đặc ở bệnh nhân nặng bị hạ kali máu)</p>
+<p>Tạp chí The Journal of Clinical Pharmacology. <a href="http://onlinelibrary.wiley.com/doi/10.1002/jcph.1994.34.issue-11/issuetoc" rel="noopener" target="_blank"><span class="c-xanh">Tập 34</span>, <span class="c-xanh">Số 11</span>, </a><span class="c-xanh">trang 1077–1082</span>, <span class="c-xanh">tháng Mười Một năm 1994</span></p>
+<p>Mặc dù truyền kali clorid đậm đặc thường được dùng để điều trị hạ kali máu ở bệnh nhân đơn vị hồi sức tích cực, rất ít nghiên cứu đã khảo sát tác dụng của chúng lên nồng độ kali huyết tương. Bốn mươi bệnh nhân hạ kali máu được truyền 20 mmol kali clorid trong 100 mL nước muối sinh lý trong 1 giờ; 26 bệnh nhân được truyền qua tĩnh mạch trung tâm và 14 bệnh nhân qua tĩnh mạch ngoại biên. Kali huyết tương ([K]<sub>p</sub>) được đo cách mỗi 15 phút trong và sau khi truyền ở 31 bệnh nhân. ΔK được định nghĩa là hiệu số giữa mỗi lần định lượng kali và nồng độ kali huyết tương ban đầu. Điện tâm đồ được ghi liên tục trong khi truyền và trong khoảng 1 giờ ngay trước khi truyền. [K]<sub>p</sub> ban đầu trung bình là 2,9 mmol/L và mọi nồng độ huyết tương sau đó đều tăng có ý nghĩa so với ban đầu. [K]<sub>p</sub> đỉnh trung bình là 3,5 mmol/L, [K]<sub>p</sub> (1 giờ sau truyền) là 3,2 mmol/L, và ΔK trung bình sau truyền là 0,48 mmol/L (dao động −0,1–1,7 mmol/L). Không xảy ra rối loạn nhịp, thay đổi các khoảng dẫn truyền tim hay biến chứng nào khác. Tần suất nhát ngoại tâm thu thất giảm có ý nghĩa trong khi truyền so với giai đoạn chứng. Nồng độ cao (200 mmol/L) và tốc độ truyền (20 mmol/giờ) của dịch truyền kali clorid được dung nạp tốt, làm giảm tần suất rối loạn nhịp thất và không gây tăng kali máu thoáng qua.</p>
+<p><strong><u>Y văn về hạ kali máu như một yếu tố nguy cơ rung thất trong nhồi máu cơ tim cấp</u>. Tất cả đều có từ thập niên 1980. Việc dùng thuốc lợi tiểu liên quan chặt chẽ với hạ kali máu và rung thất trong nhồi máu cơ tim.</strong></p>
+<p><a href="http://jama.jamanetwork.com/article.aspx?articleid=357482" rel="noopener" target="_blank">Thiazide-lnduced Hypokalemia: Association With Acute Myocardial Infarction and Ventricular Fibrillation</a> (Hạ kali máu do thiazid: mối liên quan với nhồi máu cơ tim cấp và rung thất)</p>
+<p>Mười trong số 59 bệnh nhân (17%) đang dùng một chế phẩm thiazid vào thời điểm bị nhồi máu cơ tim cấp và rung thất. Hạ kali máu có ở bảy trong số tám bệnh nhân (87%) dùng thiazid, trong khi chỉ gặp ở một trong số 38 bệnh nhân (2,6%) không dùng các thuốc này. Nếu có hạ kali máu ở bệnh nhân đang dùng thiazid bị nhồi máu cơ tim cấp, cần điều chỉnh tình trạng này để loại bỏ yếu tố thuận lợi gây rung thất.</p>
+<p>(<em>JAMA</em> 239:43-45; 1978). <a href="http://www.sciencedirect.com/science/article/pii/0002914985911105" rel="noopener" target="_blank">Malignant arrhythmia in relation to serum potassium in acute myocardial infarction.</a> (Rối loạn nhịp ác tính liên quan đến kali huyết thanh trong nhồi máu cơ tim cấp)</p>
+<p><a href="http://archinte.jamanetwork.com/article.aspx?articleid=607937" rel="noopener" target="_blank">Serum Magnesium and Potassium in Acute Myocardial InfarctionInfluence on Ventricular Arrhythmias.  </a>(Magnesi và kali huyết thanh trong nhồi máu cơ tim cấp: ảnh hưởng lên rối loạn nhịp thất). Tác giả: Henryk Kafka, MD; Lorrie Langevin, RN; Paul W. Armstrong, MD</p>
+<p>Tạp chí <em>Arch Intern Med. </em>1987;147(3):465-469. doi:10.1001/archinte.1987.00370030069014.</p>
+<p>Trong khoảng thời gian 13 tháng, nồng độ kali và magnesi huyết thanh được đo ở 590 bệnh nhân nhập đơn vị chăm sóc mạch vành (CCU). Hạ kali máu, thường không liên quan đến việc dùng thuốc lợi tiểu, xảy ra ở 17% trong số 211 bệnh nhân nhồi máu cơ tim cấp. Bệnh nhân nhồi máu cơ tim cấp có nồng độ kali dưới 4,0 mEq/L (4,0 mmol/L) có nguy cơ rối loạn nhịp thất tăng lên (59% so với 42%). Vì hạ kali máu thường gặp trong nhồi máu cơ tim cấp và liên quan đến rối loạn nhịp thất, nên khuyến cáo đo thường quy nồng độ kali huyết thanh và điều chỉnh kịp thời. Hạ magnesi máu chỉ xảy ra ở 4% bệnh nhân, nhưng thường gặp ở nhóm nhồi máu cơ tim cấp hơn so với nhóm không nhồi máu cơ tim (6% so với 3%). Rối loạn nhịp thất xảy ra ở mười trong số 13 bệnh nhân vừa nhồi máu cơ tim cấp vừa hạ magnesi máu, nhưng tám trong số này cũng có nồng độ kali huyết thanh thấp. Tỷ lệ mắc hạ magnesi máu thấp như vậy không biện minh cho việc đo thường quy nồng độ magnesi huyết thanh. Tuy nhiên, nồng độ trung bình (2,5 ± 0,4 mg/dL [1,03 ± 0,16 mmol/L]) ở một quần thể tham chiếu gồm những người tình nguyện khỏe mạnh lại cao bất ngờ, gợi ý rằng tỷ lệ mắc hạ magnesi máu thấp trong quần thể của chúng tôi có thể không áp dụng được cho các trung tâm khác và có thể phản ánh hàm lượng magnesi cao hơn ở khu vực địa lý của chúng tôi là vùng đông nam Ontario.</p>
+<h2 id="frequency-of-hypokalemia-after-successfully-resuscitated-out-of-hospital-cardiac-arrest-compared-with-that-in-transmural-acute-myocardial-infarction-tan-suat-ha-kali-mau-sau-ngung-tim-ngoai-benh-vien-duoc-hoi-suc-thanh-cong-so-voi-trong-nhoi-mau-co-tim-cap-xuyen-thanh">Frequency of hypokalemia after successfully resuscitated out-of-hospital cardiac arrest compared with that in transmural acute myocardial infarction (Tần suất hạ kali máu sau ngừng tim ngoài bệnh viện được hồi sức thành công so với trong nhồi máu cơ tim cấp xuyên thành)</h2>
+<p>Để đánh giá tỷ lệ hiện mắc hạ kali máu trong ngừng tim ngoài bệnh viện, các giá trị kali huyết thanh và pH động mạch ban đầu của 138 bệnh nhân liên tiếp được hồi sức sau ngừng tim đã được xem xét lại. Để so sánh, các biến số tương tự được xem xét ở 62 bệnh nhân liên tiếp bị nhồi máu cơ tim cấp (AMI) xuyên thành mà không ngừng tim. Nồng độ kali huyết thanh trung bình sau hồi sức ngừng tim thấp hơn (3,6 ± 0,6 mEq/lít) so với trong AMI (3,9 ± 0,5 mEq/lít) (p &lt; 0,005). Tỷ lệ mắc hạ kali máu (kali dưới 3,5 mEq/lít) cao hơn ở bệnh nhân bị ngừng tim (41%) so với bệnh nhân AMI không ngừng tim (11%) (p &lt; 0,001). Hạ kali máu thường gặp sau ngừng tim bất kể có xảy ra AMI vào thời điểm ngừng tim hay không. Hạ kali máu sau ngừng tim không phụ thuộc vào pH động mạch, việc điều trị bằng epinephrine hay bicarbonat trong khi hồi sức, hoặc việc điều trị trước đó bằng thuốc lợi tiểu, digoxin hay propranolol. Ở 10 bệnh nhân hạ kali máu rõ rệt, nồng độ kali huyết thanh trở về bình thường nhanh chóng (16 giờ) trong thời gian nằm viện, mặc dù chỉ 29% lượng kali cần bù dự đoán được truyền trước khi kali trở về bình thường. Như vậy, hạ kali máu phổ biến ngay sau ngừng tim ngoài bệnh viện, trong khi ít gặp trong AMI khi không có ngừng tim. Nguyên nhân và hậu quả điện sinh lý của tình trạng hạ kali máu này chưa được biết; trong hầu hết các trường hợp, nó dường như do kali dịch chuyển khỏi khoang nội mạch chứ không phải do thiếu hụt kali toàn cơ thể.</p>
+<p><a href="http://circ.ahajournals.org/content/71/4/645.full.pdf" rel="noopener" target="_blank"><strong>Serum potassium concentration as a risk factor ofventricular arrhythmias early in acute myocardialinfarction</strong></a> (Nồng độ kali huyết thanh như một yếu tố nguy cơ rối loạn nhịp thất giai đoạn sớm của nhồi máu cơ tim cấp) (toàn văn, Circulation 1985; 71:645-649)</p>
+<p>Sáu mươi bệnh nhân nhồi máu cơ tim cấp lần đầu và hiện không điều trị bằng thuốc tác động lên tim được đưa vào một nghiên cứu tiến cứu về mối liên quan giữa nồng độ kali huyết thanh và sự xuất hiện sớm của nhịp nhanh thất và ngoại tâm thu thất (PVC). Nồng độ kali huyết thanh (dao động 2,5 đến 5 mmol/lít) được định lượng 3,8 ± 2,5 giờ (trung bình ± SD) sau khởi phát nhồi máu, và theo dõi Holter được thực hiện trong 12 giờ tiếp theo. Trong phân tích đa biến, nồng độ kali huyết thanh liên quan nghịch còn tuổi liên quan thuận với nhịp nhanh thất. Trong các phân nhóm PVC (đơn ổ thường xuyên, đa ổ, cặp đôi, nhịp đôi), nồng độ kali huyết thanh liên quan nghịch với phân nhóm đơn ổ thường xuyên; tăng huyết áp liên quan với cặp đôi và với sự hiện diện của bất kỳ phân nhóm nào, còn nồng độ aspartate aminotransferase huyết thanh liên quan với PVC đa ổ. Suy tim dẫn đến tử vong liên quan với tất cả các phân nhóm PVC. Nồng độ kali huyết thanh là một yếu tố dự báo nghịch, độc lập, cho sự xuất hiện của nhịp nhanh thất và PVC đơn ổ thường xuyên trong giai đoạn sớm của nhồi máu cơ tim cấp.</p>
+<h2 id="hypokalaemia-and-ventricular-fibrillation-in-acute-myocardial-infarction-ha-kali-mau-va-rung-that-trong-nhoi-mau-co-tim-cap-toan-van-pdf-br-heart-j-1983-50-525-529">Hypokalaemia and ventricular fibrillation in acute myocardial infarction (Hạ kali máu và rung thất trong nhồi máu cơ tim cấp) (toàn văn pdf; Br Heart J 1983;50:525-529)</h2>
+<p>Nồng độ kali huyết thanh lấy lúc nhập viện liên quan nghịch với tỷ lệ mắc rung thất ở 289 phụ nữ và 785 nam giới bị nhồi máu cơ tim cấp, trong đó 92 người bị rung thất. Hạ kali máu (nồng độ kali huyết thanh nhỏ hơn hoặc bằng 3,5 mmol/l) được phát hiện ở 122 bệnh nhân (11,4%). Tỷ lệ mắc rung thất cao hơn có ý nghĩa ở bệnh nhân hạ kali máu so với những người được xếp loại kali máu bình thường (nồng độ kali huyết thanh lớn hơn hoặc bằng 3,6 mmol/l) (17,2% so với 7,4%). Nguy cơ rung thất tăng lên ở nhóm hạ kali máu là gần như nhau ở nữ và nam. Trong thời gian nằm viện, bệnh nhân hạ kali máu bị rung thất sớm hơn có ý nghĩa so với bệnh nhân có kali máu bình thường (trung vị 0,3 giờ so với 7 giờ). Hạ kali máu thường gặp ở nữ (17,3%) hơn ở nam (9,2%), và 55% bệnh nhân hạ kali máu đã được điều trị bằng thuốc lợi tiểu trước khi nhập viện so với 22% ở nhóm kali máu bình thường. Hạ kali máu lúc nhập viện dự báo khả năng mắc rung thất tăng lên và rung thất xảy ra sớm ở bệnh nhân nhồi máu cơ tim cấp.</p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
