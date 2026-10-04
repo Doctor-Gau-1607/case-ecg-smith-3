@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>19/11/2016 — Thiếu máu cục bộ dưới nội tâm mạc lan tỏa trên điện tâm đồ. Thân chung động mạch vành trái? Bệnh 3 nhánh mạch vành? Không!</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #704 · DR. SMITH’S ECG BLOG</div>
+   <h1>19/11/2016 — Thiếu máu cục bộ dưới nội tâm mạc lan tỏa trên điện tâm đồ. Thân chung động mạch vành trái? Bệnh 3 nhánh mạch vành? Không!</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/diffuse-subendocardial-ischemia-on-ecg/" target="_blank" rel="noopener">"Diffuse Subendocardial Ischemia on the ECG.  Left main?  3-vessel disease?  No!"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 2 hình ảnh và 1 video của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p>Ca này do một số đồng nghiệp ở Wake Forest đóng góp:</p>
+<p>Tác giả: Jason Stopyra, Shannon Mumma, Sean O’Rourke và Brian Hiestand.</p>
+<p>Bài được Smith biên tập</p>
+<h2 id="ca-benh">CA BỆNH:</h2>
+<p>Một bệnh nhân nam 52 tuổi có tiền sử<br>tăng huyết áp và bệnh phổi tắc nghẽn mạn tính (COPD) gọi đội cấp cứu ngoài viện (EMS) vì đau ngực,<br>mệt yếu và buồn nôn. Ấn tượng ban đầu của nhân viên cấp cứu ngoài viện về bệnh nhân<br>là bệnh nhân đang nguy kịch. Bệnh nhân bị rối loạn<br>ý thức, da tái nhợt và xám xịt. Huyết áp ban đầu<br>là 80/bắt mạch (palp), tần số tim 104, nhịp thở 20, độ bão hòa<br>oxy 94% và đường huyết mao mạch 268. Khám ngoài ra<br>còn đáng chú ý có tiếng khò khè nghe rõ, thời gian đổ đầy<br>mao mạch chậm, lú lẫn, khó làm theo y lệnh và khó trả lời<br>câu hỏi.<br><u></u><u></u></p>
+<p>Một điện tâm đồ 12 chuyển đạo được ghi ngay lập tức:</p>
+<figure><a class="o-anh" href="2016-11-19-diffuse-subendocardial-ischemia-on-ecg_anh/2016_11_EGGforAScase.jpg"><img src="2016-11-19-diffuse-subendocardial-ischemia-on-ecg_anh/2016_11_EGGforAScase.jpg" alt="" width="1600" height="658" loading="lazy" decoding="async"></a><figcaption>Có ST chênh lên ở các chuyển đạo aVR và V1, kèm ST chênh xuống rõ ở I, II, III, aVF, V3-V6.
+Cần làm gì?  
+Có nên kích hoạt phòng thông tim (cath lab) không?</figcaption></figure>
+<h3 id="binh-luan-cua-smith">Bình luận của Smith:</h3>
+<p><strong>Bệnh nhân này <u>không</u> được siêu âm tại giường.   </strong> Nếu được làm, siêu âm sẽ cho thấy một đặc điểm hiện rõ trên đoạn siêu âm này (tuy nhiên, chức năng thất trái của bệnh nhân này sẽ <strong><em><u>không</u></em></strong> tốt bằng trong đoạn phim này):</p>
+<figure><div class="khung-video"><iframe src="https://player.vimeo.com/video/191515233?autoplay=1&amp;loop=1" loading="lazy" allowfullscreen allow="fullscreen; encrypted-media; picture-in-picture"></iframe></div></figure>
+<p>Đoạn này được ghi với thất trái nằm ở bên phải.</p>
+<p>Hãy nhìn vào đường ra động mạch chủ.  Bạn thấy gì?  Câu trả lời ở ảnh tĩnh bên dưới.</p>
+<h2 id="dien-bien-lam-sang">Diễn biến lâm sàng</h2>
+<p>Nhân viên cấp cứu ngoài viện đã phát “báo động STEMI (Code STEMI)” và<br>chuyển bệnh nhân gần 50 dặm đến trung tâm y tế tuyến cuối<br>gần nhất. Trên đường đi, EMS cho bệnh nhân uống aspirin 325mg<br>nhưng không dùng nitroglycerin do hạ huyết áp ban đầu. Ngoài<br>ra, bệnh nhân được truyền 750 mL dịch hồi sức, giúp huyết áp<br>cải thiện thoáng qua.<br><u></u><u></u></p>
+<p>Bệnh nhân được đưa thẳng vào phòng thông<br>tim để can thiệp mạch vành qua da (PCI), bỏ qua khoa cấp cứu (ED). Tại phòng thông tim,<br>huyết áp của bệnh nhân vẫn thấp. Chụp mạch vành chẩn đoán<br>chỉ phát hiện bệnh động mạch vành mức độ tối thiểu, nhưng<br>có van động mạch chủ vôi hóa nặng, ‘bất động’. Chụp động mạch<br>chủ không phát hiện bóc tách động mạch chủ. Trong lúc làm thủ thuật,<br>nhu cầu oxy của bệnh nhân tăng dần và bệnh nhân được đặt nội khí quản để<br>bảo vệ đường thở và đảm bảo oxy hóa. Siêu âm tim qua thành ngực<br>cho thấy phân suất tống máu thất trái dưới 15%, <strong>hẹp van động mạch chủ khít cực kỳ nặng</strong>, <strong>phì đại thất trái (LVH)<br>nặng</strong> và buồng thất trái nhỏ. Bệnh nhân được chuyển đến đơn vị chăm sóc mạch vành (CCU) để<br>tiếp tục tối ưu hóa điều trị nội khoa, tại đây bệnh nhân được đặt<br>ống thông động mạch phổi.<br><u></u><u></u></p>
+<p><strong>Đây là ảnh tĩnh của đoạn siêu âm ở trên:</strong></p>
+<p>Ảnh tĩnh này cho thấy vùng cần quan tâm:</p>
+<figure><a class="o-anh" href="2016-11-19-diffuse-subendocardial-ischemia-on-ecg_anh/2016_11_Stillshotofaorticsclerosis.jpg"><img src="2016-11-19-diffuse-subendocardial-ischemia-on-ecg_anh/2016_11_Stillshotofaorticsclerosis.jpg" alt="" width="755" height="542" loading="lazy" decoding="async"></a><figcaption>Có một vùng <strong>tăng âm</strong> ở van động mạch chủ<br>Đây là xơ hóa van động mạch chủ và có liên quan rất chặt với hẹp van động mạch chủ.<br>Nếu thấy hình ảnh này, bạn nên làm Doppler qua van.<br>Van động mạch chủ trong ví dụ này cũng hẹp khít trên Doppler</figcaption></figure>
+<p>Bệnh nhân tiếp tục mất ổn định<br>huyết động với cung lượng tim thấp và áp lực đổ đầy thất trái rất cao.<br>Dù đã dùng nhiều thuốc vận mạch liều cao, bệnh nhân vẫn tiếp tục<br>hạ huyết áp. Ngày hôm sau, bệnh nhân được<br>nong van động mạch chủ bằng bóng vì hẹp van động mạch chủ nặng có triệu chứng<br>kèm hạ huyết áp và triệu chứng NYHA độ IV. Sau nong van,<br>chênh áp qua van của bệnh nhân cải thiện nhưng vẫn còn đáng kể. Bệnh nhân<br>được tiếp tục dùng thuốc vận mạch tối đa nhưng vẫn<br>hạ huyết áp. Khoảng bảy giờ sau khi trở về từ<br>phòng nong van, bệnh nhân ngừng tim vô tâm thu.<br><u></u><u></u></p>
+<h2 id="ban-luan">BÀN LUẬN:</h2>
+<p>Điện tâm đồ 12 chuyển đạo mà EMS ghi ban đầu cho<br>bệnh nhân này cho thấy thiếu máu cục bộ nặng, với ST chênh xuống sâu ở “dưới-bên” và ST chênh lên soi gương ở chuyển đạo aVR.  Mặc dù hình ảnh này được xem là một “tương đương STEMI” và hướng dẫn ACC/AHA thậm chí còn chấp thuận dùng thuốc tiêu sợi huyết cho hội chứng vành cấp (ACS) có điện tâm đồ như thế này, điện tâm đồ này không đáp ứng các tiêu chuẩn thường dùng<br>để báo cho kíp phòng thông tim về một ca báo động STEMI sắp được chuyển<br>đến.</p>
+<h3 id="binh-luan-cua-smith-2">Bình luận của Smith:</h3>
+<p>Hãy nhớ rằng ST chênh xuống không định khu được vùng thiếu máu cục bộ, vì vậy “dưới-bên” không cho bạn biết thiếu máu cục bộ nằm ở đâu – thực ra, đây là thiếu máu cục bộ dưới nội tâm mạc <strong><em>lan tỏa</em></strong>.  ST chênh lên ở chuyển đạo aVR là <strong><em>soi gương</em></strong> của ST chênh xuống do thiếu máu cục bộ dưới nội tâm mạc<br>lan tỏa này; vectơ ST chênh xuống hướng về II và V5, do đó vectơ ST chênh lên hướng về aVR.</p>
+<h3 id="tac-gia-viet-tiep">Tác giả viết tiếp:</h3>
+<p>ST chênh lên (STE) ở aVR thường do tắc nghẽn thân chung<br>động mạch vành trái (OR 4.72), và có liên quan với tử vong tim mạch<br>trong bệnh viện (OR 5.58).<sup>1</sup> Trong một số loạt ca, ST chênh lên từ 1 milimét trở lên đã được chứng minh có độ nhạy 80% và độ đặc hiệu 90% đối với<br>bệnh thân chung động mạch vành trái nặng và/hoặc bệnh 3 nhánh mạch vành có thể<br>cần phẫu thuật bắc cầu chủ vành (CABG).<sup>2</sup><br>Người nhân viên cấp cứu ngoài viện tinh ý đã nhận ra khả năng này và phát báo động STEMI (CODE STEMI).</p>
+<h3 id="binh-luan-cua-smith-3">Bình luận của Smith:</h3>
+<p>Tôi sẽ sửa câu trên thành: “<strong><u>Trong bối cảnh ACS</u></strong>, STE ở aVR thường do tắc nghẽn thân chung hoặc tắc nghẽn 3 nhánh….”  Điện tâm đồ không thể chẩn đoán nguyên nhân của thiếu máu cục bộ; nó chỉ cho biết có thiếu máu cục bộ, dù do bất kỳ nguyên nhân nào.  Thiếu máu cục bộ dưới nội tâm mạc lan tỏa thường do mất cân bằng cung-cầu khi không có ACS hơn là do ACS.  Các nguyên nhân thường gặp của mất cân bằng cung-cầu là thiếu oxy, rối loạn nhịp nhanh,  hạ huyết áp (do bất kỳ nguyên nhân nào), thiếu máu, hẹp động mạch vành không có ACS, hoặc tăng áp lực (trong thất).</p>
+<p><strong>–Cung cấp oxy</strong> được quyết định bởi: 1) khả năng chuyên chở oxy, 2) độ bão hòa O2, và 3) lưu lượng mạch vành.   Do đó, khi không có cơ chế xơ vữa-huyết khối (ACS), thiếu máu cục bộ cơ tim có thể do:</p>
+<p>1) Hạ huyết áp (hạ huyết áp tâm trương, vì toàn bộ lưu lượng mạch vành diễn ra trong thì tâm trương, do áp lực trong cơ tim lúc tâm thu làm ngừng dòng máu).  Hạ huyết áp dĩ nhiên có thể là hậu quả của một rối loạn nhịp chậm hoặc rối loạn nhịp nhanh.</p>
+<p>2) Thiếu oxy, bao gồm các chất độc của quá trình phosphoryl hóa oxy hóa như HS, CO, CN.</p>
+<p>3) Thiếu máu, hoặc các chất độc với hemoglobin như methemoglobin hay CO</p>
+<p>4) Hẹp động mạch vành cố định làm hạn chế dòng chảy.</p>
+<p><strong>–Nhu cầu oxy</strong> được quyết định bởi:</p>
+<p>1)  Hậu tải (sức cản lớn đối với dòng máu ra khỏi thất trái), tăng lên khi huyết áp cao hoặc khi hẹp van động mạch chủ</p>
+<p>2)  Tần số tim: nhịp nhanh xoang</p>
+<p>–Bệnh nhân này có <strong>cả</strong> giảm cung cấp (hạ huyết áp) lẫn tăng nhu cầu do 1) hậu tải cao (áp lực thất trái rất cao vì sức cản đường ra do hẹp van động mạch chủ) và 2) tần số tim cao.</p>
+<p>–Điều này cho thấy việc nghe tim vẫn có thể có giá trị nhất định, để nghe tiếng thổi van động mạch chủ.  Thực ra, siêu âm tại giường thậm chí có thể phát hiện hẹp van động mạch chủ nặng.  Nếu bạn dùng được Doppler thì bạn có thể chẩn đoán được bệnh này.</p>
+<h2 id="binh-luan-cua-cac-tac-gia-soc-tim-trong-boi-canh-hep-van-dong-mach-chu-nang">Bình luận của các tác giả: Sốc tim trong bối cảnh hẹp van động mạch chủ nặng.</h2>
+<p>Khi gặp nhân viên cấp cứu ngoài viện và kíp thông tim tại phòng thông tim, tôi<br>đã sẵn sàng để thấy bệnh động mạch vành (CAD) nặng, nhưng các mạch vành lại không tắc nghẽn. Tình trạng<br>hẹp van động mạch chủ (AS) nặng và sốc tim nặng kèm theo của bệnh nhân này<br>nhiều khả năng đã tạo ra hình ảnh điện tâm đồ này, dẫn<br>đến một thách thức rất khó khăn cho kíp điều trị nội trú của chúng tôi.</p>
+<p>Về bản chất, sốc tim là vấn đề<br>giảm cung lượng tim. Điều này có thể thứ phát sau nhiều yếu tố,<br>bao gồm giảm sức co bóp cơ tim (tức là nhồi máu cơ tim),<br>rối loạn nhịp, bệnh lý van tim, shunt, hoặc tắc nghẽn<br>đường ra.<u></u><u></u></p>
+<p>Cũng như các trường hợp sốc khác, có thể cân nhắc<br>hồi sức dịch ban đầu. Trong sốc tim, dịch có thể làm nặng thêm<br>phù phổi đi kèm suy tim cấp, nhưng vẫn có thể<br>cần thiết để hỗ trợ tình trạng huyết động của<br>bệnh nhân. <u></u><u></u></p>
+<p>Các hướng dẫn của Hội Tim mạch Hoa Kỳ (American Heart Association) đã<br>không thay đổi trong nhiều thập kỷ với khuyến cáo dùng thuốc tăng co bóp cơ tim,<br>như dobutamine và dopamine, trong các trường hợp sốc tim.<sup>3</sup><br>Có bằng chứng cho thấy việc dùng<br>phối hợp cả dobutamine và dopamine ở liều dưới tối đa,<br>thay vì dùng một thuốc đơn độc, mang lại lợi ích cho bệnh nhân.<br>Lợi ích bao gồm cải thiện huyết áp động mạch trung bình (MAP) và cung lượng tim của bệnh nhân,<br>đồng thời giảm thiểu lượng oxy cơ tim tiêu thụ<br>khi cung lượng tim (CO) tăng.<sup>4</sup> Điều này rất quan trọng, vì<br>những bệnh nhân này có thể đã có thiếu máu cục bộ cơ tim ở một mức độ nào đó.<br>Điều này đặc biệt quan trọng với bệnh nhân được trình bày ở trên, do<br>mức tiêu thụ oxy nền vốn đã tăng<br>trong AS vì tắc nghẽn đường ra.</p>
+<h3 id="binh-luan-cua-smith-4">Bình luận của Smith:</h3>
+<p>Trong một thử nghiệm ngẫu nhiên lớn so sánh dopamine với norepinephrine (11) trong điều trị sốc, được công bố sau các khuyến cáo nêu trên, dopamine có nhiều biến cố bất lợi hơn (đặc biệt là rối loạn nhịp nặng, và đặc biệt là rung nhĩ).  Trong phân nhóm bệnh nhân sốc tim, dopamine làm tăng tử vong 33% so với norepinephrine, có ý nghĩa thống kê.   Do đó, <strong>norepinephrine</strong> là lựa chọn tốt hơn dopamine hay dobutamine trong sốc tim (như ở bệnh nhân này).  Dobutamine có thể được ưu tiên ở những bệnh nhân không hạ huyết áp nặng và có sức cản mạch máu cao.</p>
+<p>—<a href="http://www.nejm.org/doi/pdf/10.1056/NEJMoa0907118" rel="noopener" target="_blank">De Backer D và cs.  Comparison of Dopamine and Norepinephrine in the Treatment of Shock.  NEJM 362(9):779; ngày 4 tháng Ba năm 2009.</a></p>
+<h3 id="tac-gia-viet-tiep-2">Tác giả viết tiếp:</h3>
+<p>Một thuốc tăng co bóp cơ tim<br>khác có thể cân nhắc là milrinone vì thuốc làm giảm sức cản mạch hệ thống (SVR) và tăng cung lượng tim; tuy nhiên,<br>cần thận trọng vì cơ chế dược lý của<br>milrinone có thể gây giãn mạch và làm nặng thêm tình trạng hạ huyết áp.<br><u></u><u></u></p>
+<p>Khi thuốc vận mạch không duy trì được huyết<br>áp, có thể cân nhắc <strong>nong van bằng bóng</strong>. Đây là thủ thuật<br>trong đó một ống thông được đưa vào qua động mạch đùi, và<br>đẩy lên để đầu ống thông nằm ở đoạn xa so với động mạch dưới đòn<br>trái. Sau đó một quả bóng được luồn theo ống thông, được bơm phồng<br>và xẹp lần lượt theo thì tâm trương và tâm thu. Thủ thuật này đã được<br>khuyến cáo như một cầu nối đến phẫu thuật ở những bệnh nhân không đủ điều kiện<br>phẫu thuật.<sup>5</sup> [người dịch: phần mô tả kỹ thuật ở trên thực chất là của bóng đối xung động mạch chủ (IABP), không phải nong van bằng bóng] Đáng tiếc là thủ thuật này nhìn chung<br>chỉ sẵn có ở các trung tâm y tế lớn.<sup>6,7</sup> Phẫu thuật<br>sửa chữa AS, bằng thay van động mạch chủ qua ống thông (TAVR) hoặc thay van động mạch chủ bằng phẫu thuật (SAVR), là điều trị triệt để cho<br>bệnh lý này. Tuy nhiên, cần lưu ý rằng can thiệp phẫu thuật<br>cấp cứu ở bệnh nhân AS không ổn định có liên quan<br>với tỷ lệ tử vong đáng kể, từ 30-50%.<sup>8<u></u><u></u></sup></p>
+<h3 id="dieu-tri-gian-mach-trong-as-khit">Điều trị giãn mạch trong AS khít</h3>
+<p>Mặc dù không áp dụng cho ca bệnh trên do<br>bệnh nhân bị hạ huyết áp, nitroprusside có thể phù hợp cho bệnh nhân có<br>phù phổi trong bối cảnh suy tim cấp thứ phát do AS.<br>Dù từ lâu được cho là chống chỉ định trong<br>AS do tình trạng phụ thuộc tiền tải của bệnh này, đã có một số<br>bằng chứng cho thấy nitroprusside có lợi cho những bệnh nhân này. <a href="http://www.nejm.org/doi/pdf/10.1056/NEJMoa022021" rel="noopener" target="_blank">Trong một nghiên cứu không đối chứng quan trọng</a>, nitroprusside dùng cho bệnh nhân AS khít và suy tim phân suất tống máu<br>giảm (EF trung bình 21%, MAP trung bình 81 mm Hg) đã cải thiện đáng kể<br>chỉ số tim, không có bất kỳ đợt hạ huyết áp,<br>thay đổi điện tâm đồ do thiếu máu cục bộ, rối loạn nhịp hay khó thở nào.<sup>9</sup>  Tiêu chuẩn loại trừ duy nhất của nghiên cứu này là hạ huyết áp, được định nghĩa là cần dùng thuốc tăng co bóp hoặc thuốc vận mạch đường tĩnh mạch (dobutamine, dopamine, epinephrine, milrinone, norepinephrine hoặc phenylephrine) hoặc huyết áp động mạch hệ thống trung bình dưới 60 mm Hg. MAP trung bình của những bệnh nhân này là 81 +/- 13.</p>
+<p>Hơn nữa, một<br>nghiên cứu đã so sánh bệnh nhân có AS với bệnh nhân không có AS bị phù phổi<br>cấp được dùng nitrat. Không có<br>khác biệt đáng kể về tỷ lệ bệnh nhân ở mỗi nhóm<br>bị hạ huyết áp sau khi bắt đầu điều trị. Tuy nhiên, có<br>ghi nhận rằng một khi đã bị hạ huyết áp, bệnh nhân có<br>AS vừa và nặng dễ bị<br>hạ huyết áp kéo dài dù đã can thiệp hơn.<sup>10</sup> <u></u><u></u></p>
+<p><a href="http://conntent.onlinejacc.org/article.aspx?articleid=1838843" rel="noopener" target="_blank">Hướng dẫn ACC/AHA năm 2014 về Xử trí Bệnh nhân Bệnh van tim</a>, có trích dẫn bài báo này, đưa ra khuyến cáo sau:</p>
+<p><strong>“KHUYẾN CÁO NHÓM IIb 1. Điều trị giãn mạch</strong> có thể hợp lý nếu được sử dụng kèm theo dõi huyết động xâm lấn trong xử trí cấp ở bệnh nhân hẹp van động mạch chủ (AS) nặng mất bù (giai đoạn D) có triệu chứng suy tim NYHA độ IV. (Mức bằng chứng: C) Ở những bệnh nhân đến viện với AS nặng và suy tim NYHA độ IV, có thể dùng biện pháp giảm hậu tải nhằm ổn định bệnh nhân trước khi thay van động mạch chủ (AVR) khẩn. Theo dõi xâm lấn áp lực đổ đầy thất trái, cung lượng tim và sức cản mạch hệ thống là thiết yếu vì tình trạng huyết động mong manh của những bệnh nhân này, ở họ việc sức cản mạch hệ thống giảm đột ngột có thể dẫn đến giảm cấp tính cung lượng tim qua van động mạch chủ bị tắc nghẽn. Tuy nhiên, một số bệnh nhân lại được hưởng lợi nhờ cung lượng tim tăng lên khi sức cản mạch hệ thống được điều chỉnh giảm dần một cách chậm rãi, do tổng hậu tải thất trái giảm. Nên tiến hành AVR sớm nhất có thể ở những bệnh nhân này.”</p>
+<h2 id="ket-luan">KẾT LUẬN:</h2>
+<p>Các yếu tố tương tác lẫn nhau trong những ca hẹp van động mạch chủ<br>nặng chính là điều khiến những bệnh nhân này rất khó<br>xử trí, và các biện pháp điều trị nhắm vào khắc phục một vấn đề thường làm trầm trọng<br>thêm tác động của một vấn đề khác. Nếu bệnh nhân bị suy<br>hô hấp, cần bảo đảm đường thở và hô hấp, bằng<br>biện pháp không xâm nhập hoặc xâm nhập. Tiếp theo, cần ổn định huyết<br>áp của bệnh nhân. Thông thường, thuốc phù hợp nhất<br>sẽ là một thuốc tăng co bóp cơ tim, cân nhắc thêm một thuốc<br>vận mạch nếu tụt huyết áp kéo dài. Khi bệnh nhân đã ổn định,<br>lúc đó mới có thể xác định mức độ tổn thương cơ tim và lập kế hoạch<br>điều trị triệt để.<br><u></u><u></u></p>
+<h2 id="binh-luan-cua-smith-5">Bình luận của Smith:</h2>
+<p><strong>Chăm sóc hỗ trợ</strong> thường bị xem nhẹ trong xử trí sốc tim.  Công hô hấp đòi hỏi cung lượng tim đáng kể và do đó tạo thêm gánh nặng cho tim.  Thở máy kèm thuốc giãn cơ giúp loại bỏ tới 50% nhu cầu oxy và có thể cho tim được nghỉ ngơi.  Tôi sẽ đặt nội khí quản ngay lập tức cho một bệnh nhân nặng đến mức này.</p>
+<p><strong>Về các biện pháp điều trị xâm lấn khác</strong>, <strong><u>bóng đối xung động mạch chủ</u></strong> (12, 13) có vẻ hiệu quả trong các nghiên cứu không ngẫu nhiên, và điều này cũng hợp lý: bóng trong động mạch chủ bơm phồng trong thì tâm trương, làm tăng áp lực tâm trương và do đó tăng dòng chảy mạch vành. Bóng cũng xẹp xuống trong thì tâm thu, điều mà bình thường sẽ làm giảm hậu tải; tuy nhiên, trong bối cảnh hẹp van động mạch chủ, hậu tải chủ yếu do van quyết định, chứ không phải do sức cản phía sau van.</p>
+<p><strong>Bình luận cuối cùng của Smith:</strong>Không rõ điều gì đã khởi phát tình trạng mất ổn định của bệnh nhân này.  Bất kỳ thay đổi sinh lý nào cũng có thể biến AS “còn bù” thành AS “mất bù”.  Chẳng hạn: nhiễm khuẩn huyết, chảy máu, mất nước, thiếu oxy và ACS nhẹ.  Bệnh nhân này có buồng thất trái nhỏ – điều bất thường ở người bị AS, chức năng thất trái kém và áp lực đổ đầy cao – nhưng có lẽ là do LVH nặng.  Vì áp lực đổ đầy thất trái được ghi nhận là cao, buồng thất trái nhỏ này không phải là hậu quả của giảm thể tích tuần hoàn. <strong> Dù thế nào đi nữa, một khi AS đã mất bù, vì bất kỳ lý do gì, việc xử trí cực kỳ khó khăn do áp lực tưới máu mạch vành thấp và nhu cầu oxy cao.</strong></p>
+<h2 id="tai-lieu-tham-khao">TÀI LIỆU THAM KHẢO:</h2>
+<p>Trước hết, một bài blog hay khác về hẹp van động mạch chủ: <a href="https://www.emdocs.net/management-of-the-crashing-aortic-stenosis-patient/" rel="noopener" target="_blank">https://www.emdocs.net/management-of-the-crashing-aortic-stenosis-patient/</a> (xử trí bệnh nhân hẹp van động mạch chủ đang suy sụp nhanh)</p>
+<p>1.<br>Taglieri N, Marzocchi A, Saia F, và cs. Short- and long-term prognostic<br>significance of ST-segment elevation in lead aVR in patients with<br>non-ST-segment elevation acute coronary<br>syndrome. Am J Cardiol 2011;108:21-8.<u></u><u></u></p>
+<p>2.<br>Kosuge M, Ebina T, Hibi K, và cs. An early and simple predictor of<br>severe left main and/or three-vessel disease in patients with<br>non-ST-segment elevation acute coronary syndrome.<br>Am J Cardiol 2011;107:495-500.<u></u><u></u></p>
+<p><u></u>3.<br><u></u>Overgaard, Christopher; Dzavik, Vladimir.<br>Contemporary Reviews in Cardiovascular Medicine. Inotropes and<br>Vasopressors: Review of Physiology and Clinical Use in Cardiovascular<br>Medicine. Tạp chí Circulation. 2008;118:1047-1056.<u></u><u></u></p>
+<p><u></u>4.<br><u></u>Richard, C; và cs. Combined Hemodynamic Effects of Dopamine and Dobutamine in Cardiogenic Shock. Tạp chí Circulation 67, số 3, 1983.<u></u><u></u></p>
+<p><u></u>5.<br><u></u>Safian RD, Berman AD, Diver DJ, và cs. Balloon aortic valvuloplasty in 170 consecutive patients. N Engl J Med 1988;319:125-30<u></u><u></u></p>
+<p><u></u>6.<br><u></u>Rahimtoola SH. Catheter balloon valvuloplasty for<br>severe calcific aortic stenosis: a limited role. Tạp chí J Am Coll Cardiol<br>1994;23:1076-1078<u></u><u></u></p>
+<p><u></u>7.<br><u></u>Moreno PR, Jang IK, Newell JB, Block PC, Palacios<br>IF. The role of percutaneous aortic balloon valvuloplasty in patients<br>with cardiogenic shock and critical aortic stenosis. Tạp chí J Am Coll Cardiol<br>1994;23:1071-1075<u></u><u></u></p>
+<p><u></u>8.<br><u></u>Hutter AM Jr, De Sanctis RW, Nathan MJ, và cs. Aortic valve surgery as an emergency procedure. Circulation 1970;41:623-627<u></u><u></u></p>
+<p><u></u>9.<br><u></u>Umesh N. Khot, MD; và cs. Nitroprusside in<br>Critically Ill Patients with Left Ventricular Dysfunction and Aortic<br>Stenosis. N Engl J Med 2003; 348:1756-1763, 1/5/2013.</p>
+<p><u></u>10.<br><u></u>Claveau, D; và cs. Complications Associated with<br>Nitrate Use in Patients Presenting with Acute Pulmonary Edema and<br>Concomitant Moderate or Severe Aortic Stenosis. Annals of Emergency<br>Medicine. Tháng Mười năm 2015; 66(4):355-362.</p>
+<p>11.  <a href="http://www.nejm.org/doi/pdf/10.1056/NEJMoa0907118" rel="noopener" target="_blank">De Backer D và cs.  Comparison of Dopamine and Norepinephrine in the Treatment of Shock.  NEJM 362(9):779; ngày 4 tháng Ba năm 2009.</a></p>
+<p>12.  Folland ED, và cs.  Intraaortic Balloon Counterpulsation as a temporary support measure in decompensated critical aortic stenosis.  <em>J Am Coll Cardiol</em>. 1985;5(3):711-716.</p>
+<p><a href="http://content.onlinejacc.org/article.aspx?articleid=1111078" rel="noopener" target="_blank">http://content.onlinejacc.org/article.aspx?articleid=1111078</a> (bài trên JACC về bóng đối xung động mạch chủ trong hẹp van động mạch chủ khít mất bù)</p>
+<p>13.  Olcay A. và cs.  Cardiogenic shock in the setting of severe aortic stenosis: role of intra-aortic balloon pump support.  <span class="c-do">Heart </span><span class="c-do">2011;</span><span class="c-do">97:</span><span class="c-do">838-843</span></p>
+<p><a href="http://heart.bmj.com/content/97/10/838.short" rel="noopener" target="_blank">http://heart.bmj.com/content/97/10/838.short</a> (bài của Olcay A. và cs. trên tạp chí Heart về bóng đối xung động mạch chủ trong sốc tim do hẹp van động mạch chủ nặng)</p>
+<p>14.  Nishimura RA và Otto CM, và cs. 2014 AHA/ACC Guideline for the Management<br>of Patients With Valvular Heart Disease.  Journal of the American College of Cardiology 63(22):e57-e185; ngày 10 tháng Sáu năm 2014.</p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
