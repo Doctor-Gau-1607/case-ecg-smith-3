@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>10/02/2022 — Tắc mạch/tái tưới máu qua 6 điện tâm đồ ‘bình thường’</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #1381 · DR. SMITH’S ECG BLOG</div>
+   <h1>10/02/2022 — Tắc mạch/tái tưới máu qua 6 điện tâm đồ ‘bình thường’</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/occlusionreperfusion-through-6-normal/" target="_blank" rel="noopener">"Occlusion/reperfusion through 6 ‘normal’ ECGs"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 12 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p>Bài này do Jesse McLaren (@ECGCases) viết và đóng góp, với bình luận và chỉnh sửa của Smith, cùng phần bình luận của Ken Grauer (@EKGPress)</p>
+<p>Một phụ nữ 80 tuổi đến viện<br>vì yếu mệt và té ngã, sinh hiệu bình thường và không có chấn thương. Điện tâm đồ được<br>máy tính dán nhãn ‘bình thường’, sau đó được bác sĩ tim mạch xác nhận. Bạn<br>nghĩ gì?</p>
+<figure><a class="o-anh" href="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-703752294.jpg"><img src="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-703752294.jpg" alt="" width="1462" height="700" loading="lazy" decoding="async"></a></figure>
+<p>(Thuật toán Marqette 12SL)</p>
+<p>Có nhịp xoang bình thường, dẫn truyền<br>bình thường, trục bình thường, tăng tiến sóng R bình thường và điện thế bình thường.<br>Thông thường có một chút ST chênh lên dạng lõm ở V2-3, nhưng ở đây lại<br>có ST chênh xuống dạng nằm ngang ở V2 và có thể cả ở V1.</p>
+<p><strong>Smith</strong>: dù không có thêm thông tin nào, phần diễn giải của tôi bổ sung rằng có sóng T tối cấp ở thành dưới và có thể cả ở V4-V6, cùng với ST chênh xuống soi gương kín đáo và sóng T đảo ngược ở aVL.</p>
+<p>Bất kỳ ST chênh xuống nguyên phát nào ở<br>V1-4 (tức là không thứ phát sau rối loạn dẫn truyền do RBBB, RVH hay WPW) đều là<br>nhồi máu cơ tim do tắc (Occlusion MI) thành sau cho đến khi chứng minh được điều ngược lại, và thường đi kèm với<br>những dấu hiệu kín đáo ở các chuyển đạo dưới và/hoặc bên: “tất cả bệnh nhân<br>OMI thành sau đều có hoặc (1) STDmaxV1-4 ít nhất 1mm, hoặc (2) những dấu hiệu<br>kín đáo khác của OMI bên cạnh STDmaxV1-4 bất kỳ (kể cả khi &lt;1mm).”[1]  Mặc dù ST chênh xuống ở V2 dưới 1 mm, quả thực vẫn có những dấu hiệu kín đáo khác của OMI (ở các chuyển đạo dưới và bên).</p>
+<p>So với điện tâm đồ cũ<br>(bên dưới, thực sự bình thường), ST chênh xuống ở V1-2 là mới, sóng T ở<br>III/aVF lớn hơn một chút và sóng T soi gương ở aVL không còn<br>dương nữa:</p>
+<figure><a class="o-anh" href="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-1683094164.jpg"><img src="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-1683094164.jpg" alt="" width="1472" height="693" loading="lazy" decoding="async"></a></figure>
+<p>(Thuật toán Marqette 12SL)</p>
+<p>Cơ hội đầu tiên để<br>chẩn đoán OMI thành sau kín đáo này đã bị bỏ lỡ, nhiều khả năng vì 1) bệnh nhân<br>đến viện với triệu chứng tương đương đau thắt ngực (anginal equivalent) thay vì đau ngực, 2) điện tâm đồ ‘STEMI<br>âm tính’, và 3) kết quả đọc bằng máy tính là ‘bình thường’.</p>
+<p><strong>Smith</strong>: điều này chứng minh nhận định của tôi rằng sóng T ở thành dưới trên điện tâm đồ đầu tiên là sóng T tối cấp.  Hãy cùng xem các chuyển đạo dưới + aVL đặt cạnh nhau ở cả điện tâm đồ mới (trái) và cũ (phải):</p>
+<figure><a class="o-anh" href="2022-02-10-occlusionreperfusion-through-6-normal_anh/Screen-Shot-2022-02-08-at-8.32.20-AM-ccd75d8d05c3.jpg"><img src="2022-02-10-occlusionreperfusion-through-6-normal_anh/Screen-Shot-2022-02-08-at-8.32.20-AM-ccd75d8d05c3.jpg" alt="" width="1600" height="431" loading="lazy" decoding="async"></a></figure>
+<p>Và ở các chuyển đạo V4-V6 (bên trái là mới, bên phải là cũ):</p>
+<figure><a class="o-anh" href="2022-02-10-occlusionreperfusion-through-6-normal_anh/Screen-Shot-2022-02-08-at-8.39.16-AM-bb38e4d4aee5.jpg"><img src="2022-02-10-occlusionreperfusion-through-6-normal_anh/Screen-Shot-2022-02-08-at-8.39.16-AM-bb38e4d4aee5.jpg" alt="" width="1312" height="1182" loading="lazy" decoding="async"></a></figure>
+<p>Cả hai phép so sánh này</p>
+<p>Một giờ sau, kết quả troponin I<br>trả về 500 ng/L (bình thường &lt;16 ở nữ), làm tăng nghi ngờ rằng tình trạng<br>yếu mệt của bệnh nhân là một triệu chứng tương đương đau thắt ngực. Không thấy thay đổi nào trên điện tâm đồ 12<br>chuyển đạo ban đầu, bác sĩ cấp cứu đã ghi điện tâm đồ 15 chuyển đạo (bên dưới, trong đó V4-6 thực ra là V4R và V7-8):</p>
+<figure><a class="o-anh" href="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-1226061792.jpg"><img src="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-1226061792.jpg" alt="" width="1473" height="587" loading="lazy" decoding="async"></a></figure>
+<p>Không có ST chênh lên ở thành<br>sau, nhưng ST chênh xuống ở thành trước đã hết giữa điện tâm đồ thứ nhất và<br>thứ hai. Dù điện tâm đồ này âm tính với “STEMI thành sau”, việc hết<br>ST chênh xuống ở thành trước (kèm theo troponin tăng) khẳng định<br>OMI thành sau với tái tưới máu tự phát. Bệnh nhân được cho dùng aspirin và<br>điện tâm đồ 12 chuyển đạo được ghi lại 2 giờ sau đó, sau khi troponin tăng lên 1.300 ng/L:</p>
+<figure><a class="o-anh" href="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-422399412.jpg"><img src="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-422399412.jpg" alt="" width="1468" height="707" loading="lazy" decoding="async"></a></figure>
+<p>(Thuật toán Marqette 12SL)</p>
+<p>Không tái xuất hiện ST chênh xuống<br>ở thành trước. Bệnh nhân được chuyển khoa tim mạch và nhập viện với chẩn đoán NSTEMI,<br>dùng thuốc kháng tiểu cầu/heparin và chụp mạch vành trì hoãn.</p>
+<p>Trong cách phân đôi STEMI/NSTEMI,<br>NSTEMI lẽ ra có nghĩa là nhồi máu cơ tim không do tắc, nhưng bệnh nhân này<br>đã có nhồi máu cơ tim do tắc (Occlusion MI) thoáng qua với nguy cơ tắc lại (giống như ‘STEMI<br>thoáng qua’). Cơ hội thứ hai để chẩn đoán và đẩy nhanh việc chụp mạch vành<br>đã bị bỏ lỡ vì điện tâm đồ chưa bao giờ đạt tiêu chuẩn STEMI và tiếp tục được dán nhãn<br>‘bình thường.’ Nhưng nếu đây thực sự là nhồi máu cơ tim không do tắc (NOMI) thì lẽ ra không có<br>dấu hiệu tái tưới máu nào.</p>
+<p>Sáu giờ sau, một điện tâm đồ khác<br>được ghi lại, kèm troponin lặp lại có xu hướng giảm, ở mức 1.000 ng/L.</p>
+<figure><a class="o-anh" href="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-1242372462.jpg"><img src="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-1242372462.jpg" alt="" width="1469" height="704" loading="lazy" decoding="async"></a></figure>
+<p>(Thuật toán Marqette 12SL)</p>
+<p>Sóng T ở thành trước cao hơn một chút<br>và sóng T ở thành dưới đang trở về kích thước nhỏ bình thường. Troponin<br>tiếp tục giảm, và một điện tâm đồ khác được ghi lại 24 giờ sau đó:</p>
+<figure><a class="o-anh" href="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-1653884838.jpg"><img src="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-1653884838.jpg" alt="" width="1411" height="715" loading="lazy" decoding="async"></a></figure>
+<p>(Thuật toán Marqette 12SL)</p>
+<p>Lúc này<br>sóng T ở thành trước cao rõ rệt, tạo vẻ ngoài của sóng T<br>tối cấp (kể cả ‘sóng T cao mới xuất hiện ở V1’). Nhưng trong bối cảnh ST chênh xuống ở thành trước<br>đã hết, đây là sóng T tái tưới máu thành sau, hình soi gương<br>của sóng T đảo ngược do tái tưới máu, và là điều chúng tôi gọi là “hội chứng Wellens của thành sau.” (4) Điều này càng khẳng định thêm chẩn đoán<br>OMI thoáng qua với nguy cơ tắc lại. Nhưng cơ hội thứ ba để đưa ra<br>chẩn đoán này đã bị bỏ lỡ, với một điện tâm đồ được dán nhãn và xác nhận là ‘bình thường’. Bệnh nhân được siêu âm tim cho thấy giảm động<br>thành dưới vùng đáy, tương ứng với các thay đổi trên điện tâm đồ. Hai ngày sau có<br>một điện tâm đồ khác:</p>
+<figure><a class="o-anh" href="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-896108874.jpg"><img src="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-896108874.jpg" alt="" width="1462" height="694" loading="lazy" decoding="async"></a></figure>
+<p>(Thuật toán Marqette 12SL)</p>
+<p>Sóng T tái tưới máu thành sau đang<br>hết dần, nhưng giờ đây có phức bộ QS ở III kèm sóng T đảo ngược do tái tưới máu thành dưới<br>ở III/aVF—cũng được dán nhãn và xác nhận là ‘bình thường’.</p>
+<p><span class="c-do">Cũng lưu ý rằng có sóng T đảo ngược mới ở III với sóng T dương ở aVL, khẳng định nhồi máu thành dưới.  Và lưu ý rằng sóng T ở V4-V6 giờ đã trở lại kích thước và “độ đầy đặn” (bulk) bình thường.</span></p>
+<p>Chụp mạch vành<br>trì hoãn phát hiện tắc 95% RCA đoạn giữa và đã được đặt stent. Ngay cả khi đã có lợi thế<br>của việc nhìn lại, chẩn đoán ra viện vẫn gọi các điện tâm đồ là ‘bình thường’ và đưa ra<br>chẩn đoán ra viện là NSTEMI, khi hồi cứu lại thì đã bỏ lỡ cơ hội thứ tư để nhận diện một OMI thoáng qua. Diễn giải<br>tự động (và có vẻ cả việc xác nhận) chỉ xem xét từng điện tâm đồ một cách<br>riêng lẻ, bị giới hạn ở tiêu chuẩn STEMI, và không tính đến tái tưới máu. Dù<br>mỗi thay đổi điện tâm đồ khi xét riêng lẻ đều kín đáo, và một số khác biệt là do<br>khác biệt về điện thế, khi xét thành chuỗi chúng cho thấy một diễn tiến rõ ràng của OMI<br>thành sau từ tắc mạch (ST chênh xuống ở thành trước) đến tái tưới máu (bình thường hóa đoạn<br>ST và sóng T cao). Đây là chuỗi điện tâm đồ tập trung vào các chuyển đạo V1-3:</p>
+<figure><a class="o-anh" href="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-96754412.jpg"><img src="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-96754412.jpg" alt="" width="1299" height="587" loading="lazy" decoding="async"></a></figure>
+<p>Một<br>số nghiên cứu nhỏ đã cho thấy các điện tâm đồ được<br>máy tính dán nhãn ‘bình thường’ và được bác sĩ tim mạch xác nhận ít có khả năng gây hậu quả<br>lâm sàng. Ca này có vẻ ủng hộ điều đó vì bệnh nhân có triệu chứng không điển hình<br>và nhồi máu nhỏ, và việc chậm trễ chụp mạch vành không gây ảnh hưởng gì. Nhưng đây<br>là một tình huống suýt bỏ sót (near miss). Bệnh nhân cao tuổi thường đến viện với triệu chứng tương đương đau thắt ngực,<br>vốn liên quan đến việc đến viện muộn, điều trị không đầy đủ và tỷ lệ tử vong<br>tăng gấp đôi ngay cả khi họ đạt tiêu chuẩn STEMI kinh điển.[2] Điều này càng trầm trọng hơn<br>ở những người không đạt tiêu chuẩn STEMI: OMI STEMI âm tính (STEMI(-)OMI) thành sau “có nồng độ troponin<br>đỉnh tương tự nhưng khả năng được thông tim<br>trong vòng 90 phút sau khi đến viện thấp hơn đáng kể…do không có tiêu chuẩn STEMI,<br>mặc dù thực tế là họ đã có thể được nhận diện dễ dàng và ngay lập tức bằng<br>STDmaxV1-4, bên cạnh các dấu hiệu kín đáo khác của OMI.”[1]</p>
+<p>Bệnh<br>nhân có kết cục tốt không phải <em>nhờ</em><br>điện tâm đồ được dán nhãn ‘bình thường’ mà là <em>bất<br>chấp</em> điều đó. Chỉ vì RCA của bệnh nhân tự tái tưới máu và không<br>tắc lại trước khi chụp mạch vành mà bệnh nhân này mới tránh được số phận của nhiều<br>bệnh nhân cao tuổi đến viện với triệu chứng tương đương đau thắt ngực và STEMI(-)OMI. Nhưng<br>những người khác không may mắn như vậy, vì thế chúng ta nên học hỏi từ những tình huống suýt bỏ sót này để nhận diện<br>tốt hơn các dấu hiệu của tắc mạch và tái tưới máu.</p>
+<h3 id="dieu-can-nho">Điều cần nhớ:</h3>
+<ol><li>Bệnh nhân cao tuổi có tỷ lệ triệu chứng<br>tương đương đau thắt ngực cao hơn, vốn liên quan đến chẩn đoán muộn, điều trị không đầy đủ<br>và tỷ lệ tử vong cao hơn </li>
+<li>ST chênh xuống nguyên phát ở V1-4 là<br>OMI thành sau cho đến khi chứng minh được điều ngược lại, và có thể đi kèm với những thay đổi kín đáo<br>ở thành dưới và/hoặc thành bên</li>
+<li>Nếu các chuyển đạo phía sau trên điện tâm đồ 15 chuyển đạo<br>không có ST chênh lên, nhưng các chuyển đạo trước cho thấy ST chênh xuống đã hết,<br>điều này có thể giúp khẳng định thay đổi thiếu máu cục bộ động</li>
+<li>Các OMI kín đáo bị bỏ sót trên điện tâm đồ đầu tiên có thể<br>được nhận diện trên các điện tâm đồ tiếp theo, bao gồm hoặc sự tiến triển của các dấu hiệu<br>tắc mạch, hoặc các dấu hiệu hồi phục và tái tưới máu</li>
+<li>Sóng T đảo ngược do tái tưới máu (bao gồm cả<br>sóng T cao ở thành trước do tái tưới máu thành sau) có thể rõ ràng hơn<br>các dấu hiệu tắc mạch ban đầu và có thể giúp khẳng định chẩn đoán</li>
+<li>Mô hình STEMI/NSTEMI có thể bỏ sót<br>toàn bộ diễn tiến từ tắc mạch đến tái tưới máu, và nên được thay thế bằng<br>OMI/NOMI</li>
+<li>Đừng bao giờ tin vào kết quả đọc tự động,<br>kể cả kết quả ‘bình thường’ </li></ol>
+<h3 id="tai-lieu-tham-khao">Tài liệu tham khảo</h3>
+<ol><li>Meyers HP và cs. Ischemic ST-segment<br>depression maximal in V1-V4 (versus V5-V6) of any amplitude is specific for<br>Occlusion Myocardial Infarction (versus nonocclusive ischemia). JAHA 2022</li>
+<li>
+Grosmaitre P và cs. Significance of<br>atypical symptoms for the diagnosis and management of myocardial infarction in<br>elderly patients admitted to emergency departments. Arch Cardiovasc Dis 2013</li>
+<li>Khan AR và cs. Impact of total occluson of culprit artery in acute non-ST elevation myocardial infarction: a systemic review and meta-analysis. Eur Heart J 2017<br></li>
+<li>Driver BE, Shroff GR, Smith SW. Posterior reperfusion T-waves: Wellens’ syndrome of the posterior wall. Emerg Med J 2017;34(2):119–23. Truy cập tại: http://dx.doi.org/10.1136/emermed-2016-205852</li></ol>
+<figure><a class="o-anh" href="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-969530134.jpg"><img src="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-969530134.jpg" alt="" width="613" height="24" loading="lazy" decoding="async"></a></figure>
+<p><span class="c-do">===================================</span></p>
+<h2 id="binh-luan-cua-toi-boi-ken-grauer-md-10-2-2022">BÌNH LUẬN CỦA TÔI, bởi KEN GRAUER, MD (10/2/2022):</h2>
+<p><span class="c-do">===================================</span></p>
+<p>Một bài viết tuyệt vời của Jesse McLaren — trong đó anh lần theo diễn tiến kín đáo nhưng <em>hiện diện rõ ràng</em> của OMI <em>thành sau</em> cấp đã bị các nhân viên y tế bỏ qua. Tôi sẽ bổ sung vài suy nghĩ vào hình minh họa diễn tiến do Dr. McLaren vẽ ở trên — mà tôi trình bày lại trong <u><strong>Hình 1</strong></u>.</p>
+<ul><li>Như Dr. McLaren đã nêu — cách nhìn <em>tuần tự</em> này vào <strong>các chuyển đạo <em>trước</em></strong> <strong>V1</strong>, <strong>V2</strong> và <strong>V3</strong> cho thấy diễn tiến rõ ràng qua các giai đoạn của tắc mạch cấp — tiếp theo là sự bình thường hóa các thay đổi ST-T — trên đường tiến tới sự hình thành những sóng T tái tưới máu vốn khẳng định chẩn đoán.</li>
+<li>Như tôi đã gợi ý nhiều lần trên Dr. Smith’s ECG Blog — tôi nhận thấy việc sử dụng <strong><em><u>nghiệm pháp</u></em> <u>soi gương (Mirror Test)</u></strong> cực kỳ hữu ích trong việc giúp hình dung các thay đổi ST-T đặc trưng của <strong>nhồi máu cơ tim <em>thành sau</em> cấp (</strong><em>Xem Bình luận của tôi ở cuối trang trong bài</em> <strong><a href="https://drsmithsecgblog.com/2020/09/interventionalist-at-receiving-hospital.html" rel="noopener" target="_blank">ngày 21 tháng Chín năm 2020</a>)</strong>.</li>
+<li>Chẳng phải <em><u>nghiệm pháp</u></em> <u>soi gương</u> giúp dễ nhận ra hình dạng <em>bất thường</em> của ST chênh xuống <em>dạng bậc thềm</em> kín đáo ở <strong>chuyển đạo V2</strong> trên <strong>bản ghi <u><em>Tắc mạch</em></u> đó sao? (</strong><em>Ô thứ 2 trong</em> <u>Hình 1</u><strong>)</strong>.</li>
+<li><em>Chẳng phải sẽ dễ nhận ra hơn</em> rằng chiều cao và thể tích tăng lên của các sóng T dương ở Ô thứ 4 trong <u>Hình 1</u> thể hiện <strong>sóng T <u><em>Tái tưới máu</em></u> hay sao?</strong></li>
+<li>Một Điểm then chốt (Pearl) bổ sung cần tìm khi cân nhắc khả năng nhồi máu cơ tim thành sau đang tiến triển — là <strong>chiều cao</strong> <strong><em>tương đối</em></strong> của <strong>sóng R ở các chuyển đạo <em>trước</em> (</strong><em>mà về thực chất phản ánh hình soi gương của các sóng Q đang hình thành</em><strong>)</strong>. Hãy chú ý sóng R ở <strong>chuyển đạo V2</strong> cao hơn bao nhiêu ở 3 Ô cuối trong <u>Hình 1</u>.</li>
+<li>Cuối cùng — bên cạnh sóng T tái tưới máu đầy đặn ở chuyển đạo V2 của Ô thứ 4 — hãy chú ý sóng T ở <strong>chuyển đạo V1</strong> của Ô này cao đến mức nào. Bình thường bạn sẽ <em><u>không bao giờ</u></em> thấy một sóng T nổi bật đến thế ở chuyển đạo V1.</li></ul>
+<p>Chúng tôi xin <em>CẢM ƠN</em> một lần nữa Dr. McLaren vì phần trình bày tuyệt vời này!</p>
+<figure><a class="o-anh" href="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-1888034693.jpg"><img src="2022-02-10-occlusionreperfusion-through-6-normal_anh/2022_02_occlusionreperfusion-through-6-normal-1888034693.jpg" alt="" width="1600" height="840" loading="lazy" decoding="async"></a><figcaption><strong><u>Hình 1:</u> </strong>Diễn tiến rõ ràng qua các giai đoạn của OMI thành sau cấp trong ca hôm nay.</figcaption></figure>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
